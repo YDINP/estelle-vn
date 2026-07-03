@@ -1425,8 +1425,8 @@
         var tapTimer = null;
         var firstTapX = 0;
         var firstTapY = 0;
-        var TAP_TIMEOUT = 350; // 트리플 탭 제한시간 (ms)
-        var TAP_RADIUS = 20; // 허용 반경 (px)
+        var TAP_TIMEOUT = 900; // 트리플 탭 제한시간 (ms) — 350은 실기기에서 실패 잦아 완화
+        var TAP_RADIUS = 28; // 허용 반경 (px)
 
         // 외부에서 카운트 리셋 가능하도록
         resetTapCount = function () {
