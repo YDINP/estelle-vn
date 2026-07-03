@@ -19,8 +19,9 @@ export interface CheatCtx {
 }
 
 export function setupCheats(ctx: CheatCtx): void {
-  const enabled =
-    import.meta.env.DEV || new URLSearchParams(location.search).has("cheat");
+  // 테스트 배포 단계 — 항상 활성 (모바일 트리플탭으로 열기).
+  // ⚠️ ait 정식 배포 전 게이트 복원: DEV || ?cheat=1 (?nocheat 로 임시 비활성 가능)
+  const enabled = !new URLSearchParams(location.search).has("nocheat");
   if (!enabled) return;
   const s = document.createElement("script");
   s.src = import.meta.env.BASE_URL + "cheat.js"; // 배포 하위경로 대응

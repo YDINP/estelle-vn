@@ -59,8 +59,9 @@ export const CHARACTERS: Record<CharacterId, Character> = {
   lucian: {
     id: "lucian", name: "루시안", hasPortrait: true, // 황실 근위기사단장 (백금발)
     body: ["soft", "serious", "happy", "greet", "smirk", "scheme", "sad", "angry"],
-    bust: [],
-    fallback: { surprised: "soft", shy: "soft", tearful: "sad", laugh: "smirk" },
+    bust: ["greet", "soft", "happy", "laugh", "shy", "serious", "surprised",
+      "sad", "smirk", "angry", "scheme"], // 11종 (005 시트 2장, tearful만 미보유)
+    fallback: { tearful: "sad" },
   },
   noah: {
     id: "noah", name: "노아", hasPortrait: true, // 궁정 점성술사 (은발)
