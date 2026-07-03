@@ -1,0 +1,14 @@
+{
+  "project": "EstelleVN",
+  "name": "ui-theme-migration",
+  "created": "2026-07-03",
+  "completed": "2026-07-03",
+  "tasks": [
+    { "id": 1, "title": "디자인 토큰 교체 (:root 변수 9종)", "status": "done" },
+    { "id": 2, "title": "하드코딩 보라 그라데이션/배경 전면 치환 (body, main-screen, vn, modal, sheet, ad, toast)", "status": "done" },
+    { "id": 3, "title": "패널 모티프 적용 — 이중 금테 버튼/카드, 보석 다이아, 명조 디스플레이, 호감도 로즈→골드 게이지", "status": "done" },
+    { "id": 4, "title": "빌드 검증 (tsc + vite build)", "status": "done" },
+    { "id": 5, "title": "playwright 스크린샷 비주얼 QA (타이틀/홈/VN/시트)", "status": "done" },
+    { "id": 6, "title": "(추가) 신규 UI 스타일 누락 보완 — vn-exit 나가기 버튼(흰 바 버그 fix), vn-cg CG 연출, toasts 우상단 알림 스택", "status": "done" }
+  ]
+}

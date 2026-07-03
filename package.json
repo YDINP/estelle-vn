@@ -1,0 +1,17 @@
+{
+  "name": "estelle-vn",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "description": "앱인토스 전체이용가 로판 캐릭터 게임 — 에스텔(Estelle)",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "playwright": "^1.61.1",
+    "typescript": "^5.5.0",
+    "vite": "^5.4.0"
+  }
+}

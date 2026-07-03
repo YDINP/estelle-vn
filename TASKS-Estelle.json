@@ -1,0 +1,18 @@
+{
+  "project": "에스텔 (Estelle) — 앱인토스 로판 캐릭터 게임",
+  "created": "2026-07-01",
+  "tasks": [
+    { "id": 1, "title": "프로젝트 스캐폴딩 (Vite+TS)", "status": "done" },
+    { "id": 2, "title": "게임 상태/영속(state.ts, localStorage)", "status": "done" },
+    { "id": 3, "title": "코스메틱 카탈로그(cosmetics.ts)", "status": "done" },
+    { "id": 4, "title": "대화 시스템(dialogue.ts)", "status": "done" },
+    { "id": 5, "title": "리워드 광고 어댑터(ads.ts, mock+SDK seam)", "status": "done" },
+    { "id": 6, "title": "UI 렌더/이벤트 배선(ui.ts)", "status": "done" },
+    { "id": 7, "title": "부트스트랩+스타일(main.ts, style.css, index.html)", "status": "done" },
+    { "id": 8, "title": "로컬 실행 검증(npm run dev)", "status": "pending" },
+    { "id": 9, "title": "실제 앱인토스 SDK 연동(광고/저장)", "status": "blocked", "note": "사업자·심사 준비 후" },
+    { "id": 10, "title": "실제 캐릭터 아트 교체", "status": "pending" },
+    { "id": 11, "title": "채널톡 사전문의(미연시 톤 입점 가능 확인)", "status": "pending", "note": "선행 필수" },
+    { "id": 12, "title": "ait 패키징/콘솔 업로드", "status": "pending" }
+  ]
+}
