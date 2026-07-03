@@ -10,7 +10,7 @@ import {
 import { COSMETICS, getCosmetic, Slot } from "./cosmetics";
 import { greeting, giftLine } from "./dialogue";
 import { showRewardedAd, showInterstitialAd } from "./ads";
-import { Choice, Line, Emotion, Step } from "../data/chapters";
+import { Choice, Line, Emotion, Step, PROLOGUE } from "../data/chapters";
 import {
   CHARACTERS, CharacterId, EMOTION_LABEL, portraitFile, vnFile, resolveEmotion,
   isPlaceholderArt,
@@ -181,6 +181,7 @@ function template(): string {
       <div class="ms-crest">✧</div>
       <div class="ms-title">에스텔<br><span>— 스러진 봄의 약속 —</span></div>
       <div class="ms-sub">회귀한 당신이, 정해진 비극의 실을 하나씩 끊어낸다.<br>하나의 사건, 그러나 시점마다 다른 이야기.</div>
+      <button class="btn ms-prologue" id="btnPrologue">✦ 프롤로그 — 스러진 봄</button>
       <div class="route-cards" id="routeCards"></div>
       <button class="btn ms-illust" id="btnMainCollect">🖼 일러스트 도감</button>
       <div class="ms-foot">캐릭터를 선택해 그 시점의 이야기를 시작하세요</div>
@@ -250,6 +251,7 @@ function template(): string {
 
   <div class="vn hidden" id="vn">
     <button class="vn-exit" id="vnExit" aria-label="나가기">✕</button>
+    <button class="vn-log-btn" id="vnLogBtn" aria-label="대화 기록">📜</button>
     <div class="vn-portrait-wrap"><img class="vn-portrait" id="vnPortrait" alt="" />
       <div class="ph-badge hidden" id="vnPh">임시</div></div>
     <div class="vn-cg hidden" id="vnCg"><img id="vnCgImg" alt="" /></div>
@@ -259,7 +261,11 @@ function template(): string {
         <div class="vn-text" id="vnText"></div>
         <div class="vn-hint" id="vnHint">▼</div>
       </div>
-      <div class="vn-choices hidden" id="vnChoices"></div>
+    </div>
+    <div class="vn-choices hidden" id="vnChoices"></div>
+    <div class="vn-backlog hidden" id="vnBacklog">
+      <div class="vn-backlog-head">📜 대화 기록 <button class="x" id="vnBacklogX">✕</button></div>
+      <div class="vn-backlog-list" id="vnBacklogList"></div>
     </div>
   </div>
 
@@ -291,6 +297,17 @@ function wire() {
     e.stopPropagation(); // VN 진행 탭과 분리
     exitVn();
   });
+  // 대화 기록(백로그) — 열람 중엔 VN 진행 탭 무시
+  $("#vnLogBtn").addEventListener("click", (e) => {
+    e.stopPropagation();
+    openBacklog();
+  });
+  $("#vnBacklog").addEventListener("click", (e) => {
+    e.stopPropagation(); // 오버레이 탭이 VN 진행으로 새지 않게
+    $("#vnBacklog").classList.add("hidden");
+  });
+  // 메인 화면 — 전체 스토리 프롤로그 보기 (보상 없음, 언제든 다시보기)
+  $("#btnPrologue").onclick = () => playSteps(PROLOGUE.steps, () => {}, false);
   // 옷장 탭 (수집 탭과 셀렉터 충돌 방지 위해 #closet 스코프 한정)
   root.querySelectorAll("#closet .tab").forEach((t) =>
     t.addEventListener("click", () => {
@@ -693,6 +710,22 @@ function startVnType(text: string) {
   }, 24);
 }
 
+// ── 대화 기록(백로그) — 현재 VN 세션에서 표시된 대사 누적 ──
+let vnLog: { name: string; text: string; narr: boolean }[] = [];
+function pushLog(name: string, text: string, narr = false) {
+  vnLog.push({ name, text, narr });
+}
+function openBacklog() {
+  $("#vnBacklogList").innerHTML = vnLog.length
+    ? vnLog.map((l) => `<div class="bl-item ${l.narr ? "narr" : ""}">
+        ${l.name ? `<div class="bl-name">${l.name}</div>` : ""}
+        <div class="bl-text">${l.text}</div></div>`).join("")
+    : `<div class="bl-item narr"><div class="bl-text">아직 기록이 없어요.</div></div>`;
+  $("#vnBacklog").classList.remove("hidden");
+  const list = $("#vnBacklogList");
+  list.scrollTop = list.scrollHeight; // 최신 대사가 보이게
+}
+
 // 스텝 배열을 재생. 완료 시 onEnd 콜백 호출.
 function playSteps(steps: Step[], onEnd: () => void, grantRewards = true) {
   vnGrantRewards = grantRewards;
@@ -701,6 +734,8 @@ function playSteps(steps: Step[], onEnd: () => void, grantRewards = true) {
   vnQueue = [];
   vnChoosing = false;
   vnActive = true;
+  vnLog = []; // 백로그는 세션 단위
+  $("#vnBacklog").classList.add("hidden");
   vnOnEnd = onEnd;
   setVnPortrait(activeCharId(), "soft"); // 기본 포트레이트 (수집 기록 포함)
   $("#vn").classList.remove("hidden");
@@ -763,6 +798,7 @@ function displayCg(id: string) {
     saveState(state);
     toast(`🖼 이벤트 일러 수집: ${cg.title}`);
   }
+  pushLog("", `— ${cg.title} —`, true);
 }
 
 function displayLine(line: Line) {
@@ -771,37 +807,37 @@ function displayLine(line: Line) {
   if (spk === "narration") {
     $("#vnName").textContent = "";
     $("#vnText").classList.add("narr");
+    pushLog("", line.text, true);
   } else {
     $("#vnName").textContent = CHARACTERS[spk].name;
     $("#vnText").classList.remove("narr");
     // 일러 보유 캐릭터 + 표정 지정 시에만 포트레이트 교체 (미지정 시 이전 표정 유지)
     if (CHARACTERS[spk].hasPortrait && line.emotion) setVnPortrait(spk, line.emotion);
+    pushLog(CHARACTERS[spk].name, line.text);
   }
   $("#vnChoices").classList.add("hidden");
   startVnType(line.text); // 타이핑 연출
 }
 
+// 선택지 — 대사패널이 아닌 화면 중앙 검은 반투명 오버레이에 표시
 function renderChoice(choice: Choice) {
   $("#vnCg").classList.add("hidden");
   stopVnType();
   vnChoosing = true;
   $("#vnHint").classList.add("hidden");
-  if (choice.prompt) {
-    $("#vnName").textContent = "";
-    const t = $("#vnText");
-    t.textContent = choice.prompt;
-    t.classList.add("narr");
-  }
   const box = $("#vnChoices");
-  box.innerHTML = choice.options
-    .map((o, i) => `<button class="btn" data-opt="${i}">${o.label}</button>`)
-    .join("");
+  box.innerHTML =
+    (choice.prompt ? `<div class="vn-choice-prompt">${choice.prompt}</div>` : "") +
+    choice.options
+      .map((o, i) => `<button class="btn" data-opt="${i}">${o.label}</button>`)
+      .join("");
   box.classList.remove("hidden");
   box.querySelectorAll("[data-opt]").forEach((b) =>
     b.addEventListener("click", (e) => {
       e.stopPropagation();
       const o = choice.options[Number((b as HTMLElement).dataset.opt)];
       if (o.affection && vnGrantRewards) gainAffection(o.affection);
+      pushLog("", `▷ ${o.label}`, true); // 선택도 기록에 남김
       vnQueue = o.result.slice();
       vnChoosing = false;
       showNext();
@@ -815,6 +851,7 @@ function endVn() {
   const cb = vnOnEnd;
   vnOnEnd = null;
   $("#vnCg").classList.add("hidden");
+  $("#vnBacklog").classList.add("hidden");
   $("#vn").classList.add("hidden");
   setEmotion("soft");
   render();
@@ -829,6 +866,7 @@ function exitVn() {
   vnChoosing = false;
   $("#vnCg").classList.add("hidden");
   $("#vnChoices").classList.add("hidden");
+  $("#vnBacklog").classList.add("hidden");
   $("#vn").classList.add("hidden");
   setEmotion("soft");
   render();

@@ -146,6 +146,9 @@ export const CHAPTERS: Chapter[] = [
   },
 ];
 
+/** 전체 스토리 프롤로그(회귀 전 비극 → 회귀) — 메인 화면 '프롤로그 보기'용 */
+export const PROLOGUE = CHAPTERS[0];
+
 /** 현재 호감도로 열람 가능한 챕터들 */
 export function unlockedChapters(affection: number): Chapter[] {
   return CHAPTERS.filter((c) => affection >= c.unlockAffection);
