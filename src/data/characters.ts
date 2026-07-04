@@ -17,6 +17,7 @@ export interface Character {
   id: string;
   name: string;              // 이름판 표시명
   hasPortrait: boolean;      // false = 이름판+대사만 (일러 없는 조연)
+  color: string;             // 화자 텍스트/이름판 색 (다크브라운 배경에서 가독한 파스텔)
   body: Emotion[];           // 전신 일러 보유 표정 ({emotion}.png)
   bust: Emotion[];           // 상반신 일러 보유 표정 (bust_{emotion}.png)
   fallback: Partial<Record<Emotion, Emotion>>; // 미보유 표정 → 보유 표정 폴백
@@ -28,7 +29,7 @@ export type CharacterId =
 
 export const CHARACTERS: Record<CharacterId, Character> = {
   estelle: {
-    id: "estelle", name: "에스텔", hasPortrait: true,
+    id: "estelle", name: "에스텔", hasPortrait: true, color: "#ffdf9e", // 금발 — 웜골드
     body: ["soft", "happy", "greet", "surprised", "sad", "shy",
       "tearful", "serious", "angry", "laugh"], // 10종 (001/sheet2 확장)
     bust: ["greet", "soft", "happy", "shy", "serious", "surprised", "sad", "tearful",
@@ -37,7 +38,7 @@ export const CHARACTERS: Record<CharacterId, Character> = {
   },
   // 악덕영애 (적발·와인 드레스). ⚠️ '로젤린'은 임시명 — 확정 시 name만 교체.
   rozelin: {
-    id: "rozelin", name: "로젤린", hasPortrait: true,
+    id: "rozelin", name: "로젤린", hasPortrait: true, color: "#ff96a6", // 적발 — 로즈레드
     body: ["serious", "happy", "surprised", "soft"],
     bust: ["greet", "soft", "happy", "shy", "serious", "surprised", "sad", "tearful",
       "smirk", "laugh", "angry", "scheme"],
@@ -46,29 +47,30 @@ export const CHARACTERS: Record<CharacterId, Character> = {
   },
   // 약혼자 세드릭 (흑발·모피 망토 제복) — 비주얼 확정, 두 루트 조연
   sedric: {
-    id: "sedric", name: "세드릭", hasPortrait: true,
+    id: "sedric", name: "세드릭", hasPortrait: true, color: "#9db8e8", // 흑발 제복 — 스틸블루
     body: ["soft", "serious", "greet", "smirk", "scheme", "angry",
       "happy", "sad", "shy", "surprised", "tearful", "laugh"], // 12종 완비 (003 신규 8시트)
     bust: ["serious", "soft", "angry", "sad", "greet", "surprised", "smirk", "shy"],
     fallback: { happy: "soft", tearful: "sad", laugh: "smirk",
       scheme: "smirk" }, // bust 미보유 4종 폴백 (body는 완비)
   },
-  chancellor: { id: "chancellor", name: "재상 카닐", hasPortrait: false, body: [], bust: [], fallback: {} },
+  chancellor: { id: "chancellor", name: "재상 카닐", hasPortrait: false, color: "#b8b09b",
+    body: [], bust: [], fallback: {} },
   // ⚠️ 신규 남캐 2종 — 임시명. 플레이는 추후(잠금 루트), 현재는 카메오 등장만.
   //    채택 확정 시 상반신 시트 추가 예정 (bust는 그때 채움).
   lucian: {
-    id: "lucian", name: "루시안", hasPortrait: true, // 황실 근위기사단장 (백금발)
+    id: "lucian", name: "루시안", hasPortrait: true, color: "#cfe0f5", // 백금발 — 플래티넘
     body: ["soft", "serious", "happy", "greet", "smirk", "scheme", "sad", "angry"],
     bust: ["greet", "soft", "happy", "laugh", "shy", "serious", "surprised",
       "sad", "smirk", "angry", "scheme"], // 11종 (005 시트 2장, tearful만 미보유)
     fallback: { tearful: "sad" },
   },
   noah: {
-    id: "noah", name: "노아", hasPortrait: true, // 궁정 점성술사 (은발)
+    id: "noah", name: "노아", hasPortrait: true, color: "#c9a8f0", // 점성술사 — 바이올렛
     body: ["soft", "serious"], bust: [], fallback: {},
   },
   valen: {
-    id: "valen", name: "발렌", hasPortrait: true, // 적발 다크 귀족 (와인 망토·모피) — 임시명
+    id: "valen", name: "발렌", hasPortrait: true, color: "#e8a06d", // 와인·골드 — 앰버
     // 007 신규 시트로 전면 교체 (구 asd/sheet1·2 컷 폐기). 흉상 최초 구축.
     body: ["soft", "greet", "smirk", "scheme", "laugh", "happy", "serious", "angry"],
     bust: ["soft", "greet", "smirk", "scheme", "happy", "shy", "sad", "serious"],

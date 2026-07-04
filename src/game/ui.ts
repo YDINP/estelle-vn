@@ -20,6 +20,10 @@ import { DAILY_SCENES, DAILY_AFFECTION } from "../data/daily";
 import { CGS, cgFile, cgUnlocked, getCg } from "../data/cgs";
 import { ROUTES, Route, getRoute } from "../data/routes";
 import { setupCheats } from "./cheats";
+import {
+  initAudio, playBgm, toggleMuted, isMuted,
+  sfxTap, sfxChoiceOpen, sfxSelect, sfxCoin, sfxReward, sfxCg,
+} from "./audio";
 
 let state: GameState;
 let root: HTMLElement;
@@ -73,6 +77,8 @@ export function mountGame(el: HTMLElement) {
 
   root.innerHTML = template();
   wire();
+  initAudio(); // 첫 제스처에서 BGM 잠금 해제
+  updateMuteUI();
 
   // 디버그/치트 패널 (DEV 또는 ?cheat=1 — Shift+Click/트리플탭으로 열기)
   setupCheats({
@@ -106,6 +112,7 @@ function showMain() {
   saveState(state);
   renderMainScreen();
   $("#mainScreen").classList.remove("hidden");
+  playBgm("title");
 }
 
 function renderMainScreen() {
@@ -139,6 +146,7 @@ function enterRoute(routeId: string, autoPlayFirst = true) {
   ensureRoute(state, routeId);
   saveState(state);
   $("#mainScreen").classList.add("hidden");
+  playBgm("story");
   setEmotion("greet");
   setBubble(greeting(activeTier()));
   render();
@@ -153,6 +161,7 @@ function template(): string {
   <div class="stage">
     <div class="hud">
       <button class="home-btn" id="btnMain" aria-label="메인으로">🏰</button>
+      <button class="home-btn" id="btnMute" aria-label="소리">🔊</button>
       <div class="coins">🪙 <span id="coinVal">0</span></div>
       <div class="affbox">
         <div class="afftop"><span id="tierName">낯가림</span><span id="affVal">0</span>/${MAX_AFFECTION}</div>
@@ -177,6 +186,7 @@ function template(): string {
   </div>
 
   <div class="main-screen hidden" id="mainScreen">
+    <button class="ms-mute" id="btnMuteMain" aria-label="소리">🔊</button>
     <div class="ms-inner">
       <div class="ms-crest">✧</div>
       <div class="ms-title">에스텔<br><span>— 스러진 봄의 약속 —</span></div>
@@ -291,6 +301,7 @@ function wire() {
   $("#vn").addEventListener("click", () => {
     if (vnChoosing) return;
     if (vnTyping) { finishVnType(); return; } // 타이핑 중 터치 → 즉시 완성
+    sfxTap();
     showNext();
   });
   $("#vnExit").addEventListener("click", (e) => {
@@ -308,6 +319,9 @@ function wire() {
   });
   // 메인 화면 — 전체 스토리 프롤로그 보기 (보상 없음, 언제든 다시보기)
   $("#btnPrologue").onclick = () => playSteps(PROLOGUE.steps, () => {}, false);
+  // 음소거 토글 (홈 HUD + 메인 화면)
+  $("#btnMute").onclick = () => { toggleMuted(); updateMuteUI(); };
+  $("#btnMuteMain").onclick = () => { toggleMuted(); updateMuteUI(); };
   // 옷장 탭 (수집 탭과 셀렉터 충돌 방지 위해 #closet 스코프 한정)
   root.querySelectorAll("#closet .tab").forEach((t) =>
     t.addEventListener("click", () => {
@@ -317,6 +331,13 @@ function wire() {
       renderCloset();
     })
   );
+}
+
+// 음소거 토글 버튼 아이콘 동기화 (홈 HUD + 메인 화면)
+function updateMuteUI() {
+  const icon = isMuted() ? "🔇" : "🔊";
+  $("#btnMute").textContent = icon;
+  $("#btnMuteMain").textContent = icon;
 }
 
 // 호감도 증가 → 현재 루트 캐릭터에 적립 (에피소드는 순차 해금 방식이라 별도 알림 없음)
@@ -330,6 +351,7 @@ function onGift() {
   if (state.coins < GIFT_COST) { openCoinShort(onGift); return; }
   state.coins -= GIFT_COST;
   gainAffection(GIFT_GAIN);
+  sfxCoin();
   setBubble(giftLine());
   setEmotion("happy");
   persist();
@@ -353,6 +375,7 @@ async function onCoinShortWatch() {
   btn.disabled = false;
   if (result === "rewarded") {
     state.coins += AD_REWARD;
+    sfxCoin();
     toast(`+${AD_REWARD}🪙 지급 완료!`);
     persist();
     const retry = coinShortRetry;
@@ -711,15 +734,15 @@ function startVnType(text: string) {
 }
 
 // ── 대화 기록(백로그) — 현재 VN 세션에서 표시된 대사 누적 ──
-let vnLog: { name: string; text: string; narr: boolean }[] = [];
-function pushLog(name: string, text: string, narr = false) {
-  vnLog.push({ name, text, narr });
+let vnLog: { name: string; text: string; narr: boolean; color?: string }[] = [];
+function pushLog(name: string, text: string, narr = false, color?: string) {
+  vnLog.push({ name, text, narr, color });
 }
 function openBacklog() {
   $("#vnBacklogList").innerHTML = vnLog.length
     ? vnLog.map((l) => `<div class="bl-item ${l.narr ? "narr" : ""}">
-        ${l.name ? `<div class="bl-name">${l.name}</div>` : ""}
-        <div class="bl-text">${l.text}</div></div>`).join("")
+        ${l.name ? `<div class="bl-name"${l.color ? ` style="color:${l.color}"` : ""}>${l.name}</div>` : ""}
+        <div class="bl-text"${l.color ? ` style="color:${l.color}"` : ""}>${l.text}</div></div>`).join("")
     : `<div class="bl-item narr"><div class="bl-text">아직 기록이 없어요.</div></div>`;
   $("#vnBacklog").classList.remove("hidden");
   const list = $("#vnBacklogList");
@@ -735,6 +758,7 @@ function playSteps(steps: Step[], onEnd: () => void, grantRewards = true) {
   vnChoosing = false;
   vnActive = true;
   vnLog = []; // 백로그는 세션 단위
+  vnCgHold = false;
   $("#vnBacklog").classList.add("hidden");
   vnOnEnd = onEnd;
   setVnPortrait(activeCharId(), "soft"); // 기본 포트레이트 (수집 기록 포함)
@@ -759,6 +783,7 @@ function onEpisodeCleared(ep: Episode) {
   }
   saveState(state);
   render();
+  sfxReward();
   toast(`📖 ${ep.title} 완료 +${ep.rewardCoins}🪙`);
   // 스토리 중 연출로 이미 수집된 CG는 재토스트 안 함
   CGS.filter((g) => g.unlockEp === ep.id && !state.cgSeen.includes(g.id)).forEach((cg, i) =>
@@ -777,20 +802,27 @@ function showNext() {
   if (vnIndex >= vnSteps.length) { endVn(); return; }
   const step = vnSteps[vnIndex++];
   if (step.kind === "line") displayLine(step.line);
-  else if (step.kind === "cg") displayCg(step.id);
+  else if (step.kind === "cg") displayCg(step.id, step.hold);
+  else if (step.kind === "cgEnd") { vnCgHold = false; $("#vnCg").classList.add("hidden"); showNext(); }
   else renderChoice(step.choice);
 }
 
-// 이벤트 CG 연출 — 표시되는 그 순간 수집
-function displayCg(id: string) {
+// 이벤트 CG 연출 — 표시되는 그 순간 수집.
+// hold=true면 이후 대사가 CG 위에서 계속 진행 (cgEnd/씬 종료까지).
+let vnCgHold = false;
+function displayCg(id: string, hold = false) {
   const cg = getCg(id);
   if (!cg) { showNext(); return; }
+  vnCgHold = hold;
+  sfxCg();
   ($("#vnCgImg") as HTMLImageElement).src = cgFile(cg);
   $("#vnCg").classList.remove("hidden");
   $("#vnName").textContent = "";
+  $("#vnName").style.color = "";
   const t = $("#vnText");
   stopVnType();
   t.classList.add("narr");
+  t.style.color = "";
   t.textContent = `— ${cg.title} —`;
   $("#vnHint").classList.remove("hidden");
   if (!state.cgSeen.includes(id)) {
@@ -802,27 +834,37 @@ function displayCg(id: string) {
 }
 
 function displayLine(line: Line) {
-  $("#vnCg").classList.add("hidden"); // CG 연출 종료
+  if (!vnCgHold) $("#vnCg").classList.add("hidden"); // CG 유지 연출 중엔 내리지 않음
   const spk = line.speaker;
+  const nameEl = $("#vnName");
+  const textEl = $("#vnText");
   if (spk === "narration") {
-    $("#vnName").textContent = "";
-    $("#vnText").classList.add("narr");
+    nameEl.textContent = "";
+    nameEl.style.color = "";
+    textEl.classList.add("narr");
+    textEl.style.color = ""; // 내레이션 = 기본 뮤트 톤 (.narr)
     pushLog("", line.text, true);
   } else {
-    $("#vnName").textContent = CHARACTERS[spk].name;
-    $("#vnText").classList.remove("narr");
+    const c = CHARACTERS[spk];
+    nameEl.textContent = c.name;
+    nameEl.style.color = c.color; // 화자별 색 구분
+    textEl.classList.remove("narr");
+    textEl.style.color = c.color;
     // 일러 보유 캐릭터 + 표정 지정 시에만 포트레이트 교체 (미지정 시 이전 표정 유지)
-    if (CHARACTERS[spk].hasPortrait && line.emotion) setVnPortrait(spk, line.emotion);
-    pushLog(CHARACTERS[spk].name, line.text);
+    // (CG 유지 중엔 포트레이트가 CG 뒤에 있어 보이지 않지만 상태는 최신으로)
+    if (c.hasPortrait && line.emotion) setVnPortrait(spk, line.emotion);
+    pushLog(c.name, line.text, false, c.color);
   }
   $("#vnChoices").classList.add("hidden");
   startVnType(line.text); // 타이핑 연출
 }
 
 // 선택지 — 대사패널이 아닌 화면 중앙 검은 반투명 오버레이에 표시
+// (CG 유지 중이면 CG 위에 그대로 뜸 — 오버레이 z5 > CG z3)
 function renderChoice(choice: Choice) {
-  $("#vnCg").classList.add("hidden");
+  if (!vnCgHold) $("#vnCg").classList.add("hidden");
   stopVnType();
+  sfxChoiceOpen();
   vnChoosing = true;
   $("#vnHint").classList.add("hidden");
   const box = $("#vnChoices");
@@ -837,6 +879,7 @@ function renderChoice(choice: Choice) {
       e.stopPropagation();
       const o = choice.options[Number((b as HTMLElement).dataset.opt)];
       if (o.affection && vnGrantRewards) gainAffection(o.affection);
+      sfxSelect();
       pushLog("", `▷ ${o.label}`, true); // 선택도 기록에 남김
       vnQueue = o.result.slice();
       vnChoosing = false;
@@ -848,6 +891,7 @@ function renderChoice(choice: Choice) {
 function endVn() {
   stopVnType();
   vnActive = false;
+  vnCgHold = false;
   const cb = vnOnEnd;
   vnOnEnd = null;
   $("#vnCg").classList.add("hidden");
@@ -864,6 +908,7 @@ function exitVn() {
   vnActive = false;
   vnOnEnd = null;
   vnChoosing = false;
+  vnCgHold = false;
   $("#vnCg").classList.add("hidden");
   $("#vnChoices").classList.add("hidden");
   $("#vnBacklog").classList.add("hidden");

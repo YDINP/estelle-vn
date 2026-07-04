@@ -15,7 +15,8 @@ const S = (text: string): Step => ({ kind: "line", line: { speaker: "sedric", te
 const L = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "lucian", text, emotion } });
 const NO = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "noah", text, emotion } });
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
-const CG = (id: string): Step => ({ kind: "cg", id });
+const CG = (id: string, hold = false): Step => ({ kind: "cg", id, hold });
+const CGX = (): Step => ({ kind: "cgEnd" }); // CG 유지 연출 종료 (포트레이트 복귀)
 // 선택 결과 라인 빌더 (수렴형)
 const rn = (text: string): Line => ({ speaker: "narration", text });
 const rr = (text: string, emotion?: Emotion): Line => ({ speaker: "rozelin", text, emotion });
@@ -56,10 +57,11 @@ export const ROZELIN_EPISODES: Episode[] = [
     steps: [
       N("달이 밝은 밤, 발루아 저택의 정원. 당신은 미래의 지식이 이끄는 대로, 그녀를 찾아왔다."),
       N("시든 장미 덩굴 아래, 로젤린이 홀로 서 있었다. 손에는 접힌 편지 한 장. 달빛에 부채를 반쯤 펼친 채였다."),
-      CG("cg_r2"),
+      CG("cg_r2", true), // 달밤의 부채 — 정원 조우 위에서
       R("…누구죠. 이 시간에, 발루아의 정원에.", "surprised"),
       R("하이델 영애 곁에 붙어 다니던 그 얼굴이네요. 스파이라도 되나요? 재미있는 사람.", "smirk"),
       N("그녀가 편지를 소맷자락 안으로 황급히 감췄다. 그러나 당신은 이미, 그것이 무엇인지 안다."),
+      CGX(),
       N("당신은 조용히 말했다. 그 편지, 부칠 수 없는 편지가 아니냐고."),
       R("…뭐라고요? 당신이 그걸 어떻게.", "surprised"),
       R("무슨 수작이죠. 누가 보냈어요? 재상? 아니면 하이델?", "angry"),
@@ -122,10 +124,11 @@ export const ROZELIN_EPISODES: Episode[] = [
     steps: [
       N("며칠 뒤. 로젤린이 당신을 불러낸 곳은, 뜻밖에도 그녀의 티룸이었다."),
       N("붉은 홍차가 두 잔. 김이 오르는 찻잔 너머로, 그녀가 부채도 없이 당신을 응시했다."),
-      CG("cg_r3"),
+      CG("cg_r3", true), // 붉은 티타임 — 추궁 위에서
       R("단도직입적으로 묻죠. 당신, 대체 뭘 아는 거예요? 그 편지도, 재상도… 마치 전부 겪어 본 사람처럼.", "serious"),
       N("당신은 담담히 짚었다. 발루아 가문이 카닐에게 빚과 약점을 잡혔다는 것. 그래서 그녀가 원치 않는 칼 노릇을 강요당하고 있다는 것을."),
       R("…! 그걸, 어떻게.", "surprised"),
+      CGX(),
       R("알면서도 나를 찾아왔다고요? …그럼 알겠네요. 내가 얼마나 우스운 사람인지도.", "tearful"),
       N("찻잔을 쥔 그녀의 손이 파르르 떨렸다. 붉은 수면 위로, 오래 참아 온 것들이 넘칠 듯 일렁였다."),
       R("하지만 동정은 사양이에요. 나는 발루아의 이름을 지켜야 하고, 그러려면 손에 피 좀 묻히는 것쯤.", "smirk"),
@@ -246,9 +249,10 @@ export const ROZELIN_EPISODES: Episode[] = [
       R("…나는 하이델 영애를 해치려 했어요. 소문을 퍼뜨리고, 증인을 사고. 그래 놓고 사죄의 편지나 쓰는, 비겁한 사람이에요.", "tearful"),
       R("발루아가 재상에게 잡힌 약점만 아니었다면… 아니, 다 변명이죠. 나는 그냥, 약했어요.", "sad"),
       N("빗물인지 눈물인지 모를 것이 그녀의 뺨을 타고 흘렀다. 가면을 벗은 얼굴은, 뜻밖에도 앳되고 지쳐 있었다."),
-      CG("cg_r8"),
+      CG("cg_r8", true), // 비에 젖은 밤 — 무너진 얼굴 위에서
       N("그때 당신은 전했다. 실패의 대가로, 카닐이 이제 발루아 가문의 약점을 세상에 폭로하려 한다는 것을."),
       R("…역시. 쓸모가 없어지면 버리는 거죠. 애초에 그런 사람이었어요.", "angry"),
+      CGX(),
       CH("벼랑 끝에 선 그녀에게", [
         { label: "\"버려지기 전에, 당신이 먼저 그 손을 뿌리치면 됩니다.\"", affection: 4,
           result: [
@@ -339,7 +343,7 @@ export const ROZELIN_EPISODES: Episode[] = [
       R("발루아를 다시 세울 거예요. 이번엔 누구의 칼도 아닌, 내 이름으로.", "happy"),
       R("그때도… 곁에 있어 줄래요? 부치지 못한 편지 같은 건, 더는 만들지 않게.", "soft"),
       N("달빛 아래, 폐허의 장미가 새 줄기를 뻗었다. 가시 뒤에 숨어 살던 영애가, 처음으로 제 얼굴로 웃고 있었다."),
-      CG("cg_r7"),
+      CG("cg_r7", true), // 폐허의 장미 — 피날레 위에서 (씬 종료로 자동 해제)
       N("같은 봄, 같은 음모의 그늘. 그러나 시점이 다른 곳에서, 또 하나의 운명이 정해진 파멸을 비껴갔다."),
     ],
   },

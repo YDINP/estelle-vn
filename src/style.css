@@ -142,6 +142,12 @@ body {
 /* 전체 스토리 프롤로그 보기 — 루트 카드 위 */
 .ms-prologue { width: 100%; color: #ffd9e8; border-color: rgba(240,179,203,.55);
   background: linear-gradient(180deg, rgba(240,179,203,.14), rgba(74,41,23,.5)); }
+/* 메인 화면 음소거 토글 — 우상단 */
+.ms-mute { position: absolute; top: calc(12px + env(safe-area-inset-top)); right: 14px;
+  z-index: 2; width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
+  border: 1px solid #a9782f; color: var(--gold-soft); font-size: 15px; line-height: 1;
+  background: linear-gradient(180deg, rgba(74,41,23,.92), rgba(51,27,14,.94));
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.5), 0 4px 12px rgba(0,0,0,.45); }
 /* 도감/뷰어는 메인화면(z-30) 위에서도 열림 */
 #collect { z-index: 45; }
 /* 도감 시트: 캐릭터별 내용량과 무관하게 높이 공통 고정.

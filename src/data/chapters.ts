@@ -27,7 +27,10 @@ export interface Choice {
 export type Step =
   | { kind: "line"; line: Line }
   | { kind: "choice"; choice: Choice }
-  | { kind: "cg"; id: string }; // 이벤트 CG 연출 — 표시 순간 수집됨 (cgs.ts id)
+  // 이벤트 CG 연출 — 표시 순간 수집됨 (cgs.ts id).
+  // hold=true면 이후 대사가 CG 위에서 진행되고, cgEnd(또는 씬 종료)에서 내려감.
+  | { kind: "cg"; id: string; hold?: boolean }
+  | { kind: "cgEnd" };
 
 export interface Chapter {
   id: string;
