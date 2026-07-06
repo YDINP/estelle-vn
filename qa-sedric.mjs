@@ -31,16 +31,17 @@ async function tabCounts(id) {
   });
 }
 
+// 4번째 이후 그리드는 스페셜 일러 섹션(별도 기능) — 앞 3개(표정/전신/CG)만 검증
 const sed = await tabCounts("sedric");
 console.log("세드릭 탭:", JSON.stringify(sed));
-const okSed = sed.grids.length === 3 && sed.grids[0] === 8 && sed.grids[1] === 12 && sed.grids[2] === 7;
+const okSed = sed.grids[0] === 8 && sed.grids[1] === 12 && sed.grids[2] === 7;
 console.log(`[${okSed ? "PASS" : "FAIL"}] 세드릭 표정 8 / 전신 12 / CG 7`);
 await p.screenshot({ path: "qa-shots/sedric-collect.png" });
 
 const val = await tabCounts("valen");
 console.log("발렌 탭:", JSON.stringify(val));
-const okVal = val.grids.length === 3 && val.grids[0] === 8 && val.grids[1] === 8 &&
-  val.grids[2] === 6 && val.lockedCg === 6; // 발렌 CG는 전부 잠금 티저
+const okVal = val.grids[0] === 8 && val.grids[1] === 8 &&
+  val.grids[2] === 6 && val.lockedCg >= 6; // 발렌 CG 6종 전부 잠금(+스페셜 잠금 포함 가능)
 console.log(`[${okVal ? "PASS" : "FAIL"}] 발렌 표정 8 / 전신 8 / CG 6(전부 잠금)`);
 await p.screenshot({ path: "qa-shots/valen-collect.png" });
 

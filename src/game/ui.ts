@@ -614,8 +614,9 @@ function openCollect() {
   $("#collect").classList.remove("hidden");
 }
 function renderCollect() {
+  // 일러 보유 캐릭터 + 아트 준비 중인 루트 캐릭터(placeholder 탭)
   const chars = (Object.keys(CHARACTERS) as CharacterId[])
-    .filter((id) => CHARACTERS[id].hasPortrait);
+    .filter((id) => CHARACTERS[id].hasPortrait || ROUTES.some((r) => r.charId === id));
   if (!chars.includes(collectTab)) collectTab = chars[0];
   $("#collectTabs").innerHTML = chars.map((id) =>
     `<button class="tab ${id === collectTab ? "active" : ""}" data-ctab="${id}">${CHARACTERS[id].name}</button>`
@@ -632,6 +633,17 @@ function renderIllust(id: CharacterId) {
   // CG 해금은 모든 루트 진행의 합집합으로 판정 (루트 교차 매핑).
   const cleared = allClearedEpisodes(state);
   const c = CHARACTERS[id];
+  // 아트 미보유(시트 준비 중) 캐릭터 — placeholder 도감
+  if (!c.body.length && !c.bust.length) {
+    $("#collectCount").textContent = `0/?`;
+    $("#illustWrap").innerHTML = `
+      <div class="isec-t">표정</div>
+      <div class="igrid">${Array.from({ length: 4 }, () =>
+        `<div class="icell locked unknown"><div class="iq">?</div>
+          <div class="ilabel">🔒 준비 중</div></div>`).join("")}</div>
+      <div class="collect-tease">🖼 ${c.name}의 일러스트는 준비 중이에요.<br>이야기가 열리면 함께 만나요.</div>`;
+    return;
+  }
   // 표정(상반신) — 스토리에서 본 표정 수집
   const emoSet = c.bust.length ? c.bust : c.body;
   const seen = state.illust[id] ?? [];
