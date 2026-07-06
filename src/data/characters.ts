@@ -46,7 +46,7 @@ export const CHARACTERS: Record<CharacterId, Character> = {
     bust: GRID_EMOTIONS,
     fallback: {},
   },
-  // 악덕영애 (적발·와인 드레스). ⚠️ '로젤린'은 임시명 — 확정 시 name만 교체.
+  // 가시 돋친 장미 영애 (적발·와인 드레스). ⚠️ '로젤린'은 임시명 — 확정 시 name만 교체.
   rozelin: {
     id: "rozelin", name: "로젤린", hasPortrait: true, color: "#ff96a6", // 적발 — 로즈레드
     body: GRID_EMOTIONS,
@@ -72,23 +72,23 @@ export const CHARACTERS: Record<CharacterId, Character> = {
     bust: GRID_EMOTIONS,
     fallback: {},
   },
-  // ⚠️ 신규 여캐 2종 — 임시명. 아트 미보유(시트 도착 시 body/bust 채우고 hasPortrait:true).
+  // 설정 정본: STORY-BIBLE.md (2026-07-07 캐릭터 관계망 개편)
   isolde: {
     id: "isolde", name: "이졸데", hasPortrait: true, color: "#bfe3ea", // 백발 — 아이스 시안
-    body: GRID_EMOTIONS, bust: GRID_EMOTIONS, fallback: {}, // 북부 대공가의 공녀. 도도하고 차가운 '얼음 백합'
+    body: GRID_EMOTIONS, bust: GRID_EMOTIONS, fallback: {}, // 후작영애. 얼음처럼 완전한, 금 간 완벽주의
   },
+  // id 'adele'는 아트 폴더/세이브 호환용으로 유지 — 표시명만 '클로에'(공작가의 서녀)로 개편.
   adele: {
-    id: "adele", name: "아델", hasPortrait: true, color: "#f2cfa6", // 갈색머리 — 웜 베이지
-    body: GRID_EMOTIONS, bust: GRID_EMOTIONS, fallback: {}, // 백작가의 서녀. 그늘에서 숨죽여 피는 들꽃
+    id: "adele", name: "클로에", hasPortrait: true, color: "#f2cfa6", // 갈색머리 — 웜 베이지
+    body: GRID_EMOTIONS, bust: GRID_EMOTIONS, fallback: {}, // 하이델 공작가의 서녀. 그늘에서 숨죽여 피는 들꽃
   },
-  // ⚠️ 신규 남캐 2종 — 임시명. 아트 미보유(시트 도착 시 채움).
   rayner: {
-    id: "rayner", name: "레이너", hasPortrait: true, color: "#b9c9dd", // 북부대공 — 스틸 블루그레이
-    body: GRID_EMOTIONS, bust: GRID_EMOTIONS, fallback: {}, // 북부의 서리 대공. 검보다 차가운 침묵
+    id: "rayner", name: "레이너", hasPortrait: true, color: "#b9c9dd", // 스틸 블루그레이
+    body: GRID_EMOTIONS, bust: GRID_EMOTIONS, fallback: {}, // 근위대 기사단장이자 북부대공. 검보다 차가운 침묵
   },
   michael: {
-    id: "michael", name: "미카엘", hasPortrait: true, color: "#ece5cf", // 성기사 — 아이보리 실버
-    body: GRID_EMOTIONS, bust: GRID_EMOTIONS, fallback: {}, // 신전의 성기사. 빛의 맹세를 검에 새긴 자
+    id: "michael", name: "미카엘", hasPortrait: true, color: "#ece5cf", // 아이보리 실버
+    body: GRID_EMOTIONS, bust: GRID_EMOTIONS, fallback: {}, // 신성왕국의 성기사. 빛의 맹세를 검에 새긴 자
   },
   // ── 캐릭터 추가 템플릿 ──
   // 1) CharacterId 유니온에 id 추가  2) 아래 형태로 항목 추가

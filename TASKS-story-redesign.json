@@ -1,0 +1,16 @@
+{
+  "project": "EstelleVN",
+  "name": "story-redesign",
+  "created": "2026-07-06",
+  "tasks": [
+    { "id": 1, "title": "STORY-BIBLE.md 작성 (세계관/인물/타임라인/화별 아웃라인)", "status": "in_progress" },
+    { "id": 2, "title": "설계 방향 사용자 컨펌", "status": "pending" },
+    { "id": 3, "title": "chapters.ts 프롤로그 재집필", "status": "pending" },
+    { "id": 4, "title": "season1.ts 에스텔 12화 재집필", "status": "pending" },
+    { "id": 5, "title": "rozelin_route.ts 로젤린 10화 재집필", "status": "pending" },
+    { "id": 6, "title": "daily.ts 일일 씬 리프레시", "status": "pending" },
+    { "id": 7, "title": "cgs.ts CG 타이틀 갱신 (파일 재사용)", "status": "pending" },
+    { "id": 8, "title": "빌드+qa-test 회귀 + 22화 완주 스모크", "status": "pending" },
+    { "id": 9, "title": "커밋/배포", "status": "pending" }
+  ]
+}

@@ -26,16 +26,15 @@ export const CGS: Cg[] = [
   { id: "cg_e11", char: "estelle", title: "가꾸는 봄",       file: "garden_care",   unlockEp: "ep11" },
   { id: "cg_e12", char: "estelle", title: "다시 피는 봄",    file: "white_rose",    unlockEp: "ep12" },
 
-  // ── 로젤린: 시즌1 등장 화(4·8·9·10)와 매칭. 나머지는 시즌2 잠금 티저 ──
-  { id: "cg_r1", char: "rozelin", title: "장미의 홀",     file: "rose_hall",  unlockEp: "ep4" },
-  { id: "cg_r4", char: "rozelin", title: "가면무도회",    file: "masquerade", unlockEp: "ep8" },
-  { id: "cg_r6", char: "rozelin", title: "밀담",          file: "conspiracy", unlockEp: "ep9" },
-  { id: "cg_r5", char: "rozelin", title: "부치지 못한 편지", file: "letters", unlockEp: "ep10" },
-  // 로젤린 루트(rep*) 해금분
-  { id: "cg_r2", char: "rozelin", title: "달밤의 부채",   file: "moon_fan",   unlockEp: "rep2" },
-  { id: "cg_r3", char: "rozelin", title: "붉은 티타임",   file: "tea_hand",   unlockEp: "rep4" },
-  { id: "cg_r8", char: "rozelin", title: "비에 젖은 밤",  file: "tears_rain", unlockEp: "rep8" },
-  { id: "cg_r7", char: "rozelin", title: "폐허의 장미",   file: "ruins_rose", unlockEp: "rep10" },
+  // ── 로젤린: 루트(rep*) 10화 연출 순서와 매칭 (STORY-BIBLE §5) ──
+  { id: "cg_r2", char: "rozelin", title: "달빛 아래 부채", file: "moon_fan",   unlockEp: "rep2" },
+  { id: "cg_r1", char: "rozelin", title: "장미의 홀",      file: "rose_hall",  unlockEp: "rep3" },
+  { id: "cg_r3", char: "rozelin", title: "붉은 티타임",    file: "tea_hand",   unlockEp: "rep4" },
+  { id: "cg_r6", char: "rozelin", title: "밀담",           file: "conspiracy", unlockEp: "rep6" },
+  { id: "cg_r4", char: "rozelin", title: "가면무도회",     file: "masquerade", unlockEp: "rep7" },
+  { id: "cg_r8", char: "rozelin", title: "비에 젖은 밤",   file: "tears_rain", unlockEp: "rep8" },
+  { id: "cg_r5", char: "rozelin", title: "부치지 못한 편지", file: "letters",  unlockEp: "rep9" },
+  { id: "cg_r7", char: "rozelin", title: "폐허의 장미",    file: "ruins_rose", unlockEp: "rep10" },
 
   // ── 발렌: 루트 준비 중 — 전부 잠금 티저(???). 루트 공개 시 unlockEp 매핑 ──
   { id: "cg_v1", char: "valen", title: "붉은 옥좌",       file: "throne_night" },

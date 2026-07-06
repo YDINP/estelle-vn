@@ -28,7 +28,7 @@ export const ROUTES: Route[] = [
   {
     id: "rozelin", charId: "rozelin",
     title: "로젤린 루트 — 가시의 값",
-    desc: "악녀의 가면 뒤, 그녀가 감춰야 했던 진심.",
+    desc: "가시 돋친 가면 뒤, 그녀가 감춰야 했던 진심.",
     episodes: ROZELIN_EPISODES,
     daily: ROZELIN_DAILY,
     available: true,
@@ -46,29 +46,29 @@ export const ROUTES: Route[] = [
     desc: "제국의 제1황태자. 옥좌 곁에서 웃는, 가장 위험한 태양. (이야기 준비 중)",
     episodes: [], daily: [], available: false,
   },
-  // ── 신규 여성 캐릭터 루트 (아트/스토리 준비 중 — 잠금 티저) ──
+  // ── 신규 캐릭터 루트 (스토리 준비 중 — 잠금 티저). 설정 정본: STORY-BIBLE.md ──
   {
     id: "isolde", charId: "isolde",
     title: "이졸데 루트 — ???",
-    desc: "북부에서 온 얼음의 공녀. 그 냉담함이 감춘 것은. (이야기 준비 중)",
+    desc: "얼음처럼 완전한 후작영애. 완벽이라는 이름의 감옥. (이야기 준비 중)",
     episodes: [], daily: [], available: false,
   },
   {
     id: "adele", charId: "adele",
-    title: "아델 루트 — ???",
-    desc: "백작가의 그늘에 핀 서녀. 조용한 봄은 아직 오지 않았다. (이야기 준비 중)",
+    title: "클로에 루트 — ???",
+    desc: "공작가의 그늘에 핀 서녀. 이름을 불러주는 사람이 없었다. (이야기 준비 중)",
     episodes: [], daily: [], available: false,
   },
   {
     id: "rayner", charId: "rayner",
     title: "레이너 루트 — ???",
-    desc: "북부의 서리 대공. 검보다 차가운 침묵의 주인. (이야기 준비 중)",
+    desc: "근위대 기사단장이자 북부대공. 두 개의 맹세, 하나의 검. (이야기 준비 중)",
     episodes: [], daily: [], available: false,
   },
   {
     id: "michael", charId: "michael",
     title: "미카엘 루트 — ???",
-    desc: "신전의 성기사. 빛의 맹세는 누구를 향하는가. (이야기 준비 중)",
+    desc: "신성왕국의 성기사. 빛의 맹세는 국경을 넘는가. (이야기 준비 중)",
     episodes: [], daily: [], available: false,
   },
 ];
