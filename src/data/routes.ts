@@ -52,6 +52,19 @@ export const ROUTES: Route[] = [
     desc: "붉은 장막 뒤의 위험한 귀족. 적인가, 아군인가. (이야기 준비 중)",
     episodes: [], daily: [], available: false,
   },
+  // ── 신규 여성 캐릭터 루트 (아트/스토리 준비 중 — 잠금 티저) ──
+  {
+    id: "isolde", charId: "isolde",
+    title: "이졸데 루트 — ???",
+    desc: "북부에서 온 얼음의 공녀. 그 냉담함이 감춘 것은. (이야기 준비 중)",
+    episodes: [], daily: [], available: false,
+  },
+  {
+    id: "adele", charId: "adele",
+    title: "아델 루트 — ???",
+    desc: "백작가의 그늘에 핀 서녀. 조용한 봄은 아직 오지 않았다. (이야기 준비 중)",
+    episodes: [], daily: [], available: false,
+  },
 ];
 
 export function getRoute(id: string): Route | undefined {

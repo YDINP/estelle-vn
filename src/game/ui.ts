@@ -18,6 +18,7 @@ import {
 import { EPISODES, Episode } from "../data/season1";
 import { DAILY_SCENES, DAILY_AFFECTION } from "../data/daily";
 import { CGS, cgFile, cgUnlocked, getCg } from "../data/cgs";
+import { SPECIAL_ILLUSTS, specialIllustFile } from "../data/special_illust";
 import { ROUTES, Route, getRoute } from "../data/routes";
 import { setupCheats } from "./cheats";
 import {
@@ -123,9 +124,15 @@ function renderMainScreen() {
     const badge = locked
       ? `🔒 이야기 준비 중`
       : `📖 ${cleared}/${total}화`;
+    // 아트 미보유 캐릭터(시트 대기 중)는 이미지 대신 ? 실루엣
+    const c = CHARACTERS[r.charId];
+    const artless = !c.body.length && !c.bust.length;
+    const art = artless
+      ? `<div class="rc-unknown">?</div>`
+      : `<img src="${vnFile(r.charId, "soft")}" alt="" />${
+          isPlaceholderArt(r.charId) ? `<div class="ph-badge">임시</div>` : ""}`;
     return `<button class="route-card ${locked ? "locked" : ""}" data-route="${r.id}" ${locked ? "disabled" : ""}>
-      <div class="rc-art"><img src="${vnFile(r.charId, "soft")}" alt="" />${
-        isPlaceholderArt(r.charId) ? `<div class="ph-badge">임시</div>` : ""}</div>
+      <div class="rc-art">${art}</div>
       <div class="rc-info">
         <div class="rc-title">${r.title}</div>
         <div class="rc-desc">${r.desc}</div>
@@ -628,6 +635,7 @@ function renderIllust(id: CharacterId) {
   // 표정(상반신) — 스토리에서 본 표정 수집
   const emoSet = c.bust.length ? c.bust : c.body;
   const seen = state.illust[id] ?? [];
+  const aff = affectionOf(state, id);
   const poseCells = emoSet.map((e) => {
     const owned = seen.includes(e);
     if (owned) {
@@ -637,8 +645,9 @@ function renderIllust(id: CharacterId) {
     }
     return `<div class="icell locked">
       <img src="${vnFile(id, e)}" alt="" />
-      <div class="ilabel">🔒 ???</div></div>`;
+      <div class="ilabel">잠김</div></div>`;
   }).join("");
+  const poseOwned = emoSet.filter((e) => seen.includes(e)).length;
   // 전신샷 — 같은 표정을 본 적 있으면 해금 (bust와 별개 세트일 때만 표시)
   const bodySet = c.bust.length ? c.body : [];
   const bodyOwned = bodySet.filter((e) => seen.includes(e)).length;
@@ -651,7 +660,7 @@ function renderIllust(id: CharacterId) {
     }
     return `<div class="icell locked">
       <img src="${portraitFile(id, e)}" alt="" />
-      <div class="ilabel">🔒 ???</div></div>`;
+      <div class="ilabel">잠김</div></div>`;
   }).join("");
   // 이벤트 CG — 에피소드 클리어로 해금
   const cgs = CGS.filter((g) => g.char === id);
@@ -667,14 +676,27 @@ function renderIllust(id: CharacterId) {
       <img src="${cgFile(g)}" alt="" />
       <div class="ilabel">🔒 ???</div></div>`;
   }).join("");
-  const ownedN = seen.length + bodyOwned + cgOwned;
-  const total = emoSet.length + bodySet.length + cgs.length;
-  $("#collectCount").textContent = `${ownedN}/${total}`;
+  const specials = SPECIAL_ILLUSTS.filter((g) => g.char === id);
+  const specialOwned = specials.filter((g) => aff >= g.affection).length;
+  const specialCells = specials.map((g) => {
+    if (aff >= g.affection) {
+      return `<div class="icell cg special" data-special="${g.id}">
+        <img src="${specialIllustFile(g)}" alt="" />
+        <div class="ilabel">${g.title}${g.placeholder ? " · 임시" : ""}</div></div>`;
+    }
+    return `<div class="icell cg locked aff-locked">
+      <img src="${specialIllustFile(g)}" alt="" />
+      <div class="ilabel">호감도 ${g.affection}</div></div>`;
+  }).join("");
+  const ownedN = poseOwned + bodyOwned + cgOwned + specialOwned;
+  const total = emoSet.length + bodySet.length + cgs.length + specials.length;
+  $("#collectCount").textContent = `${ownedN}/${total} · 호감도 ${aff}`;
   $("#illustWrap").innerHTML = `
     <div class="isec-t">표정</div>
     <div class="igrid">${poseCells}</div>
     ${bodyCells ? `<div class="isec-t">전신</div><div class="igrid">${bodyCells}</div>` : ""}
-    ${cgCells ? `<div class="isec-t">이벤트 CG</div><div class="igrid cg2">${cgCells}</div>` : ""}`;
+    ${cgCells ? `<div class="isec-t">스토리 CG</div><div class="igrid cg2">${cgCells}</div>` : ""}
+    ${specialCells ? `<div class="isec-t">스페셜 CG <small>호감도 전용</small></div><div class="igrid cg2">${specialCells}</div>` : ""}`;
   $("#illustWrap").querySelectorAll("[data-ill]").forEach((el) =>
     el.addEventListener("click", () => {
       const [id, e] = (el as HTMLElement).dataset.ill!.split(":") as [CharacterId, Emotion];
@@ -695,6 +717,14 @@ function renderIllust(id: CharacterId) {
     el.addEventListener("click", () => {
       const g = CGS.find((x) => x.id === (el as HTMLElement).dataset.cg)!;
       ($("#illustViewImg") as HTMLImageElement).src = cgFile(g);
+      $("#illustViewCap").textContent = `${CHARACTERS[g.char].name} — ${g.title}`;
+      $("#illustView").classList.remove("hidden");
+    })
+  );
+  $("#illustWrap").querySelectorAll("[data-special]").forEach((el) =>
+    el.addEventListener("click", () => {
+      const g = SPECIAL_ILLUSTS.find((x) => x.id === (el as HTMLElement).dataset.special)!;
+      ($("#illustViewImg") as HTMLImageElement).src = specialIllustFile(g);
       $("#illustViewCap").textContent = `${CHARACTERS[g.char].name} — ${g.title}`;
       $("#illustView").classList.remove("hidden");
     })

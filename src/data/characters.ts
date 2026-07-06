@@ -25,7 +25,7 @@ export interface Character {
 
 export type CharacterId =
   | "estelle" | "rozelin" | "sedric" | "chancellor"
-  | "lucian" | "noah" | "valen";
+  | "lucian" | "noah" | "valen" | "isolde" | "adele";
 
 export const CHARACTERS: Record<CharacterId, Character> = {
   estelle: {
@@ -76,6 +76,15 @@ export const CHARACTERS: Record<CharacterId, Character> = {
     bust: ["soft", "greet", "smirk", "scheme", "happy", "shy", "sad", "serious"],
     fallback: { surprised: "serious", angry: "serious", laugh: "happy",
       tearful: "sad", sad: "serious", shy: "soft" },
+  },
+  // ⚠️ 신규 여캐 2종 — 임시명. 아트 미보유(시트 도착 시 body/bust 채우고 hasPortrait:true).
+  isolde: {
+    id: "isolde", name: "이졸데", hasPortrait: false, color: "#bfe3ea", // 백발 — 아이스 시안
+    body: [], bust: [], fallback: {}, // 북부 대공가의 공녀. 도도하고 차가운 '얼음 백합'
+  },
+  adele: {
+    id: "adele", name: "아델", hasPortrait: false, color: "#f2cfa6", // 갈색머리 — 웜 베이지
+    body: [], bust: [], fallback: {}, // 백작가의 서녀. 그늘에서 숨죽여 피는 들꽃
   },
   // ── 캐릭터 추가 템플릿 ──
   // 1) CharacterId 유니온에 id 추가  2) 아래 형태로 항목 추가

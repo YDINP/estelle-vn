@@ -33,9 +33,11 @@ const cards = await page.$$eval(".route-card", (els) =>
   }))
 );
 console.log("루트카드:", JSON.stringify(cards));
-const okCards = cards.filter((c) => c.ph).length === 2 &&
-  cards.filter((c) => !c.ph).length === 3;
-console.log(`[${okCards ? "PASS" : "FAIL"}] 배지 2(루시안/노아) / 미표시 3(에스텔/로젤린/발렌)`);
+// 임시 배지 = bust 미보유(노아뿐 — 루시안은 bust 11종 구축됨).
+// 아트 자체가 없는 이졸데/아델은 ? 실루엣이라 배지 없음.
+const okCards = cards.length === 7 && cards.filter((c) => c.ph).length === 1 &&
+  cards[3].ph === true; // 노아
+console.log(`[${okCards ? "PASS" : "FAIL"}] 카드 7장 / 배지 1(노아)`);
 await page.screenshot({ path: "qa-shots/ph-main.png" });
 console.log("콘솔 에러:", errors.length ? JSON.stringify(errors) : "없음");
 await browser.close();

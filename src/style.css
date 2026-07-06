@@ -129,6 +129,11 @@ body {
   color: #ffd9e8; background: rgba(240,179,203,.15);
   border: 1px solid rgba(240,179,203,.4); padding: 4px 10px; border-radius: 999px;
 }
+/* 아트 미보유 캐릭터 카드 — ? 실루엣 */
+.rc-unknown { position: absolute; inset: 0; display: flex; align-items: center;
+  justify-content: center; font-size: 44px; font-weight: 800; color: rgba(216,164,74,.4);
+  text-shadow: 0 2px 8px rgba(0,0,0,.6);
+  font-family: "Nanum Myeongjo", "Noto Serif KR", Georgia, serif; }
 /* 준비 중(잠금) 루트: 실루엣 + 잠금 배지 */
 .route-card.locked { cursor: default; filter: grayscale(.55) brightness(.85); opacity: .85; }
 .route-card.locked .rc-art img { filter: brightness(0); }
@@ -259,10 +264,22 @@ body {
   border: 1px solid rgba(216,164,74,.3); border-radius: 12px;
   box-shadow: inset 0 0 0 1px rgba(0,0,0,.35);
   padding: 8px 4px 6px; text-align: center; cursor: pointer; }
+.icell.affinity {
+  border-color: rgba(240,179,203,.72);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.35), 0 0 14px rgba(240,179,203,.18);
+}
+.icell.special {
+  border-color: rgba(240,179,203,.72);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.35), 0 0 14px rgba(240,179,203,.18);
+}
 .icell img { width: 100%; height: 88px; object-fit: contain; }
 .icell.locked { cursor: default; }
+.icell.aff-locked { border-color: rgba(240,179,203,.38); }
 .icell.locked img { filter: brightness(0) opacity(.45); } /* 실루엣 */
+.icell.aff-locked img { filter: blur(5px) brightness(.42) opacity(.62); }
 .ilabel { font-size: 11px; color: var(--muted); margin-top: 4px; }
+.icell.affinity .ilabel,
+.icell.aff-locked .ilabel { color: #ffd9e8; font-weight: 700; }
 /* 이벤트 CG (씬 일러: 2열 크게, 잠금은 블러 티저) */
 .igrid.cg2 { grid-template-columns: repeat(2, 1fr); margin-top: 10px; }
 .icell.cg img { height: 120px; object-fit: cover; border-radius: 8px; }
