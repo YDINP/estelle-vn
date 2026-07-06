@@ -13,7 +13,6 @@ const E = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { sp
 const K = (text: string): Step => ({ kind: "line", line: { speaker: "chancellor", text } });
 const S = (text: string): Step => ({ kind: "line", line: { speaker: "sedric", text } });
 const L = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "lucian", text, emotion } });
-const NO = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "noah", text, emotion } });
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
 const CG = (id: string, hold = false): Step => ({ kind: "cg", id, hold });
 const CGX = (): Step => ({ kind: "cgEnd" }); // CG 유지 연출 종료 (포트레이트 복귀)
@@ -319,9 +318,6 @@ export const ROZELIN_EPISODES: Episode[] = [
     steps: [
       N("카닐이 무너진 뒤, 발루아 가문은 오래 감춰 온 치부와 함께 한 차례 폭풍을 맞았다. 저택의 절반은 문을 닫았고, 정원은 손길을 잃었다."),
       N("달 밝은 밤. 당신은 그 폐허가 된 정원에서, 홀로 선 로젤린을 찾았다."),
-      N("정원 어귀에서 낯익은 은발의 사내와 엇갈렸다. 궁정 점성술사 노아 — 그가 당신을 향해 옅게 목례했다."),
-      NO("별자리가 하나, 제 길을 되찾았더군요. …당신이 다녀간 자리는 늘 그렇습니다. 흥미로워요.", "soft"),
-      N("의미심장한 말만 남긴 채, 그는 달그림자 속으로 사라졌다."),
       R("와 줬네요. 이런 폐허까지. …당신은 늘, 그래요.", "soft"),
       N("무성했던 장미 덩굴은 시들었지만, 그 틈에서 여린 새 줄기 하나가 달빛을 향해 고개를 들고 있었다."),
       R("발루아는 많은 걸 잃었어요. 이름도, 재산도, 사교계의 자리도. …그런데 이상하죠. 하나도 무섭지 않아요.", "sad"),

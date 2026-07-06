@@ -20,7 +20,6 @@ const S = (text: string): Step => ({ kind: "line", line: { speaker: "sedric", te
 const K = (text: string): Step => ({ kind: "line", line: { speaker: "chancellor", text } });
 const R = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "rozelin", text, emotion } });
 const L = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "lucian", text, emotion } });
-const NO = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "noah", text, emotion } });
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
 const CG = (id: string, hold = false): Step => ({ kind: "cg", id, hold });
 const CGX = (): Step => ({ kind: "cgEnd" }); // CG 유지 연출 종료 (포트레이트 복귀)
@@ -422,9 +421,7 @@ export const EPISODES: Episode[] = [
       N("정해졌던 파멸이 무너진 봄. 그러나 그 순간, 당신의 손안에서 별의 눈물 펜던트가 다시 희미하게 떨렸다."),
       CGX(),
       E("…펜던트가, 빛나요? 당신, 이건 대체.", "surprised"),
-      N("그때, 회랑 그늘에서 은발의 사내가 조용히 걸어 나왔다. 궁정 점성술사 — 노아. 별을 읽는 자의 눈이, 곧장 당신의 손안을 향했다."),
-      NO("…별의 길이 어긋났군요. 정해진 운명이, 누군가의 손으로 다시 쓰이고 있어요.", "serious"),
-      NO("그 펜던트. 소중히 간직하세요. — 조만간, 다시 뵙게 될 겁니다.", "soft"),
+      N("그때, 회랑 그늘에서 누군가의 시선이 당신의 손안을 스쳤다. 기척은 이내 사라졌지만 — 펜던트의 떨림은 한동안 멎지 않았다."),
       N("멀리, 아직 이름도 모르는 새로운 그림자가 이 봄을 지켜보고 있었다. 카닐이 남긴 '정해진 미래'라는 말과 함께. — 이야기는, 아직 끝나지 않았다."),
     ],
   },

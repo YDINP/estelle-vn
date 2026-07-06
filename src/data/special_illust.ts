@@ -76,14 +76,6 @@ export const SPECIAL_ILLUSTS: SpecialIllust[] = [
     affection: 50,
     placeholder: true,
   },
-  {
-    id: "sp_noah_50",
-    char: "noah",
-    title: "별자리의 고백",
-    image: P("cg/estelle/white_rose.jpg"),
-    affection: 50,
-    placeholder: true,
-  },
 ];
 
 export function specialIllustFile(illust: SpecialIllust): string {

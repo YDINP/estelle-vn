@@ -41,15 +41,9 @@ export const ROUTES: Route[] = [
     episodes: [], daily: [], available: false,
   },
   {
-    id: "noah", charId: "noah",
-    title: "노아 루트 — ???",
-    desc: "별을 읽는 궁정 점성술사. 어긋난 운명의 관측자. (이야기 준비 중)",
-    episodes: [], daily: [], available: false,
-  },
-  {
     id: "valen", charId: "valen",
     title: "발렌 루트 — ???",
-    desc: "붉은 장막 뒤의 위험한 귀족. 적인가, 아군인가. (이야기 준비 중)",
+    desc: "제국의 제1황태자. 옥좌 곁에서 웃는, 가장 위험한 태양. (이야기 준비 중)",
     episodes: [], daily: [], available: false,
   },
   // ── 신규 여성 캐릭터 루트 (아트/스토리 준비 중 — 잠금 티저) ──

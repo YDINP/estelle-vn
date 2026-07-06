@@ -25,7 +25,7 @@ export interface Character {
 
 export type CharacterId =
   | "estelle" | "rozelin" | "sedric" | "chancellor"
-  | "lucian" | "noah" | "valen" | "isolde" | "adele";
+  | "lucian" | "valen" | "isolde" | "adele";
 
 export const CHARACTERS: Record<CharacterId, Character> = {
   estelle: {
@@ -65,13 +65,9 @@ export const CHARACTERS: Record<CharacterId, Character> = {
       "sad", "smirk", "angry", "scheme"], // 11종 (005 시트 2장, tearful만 미보유)
     fallback: { tearful: "sad" },
   },
-  noah: {
-    id: "noah", name: "노아", hasPortrait: true, color: "#c9a8f0", // 점성술사 — 바이올렛
-    body: ["soft", "serious"], bust: [], fallback: {},
-  },
   valen: {
-    id: "valen", name: "발렌", hasPortrait: true, color: "#e8a06d", // 와인·골드 — 앰버
-    // 007 신규 시트로 전면 교체 (구 asd/sheet1·2 컷 폐기). 흉상 최초 구축.
+    id: "valen", name: "발렌", hasPortrait: true, color: "#e8a06d", // 제국 제1황태자 (적발·와인 망토) — 임시명, 앰버
+    // 007 시트 기반 (흉상 포함). 구 '다크 귀족' 콘셉트에서 제1황태자로 재설정.
     body: ["soft", "greet", "smirk", "scheme", "laugh", "happy", "serious", "angry"],
     bust: ["soft", "greet", "smirk", "scheme", "happy", "shy", "sad", "serious"],
     fallback: { surprised: "serious", angry: "serious", laugh: "happy",
