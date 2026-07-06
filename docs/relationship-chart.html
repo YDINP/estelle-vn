@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<title>에스텔 — 인물 관계도</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --bg0: #150a05; --bg1: #26130a; --panel: #2e1a0e;
+    --gold: #d8a44a; --gold-soft: #f3dfa4; --rose: #f0b3cb;
+    --text: #f6ead2; --muted: #c9ac85; --line: rgba(216,164,74,.4);
+    --danger: #d96a5a; --ally: #8fc9a0; --neutral2: #9db8e8;
+  }
+  body { font-family: "Malgun Gothic", sans-serif; color: var(--text); background: var(--bg0); }
+  .page { width: 1122px; height: 793px; page-break-after: always; position: relative; overflow: hidden;
+    background: radial-gradient(120% 90% at 50% -10%, #3a2113 0%, var(--bg1) 45%, var(--bg0) 100%); }
+  .page:last-child { page-break-after: auto; }
+  .frame { position: absolute; inset: 14px; border: 1px solid var(--line); border-radius: 10px; pointer-events: none; }
+  .frame::after { content: ""; position: absolute; inset: 5px; border: 1px solid rgba(216,164,74,.22); border-radius: 7px; }
+  h1 { font-family: "Batang", "Malgun Gothic", serif; text-align: center; padding-top: 30px;
+    font-size: 27px; letter-spacing: 6px; color: var(--gold-soft);
+    text-shadow: 0 2px 10px rgba(0,0,0,.7); }
+  h1 small { display: block; margin-top: 7px; font-size: 12px; letter-spacing: 3px; color: var(--rose); font-family: "Malgun Gothic"; }
+  .crest { text-align: center; color: var(--gold); font-size: 14px; margin-top: 5px; opacity: .85; }
+
+  /* ── 관계도 ── */
+  .chart { position: absolute; top: 108px; left: 0; width: 1122px; height: 660px; }
+  svg { position: absolute; inset: 0; }
+  .node { position: absolute; width: 118px; text-align: center; transform: translate(-50%, -50%); }
+  .node .pic { width: 86px; height: 86px; margin: 0 auto; border-radius: 50%; overflow: hidden;
+    border: 2px solid var(--gold); box-shadow: 0 0 0 3px rgba(0,0,0,.55), 0 0 18px rgba(216,164,74,.25), 0 6px 14px rgba(0,0,0,.5);
+    background: radial-gradient(circle at 50% 30%, #4a2917, #1c0e06); position: relative; }
+  .node .pic img { position: absolute; left: 50%; top: -4px; transform: translateX(-50%); height: 235%; }
+  .node.extra .pic img { height: 150%; top: 2px; opacity: .95; }
+  .node .nm { margin-top: 7px; font-size: 15px; font-weight: 800; color: var(--gold-soft);
+    font-family: "Batang", serif; letter-spacing: 1px; text-shadow: 0 1px 4px #000; }
+  .node .rl { margin-top: 2px; font-size: 10px; line-height: 1.45; color: var(--muted); }
+  .node.mc .pic { border-color: var(--rose); box-shadow: 0 0 0 3px rgba(0,0,0,.55), 0 0 22px rgba(240,179,203,.4); }
+  .node.mc .pic .star { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 40px; color: var(--rose); text-shadow: 0 0 18px rgba(240,179,203,.9); }
+  .node.villain .pic { border-color: #8a5a52; filter: saturate(.7); }
+  .node .tag { display: inline-block; margin-top: 3px; font-size: 9px; padding: 1.5px 8px; border-radius: 999px;
+    border: 1px solid var(--line); color: var(--gold-soft); background: rgba(74,41,23,.6); }
+  .edge-label { position: absolute; transform: translate(-50%, -50%); font-size: 9.5px; white-space: nowrap;
+    color: var(--gold-soft); background: rgba(21,10,5,.92); border: 1px solid var(--line);
+    padding: 2px 7px; border-radius: 999px; letter-spacing: .3px; }
+  .edge-label.bad { color: #f0b0a0; border-color: rgba(217,106,90,.5); }
+  .edge-label.good { color: #cfe8d8; border-color: rgba(143,201,160,.45); }
+  .edge-label.pink { color: var(--rose); border-color: rgba(240,179,203,.5); }
+  .legend { position: absolute; left: 692px; bottom: 24px; font-size: 10px; color: var(--muted);
+    background: rgba(21,10,5,.85); border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; line-height: 1.9; }
+  .legend b { color: var(--gold-soft); font-weight: 700; }
+  .legend .sw { display: inline-block; width: 22px; height: 0; border-top: 2px solid; vertical-align: middle; margin-right: 6px; }
+
+  /* ── 2페이지: 세계관/엔딩 ── */
+  .cols { position: absolute; top: 112px; left: 34px; right: 34px; bottom: 30px; display: flex; gap: 16px; }
+  .col { flex: 1; display: flex; flex-direction: column; gap: 14px; }
+  .card { background: linear-gradient(180deg, rgba(74,41,23,.55), rgba(38,19,10,.7));
+    border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+  .card h2 { font-family: "Batang", serif; font-size: 15px; color: var(--gold-soft); letter-spacing: 2px;
+    padding-bottom: 8px; margin-bottom: 9px; border-bottom: 1px solid rgba(216,164,74,.25); }
+  .card p, .card li { font-size: 11px; line-height: 1.75; color: var(--text); }
+  .card .mut { color: var(--muted); }
+  .kv { display: grid; grid-template-columns: 74px 1fr; gap: 3px 10px; font-size: 11px; line-height: 1.7; }
+  .kv dt { color: var(--rose); font-weight: 700; }
+  .kv dd { color: var(--text); }
+  .endings { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .end { border: 1px solid rgba(216,164,74,.28); border-radius: 9px; padding: 8px 10px; background: rgba(21,10,5,.5); }
+  .end b { display: block; font-size: 11.5px; color: var(--gold-soft); font-family: "Batang", serif; margin-bottom: 3px; }
+  .end span { font-size: 10px; color: var(--muted); line-height: 1.55; display: block; }
+  .tl { width: 100%; border-collapse: collapse; font-size: 10.5px; }
+  .tl th, .tl td { border: 1px solid rgba(216,164,74,.22); padding: 4.5px 8px; text-align: left; line-height: 1.5; }
+  .tl th { color: var(--rose); background: rgba(74,41,23,.5); font-weight: 700; }
+  .tl td { color: var(--text); }
+  .foot { position: absolute; bottom: 22px; left: 0; right: 0; text-align: center; font-size: 9px;
+    color: var(--muted); letter-spacing: 2px; }
+</style>
+</head>
+<body>
+
+<!-- ═══ PAGE 1 — 인물 관계도 ═══ -->
+<div class="page">
+  <div class="frame"></div>
+  <h1>에스텔 — 스러진 봄의 약속<small>인 물 관 계 도 · 왕관의 밤</small></h1>
+  <div class="crest">✦</div>
+  <div class="chart">
+    <svg viewBox="0 0 1122 660">
+      <defs>
+        <marker id="arr" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto">
+          <path d="M0,0 L8,4 L0,8 z" fill="#d96a5a"/>
+        </marker>
+      </defs>
+      <!-- 음모(적) : red dashed / 인연 : gold-green / 긴장 : gray dashed -->
+      <!-- 카닐(561,105) 중심 음모선 -->
+      <line x1="561" y1="105" x2="330" y2="330" stroke="#d96a5a" stroke-width="1.6" stroke-dasharray="6 4" opacity=".8" marker-end="url(#arr)"/>
+      <line x1="561" y1="105" x2="790" y2="330" stroke="#d96a5a" stroke-width="1.6" stroke-dasharray="6 4" opacity=".8" marker-end="url(#arr)"/>
+      <line x1="561" y1="105" x2="180" y2="120" stroke="#d96a5a" stroke-width="1.4" stroke-dasharray="6 4" opacity=".7" marker-end="url(#arr)"/>
+      <line x1="561" y1="105" x2="190" y2="330" stroke="#d96a5a" stroke-width="1.3" stroke-dasharray="6 4" opacity=".6" marker-end="url(#arr)"/>
+      <!-- 미카엘 → 카닐 (증인) -->
+      <line x1="930" y1="120" x2="561" y2="105" stroke="#9db8e8" stroke-width="1.4" stroke-dasharray="2 4" opacity=".8"/>
+      <!-- 인연 -->
+      <line x1="330" y1="330" x2="561" y2="560" stroke="#f0b3cb" stroke-width="2.2" opacity=".9"/>
+      <line x1="790" y1="330" x2="561" y2="560" stroke="#f0b3cb" stroke-width="1.8" opacity=".75"/>
+      <line x1="330" y1="330" x2="561" y2="400" stroke="#8fc9a0" stroke-width="1.6" opacity=".8"/>
+      <line x1="790" y1="330" x2="561" y2="400" stroke="#8fc9a0" stroke-width="1.6" opacity=".8"/>
+      <line x1="180" y1="120" x2="330" y2="330" stroke="#d8a44a" stroke-width="1.4" opacity=".7"/>
+      <!-- 근위대: 레이너-이든 / 레이너-발렌 / 레이너-이졸데 -->
+      <line x1="110" y1="480" x2="305" y2="565" stroke="#b9c9dd" stroke-width="1.5" opacity=".8"/>
+      <line x1="110" y1="480" x2="180" y2="120" stroke="#8a8f9d" stroke-width="1.2" stroke-dasharray="5 4" opacity=".65"/>
+      <line x1="110" y1="480" x2="985" y2="480" stroke="#8a8f9d" stroke-width="1.1" stroke-dasharray="5 4" opacity=".5"/>
+      <!-- 이졸데-로젤린 라이벌 -->
+      <line x1="985" y1="480" x2="790" y2="330" stroke="#c98a96" stroke-width="1.3" stroke-dasharray="5 4" opacity=".7"/>
+      <!-- 약혼자-에스텔 (정략) / 약혼자-카닐 -->
+      <line x1="190" y1="330" x2="330" y2="330" stroke="#8a8f9d" stroke-width="1.2" stroke-dasharray="3 4" opacity=".7"/>
+    </svg>
+
+    <!-- 엣지 라벨 -->
+    <div class="edge-label bad" style="left:468px; top:212px">누명의 덫</div>
+    <div class="edge-label bad" style="left:664px; top:212px">배역 강요 · 차용증</div>
+    <div class="edge-label bad" style="left:372px; top:100px">폐위 음모</div>
+    <div class="edge-label bad" style="left:375px; top:170px">심어둔 감시자</div>
+    <div class="edge-label" style="left:748px; top:96px">매수 불가한 증인</div>
+    <div class="edge-label pink" style="left:428px; top:462px">오래된 약속 ✦</div>
+    <div class="edge-label pink" style="left:694px; top:462px">대본 밖의 사람</div>
+    <div class="edge-label good" style="left:458px; top:378px">이복자매 (그늘과 볕)</div>
+    <div class="edge-label good" style="left:672px; top:352px">유일한 민낯 친구</div>
+    <div class="edge-label good" style="left:258px; top:234px">방패와 칼끝 · 연대</div>
+    <div class="edge-label" style="left:224px; top:504px">기사단장 ↔ 부단장</div>
+    <div class="edge-label" style="left:95px; top:268px">황실의 견제</div>
+    <div class="edge-label" style="left:390px; top:493px">북부 정략 혼담설</div>
+    <div class="edge-label bad" style="left:900px; top:404px">장미 vs 백합</div>
+    <div class="edge-label" style="left:104px; top:332px">정략 약혼</div>
+
+    <!-- 노드 -->
+    <div class="node villain extra" style="left:561px; top:105px">
+      <div class="pic"><img src="http://localhost:5180/char/chancellor/bust_soft.png"></div>
+      <div class="nm">재상 카닐</div><div class="rl">섭정 실권자 · 모든 덫의 주인</div><div class="tag">중심 악역</div>
+    </div>
+    <div class="node" style="left:180px; top:120px">
+      <div class="pic"><img src="http://localhost:5180/char/valen/bust_soft.png"></div>
+      <div class="nm">발렌</div><div class="rl">제1황태자 · 가장 위험한 태양</div><div class="tag">잠금 루트</div>
+    </div>
+    <div class="node" style="left:930px; top:120px">
+      <div class="pic"><img src="http://localhost:5180/char/michael/bust_soft.png"></div>
+      <div class="nm">미카엘</div><div class="rl">신성왕국 성기사 · 국경 밖 증인</div><div class="tag">잠금 루트</div>
+    </div>
+    <div class="node extra" style="left:190px; top:330px">
+      <div class="pic"><img src="http://localhost:5180/char/fiance/bust_soft.png"></div>
+      <div class="nm">약혼자</div><div class="rl">카닐의 감시자 · 가라앉는 배에서 내린 자</div><div class="tag">조연</div>
+    </div>
+    <div class="node" style="left:330px; top:330px">
+      <div class="pic"><img src="http://localhost:5180/char/estelle/bust_soft.png"></div>
+      <div class="nm">에스텔</div><div class="rl">하이델 공작영애 · 누명의 표적<br>"다시 쓰는 봄"</div><div class="tag">메인 루트</div>
+    </div>
+    <div class="node" style="left:790px; top:330px">
+      <div class="pic"><img src="http://localhost:5180/char/rozelin/bust_soft.png"></div>
+      <div class="nm">로젤린</div><div class="rl">발루아 후작영애 · 가시 돋친 배역<br>"제 대본을 되찾는 장미"</div><div class="tag">오픈 루트</div>
+    </div>
+    <div class="node" style="left:561px; top:400px">
+      <div class="pic"><img src="http://localhost:5180/char/adele/bust_soft.png"></div>
+      <div class="nm">클로에</div><div class="rl">하이델의 서녀 · 이름 없던 아이</div><div class="tag">잠금 루트</div>
+    </div>
+    <div class="node" style="left:110px; top:480px; width:150px">
+      <div class="pic"><img src="http://localhost:5180/char/rayner/bust_soft.png"></div>
+      <div class="nm">레이너</div><div class="rl">근위대 기사단장 · 북부대공<br>두 개의 맹세</div><div class="tag">잠금 루트</div>
+    </div>
+    <div class="node" style="left:305px; top:565px">
+      <div class="pic"><img src="http://localhost:5180/char/eden/bust_soft.png"></div>
+      <div class="nm">이든</div><div class="rl">근위대 부단장 · 원칙의 검</div><div class="tag">잠금 루트</div>
+    </div>
+    <div class="node" style="left:985px; top:480px; width:150px">
+      <div class="pic"><img src="http://localhost:5180/char/isolde/bust_soft.png"></div>
+      <div class="nm">이졸데</div><div class="rl">후작영애 · 얼음의 완벽주의</div><div class="tag">잠금 루트</div>
+    </div>
+    <div class="node mc" style="left:561px; top:560px">
+      <div class="pic"><div class="star">✦</div></div>
+      <div class="nm">당신</div><div class="rl">회귀자 · 기억을 지불하고 봄을 사는 사람</div><div class="tag">주인공</div>
+    </div>
+
+    <div class="legend">
+      <b>관계 범례</b><br>
+      <span class="sw" style="border-color:#d96a5a; border-top-style:dashed"></span>음모 · 압박 (카닐의 손)<br>
+      <span class="sw" style="border-color:#8fc9a0"></span>인연 · 유대<br>
+      <span class="sw" style="border-color:#f0b3cb"></span>주인공과의 연<br>
+      <span class="sw" style="border-color:#8a8f9d; border-top-style:dashed"></span>긴장 · 정략
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PAGE 2 — 세계관 · 왕관의 밤 · 루트 엔딩 ═══ -->
+<div class="page">
+  <div class="frame"></div>
+  <h1>세계관 · 왕관의 밤<small>WORLDVIEW &amp; ROUTE ENDINGS</small></h1>
+  <div class="crest">✦</div>
+  <div class="cols">
+    <div class="col">
+      <div class="card">
+        <h2>아르덴 제국, 병든 봄</h2>
+        <p>병약한 황제를 대신해 <b>재상 카닐</b>이 옥새를 쥔 제국.
+        카닐의 목표는 제1황태자 <b>발렌</b>의 폐위 — 그 마지막 방패인
+        <b>하이델 공작가</b>를 꺾는 것이 모든 음모의 시작이다.</p>
+        <p class="mut" style="margin-top:6px">에스텔의 누명은 표적이 아니라 <b>포석</b>이다.
+        같은 이유로 로젤린은 도구가 되었고, 왕관의 밤에 모든 실이 한 점으로 모인다.</p>
+      </div>
+      <div class="card">
+        <h2>회귀 — 기억의 대가</h2>
+        <dl class="kv">
+          <dt>매개</dt><dd>별 펜던트 (1회차 에스텔의 유품)</dd>
+          <dt>규칙</dt><dd>미래를 바꾼 만큼, 그 이후의 기억이 물처럼 흐려진다</dd>
+          <dt>1막</dt><dd>지식 우위 — 다 아는 자의 봄 (1~4화)</dd>
+          <dt>2막</dt><dd>지식 붕괴 — 첫 실패, 의심, 봉쇄 (5~8화)</dd>
+          <dt>3막</dt><dd>유대의 증명 — 아무도 모르는 밤을 함께 (9~12화)</dd>
+        </dl>
+      </div>
+      <div class="card">
+        <h2>시즌1 타임라인</h2>
+        <table class="tl">
+          <tr><th>시점</th><th>사건</th><th>에스텔</th><th>로젤린</th></tr>
+          <tr><td>D-300</td><td>회귀</td><td>ep1</td><td>rep1</td></tr>
+          <tr><td>D-270</td><td>밀서 덫</td><td>ep2~3 저지</td><td>rep2 심는 쪽</td></tr>
+          <tr><td>D-150</td><td>초상화 스캔들</td><td>ep5~6 실패</td><td>rep4~5 조작·동요</td></tr>
+          <tr><td>D-30</td><td><b>왕관의 밤</b></td><td>ep8~9</td><td>rep7~8</td></tr>
+          <tr><td>이후</td><td>후일담</td><td>ep10~12</td><td>rep9~10</td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <h2>왕관의 밤 — 하나의 밤, 여덟 개의 문</h2>
+        <p>대관 무도회에서 터지는 <b>반역 누명 고발</b>. 전 루트가 이 밤으로 수렴하고,
+        루트마다 같은 밤의 다른 자리를 산다 — 표적(에스텔), 처형인 배역(로젤린),
+        검을 든 자(이든·레이너), 왕관(발렌), 증인(미카엘), 관객석의 얼음(이졸데),
+        그늘의 아이(클로에).</p>
+      </div>
+      <div class="card" style="flex:1">
+        <h2>루트 엔딩 철학 — "각자의 해피엔딩"</h2>
+        <p class="mut" style="margin-bottom:8px">주인공과의 결합은 에스텔 루트의 답일 뿐.
+        각 루트는 그 캐릭터 고유 서사의 완성으로 끝난다.</p>
+        <div class="endings">
+          <div class="end"><b>에스텔 — 함께</b><span>오래된 약속의 완성. "다시 만나면, 웃으면서 인사해요." (메인 로맨스)</span></div>
+          <div class="end"><b>로젤린 — 제 대본</b><span>배역이 아닌 이름으로 서는 자립. 장미는 폐허에서도 핀다.</span></div>
+          <div class="end"><b>이든 — 선택의 맹세</b><span>명령이 아니라, 검이 지킬 것을 스스로 고르는 기사.</span></div>
+          <div class="end"><b>발렌 — 웃는 왕관</b><span>옥좌와 사람 사이의 화해. 왕관을 쓰고도 웃는 법.</span></div>
+          <div class="end"><b>이졸데 — 실패할 자유</b><span>완벽이라는 감옥에서 제 발로 걸어 나오기.</span></div>
+          <div class="end"><b>클로에 — 불리는 이름</b><span>서녀가 아닌 클로에로. 에스텔과의 자매 화해.</span></div>
+          <div class="end"><b>레이너 — 두 맹세의 화해</b><span>검을 내려놓지 않고도, 북부로 돌아가는 길.</span></div>
+          <div class="end"><b>미카엘 — 국경을 넘는 빛</b><span>맹세와 마음의 양립. 빛은 국경을 가리지 않는다.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot">ESTELLE — 스러진 봄의 약속 · STORY BIBLE 2026-07-07 · 인물도 정본</div>
+</div>
+
+</body>
+</html>
