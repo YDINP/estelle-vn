@@ -37,8 +37,18 @@ body {
   display: flex; flex-direction: column; gap: 14px; position: relative;
 }
 
-/* HUD */
-.hud { display: flex; align-items: center; gap: 10px; }
+/* HUD — 좌상단(이동/음소거)·우상단(코인/호감도) 오버레이.
+   중앙을 비워 캐릭터 머리가 가려지지 않게 함 */
+.hud { position: absolute; z-index: 2; left: 12px; right: 12px;
+  top: calc(10px + env(safe-area-inset-top));
+  display: flex; align-items: flex-start; justify-content: space-between;
+  pointer-events: none; }
+.hud-left { display: flex; gap: 8px; }
+.hud-right { display: flex; flex-direction: column; gap: 6px;
+  align-items: stretch; width: 148px; }
+.hud .home-btn, .hud .coins, .hud .affbox { pointer-events: auto; }
+.hud .coins { text-align: center; padding: 7px 12px; }
+.hud .affbox { flex: none; /* 전역 flex:1(가로 확장)이 세로 스택에선 불필요 */ }
 .home-btn {
   flex: 0 0 auto; width: 42px; height: 42px; border-radius: 12px;
   border: 1px solid #a9782f; color: var(--gold-soft); font-size: 18px;
@@ -196,8 +206,9 @@ body {
 }
 
 /* 캐릭터 — 스테이지 전체(하단 UI 뒤까지) 절대배치로 크게.
+   HUD가 좌/우상단 오버레이로 빠져 상단 중앙까지 사용(머리 안 가림).
    말풍선/버튼(z1)이 위에 겹치고, 하단·좌우 절단면은 페이드로 어둠에 스며듦 */
-.character { position: absolute; inset: 64px 0 0 0; z-index: 0;
+.character { position: absolute; inset: calc(8px + env(safe-area-inset-top)) 0 0 0; z-index: 0;
   display: flex; align-items: flex-start; justify-content: center; overflow: hidden; }
 .character::before {
   content: ""; position: absolute; bottom: 6%; width: 240px; height: 240px;

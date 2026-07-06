@@ -173,13 +173,17 @@ function enterRoute(routeId: string, autoPlayFirst = true) {
 function template(): string {
   return `
   <div class="stage">
-    <div class="hud">
-      <button class="home-btn" id="btnMain" aria-label="메인으로">🏰</button>
-      <button class="home-btn" id="btnMute" aria-label="소리">🔊</button>
-      <div class="coins">🪙 <span id="coinVal">0</span></div>
-      <div class="affbox">
-        <div class="afftop"><span id="tierName">낯가림</span><span id="affVal">0</span>/${MAX_AFFECTION}</div>
-        <div class="affbar"><div id="affFill" class="afffill"></div></div>
+    <div class="hud"><!-- 좌상단/우상단 분리 배치 — 중앙(캐릭터 머리)을 비움 -->
+      <div class="hud-left">
+        <button class="home-btn" id="btnMain" aria-label="메인으로">🏰</button>
+        <button class="home-btn" id="btnMute" aria-label="소리">🔊</button>
+      </div>
+      <div class="hud-right">
+        <div class="coins">🪙 <span id="coinVal">0</span></div>
+        <div class="affbox">
+          <div class="afftop"><span id="tierName">낯가림</span><span id="affVal">0</span>/${MAX_AFFECTION}</div>
+          <div class="affbar"><div id="affFill" class="afffill"></div></div>
+        </div>
       </div>
     </div>
 
