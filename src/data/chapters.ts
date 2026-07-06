@@ -44,7 +44,7 @@ export interface Chapter {
 // ── 빌더 (대본 가독성용) ──
 const N = (text: string): Step => ({ kind: "line", line: { speaker: "narration", text } });
 const E = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "estelle", text, emotion } });
-const S = (text: string): Step => ({ kind: "line", line: { speaker: "sedric", text } });
+const S = (text: string): Step => ({ kind: "line", line: { speaker: "fiance", text } });
 const K = (text: string): Step => ({ kind: "line", line: { speaker: "chancellor", text } });
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
 // 선택 결과 라인 빌더
@@ -89,7 +89,7 @@ export const CHAPTERS: Chapter[] = [
     title: "2장 — 어긋난 약혼",
     steps: [
       E("요즘, 당신이 오는 시간이 기다려져요. …이런 말, 처음 해봐요.", "soft"),
-      N("그때, 세드릭이 들어선다. 예정된 약혼자. 그러나 그의 눈은 그녀를 보지 않는다."),
+      N("그때, 약혼자가 들어선다. 정략으로 맺어진 상대. 그러나 그의 눈은 그녀를 보지 않는다."),
       S("에스텔 양. 약혼은 가문의 결정이오. 사사로운 정은… 서로 접어둡시다."),
       E("…알아요. 마음 같은 건, 중요하지 않다는 거.", "sad"),
       N("당신은 안다. 오늘 밤, 저 서재에 밀서가 심어진다. 첫 번째 덫이."),
@@ -115,8 +115,8 @@ export const CHAPTERS: Chapter[] = [
       CH("위증을 어떻게 깰까", [
         { label: "증인의 거짓 알리바이를 공개한다", affection: 4,
           result: [rn("좌중이 술렁인다. 카닐이 처음으로 당황한다.")] },
-        { label: "세드릭을 움직여 증언을 뒤집게 한다", affection: 4,
-          result: [rn("방관자였던 세드릭이 처음으로 그녀 편에 선다.")] },
+        { label: "약혼자를 움직여 증언을 뒤집게 한다", affection: 4,
+          result: [rn("방관자였던 약혼자가 처음으로 그녀 편에 선다.")] },
       ]),
       E("당신이 아니었다면… 오늘 저는 끝이었어요. 어떻게 미리 알았죠?", "surprised"),
       E("설명 안 해도 돼요. 그냥… 당신을 믿을래요. 이런 확신, 처음이에요.", "soft"),

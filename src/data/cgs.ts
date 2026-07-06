@@ -26,15 +26,6 @@ export const CGS: Cg[] = [
   { id: "cg_e11", char: "estelle", title: "가꾸는 봄",       file: "garden_care",   unlockEp: "ep11" },
   { id: "cg_e12", char: "estelle", title: "다시 피는 봄",    file: "white_rose",    unlockEp: "ep12" },
 
-  // ── 세드릭: 에스텔 루트 등장 화와 매칭 (에스텔 CG와 테마 짝: 서재/무도회/비/온실) ──
-  { id: "cg_s1", char: "sedric", title: "달빛의 방문",     file: "moon_visit",      unlockEp: "ep9" },
-  { id: "cg_s2", char: "sedric", title: "밤의 서신",       file: "night_letter",    unlockEp: "ep6" },
-  { id: "cg_s3", char: "sedric", title: "노을의 답신",     file: "dusk_reply",      unlockEp: "ep11" },
-  { id: "cg_s4", char: "sedric", title: "서재의 사색",     file: "study_read",      unlockEp: "ep4" },
-  { id: "cg_s5", char: "sedric", title: "푸른 장미의 밤",  file: "blue_rose_night", unlockEp: "ep8" },
-  { id: "cg_s6", char: "sedric", title: "빗속의 파수",     file: "rain_vigil",      unlockEp: "ep10" },
-  { id: "cg_s7", char: "sedric", title: "유리온실의 독서", file: "glasshouse_read", unlockEp: "ep12" },
-
   // ── 로젤린: 시즌1 등장 화(4·8·9·10)와 매칭. 나머지는 시즌2 잠금 티저 ──
   { id: "cg_r1", char: "rozelin", title: "장미의 홀",     file: "rose_hall",  unlockEp: "ep4" },
   { id: "cg_r4", char: "rozelin", title: "가면무도회",    file: "masquerade", unlockEp: "ep8" },

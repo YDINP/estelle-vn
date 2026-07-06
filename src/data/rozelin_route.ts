@@ -11,7 +11,7 @@ const N = (text: string): Step => ({ kind: "line", line: { speaker: "narration",
 const R = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "rozelin", text, emotion } });
 const E = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "estelle", text, emotion } });
 const K = (text: string): Step => ({ kind: "line", line: { speaker: "chancellor", text } });
-const S = (text: string): Step => ({ kind: "line", line: { speaker: "sedric", text } });
+const S = (text: string): Step => ({ kind: "line", line: { speaker: "fiance", text } });
 const L = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "eden", text, emotion } });
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
 const CG = (id: string, hold = false): Step => ({ kind: "cg", id, hold });
@@ -89,9 +89,9 @@ export const ROZELIN_EPISODES: Episode[] = [
     steps: [
       N("하이델 공작가의 응접실. 카닐의 명은 매정했다 — 에스텔의 동태를 살피고, 소문에 기름을 부으라는 것."),
       N("로젤린은 부채를 폈다. 그 뒤로 표정을 감추는 것은, 이제 습관이 되어 버렸다."),
-      N("응접실 안, 에스텔과 그 약혼자 세드릭이 냉랭한 공기 속에 마주 앉아 있었다."),
+      N("응접실 안, 에스텔과 그 정략 약혼자가 냉랭한 공기 속에 마주 앉아 있었다."),
       S("에스텔 양. 약혼은 가문의 결정이오. 사사로운 정은 서로 접어둡시다."),
-      N("세드릭이 자리를 뜨자, 로젤린은 때를 놓치지 않고 응접실로 들어섰다. 부채를 접는 소리가 서늘하게 울렸다."),
+      N("약혼자가 자리를 뜨자, 로젤린은 때를 놓치지 않고 응접실로 들어섰다. 부채를 접는 소리가 서늘하게 울렸다."),
       R("어머, 하이델 영애. 약혼자께서 벌써 자리를 뜨셨네요? 계약뿐인 사이라는 소문이, 사실인가 봐요.", "smirk"),
       E("…로젤린 영애. 남의 저택까지 찾아와 하실 말씀은 아니네요.", "serious"),
       R("걱정돼서 그러죠. 사교계엔 벌써 파다하거든요. 하이델의 봄날도 얼마 남지 않았다고.", "serious"),

@@ -61,14 +61,6 @@ export const SPECIAL_ILLUSTS: SpecialIllust[] = [
     placeholder: true,
   },
   {
-    id: "sp_sedric_50",
-    char: "sedric",
-    title: "푸른 장미의 밤",
-    image: P("cg/sedric/blue_rose_night.jpg"),
-    affection: 50,
-    placeholder: true,
-  },
-  {
     id: "sp_valen_50",
     char: "valen",
     title: "달빛 연회의 초대",

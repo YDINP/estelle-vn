@@ -24,7 +24,7 @@ export interface Character {
 }
 
 export type CharacterId =
-  | "estelle" | "rozelin" | "sedric" | "chancellor"
+  | "estelle" | "rozelin" | "fiance" | "chancellor"
   | "eden" | "valen" | "isolde" | "adele" | "rayner" | "michael";
 
 export const CHARACTERS: Record<CharacterId, Character> = {
@@ -45,15 +45,9 @@ export const CHARACTERS: Record<CharacterId, Character> = {
     fallback: { greet: "surprised", shy: "soft", sad: "soft", tearful: "soft",
       smirk: "happy", laugh: "happy", angry: "serious", scheme: "serious" },
   },
-  // 약혼자 세드릭 (흑발·모피 망토 제복) — 비주얼 확정, 두 루트 조연
-  sedric: {
-    id: "sedric", name: "세드릭", hasPortrait: true, color: "#9db8e8", // 흑발 제복 — 스틸블루
-    body: ["soft", "serious", "greet", "smirk", "scheme", "angry",
-      "happy", "sad", "shy", "surprised", "tearful", "laugh"], // 12종 완비 (003 신규 8시트)
-    bust: ["serious", "soft", "angry", "sad", "greet", "surprised", "smirk", "shy"],
-    fallback: { happy: "soft", tearful: "sad", laugh: "smirk",
-      scheme: "smirk" }, // bust 미보유 4종 폴백 (body는 완비)
-  },
+  // 에스텔의 정략 약혼자 — 무명 조연(이름판+대사만). 구 '세드릭' 캐릭터 삭제 후 서사 역할만 유지.
+  fiance: { id: "fiance", name: "약혼자", hasPortrait: false, color: "#9db8e8",
+    body: [], bust: [], fallback: {} },
   chancellor: { id: "chancellor", name: "재상 카닐", hasPortrait: false, color: "#b8b09b",
     body: [], bust: [], fallback: {} },
   // ⚠️ 신규 남캐 2종 — 임시명. 플레이는 추후(잠금 루트), 현재는 카메오 등장만.
