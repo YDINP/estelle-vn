@@ -35,9 +35,9 @@ export const ROUTES: Route[] = [
   },
   // ── 남성 캐릭터 루트 (플레이는 추후 — 현재 잠금 티저, 본편엔 카메오 등장) ──
   {
-    id: "lucian", charId: "lucian",
-    title: "루시안 루트 — ???",
-    desc: "황실 근위기사단장. 검이 지키는 것은 누구인가. (이야기 준비 중)",
+    id: "eden", charId: "eden",
+    title: "이든 루트 — ???",
+    desc: "황실 근위대 부단장. 검이 지키는 것은 누구인가. (이야기 준비 중)",
     episodes: [], daily: [], available: false,
   },
   {
@@ -57,6 +57,18 @@ export const ROUTES: Route[] = [
     id: "adele", charId: "adele",
     title: "아델 루트 — ???",
     desc: "백작가의 그늘에 핀 서녀. 조용한 봄은 아직 오지 않았다. (이야기 준비 중)",
+    episodes: [], daily: [], available: false,
+  },
+  {
+    id: "rayner", charId: "rayner",
+    title: "레이너 루트 — ???",
+    desc: "북부의 서리 대공. 검보다 차가운 침묵의 주인. (이야기 준비 중)",
+    episodes: [], daily: [], available: false,
+  },
+  {
+    id: "michael", charId: "michael",
+    title: "미카엘 루트 — ???",
+    desc: "신전의 성기사. 빛의 맹세는 누구를 향하는가. (이야기 준비 중)",
     episodes: [], daily: [], available: false,
   },
 ];

@@ -33,9 +33,10 @@ const cards = await page.$$eval(".route-card", (els) =>
   }))
 );
 console.log("루트카드:", JSON.stringify(cards));
-// 노아 삭제 후: 전 캐릭터 bust 보유 또는 아트 미보유(? 실루엣) → 임시 배지 0
-const okCards = cards.length === 6 && cards.filter((c) => c.ph).length === 0;
-console.log(`[${okCards ? "PASS" : "FAIL"}] 카드 6장 / 임시 배지 0`);
+// 전 캐릭터 bust 보유 또는 아트 미보유(? 실루엣) → 임시 배지 0
+// 카드 8장: 에스텔/로젤린/이든/발렌/이졸데/아델/레이너/미카엘
+const okCards = cards.length === 8 && cards.filter((c) => c.ph).length === 0;
+console.log(`[${okCards ? "PASS" : "FAIL"}] 카드 8장 / 임시 배지 0`);
 await page.screenshot({ path: "qa-shots/ph-main.png" });
 console.log("콘솔 에러:", errors.length ? JSON.stringify(errors) : "없음");
 await browser.close();

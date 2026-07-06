@@ -19,7 +19,7 @@ const E = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { sp
 const S = (text: string): Step => ({ kind: "line", line: { speaker: "sedric", text } });
 const K = (text: string): Step => ({ kind: "line", line: { speaker: "chancellor", text } });
 const R = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "rozelin", text, emotion } });
-const L = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "lucian", text, emotion } });
+const L = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "eden", text, emotion } });
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
 const CG = (id: string, hold = false): Step => ({ kind: "cg", id, hold });
 const CGX = (): Step => ({ kind: "cgEnd" }); // CG 유지 연출 종료 (포트레이트 복귀)
@@ -257,7 +257,7 @@ export const EPISODES: Episode[] = [
     steps: [
       N("황실 무도회장. 샹들리에가 쏟아내는 빛 아래, 화려한 가면 같은 미소들이 오갔다. 그 속 어딘가에 덫이 숨어 있다."),
       CG("cg_e8", true), // 무도회의 밤 — 입장 장면 위에서
-      N("입구에서 백금발의 기사가 정중히 길을 열었다. 황실 근위기사단장, 루시안. 황제의 검이라 불리는 자다."),
+      N("입구에서 백금발의 기사가 정중히 길을 열었다. 황실 근위대 부단장, 이든. 단장을 대신해 오늘 밤 경비를 지휘하는 자다."),
       L("하이델 공작영애와 동행분이시군요. 어서 오십시오.", "greet"),
       L("…다만, 오늘 밤 홀의 공기가 심상치 않습니다. 무슨 일이 생기면 — 근위대는 진실의 편에 서겠습니다.", "soft"),
       CGX(),

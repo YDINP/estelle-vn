@@ -25,7 +25,7 @@ export interface Character {
 
 export type CharacterId =
   | "estelle" | "rozelin" | "sedric" | "chancellor"
-  | "lucian" | "valen" | "isolde" | "adele";
+  | "eden" | "valen" | "isolde" | "adele" | "rayner" | "michael";
 
 export const CHARACTERS: Record<CharacterId, Character> = {
   estelle: {
@@ -58,12 +58,11 @@ export const CHARACTERS: Record<CharacterId, Character> = {
     body: [], bust: [], fallback: {} },
   // ⚠️ 신규 남캐 2종 — 임시명. 플레이는 추후(잠금 루트), 현재는 카메오 등장만.
   //    채택 확정 시 상반신 시트 추가 예정 (bust는 그때 채움).
-  lucian: {
-    id: "lucian", name: "루시안", hasPortrait: true, color: "#cfe0f5", // 백금발 — 플래티넘
-    body: ["soft", "serious", "happy", "greet", "smirk", "scheme", "sad", "angry"],
-    bust: ["greet", "soft", "happy", "laugh", "shy", "serious", "surprised",
-      "sad", "smirk", "angry", "scheme"], // 11종 (005 시트 2장, tearful만 미보유)
-    fallback: { tearful: "sad" },
+  // 구 '루시안(근위기사단장)' → '이든(근위대 부단장)'으로 재설정. 구 일러 전량 폐기,
+  // 신규 시트 도착 시 body/bust 채우고 hasPortrait:true.
+  eden: {
+    id: "eden", name: "이든", hasPortrait: false, color: "#cfe0f5", // 백금발 — 플래티넘
+    body: [], bust: [], fallback: {},
   },
   valen: {
     id: "valen", name: "발렌", hasPortrait: true, color: "#e8a06d", // 제국 제1황태자 (적발·와인 망토) — 임시명, 앰버
@@ -81,6 +80,15 @@ export const CHARACTERS: Record<CharacterId, Character> = {
   adele: {
     id: "adele", name: "아델", hasPortrait: false, color: "#f2cfa6", // 갈색머리 — 웜 베이지
     body: [], bust: [], fallback: {}, // 백작가의 서녀. 그늘에서 숨죽여 피는 들꽃
+  },
+  // ⚠️ 신규 남캐 2종 — 임시명. 아트 미보유(시트 도착 시 채움).
+  rayner: {
+    id: "rayner", name: "레이너", hasPortrait: false, color: "#b9c9dd", // 북부대공 — 스틸 블루그레이
+    body: [], bust: [], fallback: {}, // 북부의 서리 대공. 검보다 차가운 침묵
+  },
+  michael: {
+    id: "michael", name: "미카엘", hasPortrait: false, color: "#ece5cf", // 성기사 — 아이보리 실버
+    body: [], bust: [], fallback: {}, // 신전의 성기사. 빛의 맹세를 검에 새긴 자
   },
   // ── 캐릭터 추가 템플릿 ──
   // 1) CharacterId 유니온에 id 추가  2) 아래 형태로 항목 추가

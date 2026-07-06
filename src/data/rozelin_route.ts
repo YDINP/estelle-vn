@@ -12,7 +12,7 @@ const R = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { sp
 const E = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "estelle", text, emotion } });
 const K = (text: string): Step => ({ kind: "line", line: { speaker: "chancellor", text } });
 const S = (text: string): Step => ({ kind: "line", line: { speaker: "sedric", text } });
-const L = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "lucian", text, emotion } });
+const L = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "eden", text, emotion } });
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
 const CG = (id: string, hold = false): Step => ({ kind: "cg", id, hold });
 const CGX = (): Step => ({ kind: "cgEnd" }); // CG 유지 연출 종료 (포트레이트 복귀)
@@ -185,7 +185,7 @@ export const ROZELIN_EPISODES: Episode[] = [
       N("무도회 전야, 로젤린은 부치지 못한 편지를 다시 펼쳤다가, 접었다. 이번에도 부치지 못한 채로."),
       N("그리고 황실 무도회의 밤이 왔다. 샹들리에가 쏟아내는 빛 아래, 화려한 가면 같은 미소들이 오갔다."),
       N("로젤린은 기둥 뒤에 섰다. 부채로 입가를 가린 채, 매수한 증인에게 은밀히 눈짓을 보낼 자리였다."),
-      N("그때, 근위기사단장 루시안이 홀을 순시하며 그녀의 곁을 스쳤다. 백금발의 기사가 잠시, 그녀에게 시선을 멈췄다."),
+      N("그때, 근위대 부단장 이든이 홀을 순시하며 그녀의 곁을 스쳤다. 백금발의 기사가 잠시, 그녀에게 시선을 멈췄다."),
       L("발루아 영애. …얼굴빛이 좋지 않으시군요. 무도회란 즐기는 자리입니다만.", "soft"),
       N("꿰뚫어 보는 듯한 그 시선에, 로젤린의 부채 쥔 손끝이 아주 잠깐 떨렸다."),
       N("저편에서 에스텔이 걸어 들어왔다. 그 곁엔, 어느새 익숙해진 당신의 얼굴이 있었다."),
