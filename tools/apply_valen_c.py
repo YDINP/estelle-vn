@@ -1,11 +1,13 @@
 """발렌 c1~c4 (흰 테두리 + 검은 배경) 전용 컷.
 
-새 발렌 아트는 캐릭터 외곽에 흰 윤곽선이 있어, 검은 의상이 배경과 같은
-색이어도 배경 플러드필이 윤곽선에서 멈춘다. 절차:
+새 발렌 아트는 캐릭터 외곽에 흰 윤곽선이 있으나 모피 실루엣 구간에서
+끊겨 있어 플러드필 방어벽으로는 쓸 수 없다(의상 내부 전멸 사고 원인).
+절차:
   1) 스트립을 4셀로 분할(흰 프레임 라인은 margin 크롭으로 제거)
-  2) 상/좌/우 에지에서 검은 배경 플러드필 (하단은 의상이 닿으므로 제외)
-  3) 흰 윤곽선을 투명 경계에서 안쪽으로 반복 peel (내부 흰색은 보존)
-  4) 잔여 밝은 안티앨리어스 1회 peel + 경계 1px 알파 페더
+  2) 배경 제거 = apply_expr_grids의 행별 스팬 보호 컷(DARK_OUTFIT 경로).
+     윤곽선은 강한 전경 신호로 스팬 검출 정확도만 높여줌
+  3) 남은 흰 윤곽선을 투명 경계에서 안쪽으로 저채도 peel (내부 흰색 보존)
+  4) 유채색 프린지는 흰색 기여 역산(un-blend) + 경계 1px 알파 페더
 """
 from __future__ import annotations
 
@@ -14,7 +16,7 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
-from apply_expr_grids import GRID_EXPRESSIONS, connected_component
+from apply_expr_grids import GRID_EXPRESSIONS, remove_black_background
 
 SOURCE_DIR = Path(r"C:\Users\a\Desktop\1\007")
 DEST_DIR = Path(__file__).resolve().parents[1] / "public" / "char" / "valen"
@@ -30,20 +32,26 @@ def neighbors_of(mask: np.ndarray) -> np.ndarray:
 
 
 def cut_cell(img: Image.Image) -> Image.Image:
-    arr = np.array(img.convert("RGBA"))
+    # ⚠️ 흰 윤곽선은 모피 실루엣 구간에서 끊겨 있고(벽 불성립), 배경 검정(~21)과
+    # 의상 순검정(1~)은 임계값 분리도 불가 → 배경 제거는 검증된 행별 캐릭터
+    # 스팬 보호 휴리스틱(apply_expr_grids, DARK_OUTFIT 경로)에 맡긴다.
+    # 윤곽선은 스팬 검출을 정확하게 만드는 강한 전경 신호로만 기여.
+    base = remove_black_background(img.convert("RGBA"), preserve_dark_outfit=True)
+
+    arr = np.array(base)
     rgb = arr[:, :, :3].astype(np.int16)
     alpha = arr[:, :, 3]
     max_rgb = rgb.max(axis=2)
     min_rgb = rgb.min(axis=2)
 
-    # 프레임 잔재(에지 접촉 순백) — 캐릭터 윤곽선이 하단 에지에 닿아 같이
-    # 딸려 나가도 무방(어차피 peel 대상)
-    frame = connected_component(min_rgb >= 245, ("top", "bottom", "left", "right"))
-    # 검은 배경 — 흰 윤곽선이 방어벽이라 의상 보존 휴리스틱 불필요.
-    # 하단 에지는 의상 절단면이 닿으므로 시드에서 제외.
-    bg = connected_component(max_rgb <= 60, ("top", "left", "right"))
-    removed = frame | bg
-    alpha[removed] = 0
+    # 스팬 보호가 남긴 검은 배경 할로(계단형 잔여)를 경계에서 안쪽으로 한정
+    # 깎음 — 흰 윤곽선(밝음)이나 의상 텍스처(>50)를 만나면 멈춤. 상한 16px라
+    # 윤곽선 없는 모피 구간에서도 새까만 끝단만 살짝 다듬는 수준.
+    for _ in range(28):
+        ring = (alpha > 0) & neighbors_of(alpha == 0) & (max_rgb <= 50)
+        if not ring.any():
+            break
+        alpha[ring] = 0
 
     # 흰 윤곽선 peel — 투명 영역과 맞닿은 밝은 '무채색' 픽셀만 안쪽으로 벗겨냄.
     # 채도 조건으로 피부(웜톤)·적발은 보존, 내부 하이라이트는 경계와 안 닿아 보존.
