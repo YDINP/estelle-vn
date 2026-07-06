@@ -114,9 +114,9 @@ body {
   border-right: 1px solid rgba(216,164,74,.35);
 }
 .rc-art img {
-  /* 상반신 일러: 얼굴이 잘리지 않게 상단 기준 배치 */
-  position: absolute; left: 50%; top: 3%; transform: translateX(-50%);
-  height: 102%; width: auto; object-fit: contain;
+  /* 전신 일러: 얼굴~가슴이 보이게 상단 기준 확대 배치 */
+  position: absolute; left: 50%; top: 2%; transform: translateX(-50%);
+  height: 230%; width: auto; object-fit: contain;
   filter: drop-shadow(0 6px 14px rgba(0,0,0,.45));
 }
 .rc-info { flex: 1; min-width: 0; padding: 14px 16px;
@@ -195,22 +195,24 @@ body {
   border: 1px solid var(--gold-soft); box-shadow: 0 0 7px rgba(236,157,191,.9);
 }
 
-/* 캐릭터 */
-.character { flex: 1; min-height: 0; display: flex; align-items: center;
-  justify-content: center; position: relative; }
+/* 캐릭터 — 스테이지 전체(하단 UI 뒤까지) 절대배치로 크게.
+   말풍선/버튼(z1)이 위에 겹치고, 하단·좌우 절단면은 페이드로 어둠에 스며듦 */
+.character { position: absolute; inset: 64px 0 0 0; z-index: 0;
+  display: flex; align-items: flex-start; justify-content: center; overflow: hidden; }
 .character::before {
   content: ""; position: absolute; bottom: 6%; width: 240px; height: 240px;
   background: radial-gradient(circle, rgba(243,223,164,0.2), transparent 65%);
   filter: blur(6px);
 }
 .portrait {
-  height: 100%; width: auto; max-width: 100%; object-fit: contain;
-  z-index: 1; filter: drop-shadow(0 6px 20px rgba(0,0,0,.4));
-  /* 흉상 일러 허리 절단면 + 양옆을 배경에 자연스럽게 페이드 (두 마스크 교집합) */
-  -webkit-mask-image: linear-gradient(180deg, #000 76%, transparent 98%),
-    linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-  mask-image: linear-gradient(180deg, #000 76%, transparent 98%),
-    linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  height: 100%; width: auto; max-width: none; object-fit: contain;
+  filter: drop-shadow(0 6px 20px rgba(0,0,0,.4));
+  /* 좌우+하단 절단면을 어둠 속으로 부드럽게 (두 마스크 교집합) —
+     하단 UI(말풍선/버튼) 뒤로 지나가는 구간이 자연스럽게 어두워짐 */
+  -webkit-mask-image: linear-gradient(180deg, #000 66%, transparent 92%),
+    linear-gradient(90deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 66%, transparent 92%),
+    linear-gradient(90deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
   -webkit-mask-composite: source-in;
   mask-composite: intersect;
 }
@@ -219,7 +221,7 @@ body {
 
 /* 대사 버블 — 금테 가죽 프레임 + 상단 보석 */
 .bubble {
-  position: relative;
+  position: relative; z-index: 1; margin-top: auto; /* 하단 고정 — 일러가 뒤로 지나감 */
   background: radial-gradient(140% 110% at 50% 0%, rgba(74,41,23,.9) 0%, rgba(51,27,14,.94) 60%);
   border: 1px solid #a9782f; border-radius: 16px;
   padding: 16px 18px; min-height: 74px; font-size: 15px; line-height: 1.55;
@@ -237,7 +239,8 @@ body {
 @keyframes pop { from { transform: translateY(6px); opacity: .4; } to { transform: none; opacity: 1; } }
 
 /* 액션 */
-.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+  position: relative; z-index: 1; }
 .btn {
   appearance: none; border: 1px solid #a9782f; color: var(--text);
   background: linear-gradient(180deg, #4a2917, #331b0e);
@@ -392,8 +395,9 @@ body {
     0 4px 12px rgba(0,0,0,.45);
   transition: transform .08s, filter .15s; }
 .vn-exit:active { transform: scale(.92); }
-.vn-portrait-wrap { position: absolute; inset: 0 0 26% 0; display: flex;
-  align-items: center; justify-content: center; }
+/* 일러를 대사 패널 뒤까지 확장 — 얼굴(상단) 보존, 하단은 페이드로 패널에 스며듦 */
+.vn-portrait-wrap { position: absolute; inset: 0 0 6% 0; display: flex;
+  align-items: flex-start; justify-content: center; overflow: hidden; }
 /* VN 이벤트 CG 연출 — 풀스크린 최상위(포트레이트 위, 대사 패널 아래).
    원본 비율 유지(상하좌우 잘림 금지), 남는 공간은 검정 레터박스. */
 .vn-cg { position: absolute; inset: 0; z-index: 3; display: flex;
@@ -402,15 +406,19 @@ body {
 .vn-cg img { width: 100%; height: 100%; object-fit: contain;
   animation: cg-in .5s ease; }
 @keyframes cg-in { from { opacity: 0; transform: scale(1.03); } to { opacity: 1; transform: none; } }
-.vn-portrait { height: 92%; width: auto; max-width: 96%; object-fit: contain;
+/* 전신 일러 크게(패널 뒤까지) — 좌우/하단 그리드 절단면은 어둠으로 페이드 */
+.vn-portrait { height: 100%; width: auto; max-width: none; object-fit: contain;
   filter: drop-shadow(0 8px 24px rgba(0,0,0,.5)); animation: pop .3s ease;
-  /* 흉상 일러 하단 절단면 + 양옆 페이드 (대사 패널·배경에 자연스럽게 스며들도록) */
-  -webkit-mask-image: linear-gradient(180deg, #000 78%, transparent 99%),
-    linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-  mask-image: linear-gradient(180deg, #000 78%, transparent 99%),
-    linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent 88%),
+    linear-gradient(90deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 62%, transparent 88%),
+    linear-gradient(90deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
   -webkit-mask-composite: source-in;
   mask-composite: intersect; }
+/* 엑스트라 실루엣(상반신 컷)은 하단 절단면만 페이드 */
+.vn-portrait.is-extra { height: 86%; margin-bottom: 4%;
+  -webkit-mask-image: linear-gradient(180deg, #000 82%, transparent 99%);
+  mask-image: linear-gradient(180deg, #000 82%, transparent 99%); }
 /* 임시(placeholder) 아트 표시 — 이미지 영역 우상단 금색 태그 */
 .ph-badge { position: absolute; top: 8px; right: 8px; z-index: 2; pointer-events: none;
   font-size: 11px; font-weight: 800; letter-spacing: .5px; color: #3a2410;

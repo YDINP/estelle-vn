@@ -3,3 +3,5 @@ dist/
 dev.log
 qa-shots/
 *.local
+public/char/backup/
+__pycache__/

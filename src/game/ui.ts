@@ -12,7 +12,7 @@ import { greeting, giftLine } from "./dialogue";
 import { showRewardedAd, showInterstitialAd } from "./ads";
 import { Choice, Line, Emotion, Step, PROLOGUE } from "../data/chapters";
 import {
-  CHARACTERS, CharacterId, EMOTION_LABEL, portraitFile, vnFile, resolveEmotion,
+  CHARACTERS, CharacterId, EMOTION_LABEL, vnFile, resolveEmotion,
   isPlaceholderArt,
 } from "../data/characters";
 import { EPISODES, Episode } from "../data/season1";
@@ -63,7 +63,9 @@ function setVnPortrait(id: CharacterId, e?: Emotion) {
   const c = CHARACTERS[id];
   const resolved = resolveEmotion(c, e);
   vnPortraitSpk = id;
-  ($("#vnPortrait") as HTMLImageElement).src = vnFile(id, resolved);
+  const img = $("#vnPortrait") as HTMLImageElement;
+  img.src = vnFile(id, resolved);
+  img.classList.toggle("is-extra", !!c.extra); // 실루엣은 상반신 배율로 표시
   // 엑스트라 실루엣은 '임시' 배지 대상 아님
   $("#vnPh").classList.toggle("hidden", !!c.extra || !isPlaceholderArt(id, e));
   collectIllust(id, resolved);
@@ -159,7 +161,7 @@ function enterRoute(routeId: string, autoPlayFirst = true) {
   saveState(state);
   $("#mainScreen").classList.add("hidden");
   playBgm("story");
-  setEmotion("greet");
+  setEmotion("happy"); // 루트 진입 인사 — 밝은 표정 (greet 표정은 16종 체계에서 제거됨)
   setBubble(greeting(activeTier()));
   render();
 
@@ -193,8 +195,7 @@ function template(): string {
       <button class="btn" id="btnDaily">🌸 오늘의 일상 <small id="dailyState"></small></button>
       <button class="btn" id="btnGift">🎁 선물하기 <small>(${GIFT_COST}🪙)</small></button>
       <button class="btn" id="btnCollect">🗂 수집</button>
-      <button class="btn" id="btnCloset">👗 옷장</button>
-    </div>
+    </div><!-- 옷장 기능 일시 비활성화 (버튼만 제거 — 코드/모달은 보존) -->
   </div>
 
   <div class="main-screen hidden" id="mainScreen">
@@ -301,8 +302,10 @@ function wire() {
   $("#btnGift").onclick = onGift;
   $("#btnDaily").onclick = onDaily;
   $("#btnCollect").onclick = openCollect;
-  $("#btnCloset").onclick = () => openCloset();
+  // 옷장 비활성화 — 진입 버튼 제거됨 (재활성화 시 버튼 복구 + 아래 주석 해제)
+  // $("#btnCloset").onclick = () => openCloset();
   $("#closetX").onclick = () => $("#closet").classList.add("hidden");
+  void openCloset; // 비활성화 동안 미사용 경고 억제
   $("#collectX").onclick = () => $("#collect").classList.add("hidden");
   $("#illustView").onclick = () => $("#illustView").classList.add("hidden");
   $("#btnMainCollect").onclick = () => openCollect(); // 메인화면에서도 도감 열람
@@ -666,20 +669,7 @@ function renderIllust(id: CharacterId) {
       <div class="ilabel">잠김</div></div>`;
   }).join("");
   const poseOwned = emoSet.filter((e) => seen.includes(e)).length;
-  // 전신샷 — 같은 표정을 본 적 있으면 해금 (bust와 별개 세트일 때만 표시)
-  const bodySet = c.bust.length ? c.body : [];
-  const bodyOwned = bodySet.filter((e) => seen.includes(e)).length;
-  const bodyCells = bodySet.map((e) => {
-    const owned = seen.includes(e);
-    if (owned) {
-      return `<div class="icell" data-illb="${id}:${e}">
-        <img src="${portraitFile(id, e)}" alt="" />
-        <div class="ilabel">${EMOTION_LABEL[e]} · 전신</div></div>`;
-    }
-    return `<div class="icell locked">
-      <img src="${portraitFile(id, e)}" alt="" />
-      <div class="ilabel">잠김</div></div>`;
-  }).join("");
+  // (전신 섹션 제거 — 신 아트 체계에서 표정 세트가 곧 캐릭터 일러의 정본)
   // 이벤트 CG — 에피소드 클리어로 해금
   const cgs = CGS.filter((g) => g.char === id);
   const cgOwned = cgs.filter((g) => cgUnlocked(g, cleared, state.cgSeen)).length;
@@ -706,13 +696,12 @@ function renderIllust(id: CharacterId) {
       <img src="${specialIllustFile(g)}" alt="" />
       <div class="ilabel">호감도 ${g.affection}</div></div>`;
   }).join("");
-  const ownedN = poseOwned + bodyOwned + cgOwned + specialOwned;
-  const total = emoSet.length + bodySet.length + cgs.length + specials.length;
+  const ownedN = poseOwned + cgOwned + specialOwned;
+  const total = emoSet.length + cgs.length + specials.length;
   $("#collectCount").textContent = `${ownedN}/${total} · 호감도 ${aff}`;
   $("#illustWrap").innerHTML = `
     <div class="isec-t">표정</div>
     <div class="igrid">${poseCells}</div>
-    ${bodyCells ? `<div class="isec-t">전신</div><div class="igrid">${bodyCells}</div>` : ""}
     ${cgCells ? `<div class="isec-t">스토리 CG</div><div class="igrid cg2">${cgCells}</div>` : ""}
     ${specialCells ? `<div class="isec-t">스페셜 CG <small>호감도 전용</small></div><div class="igrid cg2">${specialCells}</div>` : ""}`;
   $("#illustWrap").querySelectorAll("[data-ill]").forEach((el) =>
@@ -720,14 +709,6 @@ function renderIllust(id: CharacterId) {
       const [id, e] = (el as HTMLElement).dataset.ill!.split(":") as [CharacterId, Emotion];
       ($("#illustViewImg") as HTMLImageElement).src = vnFile(id, e);
       $("#illustViewCap").textContent = `${CHARACTERS[id].name} — ${EMOTION_LABEL[e]}`;
-      $("#illustView").classList.remove("hidden");
-    })
-  );
-  $("#illustWrap").querySelectorAll("[data-illb]").forEach((el) =>
-    el.addEventListener("click", () => {
-      const [id, e] = (el as HTMLElement).dataset.illb!.split(":") as [CharacterId, Emotion];
-      ($("#illustViewImg") as HTMLImageElement).src = portraitFile(id, e);
-      $("#illustViewCap").textContent = `${CHARACTERS[id].name} — ${EMOTION_LABEL[e]} (전신)`;
       $("#illustView").classList.remove("hidden");
     })
   );

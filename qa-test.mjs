@@ -167,12 +167,13 @@ async function ctxA(browser) {
     // #3 홈 버튼 구성
     const btns = await page.locator(".actions .btn").allTextContents();
     const labels = btns.map((b) => b.trim());
-    const want = ["이야기", "오늘의 일상", "선물하기", "수집", "옷장"];
+    const want = ["이야기", "오늘의 일상", "선물하기", "수집"];
     const hasAll = want.every((w) => labels.some((l) => l.includes(w)));
-    const banned = ["대화하기", "출석", "광고 코인", "광고코인"];
+    // 옷장은 기능 비활성화로 버튼 제거됨(2026-07-06) — 재노출 시 회귀로 간주
+    const banned = ["대화하기", "출석", "광고 코인", "광고코인", "옷장"];
     const hasBanned = banned.filter((w) => labels.some((l) => l.includes(w)));
     await shot(page, "05-home-buttons.png");
-    report(3, "홈 버튼 구성", labels.length === 5 && hasAll && hasBanned.length === 0,
+    report(3, "홈 버튼 구성", labels.length === 4 && hasAll && hasBanned.length === 0,
       `버튼 ${labels.length}개: ${labels.join(" | ")}${hasBanned.length ? " / 잔존 구버튼: " + hasBanned : ""}`);
 
     // #4 에피소드 목록 (타이머 진행 중)

@@ -2,16 +2,27 @@
 // 아트 2세트: 전신(body) = {emotion}.png / 상반신(bust) = bust_{emotion}.png
 // VN 대사창은 bust 우선(감정 전달↑), 홈/일부 연출은 body.
 
+// 표정 체계 16종 (4×4 시트 그리드와 1:1). '인사(greet)'는 감정이 아닌 동작 포즈라
+// 구 12표정 체계의 잔재였음 — 제거(2026-07-06).
 export type Emotion =
-  | "greet" | "soft" | "happy" | "shy"
-  | "serious" | "surprised" | "sad" | "tearful"
-  | "smirk" | "laugh" | "angry" | "scheme"; // 악역/감정 확장
+  | "neutral" | "soft" | "happy" | "laugh"
+  | "shy" | "serious" | "determined" | "surprised"
+  | "sad" | "distressed" | "tearful" | "angry"
+  | "smirk" | "scheme" | "embarrassed" | "cold";
 
 export const EMOTION_LABEL: Record<Emotion, string> = {
-  greet: "인사", soft: "미소", happy: "활짝", shy: "수줍음",
-  serious: "결의", surprised: "놀람", sad: "슬픔", tearful: "눈물",
-  smirk: "조소", laugh: "폭소", angry: "분노", scheme: "획책",
+  neutral: "무표정", soft: "온화한 미소", happy: "기쁨", laugh: "웃음",
+  shy: "수줍음", serious: "진지함", determined: "결의", surprised: "놀람",
+  sad: "슬픔", distressed: "괴로움", tearful: "눈물", angry: "분노",
+  smirk: "조소", scheme: "계략", embarrassed: "당황", cold: "냉담",
 };
+
+const GRID_EMOTIONS: Emotion[] = [
+  "neutral", "soft", "happy", "laugh",
+  "shy", "serious", "determined", "surprised",
+  "sad", "distressed", "tearful", "angry",
+  "smirk", "scheme", "embarrassed", "cold",
+];
 
 export interface Character {
   id: string;
@@ -31,20 +42,16 @@ export type CharacterId =
 export const CHARACTERS: Record<CharacterId, Character> = {
   estelle: {
     id: "estelle", name: "에스텔", hasPortrait: true, color: "#ffdf9e", // 금발 — 웜골드
-    body: ["soft", "happy", "greet", "surprised", "sad", "shy",
-      "tearful", "serious", "angry", "laugh"], // 10종 (001/sheet2 확장)
-    bust: ["greet", "soft", "happy", "shy", "serious", "surprised", "sad", "tearful",
-      "smirk", "laugh", "angry", "scheme"], // 12종 완비 (ill_sheet_0 확장)
-    fallback: { smirk: "soft", scheme: "soft" },
+    body: GRID_EMOTIONS,
+    bust: GRID_EMOTIONS,
+    fallback: {},
   },
   // 악덕영애 (적발·와인 드레스). ⚠️ '로젤린'은 임시명 — 확정 시 name만 교체.
   rozelin: {
     id: "rozelin", name: "로젤린", hasPortrait: true, color: "#ff96a6", // 적발 — 로즈레드
-    body: ["serious", "happy", "surprised", "soft"],
-    bust: ["greet", "soft", "happy", "shy", "serious", "surprised", "sad", "tearful",
-      "smirk", "laugh", "angry", "scheme"],
-    fallback: { greet: "surprised", shy: "soft", sad: "soft", tearful: "soft",
-      smirk: "happy", laugh: "happy", angry: "serious", scheme: "serious" },
+    body: GRID_EMOTIONS,
+    bust: GRID_EMOTIONS,
+    fallback: {},
   },
   // 에스텔의 정략 약혼자 — 엑스트라(실루엣 초상, Desktop/1/extra 시트). 구 '세드릭' 삭제 후 서사 역할만 유지.
   fiance: { id: "fiance", name: "약혼자", hasPortrait: true, color: "#9db8e8",
@@ -56,34 +63,32 @@ export const CHARACTERS: Record<CharacterId, Character> = {
   // 구 '루시안(근위기사단장)' → '이든(근위대 부단장)'으로 재설정. 구 일러 전량 폐기,
   // 신규 시트 도착 시 body/bust 채우고 hasPortrait:true.
   eden: {
-    id: "eden", name: "이든", hasPortrait: false, color: "#cfe0f5", // 백금발 — 플래티넘
-    body: [], bust: [], fallback: {},
+    id: "eden", name: "이든", hasPortrait: true, color: "#cfe0f5", // 백금발 — 플래티넘
+    body: GRID_EMOTIONS, bust: GRID_EMOTIONS, fallback: {},
   },
   valen: {
     id: "valen", name: "발렌", hasPortrait: true, color: "#e8a06d", // 제국 제1황태자 (적발·와인 망토) — 임시명, 앰버
-    // 007 시트 기반 (흉상 포함). 구 '다크 귀족' 콘셉트에서 제1황태자로 재설정.
-    body: ["soft", "greet", "smirk", "scheme", "laugh", "happy", "serious", "angry"],
-    bust: ["soft", "greet", "smirk", "scheme", "happy", "shy", "sad", "serious"],
-    fallback: { surprised: "serious", angry: "serious", laugh: "happy",
-      tearful: "sad", sad: "serious", shy: "soft" },
+    body: GRID_EMOTIONS,
+    bust: GRID_EMOTIONS,
+    fallback: {},
   },
   // ⚠️ 신규 여캐 2종 — 임시명. 아트 미보유(시트 도착 시 body/bust 채우고 hasPortrait:true).
   isolde: {
-    id: "isolde", name: "이졸데", hasPortrait: false, color: "#bfe3ea", // 백발 — 아이스 시안
-    body: [], bust: [], fallback: {}, // 북부 대공가의 공녀. 도도하고 차가운 '얼음 백합'
+    id: "isolde", name: "이졸데", hasPortrait: true, color: "#bfe3ea", // 백발 — 아이스 시안
+    body: GRID_EMOTIONS, bust: GRID_EMOTIONS, fallback: {}, // 북부 대공가의 공녀. 도도하고 차가운 '얼음 백합'
   },
   adele: {
-    id: "adele", name: "아델", hasPortrait: false, color: "#f2cfa6", // 갈색머리 — 웜 베이지
-    body: [], bust: [], fallback: {}, // 백작가의 서녀. 그늘에서 숨죽여 피는 들꽃
+    id: "adele", name: "아델", hasPortrait: true, color: "#f2cfa6", // 갈색머리 — 웜 베이지
+    body: GRID_EMOTIONS, bust: GRID_EMOTIONS, fallback: {}, // 백작가의 서녀. 그늘에서 숨죽여 피는 들꽃
   },
   // ⚠️ 신규 남캐 2종 — 임시명. 아트 미보유(시트 도착 시 채움).
   rayner: {
-    id: "rayner", name: "레이너", hasPortrait: false, color: "#b9c9dd", // 북부대공 — 스틸 블루그레이
-    body: [], bust: [], fallback: {}, // 북부의 서리 대공. 검보다 차가운 침묵
+    id: "rayner", name: "레이너", hasPortrait: true, color: "#b9c9dd", // 북부대공 — 스틸 블루그레이
+    body: GRID_EMOTIONS, bust: GRID_EMOTIONS, fallback: {}, // 북부의 서리 대공. 검보다 차가운 침묵
   },
   michael: {
-    id: "michael", name: "미카엘", hasPortrait: false, color: "#ece5cf", // 성기사 — 아이보리 실버
-    body: [], bust: [], fallback: {}, // 신전의 성기사. 빛의 맹세를 검에 새긴 자
+    id: "michael", name: "미카엘", hasPortrait: true, color: "#ece5cf", // 성기사 — 아이보리 실버
+    body: GRID_EMOTIONS, bust: GRID_EMOTIONS, fallback: {}, // 신전의 성기사. 빛의 맹세를 검에 새긴 자
   },
   // ── 캐릭터 추가 템플릿 ──
   // 1) CharacterId 유니온에 id 추가  2) 아래 형태로 항목 추가
