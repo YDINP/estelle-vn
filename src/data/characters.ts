@@ -18,6 +18,7 @@ export interface Character {
   name: string;              // 이름판 표시명
   hasPortrait: boolean;      // false = 이름판+대사만 (일러 없는 조연)
   color: string;             // 화자 텍스트/이름판 색 (다크브라운 배경에서 가독한 파스텔)
+  extra?: boolean;           // true = 엑스트라(실루엣 초상) — 도감/일러 수집 제외
   body: Emotion[];           // 전신 일러 보유 표정 ({emotion}.png)
   bust: Emotion[];           // 상반신 일러 보유 표정 (bust_{emotion}.png)
   fallback: Partial<Record<Emotion, Emotion>>; // 미보유 표정 → 보유 표정 폴백
@@ -45,11 +46,11 @@ export const CHARACTERS: Record<CharacterId, Character> = {
     fallback: { greet: "surprised", shy: "soft", sad: "soft", tearful: "soft",
       smirk: "happy", laugh: "happy", angry: "serious", scheme: "serious" },
   },
-  // 에스텔의 정략 약혼자 — 무명 조연(이름판+대사만). 구 '세드릭' 캐릭터 삭제 후 서사 역할만 유지.
-  fiance: { id: "fiance", name: "약혼자", hasPortrait: false, color: "#9db8e8",
-    body: [], bust: [], fallback: {} },
-  chancellor: { id: "chancellor", name: "재상 카닐", hasPortrait: false, color: "#b8b09b",
-    body: [], bust: [], fallback: {} },
+  // 에스텔의 정략 약혼자 — 엑스트라(실루엣 초상, Desktop/1/extra 시트). 구 '세드릭' 삭제 후 서사 역할만 유지.
+  fiance: { id: "fiance", name: "약혼자", hasPortrait: true, color: "#9db8e8",
+    extra: true, body: [], bust: ["soft"], fallback: {} },
+  chancellor: { id: "chancellor", name: "재상 카닐", hasPortrait: true, color: "#b8b09b",
+    extra: true, body: [], bust: ["soft"], fallback: {} }, // 엑스트라(실루엣 초상)
   // ⚠️ 신규 남캐 2종 — 임시명. 플레이는 추후(잠금 루트), 현재는 카메오 등장만.
   //    채택 확정 시 상반신 시트 추가 예정 (bust는 그때 채움).
   // 구 '루시안(근위기사단장)' → '이든(근위대 부단장)'으로 재설정. 구 일러 전량 폐기,

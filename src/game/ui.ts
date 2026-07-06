@@ -49,6 +49,7 @@ function setEmotion(name: Emotion) {
 
 // 일러 수집: 실제 표시된(폴백 해석된) 표정 기준. 새 일러면 저장+토스트.
 function collectIllust(id: CharacterId, resolved: Emotion) {
+  if (CHARACTERS[id].extra) return; // 엑스트라 실루엣은 수집 대상 아님
   const list = (state.illust[id] ??= []);
   if (list.includes(resolved)) return;
   list.push(resolved);
@@ -57,10 +58,14 @@ function collectIllust(id: CharacterId, resolved: Emotion) {
 }
 
 // VN 포트레이트 교체(상반신 우선) + 수집 기록. 임시 대체 아트면 우상단 배지.
+let vnPortraitSpk: CharacterId | null = null; // 현재 포트레이트 주인 (화자 전환 감지용)
 function setVnPortrait(id: CharacterId, e?: Emotion) {
-  const resolved = resolveEmotion(CHARACTERS[id], e);
+  const c = CHARACTERS[id];
+  const resolved = resolveEmotion(c, e);
+  vnPortraitSpk = id;
   ($("#vnPortrait") as HTMLImageElement).src = vnFile(id, resolved);
-  $("#vnPh").classList.toggle("hidden", !isPlaceholderArt(id, e));
+  // 엑스트라 실루엣은 '임시' 배지 대상 아님
+  $("#vnPh").classList.toggle("hidden", !!c.extra || !isPlaceholderArt(id, e));
   collectIllust(id, resolved);
 }
 
@@ -614,9 +619,10 @@ function openCollect() {
   $("#collect").classList.remove("hidden");
 }
 function renderCollect() {
-  // 일러 보유 캐릭터 + 아트 준비 중인 루트 캐릭터(placeholder 탭)
+  // 일러 보유 캐릭터 + 아트 준비 중인 루트 캐릭터(placeholder 탭). 엑스트라는 제외.
   const chars = (Object.keys(CHARACTERS) as CharacterId[])
-    .filter((id) => CHARACTERS[id].hasPortrait || ROUTES.some((r) => r.charId === id));
+    .filter((id) => !CHARACTERS[id].extra &&
+      (CHARACTERS[id].hasPortrait || ROUTES.some((r) => r.charId === id)));
   if (!chars.includes(collectTab)) collectTab = chars[0];
   $("#collectTabs").innerHTML = chars.map((id) =>
     `<button class="tab ${id === collectTab ? "active" : ""}" data-ctab="${id}">${CHARACTERS[id].name}</button>`
@@ -892,9 +898,9 @@ function displayLine(line: Line) {
     nameEl.style.color = c.color; // 화자별 색 구분
     textEl.classList.remove("narr");
     textEl.style.color = c.color;
-    // 일러 보유 캐릭터 + 표정 지정 시에만 포트레이트 교체 (미지정 시 이전 표정 유지)
-    // (CG 유지 중엔 포트레이트가 CG 뒤에 있어 보이지 않지만 상태는 최신으로)
-    if (c.hasPortrait && line.emotion) setVnPortrait(spk, line.emotion);
+    // 포트레이트 교체: 표정 지정 시, 또는 화자가 바뀐 경우(엑스트라 실루엣 포함).
+    // 같은 화자 + 표정 미지정이면 이전 표정 유지. (CG 유지 중엔 상태만 최신화)
+    if (c.hasPortrait && (line.emotion || spk !== vnPortraitSpk)) setVnPortrait(spk, line.emotion);
     pushLog(c.name, line.text, false, c.color);
   }
   $("#vnChoices").classList.add("hidden");
