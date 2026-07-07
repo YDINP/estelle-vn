@@ -57,7 +57,8 @@ export function epWaitMs(): number {
 }
 
 const TIER_BOUNDS = [0, 20, 50, 80];
-export const TIER_NAMES = ["재회", "신뢰", "인연", "운명"];
+// 로맨스 불성립(STORY-BIBLE §0) — 최상위 티어는 '운명'이 아니라 관계 상한 어휘 '은인'
+export const TIER_NAMES = ["재회", "신뢰", "인연", "은인"];
 
 export function tierOf(affection: number): number {
   let t = 0;
