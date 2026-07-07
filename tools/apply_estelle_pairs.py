@@ -53,7 +53,7 @@ def erode(mask: np.ndarray) -> np.ndarray:
     return n
 
 
-def cut_cell(img: Image.Image) -> Image.Image:
+def cut_cell(img: Image.Image, black_thr: int = 38, black_chroma: int = 14) -> Image.Image:
     arr = np.array(img.convert("RGBA"))
     rgb = arr[:, :, :3].astype(np.int16)
     alpha = arr[:, :, 3]
@@ -65,7 +65,9 @@ def cut_cell(img: Image.Image) -> Image.Image:
 
     # 채도 조건: 배경 검정은 무채색(chroma~0), 눈동자 코어는 짙어도 청색
     # 채도가 있어 제외됨 (채도 없이는 pupil이 포켓으로 오인 제거되는 사고)
-    black = (max_rgb <= 38) & ((max_rgb - min_rgb) <= 14)
+    # black_thr: 의상에 저채도 검정(레이스 등)이 있는 캐릭터는 낮춰서 호출
+    # (배경이 순검정일 때만 유효 — 로젤린 실측: bg max 1 vs 레이스 p10 9)
+    black = (max_rgb <= black_thr) & ((max_rgb - min_rgb) <= black_chroma)
     # ① 에지 연결 배경 — 드레스가 밝아 내부로 샐 경로 없음(4에지 시드 안전)
     bg = connected_component(black, ("top", "bottom", "left", "right"))
     # ② 갇힌 검은 포켓(머리카락 사이 등): 두께 있는 성분만 제거, 얇은 선화 보존.
