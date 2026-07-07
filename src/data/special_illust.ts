@@ -15,7 +15,7 @@ export const SPECIAL_ILLUSTS: SpecialIllust[] = [
   {
     id: "sp_estelle_20",
     char: "estelle",
-    title: "둘만의 봄빛",
+    title: "온실의 봄빛",
     image: P("cg/estelle/teatime.jpg"),
     affection: 20,
     placeholder: true,
