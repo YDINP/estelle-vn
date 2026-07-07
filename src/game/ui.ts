@@ -8,7 +8,9 @@ import {
   ensureRoute, affectionOf, addAffectionTo, allClearedEpisodes,
 } from "./state";
 import { COSMETICS, getCosmetic, Slot } from "./cosmetics";
-import { greeting, giftLine } from "./dialogue";
+import {
+  greeting, giftLine, talkLine, lineCatalog, SpokenLine,
+} from "./dialogue";
 import { showRewardedAd, showInterstitialAd } from "./ads";
 import { Choice, Line, Emotion, Step, PROLOGUE } from "../data/chapters";
 import {
@@ -23,7 +25,7 @@ import { ROUTES, Route, getRoute } from "../data/routes";
 import { setupCheats } from "./cheats";
 import {
   initAudio, playBgm, toggleMuted, isMuted,
-  sfxTap, sfxChoiceOpen, sfxSelect, sfxCoin, sfxReward, sfxCg,
+  sfxTap, sfxChoiceOpen, sfxSelect, sfxCoin, sfxReward, sfxCg, playVoice,
 } from "./audio";
 
 let state: GameState;
@@ -45,6 +47,26 @@ function hasRouteProgress(): boolean {
 // 홈 화면 포트레이트 = 현재 루트의 주인공 (흉상 우선, 하단은 CSS 페이드)
 function setEmotion(name: Emotion) {
   ($("#charImg") as HTMLImageElement).src = vnFile(activeCharId(), name);
+}
+
+// 홈 발화 공통: 버블 표시 + '들은 대사' 도감 수집 기록
+// TODO(사운드): 보이스 도입 시 여기서 playVoice(charId, line.id) 재생
+function speak(charId: CharacterId, line: SpokenLine) {
+  setBubble(line.text);
+  const heard = (state.heardLines[charId] ??= []);
+  if (!heard.includes(line.id)) {
+    heard.push(line.id);
+    saveState(state);
+  }
+}
+
+// ── 캐릭터 탭 → 대화 (횟수 제한 없음 — 호감도(인연 단계)별 대사) ──
+function onTalk() {
+  if (!state.currentRoute) return; // 홈(루트) 화면에서만
+  sfxTap();
+  const emos: Emotion[] = ["soft", "happy", "shy"];
+  setEmotion(emos[Math.floor(Math.random() * emos.length)]);
+  speak(activeCharId(), talkLine(activeCharId(), activeTier()));
 }
 
 // 일러 수집: 실제 표시된(폴백 해석된) 표정 기준. 새 일러면 저장+토스트.
@@ -162,7 +184,7 @@ function enterRoute(routeId: string, autoPlayFirst = true) {
   $("#mainScreen").classList.add("hidden");
   playBgm("story");
   setEmotion("happy"); // 루트 진입 인사 — 밝은 표정 (greet 표정은 16종 체계에서 제거됨)
-  setBubble(greeting(activeTier()));
+  speak(activeCharId(), greeting(activeCharId(), activeTier()));
   render();
 
   // 최초 진입(해당 루트 진행 0)이면 1화 자동 재생 (구 프롤로그 자동재생 대체)
@@ -180,11 +202,13 @@ function template(): string {
       </div>
       <div class="hud-right">
         <div class="coins">🪙 <span id="coinVal">0</span></div>
-        <div class="affbox">
-          <div class="afftop"><span id="tierName">낯가림</span><span id="affVal">0</span>/${MAX_AFFECTION}</div>
-          <div class="affbar"><div id="affFill" class="afffill"></div></div>
-        </div>
       </div>
+    </div>
+
+    <div class="aff-slider" aria-label="호감도"><!-- 우측 세로 게이지 (아래→위 충전) -->
+      <span class="aff-tier" id="tierName">낯가림</span>
+      <div class="aff-rail"><div id="affFill" class="aff-fill"></div></div>
+      <span class="aff-val"><span id="affVal">0</span>/${MAX_AFFECTION}</span>
     </div>
 
     <div class="character" id="char">
@@ -264,8 +288,12 @@ function template(): string {
 
   <div class="modal hidden" id="collect">
     <div class="sheet">
-      <div class="sheet-head">🖼 일러스트 <span id="collectCount" class="collect-count"></span>
+      <div class="sheet-head">🗂 수집 <span id="collectCount" class="collect-count"></span>
         <button class="x" id="collectX">✕</button></div>
+      <div class="tabs cat-tabs" id="collectCats">
+        <button class="tab active" data-cat="illust">🖼 일러스트</button>
+        <button class="tab" data-cat="lines">💬 대사</button>
+      </div>
       <div class="tabs" id="collectTabs"></div>
       <div id="illustWrap"></div>
     </div>
@@ -303,6 +331,7 @@ let closetSlot: Slot = "outfit";
 
 function wire() {
   $("#btnMain").onclick = () => showMain();
+  $("#char").addEventListener("click", onTalk); // 캐릭터 탭 → 대화
   $("#btnGift").onclick = onGift;
   $("#btnDaily").onclick = onDaily;
   $("#btnCollect").onclick = openCollect;
@@ -371,7 +400,7 @@ function onGift() {
   state.coins -= GIFT_COST;
   gainAffection(GIFT_GAIN);
   sfxCoin();
-  setBubble(giftLine());
+  speak(activeCharId(), giftLine(activeCharId()));
   setEmotion("happy");
   persist();
 }
@@ -473,8 +502,8 @@ function render() {
   $("#coinVal").textContent = String(state.coins);
   $("#affVal").textContent = String(aff);
   $("#tierName").textContent = TIER_NAMES[tier];
-  ($("#affFill") as HTMLElement).style.width =
-    `${(aff / MAX_AFFECTION) * 100}%`;
+  ($("#affFill") as HTMLElement).style.height =
+    `${(aff / MAX_AFFECTION) * 100}%`; // 세로 슬라이더: 아래→위 충전
 
   // 오늘의 일상 완료 여부 반영
   const dailyDone = state.dailyDoneDay === todayKey();
@@ -625,7 +654,14 @@ function openCollect() {
   renderCollect();
   $("#collect").classList.remove("hidden");
 }
+let collectCat: "illust" | "lines" = "illust"; // 수집 카테고리 (일러스트/대사)
+
 function renderCollect() {
+  // 카테고리 탭 (일러스트/대사)
+  $("#collectCats").querySelectorAll<HTMLElement>("[data-cat]").forEach((t) => {
+    t.classList.toggle("active", t.dataset.cat === collectCat);
+    t.onclick = () => { collectCat = t.dataset.cat as typeof collectCat; renderCollect(); };
+  });
   // 일러 보유 캐릭터 + 아트 준비 중인 루트 캐릭터(placeholder 탭). 엑스트라는 제외.
   const chars = (Object.keys(CHARACTERS) as CharacterId[])
     .filter((id) => !CHARACTERS[id].extra &&
@@ -640,7 +676,67 @@ function renderCollect() {
       renderCollect();
     })
   );
-  renderIllust(collectTab);
+  if (collectCat === "lines") renderLines(collectTab);
+  else renderIllust(collectTab);
+}
+
+// ── 대사 도감: 들은 대사만 해금, 탭하면 캐릭터가 홈에서 읊는다 ──
+function renderLines(id: CharacterId) {
+  const catalog = lineCatalog(id);
+  if (!catalog.length) { // 보이스 미등록(루트 준비 중)
+    $("#collectCount").textContent = `0/?`;
+    $("#illustWrap").innerHTML =
+      `<div class="collect-tease">💬 ${CHARACTERS[id].name}의 대사는 준비 중이에요.<br>이야기가 열리면 함께 만나요.</div>`;
+    return;
+  }
+  const heard = state.heardLines[id] ?? [];
+  $("#collectCount").textContent = `${heard.filter((h) => catalog.some((L) => L.id === h)).length}/${catalog.length}`;
+  $("#illustWrap").innerHTML = `<div class="line-list">${catalog.map((L) => {
+    if (heard.includes(L.id))
+      return `<button class="line-item" data-line="${L.id}">
+        <span class="line-cat">${L.cat}</span><span class="line-text">${L.text}</span>
+        <span class="line-play">▶</span></button>`;
+    if (L.paid) // 혼잣말 — 코인 구매로 해금
+      return `<button class="line-item buy" data-buy="${L.id}">
+        <span class="line-cat">${L.cat}</span><span class="line-text">???</span>
+        <span class="line-price">${LINE_PRICE}🪙</span></button>`;
+    return `<div class="line-item locked">
+      <span class="line-cat">${L.cat}</span><span class="line-text">???</span></div>`;
+  }).join("")}</div>`;
+  // 대사읊기: 도감 닫고 해당 캐릭터 홈 버블로 재생 (+보이스 훅)
+  $("#illustWrap").querySelectorAll("[data-line]").forEach((el) =>
+    el.addEventListener("click", () => {
+      const line = catalog.find((L) => L.id === (el as HTMLElement).dataset.line);
+      if (!line) return;
+      const route = ROUTES.find((r) => r.charId === id);
+      if (!route?.available) { toast("이야기가 열리면 들을 수 있어요"); return; }
+      $("#collect").classList.add("hidden");
+      if (state.currentRoute !== route.id) enterRoute(route.id, false);
+      sfxTap();
+      playVoice(id, line.id); // 보이스 에셋(public/voice/ 규약) 도입 시 자동 재생
+      setEmotion("soft");
+      setBubble(line.text);
+    })
+  );
+  // 혼잣말 구매 (부족하면 광고 유도 → 확보 후 재시도)
+  $("#illustWrap").querySelectorAll("[data-buy]").forEach((el) =>
+    el.addEventListener("click", () => {
+      const lineId = (el as HTMLElement).dataset.buy!;
+      buyLine(id, lineId);
+    })
+  );
+}
+
+const LINE_PRICE = 15; // 혼잣말 1개 가격 (🪙)
+function buyLine(charId: CharacterId, lineId: string) {
+  if (state.coins < LINE_PRICE) { openCoinShort(() => buyLine(charId, lineId)); return; }
+  state.coins -= LINE_PRICE;
+  const heard = (state.heardLines[charId] ??= []);
+  if (!heard.includes(lineId)) heard.push(lineId);
+  sfxCoin();
+  toast("💬 혼잣말 해금! 탭해서 들어보세요");
+  persist();
+  renderCollect(); // 해금 반영 재렌더
 }
 function renderIllust(id: CharacterId) {
   // CG 해금은 모든 루트 진행의 합집합으로 판정 (루트 교차 매핑).
@@ -706,8 +802,8 @@ function renderIllust(id: CharacterId) {
   $("#illustWrap").innerHTML = `
     <div class="isec-t">표정</div>
     <div class="igrid">${poseCells}</div>
-    ${cgCells ? `<div class="isec-t">스토리 CG</div><div class="igrid cg2">${cgCells}</div>` : ""}
-    ${specialCells ? `<div class="isec-t">스페셜 CG <small>호감도 전용</small></div><div class="igrid cg2">${specialCells}</div>` : ""}`;
+    ${cgCells ? `<div class="isec-t">스토리 CG</div><div class="cg-list">${cgCells}</div>` : ""}
+    ${specialCells ? `<div class="isec-t">스페셜 CG <small>호감도 전용</small></div><div class="cg-list">${specialCells}</div>` : ""}`;
   $("#illustWrap").querySelectorAll("[data-ill]").forEach((el) =>
     el.addEventListener("click", () => {
       const [id, e] = (el as HTMLElement).dataset.ill!.split(":") as [CharacterId, Emotion];

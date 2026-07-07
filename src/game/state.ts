@@ -23,6 +23,7 @@ export interface GameState {
   lastStreakDay: string;      // 마지막 스트릭 갱신일
   illust: Record<string, string[]>; // 캐릭터별 수집 일러 (charId → 본 표정 목록)
   cgSeen: string[];           // 스토리 중 연출로 본 이벤트 CG id (그 순간 수집)
+  heardLines: Record<string, string[]>; // 캐릭터별 들은 대사 id (대사 도감 수집)
   // ── 루트(캐릭터 시점) 시스템 ──
   routes: Record<string, { epCleared: string[]; nextEpFreeAt: number }>; // 루트별 진행
   affectionBy: Record<string, number>; // 캐릭터별 호감도
@@ -103,6 +104,7 @@ function freshState(): GameState {
     lastStreakDay: "",
     illust: {},
     cgSeen: [],
+    heardLines: {},
     routes: {},
     affectionBy: {},
     currentRoute: "",

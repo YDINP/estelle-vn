@@ -5,6 +5,30 @@
 - 없음 (UI 테마 마이그레이션 완료)
 
 ## 작업 상태
+- [x] 대사 시스템 개편 v2 (2026-07-07 저녁, 사용자 피드백 반영):
+      ① 대사읊기 원복 — 도감 닫고 홈 버블 재생 (playVoice 훅 병행, 에셋 public/voice/ 규약은 audio.ts)
+      ② 캐릭터 클릭 대화 일일제한/호감도지급 제거 — 무제한, 인연 단계별 대사만
+      (dailyTalkLeft/noTalkLeftLine은 코드에 잔존하나 미사용)
+      ③ 혼잣말(monologue) 신설 — 캐릭터당 6개, 각 3줄 다행(개행 문자 + bubble/line-text
+      pre-line 렌더). ⚠️회귀 언급/뉘앙스 금지 지침(2026-07-07), 도감에서 15🪙 구매 해금(buyLine,
+      부족 시 openCoinShort 광고유도), CatalogLine.paid 플래그. 검증: 구매 100→85🪙·읊기 정상
+- [x] 캐릭터 클릭 대화 + 대사 도감 + CG 세로 리스트 (2026-07-07):
+      ① 홈 캐릭터 탭 → talkLine 발화, 회당 호감도 +1, 일일 DAILY_TALK_MAX(5)회 소진 시 noTalkLeftLine
+      (레거시 dailyTalkLeft 필드 부활 — loadState 일일 리셋 기존 로직 재사용)
+      ② 수집 시트 카테고리 탭 [🖼 일러스트|💬 대사] — 들은 대사만 해금(state.heardLines 신규),
+      항목 탭 = 대사읊기(수집창 닫고 해당 캐릭터 홈 버블 재생). 🔈 사운드는 추후 —
+      speak()/renderLines 클릭 핸들러에 TODO(playVoice) 훅 주석 있음
+      ③ 스토리/스페셜 CG 썸네일 → 전폭 1열 세로 리스트(.cg-list)
+      dialogue.ts: SpokenLine{id,text} + lineCatalog() (발화 id = 도감 id 규약)
+- [x] 홈 화면 대사 캐릭터별 보이스 분리 (2026-07-07): dialogue.ts v3 — VOICES 레지스트리
+      (estelle=기존 온화톤 유지 / rozelin=가시·장미·가면 모티프 악역영애톤 신규 60줄).
+      greeting/talkLine/giftLine/noTalkLeftLine 전부 charId 인자화, ui.ts 호출부 반영.
+      미등록 캐릭터는 estelle 폴백 — ⚠️ 신규 루트 open 시 VOICES에 보이스 추가 필수 (TODO 주석).
+      브라우저 검증: 에스텔/로젤린 인사·선물 대사 분기 확인
+- [x] 호감도 → 우측 세로 슬라이더 (2026-07-06): .affbox(가로) 제거 → .aff-slider(티어명/레일/수치,
+      아래→위 로즈→골드 충전 + 보석 진행점). ui.ts 템플릿 + render() height 전환 + style.css.
+      홈 캐릭터 상단 inset 8px→44px 하향. dev 서버 스크린샷 검증 완료.
+      ⚠️ 빌드 base=/estelle-vn/ 됨 → preview 검증 시 URL에 base 필요, dist는 병행 세션과 레이스 주의
 - [x] 루시안 상반신 11종 구축 (바탕화면/1/005 시트 2장 → bust_*.png, characters.ts bust 채움)
       — ⚠️ 시트의 체커보드가 투명이 아니라 "구워진 픽셀"이었음(캐릭터도 흰 갑옷이라 색 키잉 불가).
       격자 주기 모델링→구멍 복원→크럼/글리프 제거의 다단계 파이프라인으로 처리.

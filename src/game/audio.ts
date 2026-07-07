@@ -90,3 +90,17 @@ export function sfxReward(): void {
 }
 /** CG 연출 — 반짝이는 글리산도 */
 export function sfxCg(): void { tone(620, 0.5, 0.05, "sine", 0, 1240); tone(930, 0.5, 0.035, "sine", 0.06, 1860); }
+
+/** 캐릭터 보이스 재생 (대사 도감 읊기 등).
+ *  에셋 규약: public/voice/{charId}/{lineId의 ':'→'-'}.mp3 — 파일만 추가하면 재생됨.
+ *  에셋 미도입(로드 실패) 동안은 짧은 대체음으로 재생 피드백만 준다. */
+let voiceEl: HTMLAudioElement | null = null;
+export function playVoice(charId: string, lineId: string): void {
+  if (muted) return;
+  voiceEl?.pause();
+  const src = `${import.meta.env.BASE_URL}voice/${charId}/${lineId.replace(/:/g, "-")}.mp3`;
+  voiceEl = new Audio(src);
+  voiceEl.volume = 0.9;
+  voiceEl.onerror = () => { tone(740, 0.12, 0.05, "sine"); tone(988, 0.18, 0.04, "sine", 0.08); };
+  voiceEl.play().catch(() => { /* 미도입/자동재생 차단 — 무시 */ });
+}
