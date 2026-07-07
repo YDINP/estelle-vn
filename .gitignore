@@ -5,3 +5,18 @@ qa-shots/
 *.local
 public/char/backup/
 __pycache__/
+.mcp.json
+
+.codegraph/
+
+# ClaudeCrab harness scaffolding (machine-local, not part of the game)
+.claude/
+.claudecrab/
+shared/
+CLAUDE.md
+IDENTITY.md
+MEMORY.md
+SOUL.md
+TODO.md
+USER.md
+WORKSPACE.md
