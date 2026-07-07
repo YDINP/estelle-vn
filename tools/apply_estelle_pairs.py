@@ -53,15 +53,22 @@ def erode(mask: np.ndarray) -> np.ndarray:
     return n
 
 
-def cut_cell(img: Image.Image, black_thr: int = 38, black_chroma: int = 14) -> Image.Image:
+def cut_cell(
+    img: Image.Image,
+    black_thr: int = 38,
+    black_chroma: int = 14,
+    frame_edges: tuple[str, ...] = ("top", "bottom", "left", "right"),
+) -> Image.Image:
     arr = np.array(img.convert("RGBA"))
     rgb = arr[:, :, :3].astype(np.int16)
     alpha = arr[:, :, 3]
     max_rgb = rgb.max(axis=2)
     min_rgb = rgb.min(axis=2)
 
-    # 크롭 후 남은 프레임 잔재(에지 접촉 순백 장식) 제거
-    frame = connected_component(min_rgb >= 235, ("top", "bottom", "left", "right"))
+    # 크롭 후 남은 프레임 잔재(에지 접촉 순백 장식) 제거.
+    # ⚠️ 흰 의상 캐릭터(미카엘 등)는 하단 절단면이 에지에 닿아 플러드가 옷을
+    # 타고 올라갈 수 있음 → frame_edges=("top","left","right")로 하단 시드 제외.
+    frame = connected_component(min_rgb >= 235, frame_edges)
 
     # 채도 조건: 배경 검정은 무채색(chroma~0), 눈동자 코어는 짙어도 청색
     # 채도가 있어 제외됨 (채도 없이는 pupil이 포켓으로 오인 제거되는 사고)

@@ -14,7 +14,7 @@ import {
 import { showRewardedAd, showInterstitialAd } from "./ads";
 import { Choice, Line, Emotion, Step, PROLOGUE } from "../data/chapters";
 import {
-  CHARACTERS, CharacterId, EMOTION_LABEL, vnFile, resolveEmotion,
+  CHARACTERS, CharacterId, EMOTION_LABEL, vnFile, portraitFile, resolveEmotion,
   isPlaceholderArt,
 } from "../data/characters";
 import { EPISODES, Episode } from "../data/season1";
@@ -302,6 +302,7 @@ function template(): string {
   <div class="modal hidden" id="illustView">
     <img id="illustViewImg" alt="" />
     <div class="illust-cap" id="illustViewCap"></div>
+    <button class="illust-body-btn hidden" id="illustViewBody">🧍 전신 보기</button>
   </div>
 
   <div class="vn hidden" id="vn">
@@ -329,6 +330,10 @@ function template(): string {
 
 let closetSlot: Slot = "outfit";
 
+// 일러 팝업 반신↔전신 전환 상태 (표정 일러에서만 사용)
+let illustViewState: { id: CharacterId; e: Emotion } | null = null;
+let illustViewFull = false;
+
 function wire() {
   $("#btnMain").onclick = () => showMain();
   $("#char").addEventListener("click", onTalk); // 캐릭터 탭 → 대화
@@ -341,6 +346,15 @@ function wire() {
   void openCloset; // 비활성화 동안 미사용 경고 억제
   $("#collectX").onclick = () => $("#collect").classList.add("hidden");
   $("#illustView").onclick = () => $("#illustView").classList.add("hidden");
+  // 표정 일러 팝업 — 반신↔전신 전환 (CG/스페셜은 버튼 숨김)
+  $("#illustViewBody").onclick = (ev) => {
+    ev.stopPropagation();
+    if (!illustViewState) return;
+    illustViewFull = !illustViewFull;
+    const { id, e } = illustViewState;
+    ($("#illustViewImg") as HTMLImageElement).src = illustViewFull ? portraitFile(id, e) : vnFile(id, e);
+    $("#illustViewBody").textContent = illustViewFull ? "👤 반신 보기" : "🧍 전신 보기";
+  };
   $("#btnMainCollect").onclick = () => openCollect(); // 메인화면에서도 도감 열람
   $("#btnStory").onclick = () => openStoryList();
   $("#storyX").onclick = () => closeStoryList();
@@ -809,6 +823,11 @@ function renderIllust(id: CharacterId) {
       const [id, e] = (el as HTMLElement).dataset.ill!.split(":") as [CharacterId, Emotion];
       ($("#illustViewImg") as HTMLImageElement).src = vnFile(id, e);
       $("#illustViewCap").textContent = `${CHARACTERS[id].name} — ${EMOTION_LABEL[e]}`;
+      // 전신 아트 보유 시 전환 버튼 노출 (반신 기준으로 초기화)
+      illustViewState = { id, e };
+      illustViewFull = false;
+      $("#illustViewBody").textContent = "🧍 전신 보기";
+      $("#illustViewBody").classList.toggle("hidden", !CHARACTERS[id].body.length);
       $("#illustView").classList.remove("hidden");
     })
   );
@@ -817,6 +836,8 @@ function renderIllust(id: CharacterId) {
       const g = CGS.find((x) => x.id === (el as HTMLElement).dataset.cg)!;
       ($("#illustViewImg") as HTMLImageElement).src = cgFile(g);
       $("#illustViewCap").textContent = `${CHARACTERS[g.char].name} — ${g.title}`;
+      illustViewState = null;
+      $("#illustViewBody").classList.add("hidden");
       $("#illustView").classList.remove("hidden");
     })
   );
@@ -825,6 +846,8 @@ function renderIllust(id: CharacterId) {
       const g = SPECIAL_ILLUSTS.find((x) => x.id === (el as HTMLElement).dataset.special)!;
       ($("#illustViewImg") as HTMLImageElement).src = specialIllustFile(g);
       $("#illustViewCap").textContent = `${CHARACTERS[g.char].name} — ${g.title}`;
+      illustViewState = null;
+      $("#illustViewBody").classList.add("hidden");
       $("#illustView").classList.remove("hidden");
     })
   );
