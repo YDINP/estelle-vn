@@ -302,7 +302,11 @@ function template(): string {
   <div class="modal hidden" id="illustView">
     <img id="illustViewImg" alt="" />
     <div class="illust-cap" id="illustViewCap"></div>
-    <button class="illust-body-btn hidden" id="illustViewBody">🧍 전신 보기</button>
+    <div class="illust-modes hidden" id="illustViewModes">
+      <button data-mode="bust" class="on">👤 반신</button>
+      <button data-mode="chest">🙂 흉상</button>
+      <button data-mode="body">🧍 전신</button>
+    </div>
   </div>
 
   <div class="vn hidden" id="vn">
@@ -330,9 +334,20 @@ function template(): string {
 
 let closetSlot: Slot = "outfit";
 
-// 일러 팝업 반신↔전신 전환 상태 (표정 일러에서만 사용)
+// 일러 팝업 보기 모드 (표정 일러에서만 사용) — 반신/흉상(전신 상단 크롭)/전신
+type IllustMode = "bust" | "chest" | "body";
 let illustViewState: { id: CharacterId; e: Emotion } | null = null;
-let illustViewFull = false;
+
+function setIllustMode(mode: IllustMode) {
+  if (!illustViewState) return;
+  const { id, e } = illustViewState;
+  const img = $("#illustViewImg") as HTMLImageElement;
+  // 흉상은 전신 이미지를 상단(머리~가슴) 크롭으로 표시 — 별도 에셋 불필요
+  img.src = mode === "bust" ? vnFile(id, e) : portraitFile(id, e);
+  img.classList.toggle("chest-crop", mode === "chest");
+  $("#illustViewModes").querySelectorAll("button").forEach((b) =>
+    b.classList.toggle("on", (b as HTMLElement).dataset.mode === mode));
+}
 
 function wire() {
   $("#btnMain").onclick = () => showMain();
@@ -346,15 +361,13 @@ function wire() {
   void openCloset; // 비활성화 동안 미사용 경고 억제
   $("#collectX").onclick = () => $("#collect").classList.add("hidden");
   $("#illustView").onclick = () => $("#illustView").classList.add("hidden");
-  // 표정 일러 팝업 — 반신↔전신 전환 (CG/스페셜은 버튼 숨김)
-  $("#illustViewBody").onclick = (ev) => {
-    ev.stopPropagation();
-    if (!illustViewState) return;
-    illustViewFull = !illustViewFull;
-    const { id, e } = illustViewState;
-    ($("#illustViewImg") as HTMLImageElement).src = illustViewFull ? portraitFile(id, e) : vnFile(id, e);
-    $("#illustViewBody").textContent = illustViewFull ? "👤 반신 보기" : "🧍 전신 보기";
-  };
+  // 표정 일러 팝업 — 반신/흉상/전신 모드 전환 (CG/스페셜은 컨트롤 숨김)
+  $("#illustViewModes").querySelectorAll("button").forEach((b) =>
+    b.addEventListener("click", (ev) => {
+      ev.stopPropagation();
+      setIllustMode((b as HTMLElement).dataset.mode as IllustMode);
+    })
+  );
   $("#btnMainCollect").onclick = () => openCollect(); // 메인화면에서도 도감 열람
   $("#btnStory").onclick = () => openStoryList();
   $("#storyX").onclick = () => closeStoryList();
@@ -821,13 +834,11 @@ function renderIllust(id: CharacterId) {
   $("#illustWrap").querySelectorAll("[data-ill]").forEach((el) =>
     el.addEventListener("click", () => {
       const [id, e] = (el as HTMLElement).dataset.ill!.split(":") as [CharacterId, Emotion];
-      ($("#illustViewImg") as HTMLImageElement).src = vnFile(id, e);
       $("#illustViewCap").textContent = `${CHARACTERS[id].name} — ${EMOTION_LABEL[e]}`;
-      // 전신 아트 보유 시 전환 버튼 노출 (반신 기준으로 초기화)
+      // 전신 아트 보유 시 모드 컨트롤 노출 (반신 기준으로 초기화)
       illustViewState = { id, e };
-      illustViewFull = false;
-      $("#illustViewBody").textContent = "🧍 전신 보기";
-      $("#illustViewBody").classList.toggle("hidden", !CHARACTERS[id].body.length);
+      setIllustMode("bust");
+      $("#illustViewModes").classList.toggle("hidden", !CHARACTERS[id].body.length);
       $("#illustView").classList.remove("hidden");
     })
   );
@@ -835,9 +846,10 @@ function renderIllust(id: CharacterId) {
     el.addEventListener("click", () => {
       const g = CGS.find((x) => x.id === (el as HTMLElement).dataset.cg)!;
       ($("#illustViewImg") as HTMLImageElement).src = cgFile(g);
+      ($("#illustViewImg") as HTMLImageElement).classList.remove("chest-crop");
       $("#illustViewCap").textContent = `${CHARACTERS[g.char].name} — ${g.title}`;
       illustViewState = null;
-      $("#illustViewBody").classList.add("hidden");
+      $("#illustViewModes").classList.add("hidden");
       $("#illustView").classList.remove("hidden");
     })
   );
@@ -845,9 +857,10 @@ function renderIllust(id: CharacterId) {
     el.addEventListener("click", () => {
       const g = SPECIAL_ILLUSTS.find((x) => x.id === (el as HTMLElement).dataset.special)!;
       ($("#illustViewImg") as HTMLImageElement).src = specialIllustFile(g);
+      ($("#illustViewImg") as HTMLImageElement).classList.remove("chest-crop");
       $("#illustViewCap").textContent = `${CHARACTERS[g.char].name} — ${g.title}`;
       illustViewState = null;
-      $("#illustViewBody").classList.add("hidden");
+      $("#illustViewModes").classList.add("hidden");
       $("#illustView").classList.remove("hidden");
     })
   );
