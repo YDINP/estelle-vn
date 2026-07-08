@@ -94,6 +94,79 @@
   .tl td { color: var(--text); }
   .foot { position: absolute; bottom: 20px; left: 0; right: 0; text-align: center; font-size: 9px;
     color: var(--muted); letter-spacing: 2px; }
+
+  /* ── 인물 관계 탐색 (인터랙티브) ── */
+  #relBtn { position: fixed; top: 22px; right: 26px; z-index: 40; cursor: pointer;
+    font-family: "Malgun Gothic", sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 1px;
+    color: var(--gold-soft); padding: 9px 16px; border-radius: 999px; border: 1px solid var(--gold);
+    background: linear-gradient(180deg, rgba(74,41,23,.95), rgba(46,26,14,.95));
+    box-shadow: 0 4px 14px rgba(0,0,0,.5), inset 0 0 0 1px rgba(243,223,164,.15);
+    transition: transform .1s, filter .15s; }
+  #relBtn:hover { filter: brightness(1.15); border-color: var(--gold-soft); }
+  #relBtn:active { transform: scale(.96); }
+  #relModal { position: fixed; inset: 0; z-index: 50; display: none;
+    align-items: center; justify-content: center; background: rgba(8,4,2,.82); backdrop-filter: blur(3px); }
+  #relModal.open { display: flex; }
+  .rel-card { width: 820px; max-width: 94vw; max-height: 92vh; overflow-y: auto;
+    background: radial-gradient(120% 80% at 50% 0%, #3a2113 0%, var(--bg1) 55%, var(--bg0) 100%);
+    border: 1px solid var(--gold); border-radius: 16px; padding: 22px 26px 26px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.7), inset 0 0 0 1px rgba(243,223,164,.12); position: relative; }
+  .rel-x { position: absolute; top: 14px; right: 16px; width: 32px; height: 32px; border-radius: 50%;
+    border: 1px solid var(--line); background: rgba(21,10,5,.6); color: var(--gold-soft); font-size: 17px;
+    cursor: pointer; line-height: 30px; text-align: center; }
+  .rel-x:hover { border-color: var(--gold); }
+  .rel-h { font-family: "Batang", serif; font-size: 18px; letter-spacing: 3px; color: var(--gold-soft);
+    text-align: center; margin-bottom: 3px; }
+  .rel-sub { text-align: center; font-size: 11px; color: var(--muted); margin-bottom: 16px; letter-spacing: 1px; }
+  /* 캐릭터 선택 칩 행 */
+  .rel-pick { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+    padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid rgba(216,164,74,.22); }
+  .chip { display: flex; flex-direction: column; align-items: center; gap: 4px; cursor: pointer;
+    width: 66px; padding: 6px 2px; border-radius: 10px; border: 1px solid transparent; transition: .12s; }
+  .chip:hover { background: rgba(216,164,74,.1); }
+  .chip.sel { border-color: var(--gold); background: rgba(216,164,74,.16); }
+  .chip .ci { width: 46px; height: 46px; border-radius: 50%; overflow: hidden; position: relative;
+    border: 2px solid var(--gold); background: radial-gradient(circle at 50% 30%, #4a2917, #1c0e06); }
+  .chip .ci img { position: absolute; left: 50%; top: -3px; transform: translateX(-50%); height: 235%; }
+  .chip.villain .ci { border-color: #8a5a52; }
+  .chip.mc .ci { border-color: var(--rose); display: flex; align-items: center; justify-content: center; }
+  .chip.mc .ci .star { font-size: 24px; color: var(--rose); }
+  .chip .cn { font-size: 10.5px; color: var(--gold-soft); font-weight: 700; }
+  /* 선택 인물 헤더 */
+  .rel-sel-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  .rel-sel-head .rh-pic { flex: 0 0 auto; width: 66px; height: 66px; border-radius: 50%; overflow: hidden;
+    position: relative; border: 2px solid var(--rose); background: radial-gradient(circle at 50% 30%, #4a2917, #1c0e06);
+    display: flex; align-items: center; justify-content: center; }
+  .rel-sel-head .rh-pic img { position: absolute; left: 50%; top: -4px; transform: translateX(-50%); height: 235%; }
+  .rel-sel-head .rh-pic .star { font-size: 34px; color: var(--rose); }
+  .rel-sel-head .rh-nm { font-family: "Batang", serif; font-size: 18px; color: var(--gold-soft); }
+  .rel-sel-head .rh-rl { font-size: 11px; color: var(--muted); margin-top: 3px; }
+  .rel-sel-head .rh-arc { font-size: 11px; margin-top: 4px; }
+  .rel-sel-head .rh-arc .win { color: var(--winter); } .rel-sel-head .rh-arc .spr { color: var(--spring); font-weight: 700; }
+  .rel-sel-head .rh-arc .arr { color: var(--gold); margin: 0 4px; }
+  /* 관계 카드 그리드 */
+  .rel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; }
+  .rrow { display: flex; gap: 10px; align-items: flex-start; padding: 9px 11px; border-radius: 10px;
+    background: rgba(21,10,5,.5); border: 1px solid rgba(216,164,74,.2); }
+  .rrow .rp { flex: 0 0 auto; width: 38px; height: 38px; border-radius: 50%; overflow: hidden; position: relative;
+    border: 1.5px solid var(--gold); background: radial-gradient(circle at 50% 30%, #4a2917, #1c0e06);
+    display: flex; align-items: center; justify-content: center; }
+  .rrow .rp img { position: absolute; left: 50%; top: -3px; transform: translateX(-50%); height: 235%; }
+  .rrow .rp .star { font-size: 20px; color: var(--rose); }
+  .rrow.villain .rp { border-color: #8a5a52; }
+  .rrow.mc .rp { border-color: var(--rose); }
+  .rrow .rb { flex: 1; min-width: 0; }
+  .rrow .rn { font-size: 12px; font-weight: 700; color: var(--gold-soft); }
+  .rrow .rlbl { display: inline-block; margin: 3px 0 4px; font-size: 9.5px; padding: 1px 8px; border-radius: 999px;
+    border: 1px solid var(--line); color: var(--gold-soft); }
+  .rrow .rd { font-size: 10.5px; line-height: 1.5; color: var(--text); }
+  /* 관계 유형 색 */
+  .t-intervene .rlbl, .t-intervene .rn { color: var(--rose); } .t-intervene .rlbl { border-color: rgba(240,179,203,.5); }
+  .t-antagonist .rlbl, .t-bad .rlbl { color: #f0b0a0; border-color: rgba(217,106,90,.5); }
+  .t-ally .rlbl, .t-family .rlbl { color: #cfe8d8; border-color: rgba(143,201,160,.45); }
+  .t-tension .rlbl { color: #cfe0f5; border-color: rgba(157,184,232,.5); }
+  .t-faint { opacity: .6; } .t-faint .rlbl { color: var(--muted); border-color: rgba(201,172,133,.3); }
+  @media print { #relBtn, #relModal { display: none !important; } }
 </style>
 </head>
 <body>
@@ -327,6 +400,127 @@
   </div>
   <div class="foot">ESTELLE — 스러진 봄의 약속 · STORY BIBLE 2026-07-08 · 구원 서사 관계도 정본</div>
 </div>
+
+<!-- ═══ 인물 관계 탐색 (인터랙티브) ═══ -->
+<button id="relBtn">🔍 인물 관계 탐색</button>
+<div id="relModal">
+  <div class="rel-card">
+    <button class="rel-x" id="relX">✕</button>
+    <div class="rel-h">인물 관계 탐색</div>
+    <div class="rel-sub">인물을 선택하면 나머지 전원과의 관계가 표시됩니다</div>
+    <div class="rel-pick" id="relPick"></div>
+    <div class="rel-sel-head" id="relHead"></div>
+    <div class="rel-grid" id="relGrid"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var IMG = "http://localhost:5180/char/";
+  // 인물 (관계도 노드 순서) — arc: 겨울(1회차 결말) → 봄(구원)
+  var CHARS = [
+    { id: "mc",         name: "당신",   role: "회귀자 · 이름 없는 은인", cls: "mc" },
+    { id: "estelle",    name: "에스텔", role: "하이델 공작영애 · 표적",   arc: ["탑 유폐", "되찾은 봄"] },
+    { id: "rozelin",    name: "로젤린", role: "발루아 후작영애 · 처형인 배역", arc: ["배웅 없는 추방", "제 대본"] },
+    { id: "eden",       name: "이든",   role: "근위대 부단장 · 집행의 검", arc: ["꺾인 검", "스스로 고른 검"] },
+    { id: "valen",      name: "발렌",   role: "제1황태자 · 흔들리는 왕관", arc: ["독배·꼭두각시", "웃는 왕관"] },
+    { id: "isolde",     name: "이졸데", role: "후작영애 · 사절석의 백합",  arc: ["파혼·유폐", "실패할 자유"] },
+    { id: "adele",      name: "클로에", role: "하이델의 서녀 · 그늘의 아이", arc: ["지워진 이름", "불리는 이름"] },
+    { id: "rayner",     name: "레이너", role: "기사단장 · 지휘의 검",     arc: ["반역자 오명", "두 맹세의 화해"] },
+    { id: "michael",    name: "미카엘", role: "신성왕국 성기사 · 봉랍의 증인", arc: ["파문·유랑", "국경 넘는 빛"] },
+    { id: "chancellor", name: "재상 카닐", role: "섭정 실권자 · 겨울의 근원", cls: "villain" },
+  ];
+  // 관계 데이터 — 무순 쌍 키(정렬). type: intervene/antagonist/bad/ally/family/tension/faint
+  var R = {};
+  function set(a, b, type, label, desc) { R[[a, b].sort().join("|")] = { type: type, label: label, desc: desc }; }
+  // 당신(mc) — 개입 · 구원
+  set("mc","estelle","intervene","은인·공범·친구","1회차 탑의 마지막 면회에서 별 펜던트를 받은 단 한 사람. 되찾은 봄을 함께 쓴 공범.");
+  set("mc","rozelin","intervene","유일한 공범","가시 뒤의 진심을 아는 단 한 사람. 배웅 없는 마차를 없던 일로 만든다.");
+  set("mc","eden","intervene","전우·벗","검이 지킬 것을 스스로 고르라 일러준 사람. \"친구의 직언은 명령보다 무겁습니다.\"");
+  set("mc","valen","intervene","왕관 없이 대하는 벗","발렌을 황태자가 아니라 사람으로 본 유일한 상대. 그가 웃으며 왕관을 쓰도록 새장을 연다.");
+  set("mc","isolde","intervene","예법 없이 앉는 친구","완벽하지 않아도 된다고 말해준 사람. 실패할 자유를 돌려준다.");
+  set("mc","adele","intervene","첫 친구","이름을 처음 불러준 사람. 있어도 없던 아이를 '있는 사람'으로 되돌린다.");
+  set("mc","rayner","intervene","침묵을 나누는 벗","말 없이도 통하는 유일한 상대. 두 맹세가 한 방향을 가리키도록 곁을 지킨다.");
+  set("mc","michael","intervene","국경 밖의 벗","이국의 증인이 이 땅에서 얻은 단 하나의 '기록할 가치가 있는 사람'.");
+  set("mc","chancellor","antagonist","정면의 적","여덟 겨울을 부른 손과, 그 겨울을 봄으로 되돌리는 손. 왕관의 밤에 정면으로 부딪친다.");
+  // 카닐(chancellor) — 겨울의 근원
+  set("chancellor","estelle","bad","누명의 덫","발렌 폐위의 포석. 세 번의 누명으로 하이델을 꺾으려 한다.");
+  set("chancellor","rozelin","bad","배역 강요·차용증","아버지의 빚을 쥐고 '가시 돋친 배역'을 연기시킨다.");
+  set("chancellor","valen","bad","폐위 음모","제1황태자를 끌어내리고 방계를 옹립하려는 모든 음모의 정점.");
+  set("chancellor","rayner","bad","위조 반역","북부 내통을 조작해 기사단장을 반역자로 몰아 고립시킨다.");
+  set("chancellor","eden","bad","부당 명령","봉쇄·연행의 명령서를 내려 원칙의 검을 집행의 도구로 쓴다.");
+  set("chancellor","isolde","bad","접반 지명","사절 접반으로 지명해 증언을 봉쇄하는 장치로 삼는다.");
+  set("chancellor","adele","bad","서녀 인질","하이델의 서녀를 저울에 올려 로젤린의 목줄로 쓴다.");
+  set("chancellor","michael","bad","매수 시도","매수 불가한 증인. 사지 못하자 증언 자격을 박탈하려 한다.");
+  // 루트 교차
+  set("estelle","adele","family","이복자매 (그늘과 볕)","볕의 공작영애와 그늘의 서녀. 이름과 가족의 인정 — 자매 화해.");
+  set("estelle","valen","ally","방패와 칼끝","하이델은 발렌의 마지막 방패. 정치적 연대이자, 에스텔 누명이 폐위 포석인 이유.");
+  set("estelle","rozelin","tension","가시 돋친 인사","왕관의 밤 첫 대면은 가시였으나, 몰락한 저택에서 사죄가 아닌 이해가 오간다.");
+  set("rozelin","adele","ally","민낯 친구","가시 돋친 배역의 유일한 민낯을 아는 벗. 로젤린 루트의 도덕적 저울.");
+  set("rozelin","isolde","tension","장미 vs 백합","사교계가 나란히 세운 두 꽃. 저울을 원한 적 없으나 라이벌로 불린다.");
+  set("eden","rayner","ally","단장 ↔ 부단장","원칙 vs 침묵. 봉쇄를 집행하는 검과 명령을 내리는 검. 왕관의 밤 \"확보하겠습니다\".");
+  set("rayner","isolde","tension","북부 정략 혼담설","두 '완벽한 감옥'을 비추는 거울. 당사자 의사가 빠진 정략의 소문.");
+  set("rayner","valen","tension","황실의 견제","북부를 견제하려 기사단장을 중앙에 묶은 인질성 임명. 그 밤 레이너는 발렌을 택한다.");
+  set("isolde","michael","ally","사절석 동석","왕관의 밤 접반석. 백합의 예법과 성기사의 기록이 만나는 자리.");
+  set("eden","valen","ally","검의 승인","\"재상, 짐의 검을 시험하는가\" — 이든이 옳음으로 든 검을 발렌이 재가한다.");
+  set("adele","michael","ally","지워질 이름 ↔ 기록","이름이 지워질 뻔한 서녀와, 그 이름을 정식으로 기록할 수 있는 성기사.");
+
+  var TYPE_ORDER = { intervene: 0, antagonist: 1, bad: 2, family: 3, ally: 4, tension: 5, faint: 6 };
+  function picUrl(c) { return c.id === "mc" ? null : IMG + c.id + "/bust_soft.png"; }
+  function picHtml(c, cls) {
+    if (c.id === "mc") return '<div class="' + cls + '"><div class="star">✦</div></div>';
+    return '<div class="' + cls + '"><img src="' + picUrl(c) + '"></div>';
+  }
+  function relOf(a, b) {
+    return R[[a, b].sort().join("|")] ||
+      { type: "faint", label: "옅은 접점", desc: "직접적 접점은 옅다 — 왕관의 밤, 같은 밤의 다른 자리에서 스친다." };
+  }
+
+  var pick = document.getElementById("relPick");
+  var head = document.getElementById("relHead");
+  var grid = document.getElementById("relGrid");
+  var selected = "mc";
+
+  // 선택 칩 렌더
+  CHARS.forEach(function (c) {
+    var el = document.createElement("div");
+    el.className = "chip " + (c.cls || "");
+    el.dataset.id = c.id;
+    el.innerHTML = picHtml(c, "ci") + '<div class="cn">' + c.name + "</div>";
+    el.addEventListener("click", function () { selected = c.id; render(); });
+    pick.appendChild(el);
+  });
+
+  function render() {
+    // 칩 선택 표시
+    [].forEach.call(pick.children, function (ch) { ch.classList.toggle("sel", ch.dataset.id === selected); });
+    var S = CHARS.filter(function (c) { return c.id === selected; })[0];
+    // 헤더
+    var arcHtml = S.arc ? '<div class="rh-arc"><span class="win">' + S.arc[0] + '</span><span class="arr">→</span><span class="spr">' + S.arc[1] + "</span></div>" : "";
+    head.className = "rel-sel-head " + (S.cls === "villain" ? "villain" : "");
+    head.innerHTML = picHtml(S, "rh-pic") +
+      '<div><div class="rh-nm">' + S.name + '</div><div class="rh-rl">' + S.role + "</div>" + arcHtml + "</div>";
+    // 관계 카드 (유형 우선순위 정렬)
+    var others = CHARS.filter(function (c) { return c.id !== selected; })
+      .map(function (c) { return { c: c, r: relOf(selected, c.id) }; })
+      .sort(function (a, b) { return TYPE_ORDER[a.r.type] - TYPE_ORDER[b.r.type]; });
+    grid.innerHTML = others.map(function (o) {
+      var cls = o.c.id === "mc" ? "mc" : (o.c.cls === "villain" ? "villain" : "");
+      return '<div class="rrow t-' + o.r.type + " " + cls + '">' +
+        picHtml(o.c, "rp") +
+        '<div class="rb"><div class="rn">' + o.c.name + '</div>' +
+        '<span class="rlbl">' + o.r.label + '</span>' +
+        '<div class="rd">' + o.r.desc + "</div></div></div>";
+    }).join("");
+  }
+
+  var modal = document.getElementById("relModal");
+  document.getElementById("relBtn").addEventListener("click", function () { modal.classList.add("open"); render(); });
+  document.getElementById("relX").addEventListener("click", function () { modal.classList.remove("open"); });
+  modal.addEventListener("click", function (e) { if (e.target === modal) modal.classList.remove("open"); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") modal.classList.remove("open"); });
+})();
+</script>
 
 </body>
 </html>
