@@ -300,7 +300,7 @@ function template(): string {
   </div>
 
   <div class="modal hidden" id="illustView">
-    <img id="illustViewImg" alt="" />
+    <div class="illust-figure" id="illustFig"><img id="illustViewImg" alt="" /></div>
     <div class="illust-cap" id="illustViewCap"></div>
     <div class="illust-modes hidden" id="illustViewModes">
       <button data-mode="bust" class="on">👤 반신</button>
@@ -342,9 +342,9 @@ function setIllustMode(mode: IllustMode) {
   if (!illustViewState) return;
   const { id, e } = illustViewState;
   const img = $("#illustViewImg") as HTMLImageElement;
-  // 흉상은 전신 이미지를 상단(머리~가슴) 크롭으로 표시 — 별도 에셋 불필요
+  // 흉상은 전신 이미지를 확대해 머리~가슴만 세로 프레임에 담아 표시 — 별도 에셋 불필요
   img.src = mode === "bust" ? vnFile(id, e) : portraitFile(id, e);
-  img.classList.toggle("chest-crop", mode === "chest");
+  $("#illustFig").classList.toggle("chest", mode === "chest");
   $("#illustViewModes").querySelectorAll("button").forEach((b) =>
     b.classList.toggle("on", (b as HTMLElement).dataset.mode === mode));
 }
@@ -846,7 +846,7 @@ function renderIllust(id: CharacterId) {
     el.addEventListener("click", () => {
       const g = CGS.find((x) => x.id === (el as HTMLElement).dataset.cg)!;
       ($("#illustViewImg") as HTMLImageElement).src = cgFile(g);
-      ($("#illustViewImg") as HTMLImageElement).classList.remove("chest-crop");
+      $("#illustFig").classList.remove("chest");
       $("#illustViewCap").textContent = `${CHARACTERS[g.char].name} — ${g.title}`;
       illustViewState = null;
       $("#illustViewModes").classList.add("hidden");
@@ -857,7 +857,7 @@ function renderIllust(id: CharacterId) {
     el.addEventListener("click", () => {
       const g = SPECIAL_ILLUSTS.find((x) => x.id === (el as HTMLElement).dataset.special)!;
       ($("#illustViewImg") as HTMLImageElement).src = specialIllustFile(g);
-      ($("#illustViewImg") as HTMLImageElement).classList.remove("chest-crop");
+      $("#illustFig").classList.remove("chest");
       $("#illustViewCap").textContent = `${CHARACTERS[g.char].name} — ${g.title}`;
       illustViewState = null;
       $("#illustViewModes").classList.add("hidden");

@@ -347,11 +347,16 @@ body {
 .illust-modes button.on { color: var(--gold-soft);
   background: linear-gradient(180deg, rgba(96,54,28,.98), rgba(64,34,17,.98)); }
 .illust-modes.hidden { display: none; }
-/* 흉상 모드 — 전신 이미지를 상단(머리~가슴) 크롭으로 표시 */
-#illustView img.chest-crop { width: min(76vw, 330px); height: min(54vw, 212px);
-  max-height: min(54vw, 212px); object-fit: cover; object-position: top center;
-  border-radius: 16px; border: 1px solid var(--line);
-  box-shadow: inset 0 0 0 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.5); }
+/* 일러 figure 래퍼 — 반신/전신은 레이아웃에서 투명(img가 직접 flex item) */
+.illust-figure { display: contents; }
+/* 흉상 모드 — 전신 이미지를 확대해 머리~가슴만 세로 프레임 카드에 담음 */
+.illust-figure.chest { display: block; width: min(84vw, 340px); aspect-ratio: 3 / 4;
+  overflow: hidden; border-radius: 18px; border: 1px solid var(--gold);
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,.45), inset 0 0 0 3px rgba(243,223,164,.1),
+    0 10px 30px rgba(0,0,0,.55); }
+#illustView .illust-figure.chest img { width: 178%; height: auto; margin-left: -39%;
+  max-width: none; max-height: none; display: block; border-radius: 0;
+  filter: none; box-shadow: none; }
 .modal.hidden, .toast.hidden, .character.hidden { display: none; }
 .sheet {
   width: 100%; max-width: 460px; position: relative;
