@@ -6,6 +6,14 @@
   (bc365e1, fa23256). 하네스 스캐폴딩(.claude/, shared/ 등)은 .gitignore 처리.
 
 ## 작업 상태
+- [x] 잠금 루트 6캐릭터 스토리 집필 (2026-07-08, 멀티에이전트 워크플로우): story/ 폴더에 마크다운 전용
+      (게임 미접목 — 사용자 지침). 파이프라인=러프 아웃라인 6종 병렬 → 정합성 통합 1 → 풀 스크립트 6종 병렬
+      (13에이전트, Opus 4.8, 183만 토큰). 산출: outline-{id}.md 6 + SHARED-TIMELINE.md + route-{id}.md 6.
+      각 루트 8화(클로에 9섹션), route는 화당 45~70줄 정본급(콜드오픈=1회차 결말→회귀→비트→수렴선택지→엔드훅,
+      감정지정·dialogue.ts 보이스·CG앵커 연동). ⚠️ SHARED-TIMELINE이 정합성 SSOT — 왕관의 밤 동선표(시간대×8캐릭터),
+      회귀=전루트 D-300 고정(레이너/미카엘 구 표기 수정), "저 둘을 확보하라"=약혼자·집사 확정, 교차매핑 13축.
+      §4에 기존 카논 수정안 채택4(A1~4)/선택5(B1~5)/기각2 정리 — 루트 open 시 season1.ts/rozelin_route.ts/STORY-BIBLE에 적용
+      (지금은 코드 무수정). 금지어(악녀/연인/고백) 스캔 0위반. PRD-story-6routes.md/TASKS-story-6routes.json
 - [x] 잠금 루트 6캐릭터 보이스 집필 (2026-07-07): dialogue.ts VOICES에 eden(경어체 보고 말투)·
       valen(여유+칼날, '짐')·isolde(완결 문장만)·adele/클로에(반말 소녀, 직언)·rayner(최소 단문)·
       michael(이국적 격식, 기록/맹세/빛) 추가 — STORY-BIBLE §3 목소리 가이드 준수.

@@ -1,0 +1,11 @@
+{
+  "project": "EstelleVN",
+  "prd": "PRD-story-6routes.md",
+  "tasks": [
+    { "id": 1, "title": "러프 아웃라인 6종 병렬 집필 (story/outline-*.md)", "status": "completed" },
+    { "id": 2, "title": "정합성 통합 — SHARED-TIMELINE.md + 아웃라인 충돌 해소 + 카논 수정안", "status": "completed" },
+    { "id": 3, "title": "세부 스크립트 6종 병렬 집필 (story/route-*.md)", "status": "completed" },
+    { "id": 4, "title": "최종 리뷰 (대원칙 위반 스캔) + 커밋", "status": "completed" }
+  ],
+  "note": "13에이전트 워크플로우 완료(Opus 4.8). 금지어 스캔 0위반. 각 루트 8화(클로에 9섹션). 게임 미접목(마크다운 전용). 카논 수정안은 SHARED-TIMELINE §4에 채택/기각 정리 — 루트 open 시 적용."
+}
