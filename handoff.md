@@ -6,6 +6,16 @@
   (bc365e1, fa23256). 하네스 스캐폴딩(.claude/, shared/ 등)은 .gitignore 처리.
 
 ## 작업 상태
+- [x] 잠금 루트 6종 게임 접목 (2026-07-08): story/route-*.md → src/data/{eden,valen,isolde,adele,
+      rayner,michael}_route.ts 데이터화(6에이전트 병렬, rozelin_route.ts 템플릿 1:1, 각 8화+DAILY 5,
+      2243줄) → routes.ts import+available:true 6종 → cgs.ts 6루트 CG 45종 unlockEp 매핑.
+      ⚠️CG id 충돌 2건 교정: eden=cg_ed*(estelle cg_e* 회피, 에이전트 자체판단), rayner=cg_ry*(rozelin
+      cg_r* 회피, 메인세션 sed 교정). 상태/소비 코드(state.ts/ui.ts ROUTES 참조)는 원래 루트-제네릭이라
+      무수정. **CG 이미지 미제작(D1=그레이스풀 폴백)**: displayCg/갤러리에 onerror→cg-missing 클래스 +
+      style.css 플레이스홀더(❖+제목, 포트레이트 위 반투명 오버레이). STORY-BIBLE 카논 A1~4 적용(이든 1회차
+      결말 특정/§2 발렌 대관·독배 축/§3 미카엘 견본 SSOT·클로에 카메오). npm run build 통과, playwright QA
+      =8카드 렌더+eden/michael/adele 진입·1화·CG폴백 정상·콘솔에러 0. ⚠️잔여: CG 이미지 ~45장 별도
+      스프린트, 선택 카논 B1~5(본편 season1.ts/rozelin 터치) 미적용. PRD/TASKS-story-integration
 - [x] 잠금 루트 6캐릭터 스토리 집필 (2026-07-08, 멀티에이전트 워크플로우): story/ 폴더에 마크다운 전용
       (게임 미접목 — 사용자 지침). 파이프라인=러프 아웃라인 6종 병렬 → 정합성 통합 1 → 풀 스크립트 6종 병렬
       (13에이전트, Opus 4.8, 183만 토큰). 산출: outline-{id}.md 6 + SHARED-TIMELINE.md + route-{id}.md 6.

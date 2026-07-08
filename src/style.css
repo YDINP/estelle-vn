@@ -462,6 +462,21 @@ body {
 .vn-cg img { width: 100%; height: 100%; object-fit: contain;
   animation: cg-in .5s ease; }
 @keyframes cg-in { from { opacity: 0; transform: scale(1.03); } to { opacity: 1; transform: none; } }
+/* 그레이스풀 폴백 — CG 이미지 미제작 루트: 깨진 아이콘 대신 장식 배경 + 제목(::after). */
+.vn-cg.cg-missing { background:
+    radial-gradient(120% 90% at 50% 30%, rgba(120,74,32,.55), rgba(20,10,4,.96)); }
+.vn-cg.cg-missing img { display: none; }
+.vn-cg.cg-missing::before { content: "❖"; position: absolute; top: 34%; left: 0; right: 0;
+  text-align: center; font-size: 40px; color: var(--gold); opacity: .5; }
+.vn-cg.cg-missing::after { content: "— " attr(data-cg-title) " —"; position: absolute;
+  top: calc(34% + 58px); left: 0; right: 0; text-align: center;
+  color: var(--gold-soft); font-size: 15px; letter-spacing: .04em; opacity: .8; }
+/* 갤러리 썸네일 폴백 */
+.icell.cg.cg-missing { position: relative; }
+.icell.cg.cg-missing img { display: none; }
+.icell.cg.cg-missing::before { content: "❖"; position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; color: var(--gold); opacity: .4; }
 /* 전신 일러 크게(패널 뒤까지) — 좌우/하단 그리드 절단면은 어둠으로 페이드.
    margin-top으로 y를 내려 배치(하단이 UI에 가려지는 건 허용, 잘리는 끝단은 페이드 구간) */
 .vn-portrait { height: 100%; width: auto; max-width: none; object-fit: contain;

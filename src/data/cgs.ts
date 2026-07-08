@@ -36,13 +36,60 @@ export const CGS: Cg[] = [
   { id: "cg_r5", char: "rozelin", title: "부치지 못한 편지", file: "letters",  unlockEp: "rep9" },
   { id: "cg_r7", char: "rozelin", title: "폐허의 장미",    file: "ruins_rose", unlockEp: "rep10" },
 
-  // ── 발렌: 루트 준비 중 — 전부 잠금 티저(???). 루트 공개 시 unlockEp 매핑 ──
-  { id: "cg_v1", char: "valen", title: "붉은 옥좌",       file: "throne_night" },
-  { id: "cg_v2", char: "valen", title: "가면 뒤의 미소",  file: "masquerade" },
-  { id: "cg_v3", char: "valen", title: "장미의 서신",     file: "rose_letter" },
-  { id: "cg_v4", char: "valen", title: "노을의 축배",     file: "dusk_toast" },
-  { id: "cg_v5", char: "valen", title: "창가의 밀서",     file: "window_letter" },
-  { id: "cg_v6", char: "valen", title: "달밤의 연회",     file: "moon_feast" },
+  // ── 이든: eden_route.ts 8화 (⚠️ id는 cg_ed* — estelle cg_e* 충돌 회피) ──
+  { id: "cg_ed1", char: "eden", title: "빗속의 꺾인 검",       file: "broken_sword_rain",    unlockEp: "eep1" },
+  { id: "cg_ed2", char: "eden", title: "새벽 훈련장의 이든",   file: "dawn_training_ground", unlockEp: "eep1" },
+  { id: "cg_ed3", char: "eden", title: "훈련장의 목검",        file: "cracked_wooden_sword", unlockEp: "eep2" },
+  { id: "cg_ed4", char: "eden", title: "노을의 성벽",          file: "sunset_rampart",       unlockEp: "eep3" },
+  { id: "cg_ed5", char: "eden", title: "책상 위의 봉인 명령서", file: "sealed_order_on_desk", unlockEp: "eep4" },
+  { id: "cg_ed6", char: "eden", title: "봉쇄로 향하는 횃불 행렬", file: "torch_procession",   unlockEp: "eep5" },
+  { id: "cg_ed7", char: "eden", title: "왕관의 밤 경비",       file: "crown_night_guard",    unlockEp: "eep7" },
+  { id: "cg_ed8", char: "eden", title: "스스로 고른 검",       file: "chosen_sword",         unlockEp: "eep8" },
+
+  // ── 발렌: valen_route.ts 8화 (구 스텁 6종 → 스토리 매칭 8종으로 교체) ──
+  { id: "cg_v1", char: "valen", title: "독이 든 축배",   file: "poisoned_chalice",   unlockEp: "vep1" },
+  { id: "cg_v2", char: "valen", title: "궁정의 체스판",  file: "moonlit_chessboard", unlockEp: "vep2" },
+  { id: "cg_v3", char: "valen", title: "옥좌의 그림자",  file: "throne_shadow",      unlockEp: "vep3" },
+  { id: "cg_v4", char: "valen", title: "세 번 바뀐 잔",  file: "thrice_changed_cup", unlockEp: "vep4" },
+  { id: "cg_v5", char: "valen", title: "좁아진 새장",    file: "narrowing_cage",     unlockEp: "vep5" },
+  { id: "cg_v6", char: "valen", title: "왕관의 밤",      file: "crown_night",        unlockEp: "vep6" },
+  { id: "cg_v7", char: "valen", title: "웃으며 쓰는 왕관", file: "smiling_coronation", unlockEp: "vep7" },
+  { id: "cg_v8", char: "valen", title: "새장의 열린 문",  file: "open_cage_door",     unlockEp: "vep8" },
+
+  // ── 이졸데: isolde_route.ts ──
+  { id: "cg_i1", char: "isolde", title: "얼음의 살롱",     file: "frozen_salon",   unlockEp: "iep1" },
+  { id: "cg_i2", char: "isolde", title: "얼음과 서리",     file: "ice_and_frost",  unlockEp: "iep3" },
+  { id: "cg_i3", char: "isolde", title: "비뚤어진 한 땀",  file: "crooked_stitch", unlockEp: "iep4" },
+  { id: "cg_i4", char: "isolde", title: "사절석의 백합",   file: "envoy_lily",     unlockEp: "iep6" },
+  { id: "cg_i5", char: "isolde", title: "흐트러진 백합",   file: "undone_lily",    unlockEp: "iep8" },
+
+  // ── 클로에(adele): adele_route.ts ──
+  { id: "cg_a1", char: "adele", title: "지워진 이름",   file: "erased_name",         unlockEp: "ad1" },
+  { id: "cg_a2", char: "adele", title: "별채의 들꽃",   file: "cottage_wildflowers", unlockEp: "ad2" },
+  { id: "cg_a3", char: "adele", title: "저울 위의 등불", file: "lantern_on_scale",   unlockEp: "ad4" },
+  { id: "cg_a4", char: "adele", title: "그늘과 볕",     file: "shade_and_sunlight",  unlockEp: "ad6" },
+  { id: "cg_a5", char: "adele", title: "불리는 이름",   file: "spoken_name",         unlockEp: "ad8" },
+
+  // ── 레이너: rayner_route.ts (⚠️ id는 cg_ry* — rozelin cg_r* 충돌 회피) ──
+  { id: "cg_ry1", char: "rayner", title: "얼어붙은 맹세",       file: "frozen_oath",          unlockEp: "ryep1" },
+  { id: "cg_ry2", char: "rayner", title: "연무장의 새벽",       file: "training_ground_dawn", unlockEp: "ryep1" },
+  { id: "cg_ry3", char: "rayner", title: "연무장의 서리",       file: "frosted_drill_yard",   unlockEp: "ryep2" },
+  { id: "cg_ry4", char: "rayner", title: "두 개의 문장",        file: "two_crests",           unlockEp: "ryep3" },
+  { id: "cg_ry5", char: "rayner", title: "압류된 서신",         file: "seized_letter",        unlockEp: "ryep4" },
+  { id: "cg_ry6", char: "rayner", title: "닫히는 문",           file: "closing_door",         unlockEp: "ryep5" },
+  { id: "cg_ry7", char: "rayner", title: "왕관의 밤, 은빛 경비", file: "silver_guard",         unlockEp: "ryep6" },
+  { id: "cg_ry8", char: "rayner", title: "증거를 따르는 검",     file: "sword_of_evidence",    unlockEp: "ryep7" },
+  { id: "cg_ry9", char: "rayner", title: "북으로 난 길",        file: "road_north",           unlockEp: "ryep8" },
+
+  // ── 미카엘: michael_route.ts ──
+  { id: "cg_m1", char: "michael", title: "빛을 잃은 새벽",     file: "dawn_without_light",     unlockEp: "mep1" },
+  { id: "cg_m2", char: "michael", title: "사절관의 촛불",      file: "envoy_candlelight",      unlockEp: "mep2" },
+  { id: "cg_m3", char: "michael", title: "예배당의 맹세",      file: "chapel_oath",            unlockEp: "mep3" },
+  { id: "cg_m4", char: "michael", title: "뜯긴 봉랍",          file: "broken_seal",            unlockEp: "mep4" },
+  { id: "cg_m5", char: "michael", title: "촛불의 무게",        file: "weight_of_candle",       unlockEp: "mep5" },
+  { id: "cg_m6", char: "michael", title: "왕관의 밤, 사절석",   file: "crown_night_envoy_seat", unlockEp: "mep6" },
+  { id: "cg_m7", char: "michael", title: "국경을 넘는 봉랍",    file: "seal_across_border",     unlockEp: "mep7" },
+  { id: "cg_m8", char: "michael", title: "국경을 넘는 빛",      file: "light_across_border",    unlockEp: "mep8" },
 ];
 
 export function cgFile(cg: Cg): string {

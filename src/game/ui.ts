@@ -802,13 +802,15 @@ function renderIllust(id: CharacterId) {
   const cgOwned = cgs.filter((g) => cgUnlocked(g, cleared, state.cgSeen)).length;
   const cgCells = cgs.map((g) => {
     const owned = cgUnlocked(g, cleared, state.cgSeen);
+    // 그레이스풀 폴백: CG 이미지 미존재 시 onerror로 셀에 cg-missing 클래스 → 플레이스홀더 표시.
+    const fb = `onerror="this.closest('.icell').classList.add('cg-missing');this.removeAttribute('src')"`;
     if (owned) {
       return `<div class="icell cg" data-cg="${g.id}">
-        <img src="${cgFile(g)}" alt="" />
+        <img src="${cgFile(g)}" alt="" ${fb} />
         <div class="ilabel">${g.title}</div></div>`;
     }
     return `<div class="icell cg locked">
-      <img src="${cgFile(g)}" alt="" />
+      <img src="${cgFile(g)}" alt="" ${fb} />
       <div class="ilabel">🔒 ???</div></div>`;
   }).join("");
   const specials = SPECIAL_ILLUSTS.filter((g) => g.char === id);
@@ -980,8 +982,14 @@ function displayCg(id: string, hold = false) {
   if (!cg) { showNext(); return; }
   vnCgHold = hold;
   sfxCg();
-  ($("#vnCgImg") as HTMLImageElement).src = cgFile(cg);
-  $("#vnCg").classList.remove("hidden");
+  const cgImg = $("#vnCgImg") as HTMLImageElement;
+  // 그레이스풀 폴백: 이미지 미존재(신규 루트 CG 제작 전) 시 깨진 아이콘 대신 플레이스홀더 배경 + 제목만 표시.
+  const wrap = $("#vnCg");
+  wrap.classList.remove("cg-missing");
+  wrap.setAttribute("data-cg-title", cg.title);
+  cgImg.onerror = () => { wrap.classList.add("cg-missing"); cgImg.removeAttribute("src"); };
+  cgImg.src = cgFile(cg);
+  wrap.classList.remove("hidden");
   $("#vnName").textContent = "";
   $("#vnName").style.color = "";
   const t = $("#vnText");

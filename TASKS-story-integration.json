@@ -1,0 +1,13 @@
+{
+  "project": "EstelleVN",
+  "prd": "PRD-story-integration.md",
+  "decisions": { "D1": "graceful-fallback", "D2": "per-route-daily-new", "D3": "all-6-open", "D4": "STORY-BIBLE A1~4 only" },
+  "tasks": [
+    { "id": 0, "title": "Phase0 변환 계약 — 감정 검증·CG폴백 지점 확인", "status": "completed" },
+    { "id": 1, "title": "Phase1 마크다운→TS 변환 6병렬 (src/data/*_route.ts)", "status": "completed" },
+    { "id": 2, "title": "Phase2 배선 — routes.ts/cgs.ts + CG onerror 폴백(ui.ts/style.css)", "status": "completed" },
+    { "id": 3, "title": "Phase3 카논 — STORY-BIBLE A1~4 적용", "status": "completed" },
+    { "id": 4, "title": "Phase4 빌드+QA 스모크(루트별) + 커밋", "status": "completed" }
+  ],
+  "result": "6루트 개방 완료. 8카드 렌더/3루트 진입·CG폴백 QA 0에러. rayner CG id cg_r→cg_ry 충돌교정. CG 이미지 미제작(그레이스풀 폴백=포트레이트+제목). 잔여: CG 이미지 ~45장 별도 스프린트, B1~5 선택 카논은 미적용."
+}
