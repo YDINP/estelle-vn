@@ -15,14 +15,22 @@
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 .hidden { display: none !important; } /* 전역 숨김 (요소 무관) */
-html, body { margin: 0; height: 100%; }
+html, body {
+  margin: 0; height: 100%;
+  overflow: hidden;
+  /* 모바일 러버밴드/당겨서새로고침 등 페이지 스크롤 원천 차단 */
+  overscroll-behavior: none;
+}
 body {
   font-family: "Pretendard", "Apple SD Gothic Neo", system-ui, sans-serif;
   color: var(--text);
   background:
     radial-gradient(120% 80% at 50% -10%, #3a2113 0%, var(--bg1) 45%, var(--bg0) 100%);
-  overflow: hidden;
   user-select: none;
+  /* 뷰포트에 고정 → 주소창 dvh 편차로 인한 세로 밀림/스크롤 제거 */
+  position: fixed;
+  inset: 0;
+  width: 100%;
 }
 #app { height: 100dvh; display: flex; justify-content: center; }
 
