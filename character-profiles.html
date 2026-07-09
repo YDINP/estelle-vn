@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>에스텔 — 인물 설정집</title>
+<style>
+  :root{
+    --bg0:#150a05; --bg1:#26130a; --panel:rgba(74,41,23,.82);
+    --gold:#d8a44a; --gold-soft:#f3dfa4; --rose:#f0b3cb;
+    --text:#f6ead2; --muted:#c9ac85; --line:rgba(216,164,74,.38);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:"Pretendard","Apple SD Gothic Neo",system-ui,sans-serif;
+    color:var(--text); line-height:1.62;
+    background:
+      radial-gradient(120% 70% at 50% -8%, #3a2113 0%, var(--bg1) 46%, var(--bg0) 100%) fixed;
+    padding:0 0 80px;
+  }
+  .serif{font-family:"Nanum Myeongjo","Noto Serif KR",Georgia,serif}
+  a{color:var(--gold-soft)}
+  /* ── 헤더 ── */
+  header{
+    text-align:center; padding:56px 20px 34px; position:relative;
+    border-bottom:1px solid var(--line);
+    background:radial-gradient(90% 120% at 50% 0%, rgba(216,164,74,.10), transparent 60%);
+  }
+  header .kicker{letter-spacing:.5em; color:var(--gold); font-size:12px; margin-bottom:14px}
+  header h1{font-size:clamp(28px,6vw,46px); color:var(--gold-soft); font-weight:700;
+    text-shadow:0 2px 18px rgba(0,0,0,.5)}
+  header .sub{color:var(--muted); margin-top:14px; max-width:640px; margin-inline:auto; font-size:15px}
+  header .rule{width:120px; height:1px; margin:24px auto 0;
+    background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 20px}
+  /* ── 섹션 라벨 ── */
+  .section-title{
+    display:flex; align-items:center; gap:14px; margin:52px 0 22px;
+    color:var(--gold-soft); font-size:20px; font-weight:700;
+  }
+  .section-title::before,.section-title::after{content:""; height:1px; flex:1; background:var(--line)}
+  .section-title span{padding:0 4px; white-space:nowrap}
+  /* ── 카드 그리드 ── */
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:22px}
+  .card{
+    background:var(--panel); border:1px solid var(--line); border-radius:18px;
+    overflow:hidden; display:flex; flex-direction:column;
+    box-shadow:0 10px 34px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,224,160,.06);
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .card:hover{transform:translateY(-4px);
+    box-shadow:0 18px 46px rgba(0,0,0,.55); border-color:rgba(216,164,74,.6)}
+  .portrait{
+    position:relative; aspect-ratio:4/5; overflow:hidden;
+    background:radial-gradient(70% 60% at 50% 30%, #3c2415, #180d06);
+    border-bottom:1px solid var(--line);
+  }
+  .portrait img{width:100%; height:100%; object-fit:cover; object-position:50% 12%;
+    filter:drop-shadow(0 6px 14px rgba(0,0,0,.4))}
+  .portrait.silhouette img{filter:brightness(.25) grayscale(.7) contrast(1.2)}
+  .portrait .role-tag{
+    position:absolute; left:12px; top:12px; font-size:11px; letter-spacing:.08em;
+    background:rgba(20,10,5,.72); border:1px solid var(--line); color:var(--gold-soft);
+    padding:4px 10px; border-radius:999px; backdrop-filter:blur(3px);
+  }
+  .card-body{padding:18px 18px 20px; display:flex; flex-direction:column; gap:12px}
+  .name-row{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap}
+  .name{font-size:23px; font-weight:800}
+  .name-en{font-size:12px; color:var(--muted); letter-spacing:.12em}
+  .swatch{width:11px; height:11px; border-radius:50%; box-shadow:0 0 0 2px rgba(255,255,255,.12), 0 0 10px var(--c)}
+  .tagline{color:var(--gold-soft); font-size:13.5px; font-style:italic}
+  .meta{display:flex; flex-direction:column; gap:9px; font-size:13.5px}
+  .meta .row{display:flex; gap:9px}
+  .meta .k{color:var(--gold); flex:0 0 58px; font-weight:600}
+  .meta .v{color:var(--text); flex:1}
+  .meta .v.muted{color:var(--muted)}
+  .arc{display:grid; grid-template-columns:1fr auto 1fr; gap:8px; align-items:stretch;
+    margin-top:2px; font-size:12.5px}
+  .arc .box{background:rgba(20,10,5,.5); border:1px solid var(--line); border-radius:10px; padding:8px 10px}
+  .arc .box .lbl{font-size:10px; letter-spacing:.1em; margin-bottom:3px}
+  .arc .fall .lbl{color:#d98a8a}
+  .arc .save .lbl{color:#8fce9e}
+  .arc .arrow{align-self:center; color:var(--gold); font-size:16px}
+  .rels{display:flex; flex-wrap:wrap; gap:6px; margin-top:2px}
+  .chip{font-size:11.5px; padding:4px 9px; border-radius:999px;
+    border:1px solid var(--line); background:rgba(20,10,5,.4); color:var(--muted)}
+  .chip b{color:var(--gold-soft); font-weight:600}
+  .chip .o{color:#8fce9e} .chip .x{color:#d98a8a}
+  /* ── 관계망 표 ── */
+  .relnet{background:var(--panel); border:1px solid var(--line); border-radius:16px; overflow:hidden}
+  table{width:100%; border-collapse:collapse; font-size:13.5px}
+  th,td{padding:11px 14px; text-align:left; border-bottom:1px solid rgba(216,164,74,.16)}
+  th{background:rgba(20,10,5,.5); color:var(--gold); font-weight:700; font-size:12.5px; letter-spacing:.04em}
+  tr:last-child td{border-bottom:none}
+  td .pair{font-weight:700; color:var(--gold-soft)}
+  .rt{display:inline-block; width:20px; text-align:center; font-weight:800; border-radius:6px; margin-right:4px}
+  .rt.o{color:#8fce9e} .rt.x{color:#d98a8a} .rt.ox{color:#e8c07a}
+  td .use{color:var(--muted)}
+  .note{color:var(--muted); font-size:12.5px; margin-top:12px; text-align:center}
+  footer{text-align:center; color:var(--muted); font-size:12px; margin-top:56px;
+    padding-top:22px; border-top:1px solid var(--line)}
+  @media(max-width:520px){ .arc{grid-template-columns:1fr} .arc .arrow{transform:rotate(90deg)} }
+</style>
+</head>
+<body>
+<header>
+  <div class="kicker serif">ARDEN EMPIRE · CHARACTER PROFILES</div>
+  <h1 class="serif">에스텔 — 인물 설정집</h1>
+  <p class="sub">아르덴 제국, 봄의 대관 무도회 <b>‘왕관의 밤’</b>을 앞둔 1년. 주인공 ‘당신’은 별 펜던트로 회귀한 자 —
+    모든 루트에서 <b>이름 없는 은인</b>으로 남는다. 각 인물의 1회차 비극을 되돌리는 것이 이야기의 심장이다.</p>
+  <div class="rule"></div>
+</header>
+
+<div class="wrap">
+  <div class="section-title serif"><span>주인공 측</span></div>
+  <div class="grid" id="grid-hero"></div>
+
+  <div class="section-title serif"><span>공략 · 루트 캐릭터</span></div>
+  <div class="grid" id="grid-route"></div>
+
+  <div class="section-title serif"><span>조연 · 적대</span></div>
+  <div class="grid" id="grid-support"></div>
+
+  <div class="section-title serif"><span>관계망</span></div>
+  <div class="relnet">
+    <table>
+      <thead><tr><th>축</th><th>관계</th><th>서사적 쓰임</th></tr></thead>
+      <tbody id="relnet-body"></tbody>
+    </table>
+  </div>
+  <p class="note">○ 인연 · × 충돌 · ○× 부하/상관이자 원칙과 침묵의 긴장</p>
+
+  <footer class="serif">
+    정본: STORY-BIBLE.md §0~3 · src/data/characters.ts &nbsp;|&nbsp; 대표 이미지: 각 캐릭터 상반신(bust_soft)<br>
+    전 루트 로맨스 불성립 · 회귀는 끝까지 주인공만의 비밀
+  </footer>
+</div>
+
+<script>
+const IMG = id => `public/char/${id}/bust_soft.png`;
+// 인물 데이터 (정본 STORY-BIBLE §1·§3 / characters.ts)
+const CHARS = [
+  { group:"hero", id:"estelle", name:"에스텔", en:"ESTELLE", color:"#ffdf9e", role:"하이델 공작영애",
+    tag:"스러진 봄의 약속",
+    id_role:"선대 황후를 낸 명문가의 영애 — 그래서 재상파의 표적",
+    voice:"존댓말·절제된 문장. 감정이 커질수록 말이 짧아진다(마른 유머)",
+    fall:"세 번의 누명 끝에 탑 유폐, 봄을 빼앗긴 채 시듦",
+    save:"되찾은 봄, 스스로 서는 공작영애" },
+  { group:"hero", id:"adele", name:"클로에", en:"CHLOE", color:"#f2cfa6", role:"하이델가 서녀",
+    tag:"불리지 못한 이름",
+    id_role:"에스텔의 이복자매. 별채에 사는, 이름 불러주는 이 없던 아이. 로젤린의 유일한 민낯 친구",
+    voice:"반말 섞인 소녀 말투(로젤린껜 ‘언니’). 조용하지만 직언",
+    fall:"하이델 몰락과 함께 존재가 기록에서 지워짐",
+    save:"불리는 이름 — 에스텔과의 자매 화해" },
+
+  { group:"route", id:"rozelin", name:"로젤린", en:"ROZELIN", color:"#ff96a6", role:"발루아 후작영애",
+    tag:"가시 돋친 붉은 장미",
+    id_role:"사교계 ‘붉은 장미’. 가문의 빚을 잡혀 누명 공작의 도구로 쓰인다 — 가시는 배역이지 본성이 아니다",
+    voice:"우아한 반어법, 극존칭으로 찌르는 화법. 본심은 독백에서만(가면 ↔ 민낯의 갭)",
+    fall:"쓸모를 다한 뒤 죄를 뒤집어쓰고 국경 밖 수도원행",
+    save:"배역이 아닌 제 이름의 대본" },
+  { group:"route", id:"valen", name:"발렌", en:"VALEN", color:"#e8a06d", role:"제1황태자",
+    tag:"가장 위험한 태양",
+    id_role:"‘짐’을 쓰는 제1황태자. 하이델은 그의 마지막 방패 — 에스텔의 누명은 발렌 폐위의 포석이다",
+    voice:"거만한 황제 사극체(~이니라/~하라/~느냐). 감정이 갈라질 땐 탄식 어미(~구나)로 인간미",
+    fall:"대관 직후 독이 든 축배 — 살아남되 꼭두각시 황제",
+    save:"웃으며 쓰는 왕관 (옥좌와 사람 사이의 화해)" },
+  { group:"route", id:"eden", name:"이든", en:"EDEN", color:"#cfe0f5", role:"근위대 부단장",
+    tag:"신분의 벽을 넘은 검",
+    id_role:"평민 출신 발탁. 원칙과 검으로 벽을 넘어온 사람. 레이너의 직속 부하",
+    voice:"경어체 보고 말투. 명령과 양심 사이에서 문장이 짧아진다",
+    fall:"부당한 명령의 집행자가 된 뒤 스스로 검을 꺾고 근위대를 떠남",
+    save:"검이 지킬 것을 스스로 고르는 맹세" },
+  { group:"route", id:"rayner", name:"레이너", en:"RAYNER", color:"#b9c9dd", role:"기사단장 · 북부대공",
+    tag:"두 맹세를 진 검",
+    id_role:"황실이 북부 견제용으로 중앙에 묶어둔 이중 신분 — 북부와 황실, 두 맹세를 한 검에 진다",
+    voice:"최소한의 단문·명령형. 감정은 침묵의 길이로 표현",
+    fall:"양쪽에서 의심받아 반역자 오명, 검을 쥔 채 고립",
+    save:"두 맹세의 화해 (검을 내려놓지 않고 북부로)" },
+  { group:"route", id:"isolde", name:"이졸데", en:"ISOLDE", color:"#bfe3ea", role:"후작영애",
+    tag:"금 간 흰 백합",
+    id_role:"얼음처럼 완전한 완벽주의. 사교계에서 로젤린과 나란히 불리는 ‘흰 백합’",
+    voice:"완결된 문장만 말한다. 흐트러짐 = 붕괴 신호(루트 후반 장치)",
+    fall:"단 한 번의 실수로 파혼·사교계 매장, 자발적 유폐",
+    save:"실패할 자유 (완벽의 감옥에서 걸어 나오기)" },
+  { group:"route", id:"michael", name:"미카엘", en:"MICHAEL", color:"#ece5cf", role:"신성왕국 성기사",
+    tag:"국경을 넘는 빛",
+    id_role:"국경 너머에서 온 사절 — 제국의 어떤 파벌에도 매수되지 않는 증인",
+    voice:"정중하고 이국적인 격식. ‘기록/맹세/빛’의 어휘",
+    fall:"진실을 증언한 죄로 파문, 맹세와 빛을 잃고 국경을 떠돎",
+    save:"국경을 넘는 빛 (맹세와 마음의 양립)" },
+
+  { group:"support", id:"chancellor", name:"재상 카닐", en:"CHANCELLOR", color:"#b8b09b", role:"섭정 실권자", silhouette:true,
+    tag:"축복처럼 말하는 협박",
+    id_role:"병약한 황제의 섭정 실권자. 목표는 발렌 폐위와 방계 옹립. 모든 덫의 각본가",
+    voice:"부드러운 경어. 협박도 축복처럼. 감탄사 없음",
+    fall:"—", save:"—" },
+  { group:"support", id:"fiance", name:"약혼자", en:"FIANCÉ", color:"#9db8e8", role:"정략 약혼자(무명)", silhouette:true,
+    tag:"덫이 된 약혼",
+    id_role:"카닐이 하이델가 안에 심은 감시자. 정략 약혼 자체가 덫의 일부",
+    voice:"사무적 단문. 8화 배신의 순간에 처음으로 문장이 길어진다",
+    fall:"—", save:"—" },
+];
+
+const RELS = [
+  { a:"클로에", b:"에스텔", t:"o",  label:"이복자매 (그늘과 볕)", use:"클로에 루트의 핵심 — 이름/가족 인정" },
+  { a:"클로에", b:"로젤린", t:"o",  label:"유일한 민낯 친구", use:"로젤린 루트의 도덕적 저울" },
+  { a:"로젤린", b:"이졸데", t:"x",  label:"사교계 라이벌 (장미 vs 백합)", use:"이졸데 루트 도입부 갈등" },
+  { a:"이든",   b:"레이너", t:"ox", label:"부하/상관 · 원칙 vs 침묵", use:"ep6 봉쇄(이든) vs ep9 명령(레이너)" },
+  { a:"레이너", b:"발렌",   t:"x",  label:"황실의 견제 (인질성 임명)", use:"레이너 루트 — 두 맹세의 충돌" },
+  { a:"레이너", b:"이졸데", t:"x",  label:"북부 정략 혼담설", use:"서로의 ‘완벽한 감옥’을 비추는 거울" },
+  { a:"미카엘", b:"카닐",   t:"x",  label:"매수 불가능한 증인", use:"ep9 봉랍 증언 — 왕관의 밤 반격 축" },
+  { a:"발렌",   b:"에스텔", t:"o",  label:"방패와 칼끝 (정치적 연대)", use:"에스텔 누명 = 발렌 폐위 포석" },
+];
+const shortName = n => n.replace("재상 ","");
+const colorOf = n => (CHARS.find(c=>shortName(c.name)===shortName(n))||{}).color || "#c9ac85";
+
+function card(c){
+  const arc = c.fall==="—" ? "" : `
+    <div class="arc">
+      <div class="box fall"><div class="lbl">1회차 비극</div>${c.fall}</div>
+      <div class="arrow">→</div>
+      <div class="box save"><div class="lbl">구원 · 엔딩</div>${c.save}</div>
+    </div>`;
+  const rels = RELS.filter(r=> shortName(r.a)===shortName(c.name) || shortName(r.b)===shortName(c.name))
+    .map(r=>{
+      const other = shortName(r.a)===shortName(c.name) ? r.b : r.a;
+      const mark = r.t==="o"?'<span class="o">○</span>':r.t==="x"?'<span class="x">×</span>':'<span class="o">○</span><span class="x">×</span>';
+      return `<span class="chip">${mark} <b style="color:${colorOf(other)}">${other}</b> · ${r.label.replace(/\s*\(.*\)/,"")}</span>`;
+    }).join("");
+  return `
+  <div class="card">
+    <div class="portrait ${c.silhouette?'silhouette':''}">
+      <img src="${IMG(c.id)}" alt="${c.name}" loading="lazy"
+        onerror="this.style.display='none';this.parentNode.style.background='repeating-linear-gradient(45deg,#2a180d,#2a180d 10px,#1d0f07 10px,#1d0f07 20px)'">
+      <div class="role-tag">${c.role}</div>
+    </div>
+    <div class="card-body">
+      <div class="name-row">
+        <span class="swatch" style="--c:${c.color};background:${c.color}"></span>
+        <span class="name serif" style="color:${c.color}">${c.name}</span>
+        <span class="name-en">${c.en}</span>
+      </div>
+      <div class="tagline">“${c.tag}”</div>
+      <div class="meta">
+        <div class="row"><span class="k">설정</span><span class="v">${c.id_role}</span></div>
+        <div class="row"><span class="k">목소리</span><span class="v muted">${c.voice}</span></div>
+      </div>
+      ${arc}
+      ${rels?`<div class="rels">${rels}</div>`:""}
+    </div>
+  </div>`;
+}
+
+document.getElementById("grid-hero").innerHTML    = CHARS.filter(c=>c.group==="hero").map(card).join("");
+document.getElementById("grid-route").innerHTML   = CHARS.filter(c=>c.group==="route").map(card).join("");
+document.getElementById("grid-support").innerHTML = CHARS.filter(c=>c.group==="support").map(card).join("");
+
+document.getElementById("relnet-body").innerHTML = RELS.map(r=>{
+  const mark = r.t==="o"?'<span class="rt o">○</span>':r.t==="x"?'<span class="rt x">×</span>':'<span class="rt ox">○×</span>';
+  return `<tr>
+    <td class="pair"><span style="color:${colorOf(r.a)}">${r.a}</span> ↔ <span style="color:${colorOf(r.b)}">${r.b}</span></td>
+    <td>${mark}${r.label}</td>
+    <td class="use">${r.use}</td>
+  </tr>`;
+}).join("");
+</script>
+</body>
+</html>
