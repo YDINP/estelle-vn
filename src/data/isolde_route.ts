@@ -14,19 +14,19 @@ import { DailyScene } from "./daily";
 
 // ── 빌더 (대본 가독성용) ──
 const N = (text: string): Step => ({ kind: "line", line: { speaker: "narration", text } });
-const I = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "isolde", text, emotion } });
-const R = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "rozelin", text, emotion } });
-const K = (text: string): Step => ({ kind: "line", line: { speaker: "chancellor", text } });
-const RY = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "rayner", text, emotion } });
-const M = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "michael", text, emotion } });
-const V = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "valen", text, emotion } });
+const I = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "lucienne", text, emotion } });
+const R = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "marion", text, emotion } });
+const K = (text: string): Step => ({ kind: "line", line: { speaker: "mephian", text } });
+const RY = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "reimon", text, emotion } });
+const M = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "azael", text, emotion } });
+const V = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "belian", text, emotion } });
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
 const CG = (id: string, hold = false): Step => ({ kind: "cg", id, hold });
 const CGX = (): Step => ({ kind: "cgEnd" }); // CG 유지 연출 종료 (포트레이트 복귀)
 // 선택 결과 라인 빌더 (수렴형)
-const ri = (text: string, emotion?: Emotion): Line => ({ speaker: "isolde", text, emotion });
-const rry = (text: string, emotion?: Emotion): Line => ({ speaker: "rayner", text, emotion });
-const rm = (text: string, emotion?: Emotion): Line => ({ speaker: "michael", text, emotion });
+const ri = (text: string, emotion?: Emotion): Line => ({ speaker: "lucienne", text, emotion });
+const rry = (text: string, emotion?: Emotion): Line => ({ speaker: "reimon", text, emotion });
+const rm = (text: string, emotion?: Emotion): Line => ({ speaker: "azael", text, emotion });
 
 export const ISOLDE_EPISODES: Episode[] = [
   {

@@ -12,7 +12,7 @@ export const DAILY_AFFECTION = 3; // 일일 씬 완료 시 호감도
 
 const N = (text: string): Step => ({ kind: "line", line: { speaker: "narration", text } });
 const E = (text: string, emotion?: import("./chapters").Emotion): Step =>
-  ({ kind: "line", line: { speaker: "estelle", text, emotion } });
+  ({ kind: "line", line: { speaker: "lilia", text, emotion } });
 
 export const DAILY_SCENES: DailyScene[] = [
   {

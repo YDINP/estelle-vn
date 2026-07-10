@@ -450,14 +450,14 @@ const MICHAEL: Voice = {
 };
 
 const VOICES: Partial<Record<CharacterId, Voice>> = {
-  estelle: ESTELLE,
-  rozelin: ROZELIN,
-  eden: EDEN,
-  valen: VALEN,
-  isolde: ISOLDE,
-  adele: CHLOE, // id는 adele, 표시명 클로에
-  rayner: RAYNER,
-  michael: MICHAEL,
+  lilia: ESTELLE,
+  marion: ROZELIN,
+  belfor: EDEN,
+  belian: VALEN,
+  lucienne: ISOLDE,
+  livia: CHLOE, // id는 adele, 표시명 클로에
+  reimon: RAYNER,
+  azael: MICHAEL,
 };
 
 function voiceOf(charId: CharacterId): Voice {

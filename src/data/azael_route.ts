@@ -10,12 +10,12 @@ import { DailyScene } from "./daily";
 
 // ── 빌더 ──
 const N = (text: string): Step => ({ kind: "line", line: { speaker: "narration", text } });
-const AZ = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "michael", text, emotion } }); // 아젤
-const ME = (text: string): Step => ({ kind: "line", line: { speaker: "chancellor", text } });                        // 메피안
+const AZ = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "azael", text, emotion } }); // 아젤
+const ME = (text: string): Step => ({ kind: "line", line: { speaker: "mephian", text } });                        // 메피안
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
 const rn = (text: string): Line => ({ speaker: "narration", text });
-const raz = (text: string, emotion?: Emotion): Line => ({ speaker: "michael", text, emotion });
-const rme = (text: string): Line => ({ speaker: "chancellor", text });
+const raz = (text: string, emotion?: Emotion): Line => ({ speaker: "azael", text, emotion });
+const rme = (text: string): Line => ({ speaker: "mephian", text });
 
 export const AZAEL_EPISODES: Episode[] = [
   // ────────────────────────────────────────────

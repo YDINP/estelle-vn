@@ -6,16 +6,16 @@ import { Episode } from "./season1";
 import { DailyScene } from "./daily";
 
 const N = (text: string): Step => ({ kind: "line", line: { speaker: "narration", text } });
-const RM = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "rayner", text, emotion } });  // 레이먼
-const BF = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "eden", text, emotion } });    // 벨포르
-const BE = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "valen", text, emotion } });   // 벨리안
-const ME = (text: string): Step => ({ kind: "line", line: { speaker: "chancellor", text } });                        // 메피안
+const RM = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "reimon", text, emotion } });  // 레이먼
+const BF = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "belfor", text, emotion } });    // 벨포르
+const BE = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "belian", text, emotion } });   // 벨리안
+const ME = (text: string): Step => ({ kind: "line", line: { speaker: "mephian", text } });                        // 메피안
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
 const rn = (text: string): Line => ({ speaker: "narration", text });
-const rrm = (text: string, emotion?: Emotion): Line => ({ speaker: "rayner", text, emotion });
-const rbf = (text: string, emotion?: Emotion): Line => ({ speaker: "eden", text, emotion });
-const rlu = (text: string, emotion?: Emotion): Line => ({ speaker: "isolde", text, emotion });
-const rme = (text: string): Line => ({ speaker: "chancellor", text });
+const rrm = (text: string, emotion?: Emotion): Line => ({ speaker: "reimon", text, emotion });
+const rbf = (text: string, emotion?: Emotion): Line => ({ speaker: "belfor", text, emotion });
+const rlu = (text: string, emotion?: Emotion): Line => ({ speaker: "lucienne", text, emotion });
+const rme = (text: string): Line => ({ speaker: "mephian", text });
 
 export const REIMON_EPISODES: Episode[] = [
   {

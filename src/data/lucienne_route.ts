@@ -10,15 +10,15 @@ import { DailyScene } from "./daily";
 
 // ── 빌더 ──
 const N = (text: string): Step => ({ kind: "line", line: { speaker: "narration", text } });
-const LU = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "isolde", text, emotion } }); // 루시엔
-const MA = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "rozelin", text, emotion } }); // 마리온
-const RM = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "rayner", text, emotion } });  // 레이먼
-const ME = (text: string): Step => ({ kind: "line", line: { speaker: "chancellor", text } });                         // 메피안
+const LU = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "lucienne", text, emotion } }); // 루시엔
+const MA = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "marion", text, emotion } }); // 마리온
+const RM = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "reimon", text, emotion } });  // 레이먼
+const ME = (text: string): Step => ({ kind: "line", line: { speaker: "mephian", text } });                         // 메피안
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
 const rn = (text: string): Line => ({ speaker: "narration", text });
-const rlu = (text: string, emotion?: Emotion): Line => ({ speaker: "isolde", text, emotion });
-const rrm = (text: string, emotion?: Emotion): Line => ({ speaker: "rayner", text, emotion });
-const rme = (text: string): Line => ({ speaker: "chancellor", text });
+const rlu = (text: string, emotion?: Emotion): Line => ({ speaker: "lucienne", text, emotion });
+const rrm = (text: string, emotion?: Emotion): Line => ({ speaker: "reimon", text, emotion });
+const rme = (text: string): Line => ({ speaker: "mephian", text });
 
 export const LUCIENNE_EPISODES: Episode[] = [
   // ────────────────────────────────────────────

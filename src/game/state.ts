@@ -132,15 +132,36 @@ export function loadState(): GameState {
   // 신필드가 아직 비어 있을 때만 이전한다. 구필드(epCleared/nextEpFreeAt/affection)는 레거시로 남겨 둔다.
   if (!s.routes) s.routes = {};
   if (!s.affectionBy) s.affectionBy = {};
-  if (s.routes.estelle === undefined &&
+  // ── 개명 마이그레이션 (2026-07-10): 구 charId/routeId → 신명 1회 변환 ──
+  // 신 키가 이미 있으면 기존 진행을 보존하고 구 키만 버린다(덮어쓰기 금지).
+  const OLD2NEW: Record<string, string> = {
+    estelle: "lilia", rozelin: "marion", valen: "belian", eden: "belfor",
+    isolde: "lucienne", adele: "livia", rayner: "reimon", michael: "azael",
+    chancellor: "mephian",
+  };
+  function remapKeys<T>(rec: Record<string, T>): void {
+    for (const o of Object.keys(OLD2NEW)) {
+      if (rec[o] !== undefined) {
+        const n = OLD2NEW[o];
+        if (rec[n] === undefined) rec[n] = rec[o];
+        delete rec[o];
+      }
+    }
+  }
+  remapKeys(s.routes);
+  remapKeys(s.affectionBy);
+  if (s.illust) remapKeys(s.illust);
+  if (s.heardLines) remapKeys(s.heardLines);
+  if (OLD2NEW[s.currentRoute]) s.currentRoute = OLD2NEW[s.currentRoute];
+  if (s.routes.lilia === undefined &&
       ((s.epCleared && s.epCleared.length > 0) || s.nextEpFreeAt > 0)) {
-    s.routes.estelle = {
+    s.routes.lilia = {
       epCleared: [...(s.epCleared ?? [])],
       nextEpFreeAt: s.nextEpFreeAt ?? 0,
     };
   }
-  if (s.affectionBy.estelle === undefined && s.affection > 0) {
-    s.affectionBy.estelle = s.affection;
+  if (s.affectionBy.lilia === undefined && s.affection > 0) {
+    s.affectionBy.lilia = s.affection;
   }
   return s;
 }

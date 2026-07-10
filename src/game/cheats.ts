@@ -31,7 +31,7 @@ export function setupCheats(ctx: CheatCtx): void {
 
 function register(ctx: CheatCtx): void {
   const st = () => ctx.state;
-  const routeId = () => ctx.activeRouteId() || "estelle";
+  const routeId = () => ctx.activeRouteId() || "lilia";
 
   cheat.addGroup("재화·호감", {
     "코인 +1000": [() => { st().coins += 1000; ctx.refresh(); }, "코인 1000 지급"],

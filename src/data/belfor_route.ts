@@ -6,13 +6,13 @@ import { Episode } from "./season1";
 import { DailyScene } from "./daily";
 
 const N = (text: string): Step => ({ kind: "line", line: { speaker: "narration", text } });
-const BF = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "eden", text, emotion } });   // 벨포르
-const RM = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "rayner", text, emotion } });  // 레이먼
-const ME = (text: string): Step => ({ kind: "line", line: { speaker: "chancellor", text } });                        // 메피안
+const BF = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "belfor", text, emotion } });   // 벨포르
+const RM = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "reimon", text, emotion } });  // 레이먼
+const ME = (text: string): Step => ({ kind: "line", line: { speaker: "mephian", text } });                        // 메피안
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
 const rn = (text: string): Line => ({ speaker: "narration", text });
-const rbf = (text: string, emotion?: Emotion): Line => ({ speaker: "eden", text, emotion });
-const rme = (text: string): Line => ({ speaker: "chancellor", text });
+const rbf = (text: string, emotion?: Emotion): Line => ({ speaker: "belfor", text, emotion });
+const rme = (text: string): Line => ({ speaker: "mephian", text });
 
 export const BELFOR_EPISODES: Episode[] = [
   {

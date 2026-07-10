@@ -35,8 +35,8 @@ export type Step =
 
 // ── 빌더 ──
 const N = (text: string): Step => ({ kind: "line", line: { speaker: "narration", text } });
-const E = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "estelle", text, emotion } });
-const K = (text: string): Step => ({ kind: "line", line: { speaker: "chancellor", text } });
+const E = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "lilia", text, emotion } });
+const K = (text: string): Step => ({ kind: "line", line: { speaker: "mephian", text } });
 
 /** 전체 스토리 프롤로그 — 메인 화면 '프롤로그 보기'용.
  *  왕관의 밤이 만든 여덟 개의 결말(1회차 배드/새드 엔딩 파노라마) + 회귀 도입.

@@ -13,19 +13,19 @@ import { DailyScene } from "./daily";
 
 // ── 빌더 (대본 가독성용) ──
 const N = (text: string): Step => ({ kind: "line", line: { speaker: "narration", text } });
-const M = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "michael", text, emotion } });
-const K = (text: string): Step => ({ kind: "line", line: { speaker: "chancellor", text } });
-const R = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "rozelin", text, emotion } });
-const I = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "isolde", text, emotion } });
-const RY = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "rayner", text, emotion } });
-const L = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "eden", text, emotion } });
-const V = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "valen", text, emotion } });
+const M = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "azael", text, emotion } });
+const K = (text: string): Step => ({ kind: "line", line: { speaker: "mephian", text } });
+const R = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "marion", text, emotion } });
+const I = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "lucienne", text, emotion } });
+const RY = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "reimon", text, emotion } });
+const L = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "belfor", text, emotion } });
+const V = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "belian", text, emotion } });
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
 const CG = (id: string, hold = false): Step => ({ kind: "cg", id, hold });
 const CGX = (): Step => ({ kind: "cgEnd" }); // CG 유지 연출 종료 (포트레이트 복귀)
 // 선택 결과 라인 빌더 (수렴형)
 const rn = (text: string): Line => ({ speaker: "narration", text });
-const mm = (text: string, emotion?: Emotion): Line => ({ speaker: "michael", text, emotion });
+const mm = (text: string, emotion?: Emotion): Line => ({ speaker: "azael", text, emotion });
 // ⚠️ 주인공('당신')은 CharacterId가 없으므로 나레이션(N/rn)으로 표기 — 원문 대사 내용은 보존.
 
 export const MICHAEL_EPISODES: Episode[] = [

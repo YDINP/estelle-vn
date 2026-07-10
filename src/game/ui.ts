@@ -33,10 +33,10 @@ let root: HTMLElement;
 
 // ── 현재 루트 컨텍스트 (홈/게임 화면은 이 루트 기준으로 동작) ──
 function activeRoute(): Route | undefined { return getRoute(state.currentRoute); }
-function activeCharId(): CharacterId { return activeRoute()?.charId ?? "estelle"; }
+function activeCharId(): CharacterId { return activeRoute()?.charId ?? "lilia"; }
 function activeEpisodes(): Episode[] { return activeRoute()?.episodes ?? EPISODES; }
 function prog(): { epCleared: string[]; nextEpFreeAt: number } {
-  return ensureRoute(state, state.currentRoute || "estelle");
+  return ensureRoute(state, state.currentRoute || "lilia");
 }
 function activeAff(): number { return affectionOf(state, activeCharId()); }
 function activeTier(): number { return tierOf(activeAff()); }
@@ -125,7 +125,7 @@ export function mountGame(el: HTMLElement) {
   if (!state.onboarded && !state.currentRoute && !hasRouteProgress()) {
     state.onboarded = true;
     saveState(state);
-    enterRoute("estelle");
+    enterRoute("lilia");
     return;
   }
 
@@ -676,7 +676,7 @@ function onDaily() {
 }
 
 // ── 일러스트 도감 (캐릭터별 탭 — 긴 스크롤 방지) ──
-let collectTab: CharacterId = "estelle";
+let collectTab: CharacterId = "lilia";
 function openCollect() {
   renderCollect();
   $("#collect").classList.remove("hidden");

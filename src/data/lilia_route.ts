@@ -11,16 +11,16 @@ import { DailyScene } from "./daily";
 
 // ── 빌더 ──
 const N = (text: string): Step => ({ kind: "line", line: { speaker: "narration", text } });
-const LI = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "estelle", text, emotion } }); // 릴리아
-const ME = (text: string): Step => ({ kind: "line", line: { speaker: "chancellor", text } });                        // 메피안
-const MA = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "rozelin", text, emotion } }); // 마리온
-const BE = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "valen", text, emotion } });   // 벨리안
+const LI = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "lilia", text, emotion } }); // 릴리아
+const ME = (text: string): Step => ({ kind: "line", line: { speaker: "mephian", text } });                        // 메피안
+const MA = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "marion", text, emotion } }); // 마리온
+const BE = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "belian", text, emotion } });   // 벨리안
 const FI = (text: string): Step => ({ kind: "line", line: { speaker: "fiance", text } });                            // 약혼자
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
 const rn = (text: string): Line => ({ speaker: "narration", text });
-const rli = (text: string, emotion?: Emotion): Line => ({ speaker: "estelle", text, emotion });
-const rme = (text: string): Line => ({ speaker: "chancellor", text });
-const rma = (text: string, emotion?: Emotion): Line => ({ speaker: "rozelin", text, emotion });
+const rli = (text: string, emotion?: Emotion): Line => ({ speaker: "lilia", text, emotion });
+const rme = (text: string): Line => ({ speaker: "mephian", text });
+const rma = (text: string, emotion?: Emotion): Line => ({ speaker: "marion", text, emotion });
 
 export const LILIA_EPISODES: Episode[] = [
   // ────────────────────────────────────────────

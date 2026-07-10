@@ -10,13 +10,13 @@ import { DailyScene } from "./daily";
 
 // ── 빌더 ──
 const N = (text: string): Step => ({ kind: "line", line: { speaker: "narration", text } });
-const LV = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "adele", text, emotion } });   // 리비아
-const MA = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "rozelin", text, emotion } }); // 마리온
-const ME = (text: string): Step => ({ kind: "line", line: { speaker: "chancellor", text } });                        // 메피안
+const LV = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "livia", text, emotion } });   // 리비아
+const MA = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "marion", text, emotion } }); // 마리온
+const ME = (text: string): Step => ({ kind: "line", line: { speaker: "mephian", text } });                        // 메피안
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
 const rn = (text: string): Line => ({ speaker: "narration", text });
-const rlv = (text: string, emotion?: Emotion): Line => ({ speaker: "adele", text, emotion });
-const rma = (text: string, emotion?: Emotion): Line => ({ speaker: "rozelin", text, emotion });
+const rlv = (text: string, emotion?: Emotion): Line => ({ speaker: "livia", text, emotion });
+const rma = (text: string, emotion?: Emotion): Line => ({ speaker: "marion", text, emotion });
 
 export const LIVIA_EPISODES: Episode[] = [
   // ────────────────────────────────────────────
