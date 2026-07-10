@@ -19,7 +19,7 @@ const rme = (text: string): Line => ({ speaker: "mephian", text });
 
 export const REIMON_EPISODES: Episode[] = [
   {
-    id: "rmp0", index: 1, title: "프롤로그 — 두 맹세에 버림받은 검",
+    id: "rmp0", index: 1, title: "프롤로그 — 두 맹세에 버림받은 검", // CG: reimon/prologue_snow_oath
     teaser: "눈밭에 검을 꽂은 기사. 그 겨울을, 당신은 없던 일로 만들러 왔다.",
     rewardCoins: 20,
     card: { title: "두 맹세에 버림받은 검", quote: "맹세가 둘이면 — 반역도 둘인가." },
@@ -37,7 +37,7 @@ export const REIMON_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "rmp1", index: 2, title: "1화 — 얼어붙기 전의 검",
+    id: "rmp1", index: 2, title: "1화 — 얼어붙기 전의 검", // CG: reimon/training_dawn
     teaser: "사흘째 담 밖의 낯선 얼굴. 그리고 등 뒤로 떨어지는 낮은 혼잣말.",
     rewardCoins: 30,
     card: { title: "그런 눈은 안다", quote: "용건." },
@@ -68,7 +68,7 @@ export const REIMON_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "rmp2", index: 3, title: "2화 — 연무장의 서리",
+    id: "rmp2", index: 3, title: "2화 — 연무장의 서리", // CG: reimon/seal_check
     teaser: "봉인 서신 한 통이, 근위대 우편이 아니라 재상부를 먼저 거쳤다.",
     rewardCoins: 32,
     card: { title: "지킬 것을 고르는 검", quote: "지킬 것을 못 고르는 검은 — 검이 아니다." },
@@ -108,7 +108,7 @@ export const REIMON_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "rmp3", index: 4, title: "3화 — 두 개의 문장",
+    id: "rmp3", index: 4, title: "3화 — 두 개의 문장", // CG: reimon/two_crests
     teaser: "아무도 청한 적 없는 북부 혼담설이, 사교계에 심어진다.",
     rewardCoins: 34,
     card: { title: "인질에게도 검은 있다", quote: "인질에게도 검은 있다. …쓸 곳이 없을 뿐." },
@@ -148,7 +148,7 @@ export const REIMON_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "rmp4", index: 5, title: "4화 — 인질에게도 검은 있다",
+    id: "rmp4", index: 5, title: "4화 — 인질에게도 검은 있다", // CG: reimon/inspection_raid
     teaser: "그의 처소에서 나온, 그가 쓴 적 없는 '북부행 서신 초안'.",
     rewardCoins: 36,
     card: { title: "남에서 다시 쓴 글자", quote: "북에서 온 글자를 — 남에서 다시 쓴 자가 있군." },
@@ -181,7 +181,7 @@ export const REIMON_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "rmp5", index: 6, title: "5화 — 표적은 검이 아니다",
+    id: "rmp5", index: 6, title: "5화 — 표적은 검이 아니다", // CG: reimon/chancellor_measures
     teaser: "재상이 처음으로 당신들을 '센다'. 그리고 — 진짜 표적이 드러난다.",
     rewardCoins: 40,
     card: { title: "검이 지킬 것", quote: "북부의 검이 누굴 지키는지 보면 되겠군." },

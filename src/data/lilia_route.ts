@@ -33,7 +33,7 @@ export const LILIA_EPISODES: Episode[] = [
   // 프롤로그 — 1회차 배드엔딩. 회귀 없음: 끝을 흘러가듯 보여주고, 삼백 일 전으로 넘어간다.
   // ────────────────────────────────────────────
   {
-    id: "lip0", index: 1, title: "프롤로그 — 봄을 빼앗긴 탑",
+    id: "lip0", index: 1, title: "프롤로그 — 봄을 빼앗긴 탑", // CG: lilia/prologue_tower
     teaser: "봄은 세 번 지고, 아무도 그 유언을 듣지 못했다.",
     rewardCoins: 20,
     card: { title: "별의 눈물", quote: "다시… 만날 수 있다면. 그때는, 웃으면서 인사해요." },
@@ -41,8 +41,11 @@ export const LILIA_EPISODES: Episode[] = [
       N("재판정은 봄인데도 겨울 같았다. 세 번째 누명. 방청석의 누구도 릴리아를 보지 않았다."),
       ME("하이델의 봄도 이제 저뭅니다. …참으로, 애석한 일이지요."),
       LI("……", "sad"),
-      N("변호는 없었다. 붉은 장미는 눈을 내리깔았고, 태양의 자리는 비어 있었다. 일곱 개의 이유가, 각자의 자리에서 그녀를 등졌다."),
-      N("탑의 창은 높고 좁았다. 그 창으로 봄이 지는 것을 세 번 세고 — 그녀는 시들었다."),
+      N("변호는 없었다. 붉은 장미는 제 값을 지키려 눈을 내리깔았고, 흰 백합은 흠이 될까 고개를 돌렸다."),
+      N("태양의 옥좌는 비어 있었고, 북부의 검은 제 두 맹세에 묶여 움직이지 못했다. 원칙의 검은 명령대로 그녀를 탑으로 끌었다."),
+      N("빛의 증인은 봉랍을 끝내 열지 않았고 — 그늘의 아이는, 제 이름조차 없어 그녀를 부를 힘이 없었다."),
+      N("일곱 개의 이유가 각자의 죄의 자리에서 등을 돌리자, 봄은 한 사람에게만 몰아쳤다."),
+      N("탑의 창은 높고 좁았다. 릴리아는 그 창으로 봄이 세 번 지는 것을 세었다. 세 번째 봄이 질 때, 그녀도 함께 시들었다."),
       LI("다시… 만날 수 있다면. 그때는, 웃으면서 인사해요.", "tearful"),
       N("아무도 그 유언을 듣지 못했다. — 이것이, 한 번 흘러가 버린 봄의 끝이다."),
       N("이야기는 그 끝보다 삼백 일 앞에서 다시 시작된다. 아직, 아무것도 시들지 않은 봄에서."),
@@ -52,7 +55,7 @@ export const LILIA_EPISODES: Episode[] = [
   // 1막 씨앗 (1~5화) · D-300~270 — 지식 우위
   // ────────────────────────────────────────────
   {
-    id: "lip1", index: 2, title: "1화 — 다시, 정원의 봄",
+    id: "lip1", index: 2, title: "1화 — 다시, 정원의 봄", // CG: lilia/spring_garden
     teaser: "덫은 사흘 뒤라고 알고 있었다. — 그림자는, 오늘 밤 움직인다.",
     rewardCoins: 30,
     card: { title: "지지 않는 봄", quote: "이번 봄은, 지지 않게 하겠어요." },
@@ -80,7 +83,7 @@ export const LILIA_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "lip2", index: 3, title: "2화 — 서재의 그림자",
+    id: "lip2", index: 3, title: "2화 — 서재의 그림자", // CG: lilia/study_shadow
     teaser: "훔치러 온 손이 아니다. — 두고 가러 온 손이다.",
     rewardCoins: 32,
     card: { title: "심는 손", quote: "도둑이 아니에요. …뭔가를, 두고 갔어요." },
@@ -106,7 +109,7 @@ export const LILIA_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "lip3", index: 4, title: "3화 — 붉은 장미의 값",
+    id: "lip3", index: 4, title: "3화 — 붉은 장미의 값", // CG: lilia/red_rose_tea
     teaser: "장미가 경고를 남기고 간 저녁 — 아버지가 약혼을 통보한다.",
     rewardCoins: 34,
     card: { title: "가시의 값", quote: "그 밀서, 태우지 마세요. 다음 장은 당신 이름으로 쓰일 테니까." },
@@ -127,6 +130,7 @@ export const LILIA_EPISODES: Episode[] = [
           result: [
             rn("당신은 릴리아와 장미 사이에 섰다. 말없이."),
             rma("어머, 방패까지. …그 방패, 언제까지 갈까요. 봄은 생각보다 짧답니다.", "smirk"),
+            rma("…그래도. 남을 위해 제 발로 앞에 서는 사람은, 오랜만에 봐요. 조금은 — 부럽네요.", "sad"),
           ] },
       ]),
       N("마리온이 돌아서며, 스치듯 한마디를 떨어뜨렸다."),
@@ -136,7 +140,7 @@ export const LILIA_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "lip4", index: 5, title: "4화 — 약혼의 그늘",
+    id: "lip4", index: 5, title: "4화 — 약혼의 그늘", // CG: lilia/fiance_drawer
     teaser: "방패라던 약혼자의 서랍에서, 서재의 그 인장이 나온다.",
     rewardCoins: 36,
     card: { title: "차가운 방패", quote: "이 약혼은, 저를 지키려는 게 아니었어요." },
@@ -165,7 +169,7 @@ export const LILIA_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "lip5", index: 6, title: "5화 — 아는 얼굴, 모르는 눈",
+    id: "lip5", index: 6, title: "5화 — 아는 얼굴, 모르는 눈", // CG: lilia/corridor_chancellor
     teaser: "재상이 당신을 '센다'. 그리고 — 이 덫의 진짜 표적이 드러난다.",
     rewardCoins: 40,
     card: { title: "일곱 개의 실", quote: "이 덫의 진짜 표적은, 제가 아니었어요." },
@@ -197,7 +201,7 @@ export const LILIA_EPISODES: Episode[] = [
   // 2막 균열 (6~10화) · D-270~200 — 첫 반전·기억 흐려짐
   // ────────────────────────────────────────────
   {
-    id: "lip6", index: 7, title: "6화 — 두 개의 인장",
+    id: "lip6", index: 7, title: "6화 — 두 개의 인장", // CG: lilia/two_seals
     teaser: "같은 인장이, 남의 편지에도 찍혀 있었다. — 표적은 하나가 아니다.",
     rewardCoins: 42,
     card: { title: "두 개의 인장", quote: "같은 손이, 두 사람을 동시에 겨누고 있어요." },
@@ -226,7 +230,7 @@ export const LILIA_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "lip7", index: 8, title: "7화 — 흰 백합의 초대",
+    id: "lip7", index: 8, title: "7화 — 흰 백합의 초대", // CG: lilia/rose_lily_tea
     teaser: "완벽한 백합이, 당신 앞에서만 문장을 반 박자 놓친다.",
     rewardCoins: 44,
     card: { title: "반 박자의 여백", quote: "예상 밖인데도, 화가 나지 않는군요. …당신이 처음입니다." },
@@ -256,7 +260,7 @@ export const LILIA_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "lip8", index: 9, title: "8화 — 별채의 아이",
+    id: "lip8", index: 9, title: "8화 — 별채의 아이", // CG: lilia/annex_child
     teaser: "이름표 없는 아이가, 붉은 장미를 '언니'라 부른다.",
     rewardCoins: 46,
     card: { title: "별채의 아이", quote: "여기 없는 사람한테도, 쓸모는 있더라고요." },
@@ -286,7 +290,7 @@ export const LILIA_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "lip9", index: 10, title: "9화 — 흐려지는 책장",
+    id: "lip9", index: 10, title: "9화 — 흐려지는 책장", // CG: lilia/printing_raid
     teaser: "\"그 다음은… 분명 알고 있었는데.\" 책장이 물에 젖는다.",
     rewardCoins: 48,
     card: { title: "흐려지는 책장", quote: "제가 아는 책이, 저보다 먼저 지워지고 있어요." },
@@ -313,7 +317,7 @@ export const LILIA_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "lip10", index: 11, title: "10화 — 얼굴 없는 초상",
+    id: "lip10", index: 11, title: "10화 — 얼굴 없는 초상", // CG: lilia/faceless_portrait
     teaser: "초상 속 그 손의 반지 — 당신의 약혼자 것이었다.",
     rewardCoins: 52,
     card: { title: "얼굴 없는 초상", quote: "이 판의 말은, 저 하나가 아니었어요." },

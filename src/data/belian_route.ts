@@ -15,7 +15,7 @@ const rbe = (text: string, emotion?: Emotion): Line => ({ speaker: "belian", tex
 
 export const BELIAN_EPISODES: Episode[] = [
   {
-    id: "blp0", index: 1, title: "프롤로그 — 삼켜진 태양",
+    id: "blp0", index: 1, title: "프롤로그 — 삼켜진 태양", // CG: belian/prologue_swallowed
     teaser: "태양이 축배를 삼킨 것이 아니라 — 축배가 태양을 삼켰다.",
     rewardCoins: 20,
     card: { title: "삼켜진 태양", quote: "오늘만은, 모두 웃으라. 짐도, 웃고 있느니라." },
@@ -33,7 +33,7 @@ export const BELIAN_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "blp1", index: 2, title: "1화 — 다시, 독이 든 축배",
+    id: "blp1", index: 2, title: "1화 — 다시, 독이 든 축배", // CG: belian/corridor_sun
     teaser: "그 밤, 하이델 서재에 첫 그림자가 든다. 이번엔, 당신이 결말을 먼저 안다.",
     rewardCoins: 30,
     card: { title: "판돈은 그대의 목", quote: "짐과 말을 섞는 것은 도박이니라. …겁먹은 낯이 아니로구나. 합격이니라." },
@@ -65,7 +65,7 @@ export const BELIAN_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "blp2", index: 3, title: "2화 — 체스판의 왕",
+    id: "blp2", index: 3, title: "2화 — 체스판의 왕", // CG: belian/moonlit_chess
     teaser: "이기려 기억을 꺼내 쓴 순간, 다음 장이 물에 젖는다. \"독배 다음은 분명…\" 떠오르지 않는다.",
     rewardCoins: 32,
     card: { title: "모르는 척의 값", quote: "짐을 폐하려는 자들이 있느니라. 모르는 척이 더 흥겨워, 두고 볼 뿐이니라." },
@@ -100,7 +100,7 @@ export const BELIAN_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "blp3", index: 4, title: "3화 — 삼키는 태양",
+    id: "blp3", index: 4, title: "3화 — 삼키는 태양", // CG: belian/devouring_court
     teaser: "태양의 식탁에는 술도 고기도 오르지 않는다. — 가문이 오른다.",
     rewardCoins: 34,
     card: { title: "먹지 않으면 먹힌다", quote: "먼저 삼키지 않으면, 삼켜지는 법이니라. 짐은 그 이치를 세 살에 배웠노라." },
@@ -134,7 +134,7 @@ export const BELIAN_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "blp4", index: 5, title: "4화 — 마지막 방패",
+    id: "blp4", index: 5, title: "4화 — 마지막 방패", // CG: belian/thrice_cup
     teaser: "방패를 지킬 손조차 새장이 묶는다. …하여 요즘, 짐은 잠이 짧구나.",
     rewardCoins: 36,
     card: { title: "묶인 손", quote: "짐이 방패를 지키려 손을 뻗는 순간, 그 손째로 덫에 걸리는 것이야." },
@@ -165,7 +165,7 @@ export const BELIAN_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "blp5", index: 6, title: "5화 — 굶는 태양",
+    id: "blp5", index: 6, title: "5화 — 굶는 태양", // CG: belian/chancellor_counts
     teaser: "메피안이 처음으로 '당신'을 센다. 그것은 — 당신이 위험해졌다는 뜻이다.",
     rewardCoins: 40,
     card: { title: "산 채로 삼키는 독", quote: "메피안의 독은 시해가 아니니라. …짐을, 산 채로 삼키려는 것이야." },

@@ -17,7 +17,7 @@ const rlv = (text: string, emotion?: Emotion): Line => ({ speaker: "livia", text
 
 export const MARION_EPISODES: Episode[] = [
   {
-    id: "map0", index: 1, title: "프롤로그 — 커튼콜 없는 퇴장",
+    id: "map0", index: 1, title: "프롤로그 — 커튼콜 없는 퇴장", // CG: marion/prologue_exile
     teaser: "커튼콜 없는 겨울. 붉은 장미는, 배웅도 없이 막을 내린다.",
     rewardCoins: 20,
     card: { title: "커튼콜 없는 퇴장", quote: "…내 대사는 여기까지인가 보네. 커튼콜도, 없이." },
@@ -36,7 +36,7 @@ export const MARION_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "map1", index: 2, title: "1화 — 장미의 값",
+    id: "map1", index: 2, title: "1화 — 장미의 값", // CG: marion/debt_candle
     teaser: "첫 임무가 내려온다. 목적지는 — 하이델 공작저의 서재.",
     rewardCoins: 30,
     card: { title: "장미의 값", quote: "발루아의 장미는 시들 자유도 없답니다. 값이 매겨져 있거든요." },
@@ -70,7 +70,7 @@ export const MARION_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "map2", index: 3, title: "2화 — 달빛 아래 부채",
+    id: "map2", index: 3, title: "2화 — 달빛 아래 부채", // CG: marion/moonlit_wall
     teaser: "담장 위의 목격자. 그녀가 '방해꾼'의 얼굴을 기억한다.",
     rewardCoins: 32,
     card: { title: "세상에 없는 말", quote: "나 같은 사람을 돕는다는 건, 세상에 없는 일이에요." },
@@ -101,7 +101,7 @@ export const MARION_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "map3", index: 4, title: "3화 — 무대 위의 미소",
+    id: "map3", index: 4, title: "3화 — 무대 위의 미소", // CG: marion/dressing_room
     teaser: "재상부의 새 대본. 표적은 다시, 하이델 — 그리고 벗의 본가.",
     rewardCoins: 34,
     card: { title: "배역과 사람", quote: "무대에서 내려오면, 저는 뭐가 남을까요." },
@@ -133,7 +133,7 @@ export const MARION_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "map4", index: 5, title: "4화 — 붉은 티타임",
+    id: "map4", index: 5, title: "4화 — 붉은 티타임", // CG: marion/red_teatime
     teaser: "\"이 아이는… 1년 전의 나와 같은 눈을 하고 있어.\"",
     rewardCoins: 36,
     card: { title: "떨리는 손", quote: "독을 따르는 손이 떨리면, 그건 아직 사람이라는 뜻일까요." },
@@ -163,7 +163,7 @@ export const MARION_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "map5", index: 6, title: "5화 — 금이 간 가면",
+    id: "map5", index: 6, title: "5화 — 금이 간 가면", // CG: marion/cracked_mask
     teaser: "축하연의 박수 소리. 그리고 메피안이 리비아의 이름을 입에 올린다.",
     rewardCoins: 40,
     card: { title: "나쁜 배역", quote: "언니는 나쁜 사람이 아니에요. 나쁜 배역을 맡은 사람이지." },

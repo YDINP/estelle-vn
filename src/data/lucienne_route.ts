@@ -25,7 +25,7 @@ export const LUCIENNE_EPISODES: Episode[] = [
   // 프롤로그 — 1회차 배드엔딩: 완벽의 감옥 (한 문장의 끊김)
   // ────────────────────────────────────────────
   {
-    id: "lup0", index: 1, title: "프롤로그 — 완벽의 감옥",
+    id: "lup0", index: 1, title: "프롤로그 — 완벽의 감옥", // CG: lucienne/prologue_broken_vow
     teaser: "십 년을 흐트러짐 없이 쌓은 완벽이, 단 한 문장의 끊김에 무너진다.",
     rewardCoins: 20,
     card: { title: "완벽의 감옥", quote: "완벽만이, 저를 증명합니다." },
@@ -51,7 +51,7 @@ export const LUCIENNE_EPISODES: Episode[] = [
   // 1막 씨앗 (1~5화) · D-300~270 — 지식 우위
   // ────────────────────────────────────────────
   {
-    id: "lup1", index: 2, title: "1화 — 다시, 얼음의 살롱",
+    id: "lup1", index: 2, title: "1화 — 다시, 얼음의 살롱", // CG: lucienne/frozen_salon
     teaser: "예고 사흘 전, 다과 사십오 분. 그 완벽한 일정표에, 예약에 없던 당신이 들어선다.",
     rewardCoins: 30,
     card: { title: "예약 밖의 손님", quote: "제 하루에는, 이런 항목이 없습니다." },
@@ -85,7 +85,7 @@ export const LUCIENNE_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "lup2", index: 3, title: "2화 — 장미와 백합",
+    id: "lup2", index: 3, title: "2화 — 장미와 백합", // CG: lucienne/rose_vs_lily
     teaser: "사교계가 두 꽃을 저울에 올린다. 그 저울을 처음 흘린 부채가 — 장미의 것도, 백합의 것도 아니었다.",
     rewardCoins: 32,
     card: { title: "다른 꽃", quote: "장미와 백합은, 애초에 다른 꽃입니다." },
@@ -118,7 +118,7 @@ export const LUCIENNE_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "lup3", index: 4, title: "3화 — 의제에 없는 이름",
+    id: "lup3", index: 4, title: "3화 — 의제에 없는 이름", // CG: lucienne/two_cages
     teaser: "두 개의 완벽한 감옥이 처음으로 마주 앉는다. 그리고 대면 통보서의 봉랍이, 어딘가 낯익다.",
     rewardCoins: 34,
     card: { title: "감옥의 거울", quote: "완벽한 신부감에게, 의사는 사치품인 모양입니다." },
@@ -151,7 +151,7 @@ export const LUCIENNE_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "lup4", index: 5, title: "4화 — 완벽이라는 값",
+    id: "lup4", index: 5, title: "4화 — 완벽이라는 값", // CG: lucienne/crooked_stitch
     teaser: "실수를 대신 막아 줄수록 그녀는 더 완벽해지려 자신을 조인다. 그리고 비뚤어진 한 땀 앞에서, 당신이 처음으로 그 손을 막는다.",
     rewardCoins: 36,
     card: { title: "어긋난 한 땀", quote: "실수한 날의 저녁은, 식사가 나오지 않았습니다." },
@@ -186,7 +186,7 @@ export const LUCIENNE_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "lup5", index: 6, title: "5화 — 앞당겨진 그림",
+    id: "lup5", index: 6, title: "5화 — 앞당겨진 그림", // CG: lucienne/perfect_silence
     teaser: "재상이 처음으로 당신 앞에 걸음을 멈춘다. 그리고 초대장의 잉크가 마르기도 전에, 그림이 앞당겨진다.",
     rewardCoins: 40,
     card: { title: "완벽한 침묵", quote: "완벽한 백합도, 꺾이기 전까지는 사람입니다." },

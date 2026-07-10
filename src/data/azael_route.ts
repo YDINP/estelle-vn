@@ -22,7 +22,7 @@ export const AZAEL_EPISODES: Episode[] = [
   // 프롤로그 — 1회차 배드엔딩: 빛을 판 새벽 (색욕=미혹, 타락한 사제)
   // ────────────────────────────────────────────
   {
-    id: "azp0", index: 1, title: "프롤로그 — 빛을 판 새벽",
+    id: "azp0", index: 1, title: "프롤로그 — 빛을 판 새벽", // CG: azael/prologue_sold_light
     teaser: "백은의 증인이 봉랍을 들지 않았다. 아니 — 이미 팔아버린 뒤였다.",
     rewardCoins: 20,
     card: { title: "빛을 판 새벽", quote: "빛을 따르라 배웠는데. …제 손으로, 빛을 팔았습니다." },
@@ -46,7 +46,7 @@ export const AZAEL_EPISODES: Episode[] = [
   // 1막 씨앗 (1~5화) · D-90~78 — 사절단 입국·미혹의 첫 인사 (지식 우위)
   // ────────────────────────────────────────────
   {
-    id: "azp1", index: 2, title: "1화 — 국경을 넘어온 증인",
+    id: "azp1", index: 2, title: "1화 — 국경을 넘어온 증인", // CG: azael/envoy_arrival
     teaser: "사절관 문 앞에 잿빛 예복의 초대장 한 통. 봉랍은 재상부의 것이다.",
     rewardCoins: 30,
     card: { title: "온전한 봉랍", quote: "증인은 누구의 편도 아닙니다. 저는 물건이 아니니까요." },
@@ -77,7 +77,7 @@ export const AZAEL_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "azp2", index: 3, title: "2화 — 잿빛 예복의 초대",
+    id: "azp2", index: 3, title: "2화 — 잿빛 예복의 초대", // CG: azael/worship_bait
     teaser: "재상이 예물이 아니라 '살아있는 성인의 자리'를 내민다.",
     rewardCoins: 32,
     card: { title: "숭배의 미끼", quote: "성기사께 합당한 영광을. …사양하실 이유가, 있습니까?" },
@@ -107,7 +107,7 @@ export const AZAEL_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "azp3", index: 4, title: "3화 — 팔리지 않는 것",
+    id: "azp3", index: 4, title: "3화 — 팔리지 않는 것", // CG: azael/sealed_answer
     teaser: "예물을 돌려보낸 밤, 아젤의 손이 촛불 앞에서 한 박자 머문다.",
     rewardCoins: 34,
     card: { title: "남은 온기", quote: "증인은 팔리지 않습니다. …그러나 굶주림은, 아직 저를 봅니다." },
@@ -138,7 +138,7 @@ export const AZAEL_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "azp4", index: 5, title: "4화 — 세 개의 맹세, 하나의 굶주림",
+    id: "azp4", index: 5, title: "4화 — 세 개의 맹세, 하나의 굶주림", // CG: azael/three_oaths
     teaser: "\"맹세와 마음이 다른 방향을 가리키면, 어찌합니까.\" 예배당의 물음이 허공에 걸린다.",
     rewardCoins: 36,
     card: { title: "이름 없는 하나", quote: "세 맹세 아래, 이름 없는 하나가 잠들어 있습니다." },
@@ -168,7 +168,7 @@ export const AZAEL_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "azp5", index: 6, title: "5화 — 성인의 값",
+    id: "azp5", index: 6, title: "5화 — 성인의 값", // CG: azael/poisoned_seal
     teaser: "재상이 미소로 말한다. \"타락한 증인의 봉랍은, 거짓을 진실로 봉인하지요.\"",
     rewardCoins: 40,
     card: { title: "독이 된 봉랍", quote: "이 미혹의 표적은, 저를 사는 것이 아니었어요." },

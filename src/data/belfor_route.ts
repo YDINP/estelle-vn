@@ -16,7 +16,7 @@ const rme = (text: string): Line => ({ speaker: "mephian", text });
 
 export const BELFOR_EPISODES: Episode[] = [
   {
-    id: "bfp0", index: 1, title: "프롤로그 — 스스로 꺾은 검",
+    id: "bfp0", index: 1, title: "프롤로그 — 스스로 꺾은 검", // CG: belfor/prologue_broken_sword
     teaser: "명령을 한 줄도 어기지 않았다. 그런데 아무도, 지키지 못했다.",
     rewardCoins: 20,
     card: { title: "스스로 꺾은 검", quote: "명령을 지켰습니다. …그런데 아무도, 지키지 못했습니다." },
@@ -34,7 +34,7 @@ export const BELFOR_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "bfp1", index: 2, title: "1화 — 다시, 훈련장의 봄",
+    id: "bfp1", index: 2, title: "1화 — 다시, 훈련장의 봄", // CG: belfor/dawn_duel
     teaser: "그날 오후, 재상부의 첫 '조용한 명령서'가 부단장 책상에 놓인다. 모든 덫의 첫 페이지가, 이번엔 그의 손에 먼저 닿는다.",
     rewardCoins: 30,
     card: { title: "묻지 않는 검", quote: "이상한 분입니다. 처음 뵙는데, 오래 뵌 사람 같은 얼굴을 하고 계시니." },
@@ -66,7 +66,7 @@ export const BELFOR_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "bfp2", index: 3, title: "2화 — 신분의 검",
+    id: "bfp2", index: 3, title: "2화 — 신분의 검", // CG: belfor/crime_scene
     teaser: "하이델 서재 밀서 사건에 \"없던 일로 덮으라\" 하명. 검집 쥔 손이 오래 머무는, 첫 침묵.",
     rewardCoins: 32,
     card: { title: "묻지 않는 법", quote: "명령이 옳은지 묻는 병사는, 정말 실격입니까." },
@@ -98,7 +98,7 @@ export const BELFOR_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "bfp3", index: 4, title: "3화 — 원칙의 무게",
+    id: "bfp3", index: 4, title: "3화 — 원칙의 무게", // CG: belfor/sunset_rampart
     teaser: "약혼 발표 회랑에서, 벨포르는 보아서는 안 될 것을 본다. 그리고 침묵의 상관이, 처음으로 그를 바라본다.",
     rewardCoins: 34,
     card: { title: "무거운 검", quote: "검이 무거우냐. …무거운 줄 아는 자만이, 바로 휘두른다." },
@@ -129,7 +129,7 @@ export const BELFOR_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "bfp4", index: 5, title: "4화 — 흐려지는 명령서",
+    id: "bfp4", index: 5, title: "4화 — 흐려지는 명령서", // CG: belfor/sealed_order
     teaser: "소문 단속령의 표적은 하이델 영애. 그리고 벨포르가, 당신을 조사 대상 서류에 올린다.",
     rewardCoins: 36,
     card: { title: "검의 방향", quote: "당신 검은, 소문을 단속하려 벼려진 겁니까." },
@@ -160,7 +160,7 @@ export const BELFOR_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "bfp5", index: 6, title: "5화 — 아는 얼굴, 모르는 눈",
+    id: "bfp5", index: 6, title: "5화 — 아는 얼굴, 모르는 눈", // CG: belfor/chancellor_blade
     teaser: "재상이 처음으로 벨포르를 '센다'. — \"부단장의 검은, 대체 누구의 것입니까.\"",
     rewardCoins: 40,
     card: { title: "좋은 검", quote: "이 조용한 명령서들의 진짜 표적은, 영애가 아니었어요." },

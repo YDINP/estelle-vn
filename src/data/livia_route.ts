@@ -23,7 +23,7 @@ export const LIVIA_EPISODES: Episode[] = [
   // 프롤로그 — 1회차 배드엔딩: 지워진 이름 (기록 말소)
   // ────────────────────────────────────────────
   {
-    id: "lvp0", index: 1, title: "프롤로그 — 지워진 이름",
+    id: "lvp0", index: 1, title: "프롤로그 — 지워진 이름", // CG: livia/prologue_erased
     teaser: "겨울이 별채의 마지막 등불을 끈다. 아무도, 그 어둠을 세지 않는다.",
     rewardCoins: 20,
     card: { title: "지워진 이름", quote: "이름 한 번, 불려 보고 싶었는데." },
@@ -46,7 +46,7 @@ export const LIVIA_EPISODES: Episode[] = [
   // 1막 씨앗 (1~5화) · D-300~270 — 지식 우위
   // ────────────────────────────────────────────
   {
-    id: "lvp1", index: 2, title: "1화 — 다시, 별채의 봄",
+    id: "lvp1", index: 2, title: "1화 — 다시, 별채의 봄", // CG: livia/annex_spring
     teaser: "아무도 부른 적 없는 이름을, 이번엔 당신이 먼저 부른다.",
     rewardCoins: 30,
     card: { title: "처음 불린 이름", quote: "…어떻게, 내 이름을. 나는 이름표 같은 것도 없는데." },
@@ -79,7 +79,7 @@ export const LIVIA_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "lvp2", index: 3, title: "2화 — 별채의 손님",
+    id: "lvp2", index: 3, title: "2화 — 별채의 손님", // CG: livia/wildflowers
     teaser: "오지 않을 거라 믿었던 얼굴이, 두 번째로 별채 문을 두드린다.",
     rewardCoins: 32,
     card: { title: "첫 장", quote: "책 속 주인공들은 다 이름이 있잖아. 불려서, 이야기가 시작되고." },
@@ -115,7 +115,7 @@ export const LIVIA_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "lvp3", index: 4, title: "3화 — 담을 넘는 유령",
+    id: "lvp3", index: 4, title: "3화 — 담을 넘는 유령", // CG: livia/wall_ghost
     teaser: "담 밑을 스치는, 잿빛 예복 노신사의 그림자.",
     rewardCoins: 34,
     card: { title: "둘이 된 유령", quote: "유령이라고 소문 내 두면 편해. 아무도 안 쫓아오거든." },
@@ -145,7 +145,7 @@ export const LIVIA_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "lvp4", index: 5, title: "4화 — 두 언니 사이",
+    id: "lvp4", index: 5, title: "4화 — 두 언니 사이", // CG: livia/two_sisters
     teaser: "\"오늘도 그 역할, 하고 왔죠.\" 그 말 뒤로, 재상이 처음으로 아이를 '센다'.",
     rewardCoins: 36,
     card: { title: "가면 뒤의 언니", quote: "언니는 나쁜 사람이 아니에요. 나쁜 배역을 맡은 사람이지." },
@@ -180,7 +180,7 @@ export const LIVIA_EPISODES: Episode[] = [
     ],
   },
   {
-    id: "lvp5", index: 6, title: "5화 — 이름 없는 꽃",
+    id: "lvp5", index: 6, title: "5화 — 이름 없는 꽃", // CG: livia/nameless_flower
     teaser: "재상부 문서에, '하이델 서녀' 넉 자가 처음으로 적힌다.",
     rewardCoins: 40,
     card: { title: "이름 없는 꽃", quote: "아무도 이름을 안 부르면, 진짜 사라질 것 같아. 이런 겨울 꿈, 꾼 적도 없는데." },
