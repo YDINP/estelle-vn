@@ -2,8 +2,9 @@
 // 전체 줄기는 동일하지만, 루트별로 화 구성·일상 씬이 달라진다.
 // ⚠️ episodes/daily는 데이터 파일을 import만 (데이터 파일 무수정 원칙).
 import { CharacterId } from "./characters";
-import { Episode, EPISODES } from "./season1";
-import { DailyScene, DAILY_SCENES } from "./daily";
+import { Episode } from "./season1";
+import { DailyScene } from "./daily";
+import { LILIA_EPISODES, LILIA_DAILY } from "./lilia_route";
 import { ROZELIN_EPISODES, ROZELIN_DAILY } from "./rozelin_route";
 import { EDEN_EPISODES, EDEN_DAILY } from "./eden_route";
 import { VALEN_EPISODES, VALEN_DAILY } from "./valen_route";
@@ -25,10 +26,10 @@ export interface Route {
 export const ROUTES: Route[] = [
   {
     id: "estelle", charId: "estelle",
-    title: "에스텔 루트 — 스러진 봄",
-    desc: "정해진 파멸을 아는 당신이, 그녀의 봄을 다시 쓴다.",
-    episodes: EPISODES,
-    daily: DAILY_SCENES,
+    title: "릴리아 루트 — 스러진 봄 (개편)",
+    desc: "정해진 파멸을 아는 당신이, 일곱 죄가 탐하는 그녀의 봄을 다시 쓴다. [프롤로그+1막 배선]",
+    episodes: LILIA_EPISODES,
+    daily: LILIA_DAILY,
     available: true,
   },
   {
