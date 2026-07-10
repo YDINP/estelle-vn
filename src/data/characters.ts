@@ -48,7 +48,7 @@ export const CHARACTERS: Record<CharacterId, Character> = {
   },
   // 가시 돋친 장미 영애 (적발·와인 드레스). ⚠️ '로젤린'은 임시명 — 확정 시 name만 교체.
   rozelin: {
-    id: "rozelin", name: "마논", hasPortrait: true, color: "#ff96a6", // 적발 — 로즈레드
+    id: "rozelin", name: "마리온", hasPortrait: true, color: "#ff96a6", // 적발 — 로즈레드
     body: GRID_EMOTIONS,
     bust: GRID_EMOTIONS,
     fallback: {},

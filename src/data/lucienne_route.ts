@@ -2,7 +2,7 @@
 // 정본: PRD-story-overhaul.md · story/route-lucienne.md · isolde_route.ts(VOICE SSOT) · STORY-BIBLE · SHARED-TIMELINE(iep↔lup).
 // 루시엔(前 이졸데). 어투: 완결된 존댓말·예법, 1인칭 '저'·격식. 교만·완벽주의.
 // 붕괴 장치: 완결된 문장만 말한다 — 문장 중간 끊김 = 붕괴 신호. 1막은 끊김 없음(씨앗만).
-// 메피안(前 카닐): 협박을 축복처럼(감정 태그 없음). 마논(前 로젤린): 장미vs백합. 레이먼: 북부 혼담=거울.
+// 메피안(前 카닐): 협박을 축복처럼(감정 태그 없음). 마리온(前 로젤린): 장미vs백합. 레이먼: 북부 혼담=거울.
 // ⚠️ 이미지/세이브 호환 위해 speaker id는 구명(isolde/rozelin 등) 유지 — 표시명만 characters.ts에서 신명.
 import { Step, Line, ChoiceOption, Emotion } from "./chapters";
 import { Episode } from "./season1";
@@ -11,7 +11,7 @@ import { DailyScene } from "./daily";
 // ── 빌더 ──
 const N = (text: string): Step => ({ kind: "line", line: { speaker: "narration", text } });
 const LU = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "isolde", text, emotion } }); // 루시엔
-const MA = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "rozelin", text, emotion } }); // 마논
+const MA = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "rozelin", text, emotion } }); // 마리온
 const RM = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "rayner", text, emotion } });  // 레이먼
 const ME = (text: string): Step => ({ kind: "line", line: { speaker: "chancellor", text } });                         // 메피안
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
@@ -95,7 +95,7 @@ export const LUCIENNE_EPISODES: Episode[] = [
       MA("흰 백합께서 요즘 아주 화제시더군요. 북부의 서리와 얼음끼리 — 참 잘 어울리는 그림이에요.", "smirk"),
       LU("발루아 영애의 부채가 옮기는 소문은, 언제나 향이 진하더군요. 진한 향은 대개, 무언가를 감추기 마련이고요.", "cold"),
       MA("…어머. 백합은 가시가 없다더니, 혀끝은 장미보다 날카로우시네.", "serious"),
-      N("완벽한 응수, 완벽한 미소. 그러나 당신만은 보았다 — 두 사람이 서로를 '같은 새장의 다른 새'로 알아보는 그 짧은 눈빛을. 마논이 부채를 접고 물러나는 등에서, 무대를 내려온 배우의 피로가 잠깐 비쳤다."),
+      N("완벽한 응수, 완벽한 미소. 그러나 당신만은 보았다 — 두 사람이 서로를 '같은 새장의 다른 새'로 알아보는 그 짧은 눈빛을. 마리온이 부채를 접고 물러나는 등에서, 무대를 내려온 배우의 피로가 잠깐 비쳤다."),
       LU("…사교계는 우리를 겨루게 하고 싶어 합니다. 하지만.", "neutral"),
       LU("장미와 백합은, 애초에 다른 꽃입니다. 어느 쪽이 위라는 말은 — 두 꽃 다, 물어본 적 없는 물음이지요.", "soft"),
       CH("무엇을 겨냥해 개입할 것인가", [
@@ -114,7 +114,7 @@ export const LUCIENNE_EPISODES: Episode[] = [
       ]),
       N("어느 쪽이든, 그녀의 완벽한 하루에 처음으로 '곱씹을 문장' 하나가 남았다. 씨앗은 대개, 심은 줄도 모르게 심긴다."),
       LU("오늘의 사십오 분은 이미 지났습니다. …그런데도 자리를 뜨지 않는 걸 보면, 저는 오늘 규칙을 하나 어긴 셈이군요. 규칙을 어겼는데, 자수의 한 땀은 멀쩡합니다. 이상한 오후입니다.", "soft"),
-      N("그런데 당신은 알아챘다. 두 꽃을 저울에 처음 올린 그 부채 — 소문을 사교계에 흘린 손이, 마논의 것도 백합의 것도 아니었다. 재상 메피안의 손끝에서, 그 부채가 처음 펼쳐졌다. 장미를 움직인 것은, 장미가 아니었다."),
+      N("그런데 당신은 알아챘다. 두 꽃을 저울에 처음 올린 그 부채 — 소문을 사교계에 흘린 손이, 마리온의 것도 백합의 것도 아니었다. 재상 메피안의 손끝에서, 그 부채가 처음 펼쳐졌다. 장미를 움직인 것은, 장미가 아니었다."),
     ],
   },
   {

@@ -11,14 +11,14 @@
 | **릴리아** | (거울·희생) | 에스텔 | Lilith | [skeleton-lilia.md](./skeleton-lilia.md) *(표준 예시)* |
 | **벨리안** | 식탐 暴食 | 발렌 | Beelzebub | [skeleton-belian.md](./skeleton-belian.md) |
 | **루시엔** | 교만 傲慢 | 이졸데 | Lucifer | [skeleton-lucienne.md](./skeleton-lucienne.md) |
-| **마논** | 탐욕 貪慾 | 로젤린 | Mammon | [skeleton-manon.md](./skeleton-manon.md) |
+| **마리온** | 탐욕 貪慾 | 로젤린 | Mammon | [skeleton-marion.md](./skeleton-marion.md) |
 | **벨포르** | 나태 懶怠 | 이든 | Belphegor | [skeleton-belfor.md](./skeleton-belfor.md) |
 | **리비아** | 시기 嫉妬 | 클로에 | Leviathan | [skeleton-livia.md](./skeleton-livia.md) |
 | **레이먼** | 분노 憤怒 | 레이너 | Amon | [skeleton-reimon.md](./skeleton-reimon.md) |
 | **아젤** | 색욕 色慾→타락한 사제 | 미카엘 | Asmodeus | [skeleton-azael.md](./skeleton-azael.md) |
 
 ## 공통 정합 축 (전 스켈레톤 준수 확인됨)
-- 왕관의 밤 D-0 **6비트 골격 불변**: 고발 → 위증 거부(마논) → 봉랍 증언(아젤) → 확보(레이먼 명령/벨포르 집행, 표적=약혼자·집사) → 벨리안 "짐의 검을 시험하는가" → 메피안 실각.
+- 왕관의 밤 D-0 **6비트 골격 불변**: 고발 → 위증 거부(마리온) → 봉랍 증언(아젤) → 확보(레이먼 명령/벨포르 집행, 표적=약혼자·집사) → 벨리안 "짐의 검을 시험하는가" → 메피안 실각.
 - **엔딩 3게이트**(15/25/30화): BAD①·BAD②·엔딩③(GOOD 구원 / BAD 프롤로그 재현 / TRUE 메피안 '두 번' 떡밥 회수, 전 8루트 GOOD 관통 시).
 - 캘린더 D-300(회귀)/270/200/150/90/30/0(왕관의 밤). 회귀=끝까지 캐릭터 비밀(무귀속 서늘함까지).
 - 로맨스는 GOOD에서 불성립(벗 상한), BAD/파멸 분기에서만 어두운 감정선 개방.

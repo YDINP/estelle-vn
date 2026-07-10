@@ -5,7 +5,7 @@ import { CharacterId } from "./characters";
 import { Episode } from "./season1";
 import { DailyScene } from "./daily";
 import { LILIA_EPISODES, LILIA_DAILY } from "./lilia_route";
-import { MANON_EPISODES, MANON_DAILY } from "./manon_route";
+import { MARION_EPISODES, MARION_DAILY } from "./marion_route";
 import { BELFOR_EPISODES, BELFOR_DAILY } from "./belfor_route";
 import { BELIAN_EPISODES, BELIAN_DAILY } from "./belian_route";
 import { LUCIENNE_EPISODES, LUCIENNE_DAILY } from "./lucienne_route";
@@ -34,10 +34,10 @@ export const ROUTES: Route[] = [
   },
   {
     id: "rozelin", charId: "rozelin",
-    title: "마논 루트 — 값 없는 유대 (개편)",
+    title: "마리온 루트 — 값 없는 유대 (개편)",
     desc: "빚에 목이 잡혀 남을 파는 값으로 살아온 붉은 장미. 배역이 아닌 제 이름의 대본을 함께 되찾는다. [프롤로그+1막]",
-    episodes: MANON_EPISODES,
-    daily: MANON_DAILY,
+    episodes: MARION_EPISODES,
+    daily: MARION_DAILY,
     available: true,
   },
   // ── 잠금 루트 6종 개방 (story/ 집필 → *_route.ts 데이터화, 2026-07-08) ──

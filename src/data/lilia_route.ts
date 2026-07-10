@@ -1,7 +1,7 @@
 // 릴리아 루트 데이터 — 스토리 대개편(30화 멀티엔딩·7대죄) 프롤로그+1막 배선. [페이싱 개편판]
 // 정본: PRD-story-overhaul.md · story/route-lilia.md · STORY-BIBLE · SHARED-TIMELINE.
 // 릴리아(前 에스텔, 거울/릴리스). 어투: 존댓말·절제(감정 커질수록 짧아짐), 손아래 리비아엔 '나'.
-// 메피안(前 카닐): 하오체·협박을 축복처럼. 마논(前 로젤린): 우아한 반어·극존칭('악녀' 금지).
+// 메피안(前 카닐): 하오체·협박을 축복처럼. 마리온(前 로젤린): 우아한 반어·극존칭('악녀' 금지).
 // 벨리안(前 발렌): 거만한 황제 사극체(짐/~이니라).
 // 페이싱 독트린: 프롤로그=배드엔딩만 흘러가듯(회귀 장면 없음) / 화당 온스크린 사건 1+ / 내레이션 압축 / 매 화 미해결 컷.
 // ⚠️ 이미지/세이브 호환 위해 speaker id는 구명(estelle/rozelin 등) 유지 — 표시명만 characters.ts에서 신명.
@@ -13,7 +13,7 @@ import { DailyScene } from "./daily";
 const N = (text: string): Step => ({ kind: "line", line: { speaker: "narration", text } });
 const LI = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "estelle", text, emotion } }); // 릴리아
 const ME = (text: string): Step => ({ kind: "line", line: { speaker: "chancellor", text } });                        // 메피안
-const MA = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "rozelin", text, emotion } }); // 마논
+const MA = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "rozelin", text, emotion } }); // 마리온
 const BE = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "valen", text, emotion } });   // 벨리안
 const FI = (text: string): Step => ({ kind: "line", line: { speaker: "fiance", text } });                            // 약혼자
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
@@ -105,7 +105,7 @@ export const LILIA_EPISODES: Episode[] = [
     rewardCoins: 34,
     card: { title: "가시의 값", quote: "그 밀서, 태우지 마세요. 다음 장은 당신 이름으로 쓰일 테니까." },
     steps: [
-      N("마논. 사교계의 붉은 장미. 어젯밤 담장 위의 문장의 주인이 — 태연히 찻잔을 들었다."),
+      N("마리온. 사교계의 붉은 장미. 어젯밤 담장 위의 문장의 주인이 — 태연히 찻잔을 들었다."),
       MA("어머. 하이델의 봄은 아침부터 붐비네요. 지는 꽃의 향은, 유독 진하거든요.", "smirk"),
       LI("발루아의 영애. 어젯밤, 우리 서재의 담장은 안녕했나요.", "cold"),
       MA("……글쎄요. 담장이란 건, 넘는 사람보다 세우는 사람이 나쁜 법이라.", "scheme"),
@@ -123,7 +123,7 @@ export const LILIA_EPISODES: Episode[] = [
             rma("어머, 방패까지. …그 방패, 언제까지 갈까요. 봄은 생각보다 짧답니다.", "smirk"),
           ] },
       ]),
-      N("마논이 돌아서며, 스치듯 한마디를 떨어뜨렸다."),
+      N("마리온이 돌아서며, 스치듯 한마디를 떨어뜨렸다."),
       MA("그 밀서, 태우지 마세요. 태우면 — 다음 장은 당신 이름으로 쓰일 테니까.", "neutral"),
       N("경고인지 협박인지, 그녀는 끝내 말하지 않았다. — 그리고 그 저녁, 공작이 릴리아를 서재로 불렀다. 통보였다. \"하이델을 지킬 방패다. 다음 달, 약혼을 발표한다.\""),
       LI("…약혼이요? 상대가, 누구인데요.", "surprised"),
