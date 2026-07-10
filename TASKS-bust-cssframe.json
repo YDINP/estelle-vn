@@ -1,0 +1,19 @@
+{
+  "task": "bust-cssframe",
+  "prd": "PRD-bust-cssframe.md",
+  "date": "2026-07-10",
+  "goal": "흉상 bust_*.png 에셋 제거 → 단일 body 세트 + CSS 반신 크롭(bustZoom). 기준=marion.",
+  "tasks": [
+    { "id": 1, "title": "characters.ts: bust 필드 제거 + bustZoom 추가(marion 1.44), vnFile/resolveEmotion/isPlaceholderArt body 기준, bustZoomOf export", "done": true },
+    { "id": 2, "title": "cheats.ts/ui.ts: c.bust 참조 4곳 → c.body, setIllustMode body+CSS(bust/chest) 모드", "done": true },
+    { "id": 3, "title": "style.css: .vn-portrait scale(--bz), .illust-figure.bust 3/4 박스 크롭", "done": true },
+    { "id": 4, "title": "extras(fiance/mephian) bust_soft→soft 리네임, bust_*.png 전량 git rm", "done": true },
+    { "id": 5, "title": "character-profiles/relationship-chart bust_soft→soft, 관계도 구 폴더 id 복구, 마논→마리온 통일", "done": true },
+    { "id": 6, "title": "검증: tsc+build, 부팅 콘솔에러0, marion 반신 스크린샷 대조, 배포", "done": true }
+  ],
+  "notes": [
+    "실측: marion만 bust≠body(진짜 크롭). 나머지 7종 bust=body 중복 → 삭제해도 무회귀.",
+    "backup 폴더의 bust_*.png는 untracked라 잔존(배포/게임 무관).",
+    "marion bustZoom=1.44 (928/645) — 검증 스크린샷서 lilia와 동일 프레이밍 확인."
+  ]
+}

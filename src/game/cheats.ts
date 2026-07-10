@@ -82,7 +82,7 @@ function register(ctx: CheatCtx): void {
       for (const id of Object.keys(CHARACTERS) as CharacterId[]) {
         const c = CHARACTERS[id];
         if (!c.hasPortrait) continue;
-        st().illust[id] = [...(c.bust.length ? c.bust : c.body)];
+        st().illust[id] = [...c.body];
       }
       // 스토리 연출 CG도 전부 수집 처리
       st().cgSeen = CGS.map((g) => g.id);

@@ -15,7 +15,7 @@ import { showRewardedAd, showInterstitialAd } from "./ads";
 import { Choice, Line, Emotion, Step, PROLOGUE } from "../data/chapters";
 import {
   CHARACTERS, CharacterId, EMOTION_LABEL, vnFile, portraitFile, resolveEmotion,
-  isPlaceholderArt,
+  isPlaceholderArt, bustZoomOf,
 } from "../data/characters";
 import { EPISODES, Episode } from "../data/season1";
 import { DAILY_SCENES, DAILY_AFFECTION } from "../data/daily";
@@ -87,6 +87,7 @@ function setVnPortrait(id: CharacterId, e?: Emotion) {
   vnPortraitSpk = id;
   const img = $("#vnPortrait") as HTMLImageElement;
   img.src = vnFile(id, resolved);
+  img.style.setProperty("--bz", String(bustZoomOf(id))); // 반신 프레이밍(전신형 캐릭터 확대)
   img.classList.toggle("is-extra", !!c.extra); // 실루엣은 상반신 배율로 표시
   // 엑스트라 실루엣은 '임시' 배지 대상 아님
   $("#vnPh").classList.toggle("hidden", !!c.extra || !isPlaceholderArt(id, e));
@@ -155,7 +156,7 @@ function renderMainScreen() {
       : `📖 ${cleared}/${total}화`;
     // 아트 미보유 캐릭터(시트 대기 중)는 이미지 대신 ? 실루엣
     const c = CHARACTERS[r.charId];
-    const artless = !c.body.length && !c.bust.length;
+    const artless = !c.body.length;
     const art = artless
       ? `<div class="rc-unknown">?</div>`
       : `<img src="${vnFile(r.charId, "soft")}" alt="" />${
@@ -342,8 +343,10 @@ function setIllustMode(mode: IllustMode) {
   if (!illustViewState) return;
   const { id, e } = illustViewState;
   const img = $("#illustViewImg") as HTMLImageElement;
-  // 흉상은 전신 이미지를 확대해 머리~가슴만 세로 프레임에 담아 표시 — 별도 에셋 불필요
-  img.src = mode === "bust" ? vnFile(id, e) : portraitFile(id, e);
+  // 단일 세트(전신 body) — 반신/흉상은 CSS 크롭. 반신은 캐릭터별 bustZoom 확대.
+  img.src = portraitFile(id, e);
+  img.style.setProperty("--bz", mode === "bust" ? String(bustZoomOf(id)) : "1");
+  $("#illustFig").classList.toggle("bust", mode === "bust");
   $("#illustFig").classList.toggle("chest", mode === "chest");
   $("#illustViewModes").querySelectorAll("button").forEach((b) =>
     b.classList.toggle("on", (b as HTMLElement).dataset.mode === mode));
@@ -770,7 +773,7 @@ function renderIllust(id: CharacterId) {
   const cleared = allClearedEpisodes(state);
   const c = CHARACTERS[id];
   // 아트 미보유(시트 준비 중) 캐릭터 — placeholder 도감
-  if (!c.body.length && !c.bust.length) {
+  if (!c.body.length) {
     $("#collectCount").textContent = `0/?`;
     $("#illustWrap").innerHTML = `
       <div class="isec-t">표정</div>
@@ -780,8 +783,8 @@ function renderIllust(id: CharacterId) {
       <div class="collect-tease">🖼 ${c.name}의 일러스트는 준비 중이에요.<br>이야기가 열리면 함께 만나요.</div>`;
     return;
   }
-  // 표정(상반신) — 스토리에서 본 표정 수집
-  const emoSet = c.bust.length ? c.bust : c.body;
+  // 표정(반신) — 스토리에서 본 표정 수집
+  const emoSet = c.body;
   const seen = state.illust[id] ?? [];
   const aff = affectionOf(state, id);
   const poseCells = emoSet.map((e) => {
@@ -848,7 +851,7 @@ function renderIllust(id: CharacterId) {
     el.addEventListener("click", () => {
       const g = CGS.find((x) => x.id === (el as HTMLElement).dataset.cg)!;
       ($("#illustViewImg") as HTMLImageElement).src = cgFile(g);
-      $("#illustFig").classList.remove("chest");
+      $("#illustFig").classList.remove("chest", "bust");
       $("#illustViewCap").textContent = `${CHARACTERS[g.char].name} — ${g.title}`;
       illustViewState = null;
       $("#illustViewModes").classList.add("hidden");
@@ -859,7 +862,7 @@ function renderIllust(id: CharacterId) {
     el.addEventListener("click", () => {
       const g = SPECIAL_ILLUSTS.find((x) => x.id === (el as HTMLElement).dataset.special)!;
       ($("#illustViewImg") as HTMLImageElement).src = specialIllustFile(g);
-      $("#illustFig").classList.remove("chest");
+      $("#illustFig").classList.remove("chest", "bust");
       $("#illustViewCap").textContent = `${CHARACTERS[g.char].name} — ${g.title}`;
       illustViewState = null;
       $("#illustViewModes").classList.add("hidden");

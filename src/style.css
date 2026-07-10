@@ -367,6 +367,16 @@ body {
 #illustView .illust-figure.chest img { width: 178%; height: auto; margin: 8% 0 0 -39%;
   max-width: none; max-height: none; display: block; border-radius: 0;
   filter: none; box-shadow: none; }
+/* 반신 모드 — 전신 body를 머리~허리 세로 프레임에 담음(별도 에셋 없음).
+   bustZoom(전신형 캐릭터)만 확대, 기본 1 = body 상단 그대로 */
+.illust-figure.bust { display: block; width: min(84vw, 340px); aspect-ratio: 3 / 4;
+  overflow: hidden; border-radius: 18px; border: 1px solid var(--gold);
+  background: radial-gradient(120% 100% at 50% 0%, #3a2113 0%, #24130a 55%, #1c0e06 100%);
+  box-shadow: inset 0 0 0 2px rgba(0,0,0,.45), inset 0 0 0 3px rgba(243,223,164,.1),
+    0 10px 30px rgba(0,0,0,.55); }
+#illustView .illust-figure.bust img { width: 100%; height: auto; display: block;
+  transform: scale(var(--bz, 1)); transform-origin: 50% 0;
+  max-width: none; max-height: none; border-radius: 0; filter: none; box-shadow: none; }
 .modal.hidden, .toast.hidden, .character.hidden { display: none; }
 .sheet {
   width: 100%; max-width: 460px; position: relative;
@@ -491,6 +501,7 @@ body {
    margin-top으로 y를 내려 배치(하단이 UI에 가려지는 건 허용, 잘리는 끝단은 페이드 구간) */
 .vn-portrait { height: 100%; width: auto; max-width: none; object-fit: contain;
   margin-top: 7%;
+  transform: scale(var(--bz, 1)); transform-origin: 50% 0; /* 반신 프레이밍 — 전신형(marion)만 확대 */
   filter: drop-shadow(0 8px 24px rgba(0,0,0,.5)); animation: pop .3s ease;
   -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent 88%),
     linear-gradient(90deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
