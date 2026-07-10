@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>에스텔 — 인물 설정집</title>
+<title>릴리아 — 인물 설정집</title>
 <style>
   :root{
     --bg0:#150a05; --bg1:#26130a; --panel:rgba(74,41,23,.82);
@@ -69,6 +69,9 @@
   .name-en{font-size:12px; color:var(--muted); letter-spacing:.12em}
   .swatch{width:11px; height:11px; border-radius:50%; box-shadow:0 0 0 2px rgba(255,255,255,.12), 0 0 10px var(--c)}
   .tagline{color:var(--gold-soft); font-size:13.5px; font-style:italic}
+  .sin{margin-left:auto; font-size:11px; padding:3px 10px; border-radius:999px; white-space:nowrap;
+    border:1px solid rgba(217,106,90,.45); color:#eab0a0; background:rgba(217,106,90,.12); letter-spacing:.03em}
+  .sin.mirror{border-color:rgba(240,179,203,.5); color:var(--rose); background:rgba(240,179,203,.1)}
   .meta{display:flex; flex-direction:column; gap:9px; font-size:13.5px}
   .meta .row{display:flex; gap:9px}
   .meta .k{color:var(--gold); flex:0 0 58px; font-weight:600}
@@ -105,9 +108,10 @@
 <body>
 <header>
   <div class="kicker serif">ARDEN EMPIRE · CHARACTER PROFILES</div>
-  <h1 class="serif">에스텔 — 인물 설정집</h1>
+  <h1 class="serif">릴리아 — 인물 설정집</h1>
   <p class="sub">아르덴 제국, 봄의 대관 무도회 <b>‘왕관의 밤’</b>을 앞둔 1년. 주인공 ‘당신’은 별 펜던트로 회귀한 자 —
-    모든 루트에서 <b>이름 없는 은인</b>으로 남는다. 각 인물의 1회차 비극을 되돌리는 것이 이야기의 심장이다.</p>
+    모든 루트에서 <b>이름 없는 은인</b>으로 남는다. 여덟 인물은 저마다의 <b>7대죄</b>에 삼켜진 1회차(프롤로그)를 지고,
+    <b>30화 6막의 멀티엔딩</b>(구원·파멸·진실)에서 그 죄를 극복하거나 되풀이한다.</p>
   <div class="rule"></div>
 </header>
 
@@ -131,8 +135,8 @@
   <p class="note">○ 인연 · × 충돌 · ○× 부하/상관이자 원칙과 침묵의 긴장</p>
 
   <footer class="serif">
-    정본: STORY-BIBLE.md §0~3 · src/data/characters.ts &nbsp;|&nbsp; 대표 이미지: 각 캐릭터 상반신(bust_soft)<br>
-    전 루트 로맨스 불성립 · 회귀는 끝까지 주인공만의 비밀
+    정본: PRD-story-overhaul.md · STORY-BIBLE.md · story/skeleton-*.md &nbsp;|&nbsp; 개편: 7대죄 · 악마명 개명 · 30화 멀티엔딩 (2026-07-10)<br>
+    이미지 폴더(id)는 코드 리네임 전이라 구명 유지 · 해피 루트 로맨스 불성립 · 회귀는 끝까지 주인공만의 비밀
   </footer>
 </div>
 
@@ -140,77 +144,77 @@
 const IMG = id => `public/char/${id}/bust_soft.png`;
 // 인물 데이터 (정본 STORY-BIBLE §1·§3 / characters.ts)
 const CHARS = [
-  { group:"hero", id:"estelle", name:"에스텔", en:"ESTELLE", color:"#ffdf9e", role:"하이델 공작영애",
-    tag:"스러진 봄의 약속",
-    id_role:"선대 황후를 낸 명문가의 영애 — 그래서 재상파의 표적",
+  { group:"hero", id:"estelle", name:"릴리아", en:"LILIA", color:"#ffdf9e", role:"하이델 공작영애",
+    tag:"일곱 죄가 향하는 봄", sin:"거울 · 희생 (릴리스)", mirror:true,
+    id_role:"선대 황후를 낸 명문가의 영애. 고유한 죄가 아닌 ‘일곱 죄가 향하는 거울’ — 메피안 각본의 수렴점",
     voice:"존댓말·절제된 문장. 감정이 커질수록 말이 짧아진다(마른 유머)",
-    fall:"세 번의 누명 끝에 탑 유폐, 봄을 빼앗긴 채 시듦",
+    fall:"일곱 죄가 수렴하는 봄, 세 번의 누명 끝 탑 유폐 — 원죄 없는 희생양",
     save:"되찾은 봄, 스스로 서는 공작영애" },
-  { group:"hero", id:"adele", name:"클로에", en:"CHLOE", color:"#f2cfa6", role:"하이델가 서녀",
-    tag:"불리지 못한 이름",
-    id_role:"에스텔의 이복자매. 별채에 사는, 이름 불러주는 이 없던 아이. 로젤린의 유일한 민낯 친구",
-    voice:"반말 섞인 소녀 말투(로젤린껜 ‘언니’). 조용하지만 직언",
-    fall:"하이델 몰락과 함께 존재가 기록에서 지워짐",
-    save:"불리는 이름 — 에스텔과의 자매 화해" },
+  { group:"hero", id:"adele", name:"리비아", en:"LIVIA", color:"#f2cfa6", role:"하이델가 서녀",
+    tag:"그늘의 시기", sin:"시기 嫉妬 (Leviathan)",
+    id_role:"릴리아의 이복자매. 별채에 사는, 이름 불러주는 이 없던 아이. 마논의 유일한 민낯 친구",
+    voice:"반말 섞인 소녀 말투(마논껜 ‘언니’). 조용하지만 직언",
+    fall:"그늘의 시기 끝에 존재가 기록에서 지워짐 — 이름 한 번 못 불림",
+    save:"불리는 이름 — 릴리아와의 자매 화해" },
 
-  { group:"route", id:"rozelin", name:"로젤린", en:"ROZELIN", color:"#ff96a6", role:"발루아 후작영애",
-    tag:"가시 돋친 붉은 장미",
+  { group:"route", id:"rozelin", name:"마논", en:"MANON", color:"#ff96a6", role:"발루아 후작영애",
+    tag:"가시 돋친 붉은 장미", sin:"탐욕 貪慾 (Mammon)",
     id_role:"사교계 ‘붉은 장미’. 가문의 빚을 잡혀 누명 공작의 도구로 쓰인다 — 가시는 배역이지 본성이 아니다",
     voice:"우아한 반어법, 극존칭으로 찌르는 화법. 본심은 독백에서만(가면 ↔ 민낯의 갭)",
-    fall:"쓸모를 다한 뒤 죄를 뒤집어쓰고 국경 밖 수도원행",
+    fall:"빚·쓸모·계산에 남을 판 값으로, 죄를 쓰고 국경 밖 추방",
     save:"배역이 아닌 제 이름의 대본" },
-  { group:"route", id:"valen", name:"발렌", en:"VALEN", color:"#e8a06d", role:"제1황태자",
-    tag:"가장 위험한 태양",
-    id_role:"‘짐’을 쓰는 제1황태자. 하이델은 그의 마지막 방패 — 에스텔의 누명은 발렌 폐위의 포석이다",
+  { group:"route", id:"valen", name:"벨리안", en:"BELIAN", color:"#e8a06d", role:"제1황태자",
+    tag:"가장 위험한 태양", sin:"식탐 暴食 (Beelzebub)",
+    id_role:"‘짐’을 쓰는 제1황태자. 하이델은 그의 마지막 방패 — 릴리아의 누명은 벨리안 폐위의 포석이다",
     voice:"거만한 황제 사극체(~이니라/~하라/~느냐). 감정이 갈라질 땐 탄식 어미(~구나)로 인간미",
-    fall:"대관 직후 독이 든 축배 — 살아남되 꼭두각시 황제",
+    fall:"독이 든 대관 축배를 삼키고 꼭두각시 황제로 — 삼켜진 태양",
     save:"웃으며 쓰는 왕관 (옥좌와 사람 사이의 화해)" },
-  { group:"route", id:"eden", name:"이든", en:"EDEN", color:"#cfe0f5", role:"근위대 부단장",
-    tag:"신분의 벽을 넘은 검",
-    id_role:"평민 출신 발탁. 원칙과 검으로 벽을 넘어온 사람. 레이너의 직속 부하",
+  { group:"route", id:"eden", name:"벨포르", en:"BELFOR", color:"#cfe0f5", role:"근위대 부단장",
+    tag:"신분의 벽을 넘은 검", sin:"나태 懶怠 (Belphegor)",
+    id_role:"평민 출신 발탁. 원칙과 검으로 벽을 넘어온 사람. 레이먼의 직속 부하",
     voice:"경어체 보고 말투. 명령과 양심 사이에서 문장이 짧아진다",
-    fall:"부당한 명령의 집행자가 된 뒤 스스로 검을 꺾고 근위대를 떠남",
+    fall:"양심을 알면서도 명령에 복종 — 부당 집행 뒤 스스로 검을 꺾고 이탈",
     save:"검이 지킬 것을 스스로 고르는 맹세" },
-  { group:"route", id:"rayner", name:"레이너", en:"RAYNER", color:"#b9c9dd", role:"기사단장 · 북부대공",
-    tag:"두 맹세를 진 검",
+  { group:"route", id:"rayner", name:"레이먼", en:"REIMON", color:"#b9c9dd", role:"기사단장 · 북부대공",
+    tag:"두 맹세를 진 검", sin:"분노 憤怒 (Amon)",
     id_role:"황실이 북부 견제용으로 중앙에 묶어둔 이중 신분 — 북부와 황실, 두 맹세를 한 검에 진다",
     voice:"최소한의 단문·명령형. 감정은 침묵의 길이로 표현",
-    fall:"양쪽에서 의심받아 반역자 오명, 검을 쥔 채 고립",
+    fall:"양쪽에서 의심받아 고립된 검의 분노 — 반역자 오명, 검을 쥔 채 소외",
     save:"두 맹세의 화해 (검을 내려놓지 않고 북부로)" },
-  { group:"route", id:"isolde", name:"이졸데", en:"ISOLDE", color:"#bfe3ea", role:"후작영애",
-    tag:"금 간 흰 백합",
-    id_role:"얼음처럼 완전한 완벽주의. 사교계에서 로젤린과 나란히 불리는 ‘흰 백합’",
+  { group:"route", id:"isolde", name:"루시엔", en:"LUCIENNE", color:"#bfe3ea", role:"후작영애",
+    tag:"금 간 흰 백합", sin:"교만 傲慢 (Lucifer)",
+    id_role:"얼음처럼 완전한 완벽주의. 사교계에서 마논과 나란히 불리는 ‘흰 백합’",
     voice:"완결된 문장만 말한다. 흐트러짐 = 붕괴 신호(루트 후반 장치)",
-    fall:"단 한 번의 실수로 파혼·사교계 매장, 자발적 유폐",
+    fall:"완벽의 감옥 — 끊긴 서약 한 문장에 파혼·매장·자발적 유폐",
     save:"실패할 자유 (완벽의 감옥에서 걸어 나오기)" },
-  { group:"route", id:"michael", name:"미카엘", en:"MICHAEL", color:"#ece5cf", role:"신성왕국 성기사",
-    tag:"국경을 넘는 빛",
-    id_role:"국경 너머에서 온 사절 — 제국의 어떤 파벌에도 매수되지 않는 증인",
+  { group:"route", id:"michael", name:"아젤", en:"AZAEL", color:"#ece5cf", role:"신성왕국 성기사",
+    tag:"빛과 미혹 사이", sin:"색욕 色慾 → 타락한 사제 (Asmodeus)",
+    id_role:"국경 너머에서 온 사절 — 매수되지 않는 증인. 파멸 분기에선 빛의 맹세를 스스로 판 ‘타락한 사제’로 전락",
     voice:"정중하고 이국적인 격식. ‘기록/맹세/빛’의 어휘",
-    fall:"진실을 증언한 죄로 파문, 맹세와 빛을 잃고 국경을 떠돎",
+    fall:"미혹에 성의를 저버린 타락한 사제로 전락 — 빛을 판 자",
     save:"국경을 넘는 빛 (맹세와 마음의 양립)" },
 
-  { group:"support", id:"chancellor", name:"재상 카닐", en:"CHANCELLOR", color:"#b8b09b", role:"섭정 실권자", silhouette:true,
-    tag:"축복처럼 말하는 협박",
-    id_role:"병약한 황제의 섭정 실권자. 목표는 발렌 폐위와 방계 옹립. 모든 덫의 각본가",
+  { group:"support", id:"chancellor", name:"메피안", en:"MEPHIAN", color:"#b8b09b", role:"재상 · 섭정 실권자", silhouette:true,
+    tag:"축복처럼 말하는 협박", sin:"각본가 · 배후",
+    id_role:"병약한 황제의 섭정 실권자. 목표는 벨리안 폐위와 방계 옹립. 일곱 죄를 릴리아에게 겨누는 모든 덫의 각본가",
     voice:"부드러운 경어. 협박도 축복처럼. 감탄사 없음",
     fall:"—", save:"—" },
   { group:"support", id:"fiance", name:"약혼자", en:"FIANCÉ", color:"#9db8e8", role:"정략 약혼자(무명)", silhouette:true,
-    tag:"덫이 된 약혼",
-    id_role:"카닐이 하이델가 안에 심은 감시자. 정략 약혼 자체가 덫의 일부",
-    voice:"사무적 단문. 8화 배신의 순간에 처음으로 문장이 길어진다",
+    tag:"덫이 된 약혼", sin:"감시자",
+    id_role:"메피안이 하이델가 안에 심은 감시자. 정략 약혼 자체가 덫의 일부",
+    voice:"사무적 단문. 왕관의 밤 배신의 순간에 처음으로 문장이 길어진다",
     fall:"—", save:"—" },
 ];
 
 const RELS = [
-  { a:"클로에", b:"에스텔", t:"o",  label:"이복자매 (그늘과 볕)", use:"클로에 루트의 핵심 — 이름/가족 인정" },
-  { a:"클로에", b:"로젤린", t:"o",  label:"유일한 민낯 친구", use:"로젤린 루트의 도덕적 저울" },
-  { a:"로젤린", b:"이졸데", t:"x",  label:"사교계 라이벌 (장미 vs 백합)", use:"이졸데 루트 도입부 갈등" },
-  { a:"이든",   b:"레이너", t:"ox", label:"부하/상관 · 원칙 vs 침묵", use:"ep6 봉쇄(이든) vs ep9 명령(레이너)" },
-  { a:"레이너", b:"발렌",   t:"x",  label:"황실의 견제 (인질성 임명)", use:"레이너 루트 — 두 맹세의 충돌" },
-  { a:"레이너", b:"이졸데", t:"x",  label:"북부 정략 혼담설", use:"서로의 ‘완벽한 감옥’을 비추는 거울" },
-  { a:"미카엘", b:"카닐",   t:"x",  label:"매수 불가능한 증인", use:"ep9 봉랍 증언 — 왕관의 밤 반격 축" },
-  { a:"발렌",   b:"에스텔", t:"o",  label:"방패와 칼끝 (정치적 연대)", use:"에스텔 누명 = 발렌 폐위 포석" },
+  { a:"리비아", b:"릴리아", t:"o",  label:"이복자매 (그늘과 볕)", use:"리비아(시기) 루트의 핵심 — 이름/가족 인정" },
+  { a:"리비아", b:"마논",   t:"o",  label:"유일한 민낯 친구", use:"마논(탐욕) 루트의 도덕적 저울" },
+  { a:"마논",   b:"루시엔", t:"x",  label:"사교계 라이벌 (장미 vs 백합)", use:"루시엔(교만) 루트 도입부 갈등" },
+  { a:"벨포르", b:"레이먼", t:"ox", label:"부하/상관 · 원칙 vs 침묵", use:"봉쇄 집행(벨포르) vs 명령(레이먼)" },
+  { a:"레이먼", b:"벨리안", t:"x",  label:"황실의 견제 (인질성 임명)", use:"레이먼(분노) 루트 — 두 맹세의 충돌" },
+  { a:"레이먼", b:"루시엔", t:"x",  label:"북부 정략 혼담설", use:"서로의 ‘완벽한 감옥’을 비추는 거울" },
+  { a:"아젤",   b:"메피안", t:"x",  label:"매수 불가능한 증인", use:"왕관의 밤 봉랍 증언 — 반격 축" },
+  { a:"벨리안", b:"릴리아", t:"o",  label:"방패와 칼끝 (정치적 연대)", use:"릴리아 누명 = 벨리안 폐위 포석" },
 ];
 const shortName = n => n.replace("재상 ","");
 const colorOf = n => (CHARS.find(c=>shortName(c.name)===shortName(n))||{}).color || "#c9ac85";
@@ -218,9 +222,9 @@ const colorOf = n => (CHARS.find(c=>shortName(c.name)===shortName(n))||{}).color
 function card(c){
   const arc = c.fall==="—" ? "" : `
     <div class="arc">
-      <div class="box fall"><div class="lbl">1회차 비극</div>${c.fall}</div>
+      <div class="box fall"><div class="lbl">프롤로그 · 죄에 삼켜짐</div>${c.fall}</div>
       <div class="arrow">→</div>
-      <div class="box save"><div class="lbl">구원 · 엔딩</div>${c.save}</div>
+      <div class="box save"><div class="lbl">GOOD · 죄 극복</div>${c.save}</div>
     </div>`;
   const rels = RELS.filter(r=> shortName(r.a)===shortName(c.name) || shortName(r.b)===shortName(c.name))
     .map(r=>{
@@ -240,6 +244,7 @@ function card(c){
         <span class="swatch" style="--c:${c.color};background:${c.color}"></span>
         <span class="name serif" style="color:${c.color}">${c.name}</span>
         <span class="name-en">${c.en}</span>
+        ${c.sin?`<span class="sin${c.mirror?' mirror':''}">${c.sin}</span>`:""}
       </div>
       <div class="tagline">“${c.tag}”</div>
       <div class="meta">
