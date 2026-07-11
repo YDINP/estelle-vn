@@ -884,23 +884,37 @@ let vnGrantRewards = true;
 let vnTyping = false;
 let vnFull = "";
 let vnTypeIv: number | undefined;
-function stopVnType() { if (vnTypeIv) { clearInterval(vnTypeIv); vnTypeIv = undefined; } vnTyping = false; }
+function stopVnType() { if (vnTypeIv) { clearTimeout(vnTypeIv); vnTypeIv = undefined; } vnTyping = false; }
 function finishVnType() {
   stopVnType();
   $("#vnText").textContent = vnFull;
   $("#vnHint").classList.remove("hidden");
 }
+// 문자별 타이핑 지연(ms) — 문장부호에서 호흡을 준다.
+function vnTypeDelay(cur: string, next: string): number {
+  // 문장 끝(.!?…)이 연속이면 마지막 부호에서만 길게 쉰다.
+  if (/[.!?…]/.test(cur) && !/[.!?…]/.test(next)) return 250;
+  if (/[,、·:;]/.test(cur)) return 130;         // 쉼표류 — 짧은 호흡
+  if (cur === "—" || cur === "~") return 110;   // 여운
+  if (/[」』"')\]]/.test(cur)) return 90;        // 닫는 따옴표/괄호 뒤 살짝
+  if (cur === " ") return 30;                    // 어절 사이
+  return 26;                                     // 기본
+}
 function startVnType(text: string) {
   vnFull = text;
   const t = $("#vnText"); t.textContent = "";
   $("#vnHint").classList.add("hidden");
+  stopVnType();
   vnTyping = true;
   let idx = 0;
-  if (vnTypeIv) clearInterval(vnTypeIv);
-  vnTypeIv = window.setInterval(() => {
-    idx++; t.textContent = vnFull.slice(0, idx);
-    if (idx >= vnFull.length) finishVnType();
-  }, 24);
+  const step = () => {
+    idx++;
+    t.textContent = vnFull.slice(0, idx);
+    if (idx >= vnFull.length) { finishVnType(); return; }
+    const delay = vnTypeDelay(vnFull[idx - 1], vnFull[idx] ?? "");
+    vnTypeIv = window.setTimeout(step, delay);
+  };
+  vnTypeIv = window.setTimeout(step, 26);
 }
 
 // ── 대화 기록(백로그) — 현재 VN 세션에서 표시된 대사 누적 ──
