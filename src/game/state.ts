@@ -42,6 +42,20 @@ export const ATTENDANCE_REWARD = 20;
 // 에피소드 무료 대기 시간(기다리면 무료). 기본 24시간.
 export const EP_WAIT_MS = 24 * 60 * 60 * 1000;
 
+// ── 밸런스 플래그 ──
+/**
+ * 온보딩 무료 구간: index가 이 값 이하인 화는 클리어해도 대기 타이머를 걸지 않는다.
+ * 3 = 프롤로그(1)·1화(2)·2화(3)까지 연속 플레이 → 훅이 걸린 뒤 3화부터 게이트 시작.
+ */
+export const FREE_EPISODE_INDEX_MAX = 3;
+/**
+ * 호감도 시스템 홀딩 — 스토리 톤과 맞지 않아 노출 중단(데이터/로직은 보존).
+ * false면 호감도 게이지·티어·선물하기·일상 호감도 보상·도감 호감도 표기가 모두 비노출.
+ */
+export const AFFECTION_ENABLED = false;
+/** 코스튬(옷장·악세서리) 홀딩 — false면 옷장 모달·악세서리 오버레이 비노출. */
+export const COSMETICS_ENABLED = false;
+
 /** 무료 대기 ms. QA용으로 URL ?epwait=초 로 오버라이드 가능. */
 export function epWaitMs(): number {
   try {

@@ -5,6 +5,7 @@ import {
   GameState, loadState, saveState, tierOf,
   TIER_NAMES, MAX_AFFECTION, GIFT_GAIN, GIFT_COST, AD_REWARD,
   epWaitMs, updateStreak, todayKey,
+  FREE_EPISODE_INDEX_MAX, AFFECTION_ENABLED, COSMETICS_ENABLED,
   ensureRoute, affectionOf, addAffectionTo, allClearedEpisodes,
 } from "./state";
 import { COSMETICS, getCosmetic, Slot } from "./cosmetics";
@@ -206,15 +207,16 @@ function template(): string {
       </div>
     </div>
 
+    ${AFFECTION_ENABLED ? `
     <div class="aff-slider" aria-label="호감도"><!-- 우측 세로 게이지 (아래→위 충전) -->
       <span class="aff-tier" id="tierName">낯가림</span>
       <div class="aff-rail"><div id="affFill" class="aff-fill"></div></div>
       <span class="aff-val"><span id="affVal">0</span>/${MAX_AFFECTION}</span>
-    </div>
+    </div>` : ""}
 
     <div class="character" id="char">
       <img class="portrait" id="charImg" alt="에스텔" />
-      <div class="acc" id="charAcc"></div>
+      ${COSMETICS_ENABLED ? `<div class="acc" id="charAcc"></div>` : ""}
     </div>
 
     <div class="bubble" id="bubble"></div>
@@ -222,9 +224,9 @@ function template(): string {
     <div class="actions">
       <button class="btn" id="btnStory">📖 이야기</button>
       <button class="btn" id="btnDaily">🌸 오늘의 일상 <small id="dailyState"></small></button>
-      <button class="btn" id="btnGift">🎁 선물하기 <small>(${GIFT_COST}🪙)</small></button>
+      ${AFFECTION_ENABLED ? `<button class="btn" id="btnGift">🎁 선물하기 <small>(${GIFT_COST}🪙)</small></button>` : ""}
       <button class="btn" id="btnCollect">🗂 수집</button>
-    </div><!-- 옷장 기능 일시 비활성화 (버튼만 제거 — 코드/모달은 보존) -->
+    </div><!-- 옷장/선물/호감도: state.ts 플래그로 비활성 (코드·모달은 보존) -->
   </div>
 
   <div class="main-screen hidden" id="mainScreen">
@@ -355,7 +357,7 @@ function setIllustMode(mode: IllustMode) {
 function wire() {
   $("#btnMain").onclick = () => showMain();
   $("#char").addEventListener("click", onTalk); // 캐릭터 탭 → 대화
-  $("#btnGift").onclick = onGift;
+  if (AFFECTION_ENABLED) $("#btnGift").onclick = onGift; // 홀딩 시 버튼 자체가 없음
   $("#btnDaily").onclick = onDaily;
   $("#btnCollect").onclick = openCollect;
   // 옷장 비활성화 — 진입 버튼 제거됨 (재활성화 시 버튼 복구 + 아래 주석 해제)
@@ -527,13 +529,16 @@ function equip(id: string) {
 
 // ── 렌더 ──
 function render() {
-  const aff = activeAff();
-  const tier = tierOf(aff);
   $("#coinVal").textContent = String(state.coins);
-  $("#affVal").textContent = String(aff);
-  $("#tierName").textContent = TIER_NAMES[tier];
-  ($("#affFill") as HTMLElement).style.height =
-    `${(aff / MAX_AFFECTION) * 100}%`; // 세로 슬라이더: 아래→위 충전
+
+  if (AFFECTION_ENABLED) {
+    const aff = activeAff();
+    const tier = tierOf(aff);
+    $("#affVal").textContent = String(aff);
+    $("#tierName").textContent = TIER_NAMES[tier];
+    ($("#affFill") as HTMLElement).style.height =
+      `${(aff / MAX_AFFECTION) * 100}%`; // 세로 슬라이더: 아래→위 충전
+  }
 
   // 오늘의 일상 완료 여부 반영
   const dailyDone = state.dailyDoneDay === todayKey();
@@ -541,8 +546,10 @@ function render() {
   $("#dailyState").textContent = dailyDone ? "(내일 다시)" : "";
 
   // 포즈 일러는 setEmotion이 담당. 여기선 악세서리 오버레이만 갱신.
-  const acc = getCosmetic(state.equipped.accessory);
-  $("#charAcc").textContent = acc?.visual ?? "";
+  if (COSMETICS_ENABLED) {
+    const acc = getCosmetic(state.equipped.accessory);
+    $("#charAcc").textContent = acc?.visual ?? "";
+  }
 }
 
 function persist() {
@@ -668,11 +675,13 @@ function onDaily() {
   const scene = pool[dayIndex() % pool.length];
   playSteps(scene.steps, () => {
     if (state.dailyDoneDay !== todayKey()) {
-      addAffectionTo(state, activeCharId(), DAILY_AFFECTION);
+      if (AFFECTION_ENABLED) addAffectionTo(state, activeCharId(), DAILY_AFFECTION);
       state.dailyDoneDay = todayKey();
       saveState(state);
       render();
-      toast(`🌸 오늘의 일상 완료 +${DAILY_AFFECTION} 호감도`);
+      toast(AFFECTION_ENABLED
+        ? `🌸 오늘의 일상 완료 +${DAILY_AFFECTION} 호감도`
+        : `🌸 오늘의 일상 완료`);
     }
     // 일일 씬 뒤에는 전면 광고 금지(과노출 방지)
   });
@@ -830,7 +839,9 @@ function renderIllust(id: CharacterId) {
   }).join("");
   const ownedN = poseOwned + cgOwned + specialOwned;
   const total = emoSet.length + cgs.length + specials.length;
-  $("#collectCount").textContent = `${ownedN}/${total} · 호감도 ${aff}`;
+  $("#collectCount").textContent = AFFECTION_ENABLED
+    ? `${ownedN}/${total} · 호감도 ${aff}`
+    : `${ownedN}/${total}`;
   $("#illustWrap").innerHTML = `
     <div class="isec-t">표정</div>
     <div class="igrid">${poseCells}</div>
@@ -962,7 +973,11 @@ function onEpisodeCleared(ep: Episode) {
   prog().epCleared.push(ep.id);
   state.coins += ep.rewardCoins;
   // 다음 화 '기다리면 무료' 타이머 설정 (다음 화가 있을 때만 — 시즌 마지막 화 잔여 타이머 방지)
-  if (activeEpisodes().some((e) => e.index === ep.index + 1)) {
+  // 온보딩 구간은 대기 없이 연속 재생 → 훅이 걸린 뒤부터 게이트를 건다.
+  // 다음 화(index+1)가 무료 구간을 벗어날 때 비로소 타이머를 건다:
+  // FREE=3 → 프롤로그(1)·1화(2)·2화(3)는 무료, 3화(4)부터 대기.
+  if (ep.index >= FREE_EPISODE_INDEX_MAX &&
+      activeEpisodes().some((e) => e.index === ep.index + 1)) {
     prog().nextEpFreeAt = Date.now() + epWaitMs();
   }
   saveState(state);
