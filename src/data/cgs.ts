@@ -12,19 +12,14 @@ export interface Cg {
 }
 
 export const CGS: Cg[] = [
-  // ── 에스텔: 시즌1 12화 1:1 ──
-  { id: "cg_e1",  char: "lilia", title: "스러진 봄",       file: "tears_rain",    unlockEp: "ep1" },
-  { id: "cg_e2",  char: "lilia", title: "온실의 장미",     file: "garden_rose",   unlockEp: "ep2" },
-  { id: "cg_e3",  char: "lilia", title: "함께하는 티타임", file: "teatime",       unlockEp: "ep3" },
-  { id: "cg_e4",  char: "lilia", title: "노을의 서재",     file: "study_dusk",    unlockEp: "ep4" },
-  { id: "cg_e5",  char: "lilia", title: "내미는 손",       file: "reaching_hand", unlockEp: "ep5" },
-  { id: "cg_e6",  char: "lilia", title: "밤의 운하",       file: "night_canal",   unlockEp: "ep6" },
-  { id: "cg_e7",  char: "lilia", title: "피아노 선율",     file: "piano",         unlockEp: "ep7" },
-  { id: "cg_e8",  char: "lilia", title: "무도회의 밤",     file: "ball_night",    unlockEp: "ep8" },
-  { id: "cg_e9",  char: "lilia", title: "맞잡은 약속",     file: "promise_hand",  unlockEp: "ep9" },
-  { id: "cg_e10", char: "lilia", title: "빗속의 온정",     file: "rain_kindness", unlockEp: "ep10" },
-  { id: "cg_e11", char: "lilia", title: "가꾸는 봄",       file: "garden_care",   unlockEp: "ep11" },
-  { id: "cg_e12", char: "lilia", title: "다시 피는 봄",    file: "white_rose",    unlockEp: "ep12" },
+  // ── 릴리아: 대개편 신 스토리 1막 (프롤로그~5화). 아트 반입 완료분만 등재.
+  //    6~10화(two_seals·rose_lily_tea·annex_child·printing_raid·faceless_portrait)는 아트 도착 시 추가.
+  { id: "cg_lip0", char: "lilia", title: "봄을 빼앗긴 탑",   file: "prologue_tower",      unlockEp: "lip0" },
+  { id: "cg_lip1", char: "lilia", title: "다시, 정원의 봄",  file: "spring_garden",       unlockEp: "lip1" },
+  { id: "cg_lip2", char: "lilia", title: "서재의 그림자",    file: "study_shadow",        unlockEp: "lip2" },
+  { id: "cg_lip3", char: "lilia", title: "붉은 장미의 값",   file: "red_rose_tea",        unlockEp: "lip3" },
+  { id: "cg_lip4", char: "lilia", title: "약혼의 그늘",      file: "fiance_drawer",       unlockEp: "lip4" },
+  { id: "cg_lip5", char: "lilia", title: "아는 얼굴, 모르는 눈", file: "corridor_chancellor", unlockEp: "lip5" },
 
   // ── 로젤린: 루트(rep*) 10화 연출 순서와 매칭 (STORY-BIBLE §5) ──
   { id: "cg_r2", char: "marion", title: "달빛 아래 부채", file: "moon_fan",   unlockEp: "rep2" },

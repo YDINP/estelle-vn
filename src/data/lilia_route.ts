@@ -20,6 +20,8 @@ const RM = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { s
 const LU = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "lucienne", text, emotion } });// 루시엔
 const LV = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "livia", text, emotion } });   // 리비아
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
+const CG = (id: string, hold = true): Step => ({ kind: "cg", id, hold }); // 절정 컷 — 이후 대사가 CG 위에 얹힘
+const CGX = (): Step => ({ kind: "cgEnd" });                              // 포트레이트 복귀
 const rn = (text: string): Line => ({ speaker: "narration", text });
 const rli = (text: string, emotion?: Emotion): Line => ({ speaker: "lilia", text, emotion });
 const rme = (text: string): Line => ({ speaker: "mephian", text });
@@ -45,9 +47,11 @@ export const LILIA_EPISODES: Episode[] = [
       N("태양의 옥좌는 비어 있었고, 북부의 검은 제 두 맹세에 묶여 움직이지 못했다. 원칙의 검은 명령대로 그녀를 탑으로 끌었다."),
       N("빛의 증인은 봉랍을 끝내 열지 않았고 — 그늘의 아이는, 제 이름조차 없어 그녀를 부를 힘이 없었다."),
       N("일곱 개의 이유가 각자의 죄의 자리에서 등을 돌리자, 봄은 한 사람에게만 몰아쳤다."),
+      CG("cg_lip0"),
       N("탑의 창은 높고 좁았다. 릴리아는 그 창으로 봄이 세 번 지는 것을 세었다. 세 번째 봄이 질 때, 그녀도 함께 시들었다."),
       LI("다시… 만날 수 있다면. 그때는, 웃으면서 인사해요.", "tearful"),
       N("아무도 그 유언을 듣지 못했다. — 이것이, 한 번 흘러가 버린 봄의 끝이다."),
+      CGX(),
       N("이야기는 그 끝보다 삼백 일 앞에서 다시 시작된다. 아직, 아무것도 시들지 않은 봄에서."),
     ],
   },
@@ -60,8 +64,10 @@ export const LILIA_EPISODES: Episode[] = [
     rewardCoins: 30,
     card: { title: "지지 않는 봄", quote: "이번 봄은, 지지 않게 하겠어요." },
     steps: [
+      CG("cg_lip1"),
       N("하이델 공작저의 봄 정원. 릴리아가 햇살 아래 서 있다. 탑에서 시든 그 얼굴이 아니라 — 아직 웃을 줄 아는 얼굴로."),
       LI("……처음 보는 얼굴인데, 오래 안 사람 같네요. 당신, 누구죠?", "soft"),
+      CGX(),
       N("당신은 안다. 사흘 뒤 이 집 서재에 밀서가 심어지고, 그 한 장이 세 번의 봄을 빼앗는 첫 도미노가 된다는 것을. — 어떻게 아는지는, 누구에게도 말할 수 없다."),
       LI("이름을 안 밝히시네요. …좋아요. 궁금한 건 저인데, 답을 아는 얼굴은 당신이니까.", "neutral"),
       CH("이 봄을, 어떻게 지킬 것인가", [
@@ -90,8 +96,10 @@ export const LILIA_EPISODES: Episode[] = [
     steps: [
       N("당신의 경고대로, 릴리아는 서재의 불을 끄고 어둠 속에 있었다. 두 사람의 숨소리만 남은 밤."),
       LI("…정말 오는 걸까요. 틀리면, 오늘 밤부터 당신을 의심할 거예요.", "neutral"),
+      CG("cg_lip2"),
       N("자정. 창틀이 소리 없이 들렸다. 검은 장갑의 손이 — 책상 위에 봉랍 찍힌 종이 한 장을 내려놓았다. 가져가는 것이 아니라, 두고 가는 것."),
       LI("도둑이 아니에요. …뭔가를, 두고 갔어요.", "surprised"),
+      CGX(),
       CH("어둠 속에서, 무엇을 잡을 것인가", [
         { label: "그림자를 쫓는다 — 심은 자의 문장을 눈에 새긴다", affection: 2,
           result: [
@@ -114,10 +122,12 @@ export const LILIA_EPISODES: Episode[] = [
     rewardCoins: 34,
     card: { title: "가시의 값", quote: "그 밀서, 태우지 마세요. 다음 장은 당신 이름으로 쓰일 테니까." },
     steps: [
+      CG("cg_lip3"),
       N("마리온. 사교계의 붉은 장미. 어젯밤 담장 위의 문장의 주인이 — 태연히 찻잔을 들었다."),
       MA("어머. 하이델의 봄은 아침부터 붐비네요. 지는 꽃의 향은, 유독 진하거든요.", "smirk"),
       LI("발루아의 영애. 어젯밤, 우리 서재의 담장은 안녕했나요.", "cold"),
       MA("……글쎄요. 담장이란 건, 넘는 사람보다 세우는 사람이 나쁜 법이라.", "scheme"),
+      CGX(),
       N("당신은 안다. 이 여자가 적이자 도구라는 것을. 가문의 빚에 목이 잡혀 남을 파는 값으로 살아가는 사람 — 가시는 배역이지, 본성이 아니라는 것을."),
       CH("이 장미를 어떻게 대할 것인가", [
         { label: "값을 읽는다 — 그녀도 잡혀 있음을 짚는다", affection: 2,
@@ -149,7 +159,9 @@ export const LILIA_EPISODES: Episode[] = [
       FI("릴리아 양. 약혼은 가문의 결정이오. 사사로운 정은, 서로 접어둡시다."),
       LI("…방패치고는, 차갑네요.", "neutral"),
       N("당신은 안다. 이 약혼 자체가 덫의 일부라는 것을. 그가 자리를 비운 짧은 틈 — 당신은 그의 방으로 숨어들었다."),
+      CG("cg_lip4"),
       N("서랍. 잠긴 함. 그리고 복도에서 다가오는 발소리. 함이 열리기 직전, 문고리가 돌아갔다 —"),
+      CGX(),
       CH("발소리가 문 앞까지 왔다. 어떻게 하나", [
         { label: "인장만 초로 뜨고 창으로 빠진다", affection: 2,
           result: [
@@ -174,10 +186,12 @@ export const LILIA_EPISODES: Episode[] = [
     rewardCoins: 40,
     card: { title: "일곱 개의 실", quote: "이 덫의 진짜 표적은, 제가 아니었어요." },
     steps: [
+      CG("cg_lip5"),
       N("궁의 회랑. 재상 메피안이, 처음으로 당신 앞에 걸음을 멈췄다. 부드러운 미소로."),
       ME("공작가의 정원에 낯선 발소리가 잦다기에 — 궁금해서 그만. 늙은이의 오지랖이지요."),
       N("그는 이름을 묻지 않았다. 묻지 않는 것이, 더 무서웠다."),
       ME("하이델의 봄은 아름답지요. …허나 봄은, 누군가의 겨울을 밟고 옵니다. 그 봄이 누구의 겨울인지 — 아십니까?"),
+      CGX(),
       N("서재의 밀서. 약혼의 그늘. 같은 인장. — 그 순간, 조각이 맞물렸다. 전부 릴리아를 치기 위한 것이 아니었다. 하이델은 방패다. 방패를 먼저 부수고, 그다음 — 태양을 겨눈다."),
       CH("이 재상 앞에서, 무엇을 지킬 것인가", [
         { label: "모르는 척 물러선다 — 패를 감춘다", affection: 2,
