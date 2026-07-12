@@ -6,6 +6,7 @@ import {
   TIER_NAMES, MAX_AFFECTION, GIFT_GAIN, GIFT_COST, AD_REWARD,
   epWaitMs, updateStreak, todayKey,
   FREE_EPISODE_INDEX_MAX, AFFECTION_ENABLED, COSMETICS_ENABLED,
+  CHOICE_COIN_PER_AFF, DAILY_COIN, SPECIAL_COIN_PER_AFF,
   ensureRoute, affectionOf, addAffectionTo, allClearedEpisodes,
 } from "./state";
 import { COSMETICS, getCosmetic, Slot } from "./cosmetics";
@@ -676,12 +677,13 @@ function onDaily() {
   playSteps(scene.steps, () => {
     if (state.dailyDoneDay !== todayKey()) {
       if (AFFECTION_ENABLED) addAffectionTo(state, activeCharId(), DAILY_AFFECTION);
+      else state.coins += DAILY_COIN; // 호감도 홀딩 → 코인 보상으로 대체
       state.dailyDoneDay = todayKey();
       saveState(state);
       render();
       toast(AFFECTION_ENABLED
         ? `🌸 오늘의 일상 완료 +${DAILY_AFFECTION} 호감도`
-        : `🌸 오늘의 일상 완료`);
+        : `🌸 오늘의 일상 완료 +${DAILY_COIN}🪙`);
     }
     // 일일 씬 뒤에는 전면 광고 금지(과노출 방지)
   });
@@ -766,7 +768,24 @@ function renderLines(id: CharacterId) {
   );
 }
 
-const LINE_PRICE = 15; // 혼잣말 1개 가격 (🪙)
+/** 스페셜 CG 가격 — 구 호감도 조건(20/50/80)을 코인으로 환산. */
+function specialPrice(g: { affection: number }): number {
+  return g.affection * SPECIAL_COIN_PER_AFF;
+}
+function buySpecial(spId: string) {
+  const g = SPECIAL_ILLUSTS.find((s) => s.id === spId);
+  if (!g) return;
+  const price = specialPrice(g);
+  if (state.coins < price) { openCoinShort(() => buySpecial(spId)); return; }
+  state.coins -= price;
+  if (!state.specialsOwned.includes(spId)) state.specialsOwned.push(spId);
+  sfxCoin();
+  toast(`🖼 스페셜 CG 해금!`);
+  persist();
+  renderCollect();
+}
+
+const LINE_PRICE = 25; // 대사 1개 해금 가격 (🪙) — 혼잣말 48 + 선물 24 = 72개 × 25 = 1,800
 function buyLine(charId: CharacterId, lineId: string) {
   if (state.coins < LINE_PRICE) { openCoinShort(() => buyLine(charId, lineId)); return; }
   state.coins -= LINE_PRICE;
@@ -825,13 +844,21 @@ function renderIllust(id: CharacterId) {
       <img src="${cgFile(g)}" alt="" ${fb} />
       <div class="ilabel">🔒 ???</div></div>`;
   }).join("");
+  // 스페셜 CG: 호감도 홀딩 중에는 코인 구매로 해금(가격 = 구 호감도 조건 × SPECIAL_COIN_PER_AFF).
   const specials = SPECIAL_ILLUSTS.filter((g) => g.char === id);
-  const specialOwned = specials.filter((g) => aff >= g.affection).length;
+  const hasSpecial = (g: { id: string; affection: number }) =>
+    AFFECTION_ENABLED ? aff >= g.affection : state.specialsOwned.includes(g.id);
+  const specialOwned = specials.filter(hasSpecial).length;
   const specialCells = specials.map((g) => {
-    if (aff >= g.affection) {
+    if (hasSpecial(g)) {
       return `<div class="icell cg special" data-special="${g.id}">
         <img src="${specialIllustFile(g)}" alt="" />
         <div class="ilabel">${g.title}${g.placeholder ? " · 임시" : ""}</div></div>`;
+    }
+    if (!AFFECTION_ENABLED) {
+      return `<div class="icell cg locked buy" data-buyspecial="${g.id}">
+        <img src="${specialIllustFile(g)}" alt="" />
+        <div class="ilabel">${specialPrice(g)}🪙 해금</div></div>`;
     }
     return `<div class="icell cg locked aff-locked">
       <img src="${specialIllustFile(g)}" alt="" />
@@ -846,7 +873,11 @@ function renderIllust(id: CharacterId) {
     <div class="isec-t">표정</div>
     <div class="igrid">${poseCells}</div>
     ${cgCells ? `<div class="isec-t">스토리 CG</div><div class="cg-list">${cgCells}</div>` : ""}
-    ${specialCells ? `<div class="isec-t">스페셜 CG <small>호감도 전용</small></div><div class="cg-list">${specialCells}</div>` : ""}`;
+    ${specialCells ? `<div class="isec-t">스페셜 CG <small>${AFFECTION_ENABLED ? "호감도 전용" : "코인 해금"}</small></div><div class="cg-list">${specialCells}</div>` : ""}`;
+  // 스페셜 CG 코인 구매 (부족하면 광고 유도 → 확보 후 재시도)
+  $("#illustWrap").querySelectorAll("[data-buyspecial]").forEach((el) =>
+    el.addEventListener("click", () => buySpecial((el as HTMLElement).dataset.buyspecial!))
+  );
   $("#illustWrap").querySelectorAll("[data-ill]").forEach((el) =>
     el.addEventListener("click", () => {
       const [id, e] = (el as HTMLElement).dataset.ill!.split(":") as [CharacterId, Emotion];
@@ -1083,7 +1114,16 @@ function renderChoice(choice: Choice) {
     b.addEventListener("click", (e) => {
       e.stopPropagation();
       const o = choice.options[Number((b as HTMLElement).dataset.opt)];
-      if (o.affection && vnGrantRewards) gainAffection(o.affection);
+      // 호감도 홀딩 중에는 선택지 보상을 코인으로 환산 지급(도감 해금 재화로 순환).
+      if (o.affection && vnGrantRewards) {
+        if (AFFECTION_ENABLED) gainAffection(o.affection);
+        else {
+          const coins = o.affection * CHOICE_COIN_PER_AFF;
+          state.coins += coins;
+          saveState(state);
+          toast(`+${coins}🪙`);
+        }
+      }
       sfxSelect();
       pushLog("", `▷ ${o.label}`, true); // 선택도 기록에 남김
       vnQueue = o.result.slice();

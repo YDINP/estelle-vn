@@ -5,6 +5,7 @@
 // 보이스 추가 = VOICES에 1항목 (루트 open 시 필수). 미등록 캐릭터는 estelle 톤 폴백.
 
 import { CharacterId } from "../data/characters";
+import { AFFECTION_ENABLED } from "./state";
 
 type Daypart = "morning" | "afternoon" | "evening" | "night";
 
@@ -510,7 +511,9 @@ export function lineCatalog(charId: CharacterId): CatalogLine[] {
       tierLines.forEach((text, vi) => out.push({ id: `g:${dp}:${ti}:${vi}`, text, cat: "인사" })));
   v.talk.forEach((tierLines, ti) =>
     tierLines.forEach((text, vi) => out.push({ id: `t:${ti}:${vi}`, text, cat: "대화" })));
-  v.gift.forEach((text, vi) => out.push({ id: `f:${vi}`, text, cat: "선물" }));
+  // 선물 대사: 호감도 홀딩 중에는 선물하기 버튼이 없어 들을 길이 없으므로 코인 해금 대상으로 돌린다.
+  v.gift.forEach((text, vi) =>
+    out.push({ id: `f:${vi}`, text, cat: "선물", paid: !AFFECTION_ENABLED }));
   v.monologue.forEach((text, vi) => out.push({ id: `m:${vi}`, text, cat: "혼잣말", paid: true }));
   return out;
 }

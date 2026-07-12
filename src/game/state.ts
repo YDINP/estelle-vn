@@ -24,6 +24,7 @@ export interface GameState {
   illust: Record<string, string[]>; // 캐릭터별 수집 일러 (charId → 본 표정 목록)
   cgSeen: string[];           // 스토리 중 연출로 본 이벤트 CG id (그 순간 수집)
   heardLines: Record<string, string[]>; // 캐릭터별 들은 대사 id (대사 도감 수집)
+  specialsOwned: string[];    // 코인으로 해금한 스페셜 CG id (구 호감도 게이트 대체)
   // ── 루트(캐릭터 시점) 시스템 ──
   routes: Record<string, { epCleared: string[]; nextEpFreeAt: number }>; // 루트별 진행
   affectionBy: Record<string, number>; // 캐릭터별 호감도
@@ -55,6 +56,19 @@ export const FREE_EPISODE_INDEX_MAX = 3;
 export const AFFECTION_ENABLED = false;
 /** 코스튬(옷장·악세서리) 홀딩 — false면 옷장 모달·악세서리 오버레이 비노출. */
 export const COSMETICS_ENABLED = false;
+
+// ── 호감도 홀딩 시의 보상 대체(코인) ──
+// 선택지/일상이 주던 호감도를 코인으로 환산해 지급하고, 그 코인은 도감(대사·스페셜 CG) 해금에 쓴다.
+/** 선택지 호감도 1당 지급 코인 (affection 2→10🪙, 3→15🪙 …). */
+export const CHOICE_COIN_PER_AFF = 5;
+/** '오늘의 일상' 완료 보상 코인 (기존 호감도 +3 대체). */
+export const DAILY_COIN = 15;
+/**
+ * 스페셜 CG 가격 = 기존 호감도 조건 × 이 값 (20→100🪙, 50→250🪙, 80→400🪙).
+ * 수급(에피소드 3,392 + 선택지 880 ≈ 4,272) 대비 총 소모처를 맞추기 위한 값:
+ * 스페셜 7종 1,750 + 유료대사 72개×25 = 1,800 → 합 3,550. 전 루트 완주 즈음 도감이 완성된다.
+ */
+export const SPECIAL_COIN_PER_AFF = 5;
 
 /** 무료 대기 ms. QA용으로 URL ?epwait=초 로 오버라이드 가능. */
 export function epWaitMs(): number {
@@ -120,6 +134,7 @@ function freshState(): GameState {
     illust: {},
     cgSeen: [],
     heardLines: {},
+    specialsOwned: [],
     routes: {},
     affectionBy: {},
     currentRoute: "",
