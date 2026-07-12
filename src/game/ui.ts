@@ -17,7 +17,7 @@ import { showRewardedAd, showInterstitialAd } from "./ads";
 import { Choice, Line, Emotion, Step, PROLOGUE } from "../data/chapters";
 import {
   CHARACTERS, CharacterId, EMOTION_LABEL, vnFile, portraitFile, resolveEmotion,
-  isPlaceholderArt, bustZoomOf,
+  isPlaceholderArt, bustZoomOf, chestZoomOf, vnZoomOf,
 } from "../data/characters";
 import { EPISODES, Episode } from "../data/season1";
 import { DAILY_SCENES, DAILY_AFFECTION } from "../data/daily";
@@ -89,7 +89,7 @@ function setVnPortrait(id: CharacterId, e?: Emotion) {
   vnPortraitSpk = id;
   const img = $("#vnPortrait") as HTMLImageElement;
   img.src = vnFile(id, resolved);
-  img.style.setProperty("--bz", String(bustZoomOf(id))); // 반신 프레이밍(전신형 캐릭터 확대)
+  img.style.setProperty("--bz", String(vnZoomOf(id))); // 반신 프레이밍 — 전신 아트를 크롭해 얼굴 크기를 캐릭터 간 통일
   img.classList.toggle("is-extra", !!c.extra); // 실루엣은 상반신 배율로 표시
   // 엑스트라 실루엣은 '임시' 배지 대상 아님
   $("#vnPh").classList.toggle("hidden", !!c.extra || !isPlaceholderArt(id, e));
@@ -346,9 +346,11 @@ function setIllustMode(mode: IllustMode) {
   if (!illustViewState) return;
   const { id, e } = illustViewState;
   const img = $("#illustViewImg") as HTMLImageElement;
-  // 단일 세트(전신 body) — 반신/흉상은 CSS 크롭. 반신은 캐릭터별 bustZoom 확대.
+  // 단일 세트(body 아트) — 반신/흉상은 캐릭터별 확대율로 CSS 크롭. 전신은 원본 그대로.
   img.src = portraitFile(id, e);
-  img.style.setProperty("--bz", mode === "bust" ? String(bustZoomOf(id)) : "1");
+  img.style.setProperty("--bz",
+    mode === "bust" ? String(bustZoomOf(id)) :
+    mode === "chest" ? String(chestZoomOf(id)) : "1");
   $("#illustFig").classList.toggle("bust", mode === "bust");
   $("#illustFig").classList.toggle("chest", mode === "chest");
   $("#illustViewModes").querySelectorAll("button").forEach((b) =>
