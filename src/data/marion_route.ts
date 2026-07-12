@@ -13,6 +13,8 @@ const LI = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { s
 const LU = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "lucienne", text, emotion } });// 루시엔
 const FI = (text: string): Step => ({ kind: "line", line: { speaker: "fiance", text } });                            // 약혼자
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
+const CG = (id: string, hold = true): Step => ({ kind: "cg", id, hold }); // 절정 컷 — 이후 대사가 CG 위에 얹힘
+const CGX = (): Step => ({ kind: "cgEnd" });                              // 포트레이트 복귀
 const rn = (text: string): Line => ({ speaker: "narration", text });
 const rma = (text: string, emotion?: Emotion): Line => ({ speaker: "marion", text, emotion });
 const rlv = (text: string, emotion?: Emotion): Line => ({ speaker: "livia", text, emotion });
@@ -32,9 +34,11 @@ export const MARION_EPISODES: Episode[] = [
       N("남을 판 값으로 제 안전을 사 온 손이, 마지막엔 자기 자신을 값에 올렸다. 그리고 그 셈마저 틀렸다. 사교계는 자신들의 꽃이었던 사람을, 사흘 만에 잊었다."),
       MA("(드레스 마흔두 벌, 목걸이 열아홉. …계단 하나 오를 때마다, 하나씩 샀지. 그 계단이 — 전부 남의 등이었고.)", "sad"),
       MA("(…배웅이 없네. 하긴, 관객 없는 퇴장이 배역엔 어울리지.)", "sad"),
+      CG("cg_map0"),
       N("국경의 검문소. 문장이 지워진 마차 한 대가, 이름도 죄목도 봉인된 채 어둠 밖으로 밀려났다. 사교계의 붉은 장미는, 그렇게 활자 한 줄 없이 겨울 밖으로 사라졌다."),
       MA("…내 대사는 여기까지인가 보네. 커튼콜도, 없이.", "tearful"),
       N("— 이것이, 한 번 흘러가 버린 겨울의 끝이다. 그 마차를 지켜본 사람은, 거의 없었다."),
+      CGX(),
       N("이야기는 그 겨울보다 삼백 일 앞에서 다시 시작된다. 아직 아무도 아무것도 팔지 않은 봄 — 재상부의 향냄새 속에서."),
     ],
   },
@@ -82,8 +86,10 @@ export const MARION_EPISODES: Episode[] = [
       MA("(낭독대로. 그림자는 안으로, 나는 담장 위로. …틀리면 잘려 나갈 꼬리는, 언제나 나 하나뿐이지.)", "scheme"),
       N("담장 위에서 그녀는 보았다. 서재의 등불이 켜지고, 낯선 누군가가 — 당신이 — 밀서를 촛불에 태우는 것을. 예고된 실패가, 예고보다 빨리 왔다."),
       MA("…실패? 저 사람, 뭐지. 어떻게 알고 기다린 거지.", "surprised"),
+      CG("cg_map2"),
       N("부채가 달빛을 반쯤 가렸다. 담장 아래의 당신과, 담장 위의 그녀 — 시선이 잠깐 얽혔다."),
       MA("방해꾼의 얼굴, 기억해 둘게요.", "scheme"),
+      CGX(),
       N("며칠 뒤 달 밝은 밤, 당신은 발루아 저택 정원을 찾았다. 미래의 지식이 아니라 — 발이 먼저 움직였다. 시든 장미 덩굴 아래, 마리온이 홀로 서 있었다. 손에는 접힌 편지 한 장."),
       MA("…담장의 방해꾼이 제 발로 찾아오다니. 겁이 없는 건지, 머리가 없는 건지. 일러바치러 왔나요? 좋아요, 해보세요. 발루아의 못된 장미가 하이델을 노렸다고. 제 평판이 워낙 훌륭하니, 다들 믿을 거예요.", "smirk"),
       CH("자조하는 그 웃음에", [
@@ -109,8 +115,10 @@ export const MARION_EPISODES: Episode[] = [
     rewardCoins: 34,
     card: { title: "배역과 사람", quote: "무대에서 내려오면, 저는 뭐가 남을까요." },
     steps: [
+      CG("cg_map3"),
       N("장미의 홀. 마리온이 들어서자 홀의 공기가 바뀌었다. 그녀가 걸친 드레스는 다음 계절의 유행이 되고, 그녀가 웃어 준 영애의 초대장 값은 오르고, 그녀가 외면한 가문은 다음 연회에서 상석을 잃었다."),
       N("사교계의 서열이 그녀의 부채 끝에서 매겨졌다. 가장 높은 계단 위 — 그 자리가, 남을 판 값으로 그녀가 사들인 옥좌였다."),
+      CGX(),
       MA("어머, 그 브로치 유행이 두 계절 전 아니었나요? …농담이에요. 잘 어울려요, 두 계절 전 것치고는.", "smirk"),
       N("웃음거리가 된 어린 영애가, 홀을 울며 뛰쳐나갔다. 박수 같은 웃음소리가 그 등을 때렸다."),
       N("가시의 평판은 오늘도 이자를 갚았다. 당신만은 보았다 — 부채 그늘의 눈이, 조금도 웃고 있지 않다는 것을."),

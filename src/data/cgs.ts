@@ -21,70 +21,16 @@ export const CGS: Cg[] = [
   { id: "cg_lip4", char: "lilia", title: "약혼의 그늘",      file: "fiance_drawer",       unlockEp: "lip4" },
   { id: "cg_lip5", char: "lilia", title: "아는 얼굴, 모르는 눈", file: "corridor_chancellor", unlockEp: "lip5" },
 
-  // ── 로젤린: 루트(rep*) 10화 연출 순서와 매칭 (STORY-BIBLE §5) ──
-  { id: "cg_r2", char: "marion", title: "달빛 아래 부채", file: "moon_fan",   unlockEp: "rep2" },
-  { id: "cg_r1", char: "marion", title: "장미의 홀",      file: "rose_hall",  unlockEp: "rep3" },
-  { id: "cg_r3", char: "marion", title: "붉은 티타임",    file: "tea_hand",   unlockEp: "rep4" },
-  { id: "cg_r6", char: "marion", title: "밀담",           file: "conspiracy", unlockEp: "rep6" },
-  { id: "cg_r4", char: "marion", title: "가면무도회",     file: "masquerade", unlockEp: "rep7" },
-  { id: "cg_r8", char: "marion", title: "비에 젖은 밤",   file: "tears_rain", unlockEp: "rep8" },
-  { id: "cg_r5", char: "marion", title: "부치지 못한 편지", file: "letters",  unlockEp: "rep9" },
-  { id: "cg_r7", char: "marion", title: "폐허의 장미",    file: "ruins_rose", unlockEp: "rep10" },
+  // ── 마리온: 신 스토리 1막. 프롤로그는 신규 아트, 2·3화는 구 아트가 신 장면과 일치해 재활용.
+  { id: "cg_map0", char: "marion", title: "커튼콜 없는 퇴장", file: "prologue_exile", unlockEp: "map0" },
+  { id: "cg_map2", char: "marion", title: "달빛 아래 부채",   file: "moon_fan",       unlockEp: "map2" },
+  { id: "cg_map3", char: "marion", title: "무대 위의 미소",   file: "rose_hall",      unlockEp: "map3" },
 
-  // ── 이든: eden_route.ts 8화 (⚠️ id는 cg_ed* — estelle cg_e* 충돌 회피) ──
-  { id: "cg_ed1", char: "belfor", title: "빗속의 꺾인 검",       file: "broken_sword_rain",    unlockEp: "eep1" },
-  { id: "cg_ed2", char: "belfor", title: "새벽 훈련장의 이든",   file: "dawn_training_ground", unlockEp: "eep1" },
-  { id: "cg_ed3", char: "belfor", title: "훈련장의 목검",        file: "cracked_wooden_sword", unlockEp: "eep2" },
-  { id: "cg_ed4", char: "belfor", title: "노을의 성벽",          file: "sunset_rampart",       unlockEp: "eep3" },
-  { id: "cg_ed5", char: "belfor", title: "책상 위의 봉인 명령서", file: "sealed_order_on_desk", unlockEp: "eep4" },
-  { id: "cg_ed6", char: "belfor", title: "봉쇄로 향하는 횃불 행렬", file: "torch_procession",   unlockEp: "eep5" },
-  { id: "cg_ed7", char: "belfor", title: "왕관의 밤 경비",       file: "crown_night_guard",    unlockEp: "eep7" },
-  { id: "cg_ed8", char: "belfor", title: "스스로 고른 검",       file: "chosen_sword",         unlockEp: "eep8" },
-
-  // ── 발렌: valen_route.ts 8화 (구 스텁 6종 → 스토리 매칭 8종으로 교체) ──
-  { id: "cg_v1", char: "belian", title: "독이 든 축배",   file: "poisoned_chalice",   unlockEp: "vep1" },
-  { id: "cg_v2", char: "belian", title: "궁정의 체스판",  file: "moonlit_chessboard", unlockEp: "vep2" },
-  { id: "cg_v3", char: "belian", title: "옥좌의 그림자",  file: "throne_shadow",      unlockEp: "vep3" },
-  { id: "cg_v4", char: "belian", title: "세 번 바뀐 잔",  file: "thrice_changed_cup", unlockEp: "vep4" },
-  { id: "cg_v5", char: "belian", title: "좁아진 새장",    file: "narrowing_cage",     unlockEp: "vep5" },
-  { id: "cg_v6", char: "belian", title: "왕관의 밤",      file: "crown_night",        unlockEp: "vep6" },
-  { id: "cg_v7", char: "belian", title: "웃으며 쓰는 왕관", file: "smiling_coronation", unlockEp: "vep7" },
-  { id: "cg_v8", char: "belian", title: "새장의 열린 문",  file: "open_cage_door",     unlockEp: "vep8" },
-
-  // ── 이졸데: isolde_route.ts ──
-  { id: "cg_i1", char: "lucienne", title: "얼음의 살롱",     file: "frozen_salon",   unlockEp: "iep1" },
-  { id: "cg_i2", char: "lucienne", title: "얼음과 서리",     file: "ice_and_frost",  unlockEp: "iep3" },
-  { id: "cg_i3", char: "lucienne", title: "비뚤어진 한 땀",  file: "crooked_stitch", unlockEp: "iep4" },
-  { id: "cg_i4", char: "lucienne", title: "사절석의 백합",   file: "envoy_lily",     unlockEp: "iep6" },
-  { id: "cg_i5", char: "lucienne", title: "흐트러진 백합",   file: "undone_lily",    unlockEp: "iep8" },
-
-  // ── 클로에(adele): adele_route.ts ──
-  { id: "cg_a1", char: "livia", title: "지워진 이름",   file: "erased_name",         unlockEp: "ad1" },
-  { id: "cg_a2", char: "livia", title: "별채의 들꽃",   file: "cottage_wildflowers", unlockEp: "ad2" },
-  { id: "cg_a3", char: "livia", title: "저울 위의 등불", file: "lantern_on_scale",   unlockEp: "ad4" },
-  { id: "cg_a4", char: "livia", title: "그늘과 볕",     file: "shade_and_sunlight",  unlockEp: "ad6" },
-  { id: "cg_a5", char: "livia", title: "불리는 이름",   file: "spoken_name",         unlockEp: "ad8" },
-
-  // ── 레이너: rayner_route.ts (⚠️ id는 cg_ry* — rozelin cg_r* 충돌 회피) ──
-  { id: "cg_ry1", char: "reimon", title: "얼어붙은 맹세",       file: "frozen_oath",          unlockEp: "ryep1" },
-  { id: "cg_ry2", char: "reimon", title: "연무장의 새벽",       file: "training_ground_dawn", unlockEp: "ryep1" },
-  { id: "cg_ry3", char: "reimon", title: "연무장의 서리",       file: "frosted_drill_yard",   unlockEp: "ryep2" },
-  { id: "cg_ry4", char: "reimon", title: "두 개의 문장",        file: "two_crests",           unlockEp: "ryep3" },
-  { id: "cg_ry5", char: "reimon", title: "압류된 서신",         file: "seized_letter",        unlockEp: "ryep4" },
-  { id: "cg_ry6", char: "reimon", title: "닫히는 문",           file: "closing_door",         unlockEp: "ryep5" },
-  { id: "cg_ry7", char: "reimon", title: "왕관의 밤, 은빛 경비", file: "silver_guard",         unlockEp: "ryep6" },
-  { id: "cg_ry8", char: "reimon", title: "증거를 따르는 검",     file: "sword_of_evidence",    unlockEp: "ryep7" },
-  { id: "cg_ry9", char: "reimon", title: "북으로 난 길",        file: "road_north",           unlockEp: "ryep8" },
-
-  // ── 미카엘: michael_route.ts ──
-  { id: "cg_m1", char: "azael", title: "빛을 잃은 새벽",     file: "dawn_without_light",     unlockEp: "mep1" },
-  { id: "cg_m2", char: "azael", title: "사절관의 촛불",      file: "envoy_candlelight",      unlockEp: "mep2" },
-  { id: "cg_m3", char: "azael", title: "예배당의 맹세",      file: "chapel_oath",            unlockEp: "mep3" },
-  { id: "cg_m4", char: "azael", title: "뜯긴 봉랍",          file: "broken_seal",            unlockEp: "mep4" },
-  { id: "cg_m5", char: "azael", title: "촛불의 무게",        file: "weight_of_candle",       unlockEp: "mep5" },
-  { id: "cg_m6", char: "azael", title: "왕관의 밤, 사절석",   file: "crown_night_envoy_seat", unlockEp: "mep6" },
-  { id: "cg_m7", char: "azael", title: "국경을 넘는 봉랍",    file: "seal_across_border",     unlockEp: "mep7" },
-  { id: "cg_m8", char: "azael", title: "국경을 넘는 빛",      file: "light_across_border",    unlockEp: "mep8" },
+  // ⚠️ 구 스토리(ep*/rep*/vep*/eep*/iep*/ad*/ryep*/mep*) CG 항목은 전량 제거했다.
+  //    개편으로 에피소드 id가 lip*/map*/blp*… 로 바뀌어 unlockEp가 어디에도 매칭되지 않았고,
+  //    belfor·reimon·lucienne·livia·azael은 아트 파일 자체가 없어 영구 잠금 슬롯으로만 남아 있었다.
+  //    남은 계획분(릴리아 6~10화, 마리온 1·4·5화, 벨리안~아젤 전량)은 아트 반입 시 여기에 추가한다.
+  //    미사용 구 아트(릴리아 12·마리온 5·벨리안 6장)는 public/cg에 보존 — 스페셜 CG 등으로 재활용 가능.
 ];
 
 export function cgFile(cg: Cg): string {
