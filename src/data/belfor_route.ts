@@ -14,6 +14,8 @@ const LV = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { s
 const LI = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "lilia", text, emotion } }); // 릴리아
 const FI = (text: string): Step => ({ kind: "line", line: { speaker: "fiance", text } });                            // 약혼자
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
+const CG = (id: string, hold = true): Step => ({ kind: "cg", id, hold }); // 절정 컷 — 이후 대사가 CG 위에 얹힘
+const CGX = (): Step => ({ kind: "cgEnd" });                              // 포트레이트 복귀
 const rn = (text: string): Line => ({ speaker: "narration", text });
 const rbf = (text: string, emotion?: Emotion): Line => ({ speaker: "belfor", text, emotion });
 const rme = (text: string): Line => ({ speaker: "mephian", text });
@@ -34,7 +36,9 @@ export const BELFOR_EPISODES: Episode[] = [
       BF("저는 명령대로 했습니다. 검을 뽑지 않았고, 예의도 갖췄고. 규정은 어느 한 줄도 어기지 않았습니다.", "distressed"),
       N("그는 훈장을 집어 들었다가, 다시 진창에 떨어뜨렸다. 규정 한 줄 어기지 않은 완벽한 복종이 곧 죄였다는 것을, 그는 이제야 알았다."),
       BF("명령을 지켰습니다. …그런데 아무도, 지키지 못했습니다.", "tearful"),
+      CG("cg_bfp0"),
       N("벨포르가 검을 뽑았다. 그리고 무릎에 검신을 대고, 천천히 힘을 주었다. 강철이 비명처럼 울다가 — 부러졌다."),
+      CGX(),
       N("그는 가슴의 근위대 문장을 떼어, 부러진 검 위에 가만히 내려놓았다. 그리고 돌아서, 연병장을 걸어 나갔다. 명령의 기사가 명령 때문에 부서지는 밤이었다."),
       N("당신은 회랑 처마 밑에서 그 뒷모습을 배웅한 몇 안 되는 사람이었다. 그 부러짐을, 끝까지 지켜본 유일한 증인."),
       N("— 이것이, 한 번 흘러가 버린 새벽이다. 이야기는 그 새벽보다 삼백 일 앞에서 다시 시작된다. 아직, 그 검은 부러지지 않았다."),

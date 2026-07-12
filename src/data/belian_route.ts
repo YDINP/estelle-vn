@@ -10,6 +10,8 @@ const BE = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { s
 const ME = (text: string): Step => ({ kind: "line", line: { speaker: "mephian", text } });                        // 메피안
 const RM = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "reimon", text, emotion } });  // 레이먼
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
+const CG = (id: string, hold = true): Step => ({ kind: "cg", id, hold }); // 절정 컷 — 이후 대사가 CG 위에 얹힘
+const CGX = (): Step => ({ kind: "cgEnd" });                              // 포트레이트 복귀
 const rn = (text: string): Line => ({ speaker: "narration", text });
 const rbe = (text: string, emotion?: Emotion): Line => ({ speaker: "belian", text, emotion });
 const rrm = (text: string, emotion?: Emotion): Line => ({ speaker: "reimon", text, emotion });
@@ -23,10 +25,12 @@ export const BELIAN_EPISODES: Episode[] = [
     steps: [
       N("대관식이 끝난 홀은 온통 금빛이었다. 새 황제의 첫 밤. 제국의 모든 이름이 잔을 들었고, 옥좌 위의 그가 그중 가장 환하게 웃었다. 아직, 웃는 법을 잊지 않은 얼굴로."),
       BE("오늘만은, 모두 웃으라. 황제의 첫 명이니라. — 어렵지 않을 터.", "happy"),
+      CG("cg_blp0"),
       N("그가 축배를 입에 댔다. — 가문을 삼켜 몸집을 불려 온 태양이, 이번엔 한 모금에 거꾸로 삼켜지는 순간이었다."),
       N("독은 그를 죽이지 않았다. 다만 — 웃는 법을 앗아갔다. 웃음이 얼굴에서 천천히 지워졌다. 태양이 축배를 삼킨 것이 아니라, 축배가 태양을 삼킨 것이었다."),
       BE("……", "neutral"),
       N("옥좌에 앉은 것은 황제가 아니라, 황제의 모양을 한 꼭두각시였다. 재상 메피안의 손이 삼켜진 태양 위로 왕관을 얹었다. 협박을 축복처럼 말하는 사람이었다."),
+      CGX(),
       ME("만세, 폐하. …이제 노래는, 저희가 골라 드리지요."),
       N("그 밤, 새장 문이 잠기는 소리를 당신은 들었다. 웃음을 잃은 황제가, 남은 평생 저들의 가사로 노래할 것이었다. 아주 오래, 그 잠기는 소리가 귀에 남았다."),
       N("— 이것이, 한 번 흘러가 버린 대관의 밤이다."),

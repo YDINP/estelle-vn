@@ -12,6 +12,8 @@ const BE = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { s
 const ME = (text: string): Step => ({ kind: "line", line: { speaker: "mephian", text } });                        // 메피안
 const LU = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "lucienne", text, emotion } });// 루시엔
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
+const CG = (id: string, hold = true): Step => ({ kind: "cg", id, hold }); // 절정 컷 — 이후 대사가 CG 위에 얹힘
+const CGX = (): Step => ({ kind: "cgEnd" });                              // 포트레이트 복귀
 const rn = (text: string): Line => ({ speaker: "narration", text });
 const rrm = (text: string, emotion?: Emotion): Line => ({ speaker: "reimon", text, emotion });
 const rbf = (text: string, emotion?: Emotion): Line => ({ speaker: "belfor", text, emotion });
@@ -31,8 +33,10 @@ export const REIMON_EPISODES: Episode[] = [
       N("재상 메피안의 목소리는 부드러웠다. 그는 파직도 처형도 명하지 않았다. 그저 검을 쥔 채 어느 쪽으로도 갈 수 없게, 소외의 자리에 세워 두었다. 그것이 더 잔인했다."),
       N("두 맹세 사이에서 벨 곳을 잃은 검의 분노는, 벨 표적이 없어 제 자루만 쥐었다. 황실을 베면 기사의 맹세가 부러지고, 북부로 가면 반역이 완성되었다."),
       RM("……", "cold"),
+      CG("cg_rmp0"),
       N("눈이 내리는 연무장 한복판. 그는 검을 눈밭에 꽂고, 홀로 서 있었다. 그의 어깨에 눈이 소리 없이 쌓여도, 털어 줄 손은 없었다."),
       RM("맹세가 둘이면 — 반역도 둘인가.", "cold"),
+      CGX(),
       N("대답할 사람은 없었다. 그 겨울을, 당신은 담 밖에서 지켜보았다."),
       N("— 이것이, 한 번 흘러가 버린 겨울이다. 이야기는 그 겨울보다 삼백 일 앞에서 다시 시작된다. 아직 아무것도 얼어붙지 않은, 연무장의 봄에서."),
     ],

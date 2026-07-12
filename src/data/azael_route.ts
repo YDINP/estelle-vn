@@ -15,6 +15,8 @@ const ME = (text: string): Step => ({ kind: "line", line: { speaker: "mephian", 
 const LU = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "lucienne", text, emotion } });// 루시엔
 const LV = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "livia", text, emotion } });   // 리비아
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
+const CG = (id: string, hold = true): Step => ({ kind: "cg", id, hold }); // 절정 컷 — 이후 대사가 CG 위에 얹힘
+const CGX = (): Step => ({ kind: "cgEnd" });                              // 포트레이트 복귀
 const rn = (text: string): Line => ({ speaker: "narration", text });
 const raz = (text: string, emotion?: Emotion): Line => ({ speaker: "azael", text, emotion });
 const rme = (text: string): Line => ({ speaker: "mephian", text });
@@ -40,8 +42,10 @@ export const AZAEL_EPISODES: Episode[] = [
       N("붉은 장미(마리온)는 그 밤 대본을 버리지 못했다. 홀로 진실을 든 자가 없었기에, 그녀의 침묵조차 아무도 구하지 못했다. 릴리아는 탑으로 떨어졌다. 세 번째 봄을 빼앗긴 채."),
       N("봄이 완전히 진 뒤에야, 타락이 드러났다. 뒤늦게 본국이 재심을 열었고 — 이번엔 파문의 이유가 '진실을 증언한 죄'가 아니었다. 성물매매. 거짓 성사. 빛의 맹세를 판 죄."),
       AZ("문장을 지우십시오. …이미 제 손으로 지운 것을, 갑주에서마저 지워 주십시오.", "sad"),
+      CG("cg_azp0"),
       N("국경의 이정표 아래. 문장이 뜯긴 백은 갑주. 봉랍이 뜯긴 빈 기록함. 세 맹세 — 빛도, 기록도, 방패도 — 그의 곁을 떠났다. 빛을 판 자는 어디에도 속하지 못한 채, 국경을 떠도는 파문된 그림자가 되었다."),
       AZ("빛을 따르라 배웠는데. …제 손으로, 빛을 팔았습니다. 값은, 이 새벽입니다.", "tearful"),
+      CGX(),
       N("당신은 그 뒷모습을 지켜본 몇 안 되는 사람이었다. 성인으로 추앙받다 그림자로 스러진, 국경 밖의 증인."),
       N("— 이것이, 한 번 흘러가 버린 새벽이다. 이야기는 그 새벽보다 삼백 일 앞에서 다시 시작된다. 아직 아무도 빛을 팔지 않은 봄 — 다만 이 이방의 증인과 얽힐 시간은, 아흔 날 뒤에 열린다."),
     ],

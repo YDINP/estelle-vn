@@ -15,6 +15,8 @@ const MA = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { s
 const RM = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "reimon", text, emotion } });  // 레이먼
 const ME = (text: string): Step => ({ kind: "line", line: { speaker: "mephian", text } });                         // 메피안
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
+const CG = (id: string, hold = true): Step => ({ kind: "cg", id, hold }); // 절정 컷 — 이후 대사가 CG 위에 얹힘
+const CGX = (): Step => ({ kind: "cgEnd" });                              // 포트레이트 복귀
 const rn = (text: string): Line => ({ speaker: "narration", text });
 const rlu = (text: string, emotion?: Emotion): Line => ({ speaker: "lucienne", text, emotion });
 const rrm = (text: string, emotion?: Emotion): Line => ({ speaker: "reimon", text, emotion });
@@ -31,6 +33,7 @@ export const LUCIENNE_EPISODES: Episode[] = [
     card: { title: "완벽의 감옥", quote: "완벽만이, 저를 증명합니다." },
     steps: [
       N("후작가의 대살롱. 북부와의 정략혼을 봉인하는 서약식. 제국의 눈이 전부 한 사람에게 모여 있었다."),
+      CG("cg_lup0"),
       N("흰 백합이라 불리는 여자가, 한 치의 흐트러짐도 없는 걸음으로 단상에 올랐다. 완벽한 드레스, 완벽한 예법, 완벽한 신부."),
       LU("완벽만이, 저를 증명합니다. 자수 한 땀이 어긋난 날은 처음부터 다시 놓았고, 흠 하나 잡히면 그날을 지웠습니다. 십 년을, 그렇게.", "neutral"),
       N("좌중은 이미 감탄할 준비를 마쳤다. 서약문을 펼치는 손끝은 곧았고, 목소리는 유리처럼 맑았다."),
@@ -42,6 +45,7 @@ export const LUCIENNE_EPISODES: Episode[] = [
       N("정적. 완결된 문장만 말하던 흰 백합이, 만인 앞에서 처음으로 미완성이 되었다. 단 한 번의 실수였다."),
       N("사흘 뒤 혼담은 깨졌다. 사교계는 '흠 있는 백합'을 사흘 만에 꺾어 버렸다. 한 번의 끊긴 문장이, 십 년의 완벽을 전부 지웠다."),
       LU("저는… 완벽하지 않으면, 아무것도 아닙니다.", "tearful"),
+      CGX(),
       N("그녀는 살롱의 문을 닫았다. 다시는 공개 석상에서 문장을 끊지 않기 위해 — 다시는, 공개 석상에 서지 않는 방식으로. 자수틀 뒤로의, 자발적 유폐였다."),
       N("— 이것이, 한 번 흘러가 버린 얼음의 끝이다."),
       N("이야기는 그 겨울보다 삼백 일 앞에서 다시 시작된다. 아직 아무것도 끊기지 않은, 얼음의 봄에서."),

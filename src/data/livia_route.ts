@@ -16,6 +16,8 @@ const ME = (text: string): Step => ({ kind: "line", line: { speaker: "mephian", 
 const LU = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "lucienne", text, emotion } });// 루시엔
 const LI = (text: string, emotion?: Emotion): Step => ({ kind: "line", line: { speaker: "lilia", text, emotion } }); // 릴리아
 const CH = (prompt: string, options: ChoiceOption[]): Step => ({ kind: "choice", choice: { prompt, options } });
+const CG = (id: string, hold = true): Step => ({ kind: "cg", id, hold }); // 절정 컷 — 이후 대사가 CG 위에 얹힘
+const CGX = (): Step => ({ kind: "cgEnd" });                              // 포트레이트 복귀
 const rn = (text: string): Line => ({ speaker: "narration", text });
 const rlv = (text: string, emotion?: Emotion): Line => ({ speaker: "livia", text, emotion });
 const rma = (text: string, emotion?: Emotion): Line => ({ speaker: "marion", text, emotion });
@@ -37,9 +39,11 @@ export const LIVIA_EPISODES: Episode[] = [
       N("별채의 마지막 밤. 리비아는 창가에 앉아, 본채 쪽에서 새어 나오는 마지막 불빛을 오래 바라보았다. 저 건물의 사람들은 몰락하는 순간까지도 이름이 불렸다. 반역자로든 죄인으로든 — 불리기는 했다."),
       LV("……본채는, 무너지는 것도 요란하네. 나는 무너질 이름조차 없는데.", "sad"),
       N("그것이 시기라는 것을, 아이는 알았다. 볕을, 이름을, 저 본채를 — 마지막 밤까지 부러워한다는 것을. 그러나 그 시기조차 아무도 몰랐다. 그늘은, 시기마저 기록되지 않는다."),
+      CG("cg_lvp0"),
       N("텅 빈 별채, 꺼져 가는 등불 아래에서 리비아는 종잇조각을 무릎에 폈다. 그리고 제 이름을 적었다. 한 자, 한 자, 눌러서. 아무도 불러 주지 않으니, 저라도."),
       LV("리비아. 리비아. …리비아. 종이 위에서라도, 세 번은 불리려고.", "tearful"),
       LV("이름 한 번, 불려 보고 싶었는데.", "tearful"),
+      CGX(),
       N("그리고 그 종이째, 아이는 기록에서 지워졌다. 세상에 있었던 적도 없는 사람처럼. 마지막 등불이 스르르 사그라들고 — 별채는 완전한 어둠이 되었다."),
       N("— 이것이, 한 번 흘러가 버린 이름 없는 끝이다."),
       N("이야기는 그 끝보다 삼백 일 앞에서 다시 시작된다. 볕이 뒷정원의 흙냄새를 데우는, 아직 아무 이름도 지워지지 않은 봄에서."),

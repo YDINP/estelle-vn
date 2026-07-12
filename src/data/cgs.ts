@@ -26,6 +26,14 @@ export const CGS: Cg[] = [
   { id: "cg_map2", char: "marion", title: "달빛 아래 부채",   file: "moon_fan",       unlockEp: "map2" },
   { id: "cg_map3", char: "marion", title: "무대 위의 미소",   file: "rose_hall",      unlockEp: "map3" },
 
+  // ── 나머지 6루트 프롤로그(1회차 배드엔딩) — 아트 반입 완료분.
+  { id: "cg_blp0", char: "belian",   title: "삼켜진 태양",           file: "prologue_swallowed",    unlockEp: "blp0" },
+  { id: "cg_bfp0", char: "belfor",   title: "스스로 꺾은 검",         file: "prologue_broken_sword", unlockEp: "bfp0" },
+  { id: "cg_rmp0", char: "reimon",   title: "두 맹세에 버림받은 검",   file: "prologue_snow_oath",    unlockEp: "rmp0" },
+  { id: "cg_lup0", char: "lucienne", title: "완벽의 감옥",           file: "prologue_broken_vow",   unlockEp: "lup0" },
+  { id: "cg_lvp0", char: "livia",    title: "지워진 이름",           file: "prologue_erased",       unlockEp: "lvp0" },
+  { id: "cg_azp0", char: "azael",    title: "빛을 판 새벽",           file: "prologue_sold_light",   unlockEp: "azp0" },
+
   // ⚠️ 구 스토리(ep*/rep*/vep*/eep*/iep*/ad*/ryep*/mep*) CG 항목은 전량 제거했다.
   //    개편으로 에피소드 id가 lip*/map*/blp*… 로 바뀌어 unlockEp가 어디에도 매칭되지 않았고,
   //    belfor·reimon·lucienne·livia·azael은 아트 파일 자체가 없어 영구 잠금 슬롯으로만 남아 있었다.
