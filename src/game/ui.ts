@@ -383,7 +383,8 @@ function wire() {
   $("#coinAdWatch").onclick = onCoinShortWatch;
   $("#vn").addEventListener("click", () => {
     if (vnChoosing) return;
-    if (vnTyping) { finishVnType(); return; } // 타이핑 중 터치 → 즉시 완성
+    if (vnTyping) { finishVnType(); return; }   // 타이핑 중 터치 → 즉시 완성
+    if (typeNextPage()) { sfxTap(); return; }   // 긴 대사의 다음 페이지가 남았으면 이어서
     sfxTap();
     showNext();
   });
@@ -944,7 +945,49 @@ function vnTypeDelay(cur: string, next: string): number {
   if (cur === " ") return 30;                    // 어절 사이
   return 26;                                     // 기본
 }
-function startVnType(text: string) {
+// ── 자동 페이지 분할 ──
+// 대사 패널의 글상자는 3~4줄뿐인데 내레이션은 최장 240자를 넘는다. 예전엔 넘치는 만큼
+// overflow:hidden 으로 '잘려서 안 보였다'. 들어갈 만큼만 끊어 여러 장으로 넘긴다(VN 표준).
+let vnPages: string[] = [];
+let vnPageIdx = 0;
+
+/** 글상자 높이에 맞춰 text를 페이지들로 분할. 어절 단위로 채우고, 넘치면 새 페이지. */
+function paginate(text: string): string[] {
+  const t = $("#vnText");
+  const max = t.clientHeight;
+  if (!max) return [text];
+  const probe = document.createElement("div");
+  const cs = getComputedStyle(t);
+  Object.assign(probe.style, {
+    position: "absolute", visibility: "hidden", left: "-9999px",
+    width: `${t.clientWidth}px`, font: cs.font, lineHeight: cs.lineHeight,
+    whiteSpace: cs.whiteSpace, wordBreak: cs.wordBreak, overflowWrap: cs.overflowWrap,
+  } as CSSStyleDeclaration);
+  document.body.appendChild(probe);
+
+  const pages: string[] = [];
+  const words = text.split(" ");
+  let cur = "";
+  for (const w of words) {
+    const next = cur ? `${cur} ${w}` : w;
+    probe.textContent = next;
+    if (probe.scrollHeight > max && cur) { pages.push(cur); cur = w; }
+    else cur = next;
+  }
+  if (cur) pages.push(cur);
+  probe.remove();
+  return pages.length ? pages : [text];
+}
+
+/** 다음 페이지가 남아 있으면 이어서 타이핑하고 true. 없으면 false(=스텝 진행). */
+function typeNextPage(): boolean {
+  if (vnPageIdx >= vnPages.length - 1) return false;
+  vnPageIdx++;
+  typePage(vnPages[vnPageIdx]);
+  return true;
+}
+
+function typePage(text: string) {
   vnFull = text;
   const t = $("#vnText"); t.textContent = "";
   $("#vnHint").classList.add("hidden");
@@ -959,6 +1002,12 @@ function startVnType(text: string) {
     vnTypeIv = window.setTimeout(step, delay);
   };
   vnTypeIv = window.setTimeout(step, 26);
+}
+
+function startVnType(text: string) {
+  vnPages = paginate(text);
+  vnPageIdx = 0;
+  typePage(vnPages[0]);
 }
 
 // ── 대화 기록(백로그) — 현재 VN 세션에서 표시된 대사 누적 ──

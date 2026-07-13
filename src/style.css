@@ -574,11 +574,14 @@ body {
   text-align: center; color: var(--gold-soft); font-weight: 800; letter-spacing: 1px;
   font-size: clamp(12px, 3.4vw, 15px); text-shadow: 0 1px 2px rgba(0,0,0,.6);
 }
+/* 세로 범위는 패널 원화의 안쪽 갈색면(≈33%~77%)에 맞춘다.
+   이전 bottom:13%(=87%)는 하단 금장 장식 위까지 내려가 글자가 패널 밖으로 처져 보였다.
+   좁아진 만큼 긴 대사는 ui.ts의 자동 페이지 분할이 처리한다(잘림 없음). */
 .panel .vn-text {
-  position: absolute; top: 35%; left: 11%; right: 11%; bottom: 13%;
+  position: absolute; top: 34%; left: 10%; right: 10%; bottom: 23%;
   display: flex; flex-direction: column; justify-content: center;
   overflow: hidden; color: var(--gold-soft); white-space: pre-line;
-  font-size: clamp(12.5px, 3.5vw, 15px); line-height: 1.5;
+  font-size: clamp(12.5px, 3.4vw, 15px); line-height: 1.45;
   text-shadow: 0 1px 2px rgba(0,0,0,.55);
   /* 한글은 어절(공백) 단위로 줄바꿈 — 단어 중간 끊김 방지 */
   word-break: keep-all; overflow-wrap: break-word; hyphens: none;
