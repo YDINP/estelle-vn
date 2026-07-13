@@ -233,6 +233,8 @@ body {
 }
 .portrait {
   height: 100%; width: auto; max-width: none; object-fit: contain;
+  /* 반신 프레이밍 — VN 대사창과 동일한 vnZoom(높이맞춤 기준). 전신 아트만 >1 */
+  transform: scale(var(--bz, 1)); transform-origin: 50% 0;
   filter: drop-shadow(0 6px 20px rgba(0,0,0,.4));
   /* 좌우 절단면만 어둠 속으로 부드럽게. 하단 페이드는 제거 —
      캐릭터가 화면 바닥까지 닿아 서 있게 (말풍선/버튼이 위에 겹침) */
