@@ -1,4 +1,4 @@
-// 이벤트 일러(CG) 레지스트리 — public/cg/{char}/{file}.jpg
+// 이벤트 일러(CG) 레지스트리 — public/cg/{char}/{file}.webp
 // unlockEp가 있으면 해당 에피소드 클리어 시 해금(상태 불필요 — epCleared에서 파생).
 // unlockEp가 없으면 잠금 티저(??? 표시) — 해당 캐릭터 스토리 확장 시 매핑.
 import { CharacterId } from "./characters";
@@ -7,7 +7,7 @@ export interface Cg {
   id: string;
   char: CharacterId;
   title: string;      // 도감 표시명
-  file: string;       // public/cg/{char}/{file}.jpg
+  file: string;       // public/cg/{char}/{file}.webp
   unlockEp?: string;  // 해금 에피소드 id
 }
 
@@ -42,7 +42,7 @@ export const CGS: Cg[] = [
 ];
 
 export function cgFile(cg: Cg): string {
-  return `${import.meta.env.BASE_URL}cg/${cg.char}/${cg.file}.jpg`;
+  return `${import.meta.env.BASE_URL}cg/${cg.char}/${cg.file}.webp`;
 }
 
 /** 해금 판정: 스토리 중 연출로 봤거나(cgSeen), 매핑된 에피소드를 클리어했거나 */

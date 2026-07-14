@@ -1,5 +1,5 @@
 // 캐릭터 레지스트리 (SSOT) — 캐릭터 추가 = 여기 1항목 + public/char/{id}/ 폴더.
-// 아트 1세트: {emotion}.png (전신/반신 겸용). 반신(머리~허리)은 별도 에셋 없이 CSS 크롭(bustZoom)으로 표현.
+// 아트 1세트: {emotion}.webp (전신/반신 겸용). 반신(머리~허리)은 별도 에셋 없이 CSS 크롭(bustZoom)으로 표현.
 // 대부분 캐릭터의 body는 이미 머리~허리 구도라 zoom=1. marion만 전신(발끝)이라 zoom≈1.44로 반신 프레이밍.
 
 // 표정 체계 16종 (4×4 시트 그리드와 1:1). '인사(greet)'는 감정이 아닌 동작 포즈라
@@ -30,7 +30,7 @@ export interface Character {
   hasPortrait: boolean;      // false = 이름판+대사만 (일러 없는 조연)
   color: string;             // 화자 텍스트/이름판 색 (다크브라운 배경에서 가독한 파스텔)
   extra?: boolean;           // true = 엑스트라(실루엣 초상) — 도감/일러 수집 제외
-  body: Emotion[];           // 일러 보유 표정 ({emotion}.png) — 단일 세트
+  body: Emotion[];           // 일러 보유 표정 ({emotion}.webp) — 단일 세트
   // ── 프레이밍 확대율 (아트 1세트를 CSS 크롭으로 흉상/반신/전신에 재사용) ──
   // 아트가 두 종류다: 전신형(발끝까지, ~904x1740)과 반신형(허리까지, ~419x835).
   // 도감 카드는 3:4·폭맞춤 → zoom = 4W / (3 × 목표Y)
@@ -111,7 +111,7 @@ export const CHARACTERS: Record<CharacterId, Character> = {
   },
   // ── 캐릭터 추가 템플릿 ──
   // 1) CharacterId 유니온에 id 추가  2) 아래 형태로 항목 추가
-  // 3) public/char/{id}/에 {emotion}.png(단일 세트) 배치 — 반신은 bustZoom(전신형이면 ~1.44)
+  // 3) public/char/{id}/에 {emotion}.webp(단일 세트) 배치 — 반신은 bustZoom(전신형이면 ~1.44)
   // {id}: { id:"{id}", name:"표시명", hasPortrait:true, body:[...], fallback:{ 미보유:보유 } },
 };
 
@@ -133,7 +133,7 @@ const BASE = import.meta.env.BASE_URL;
 /** 전신 일러 (홈 화면 등) */
 export function portraitFile(id: CharacterId, e?: Emotion): string {
   const c = CHARACTERS[id];
-  return `${BASE}char/${c.id}/${resolveIn(c.body, c, e)}.png`;
+  return `${BASE}char/${c.id}/${resolveIn(c.body, c, e)}.webp`;
 }
 
 /** VN 대사창/도감용 일러 — 단일 세트(body). 반신 프레이밍은 CSS 크롭(bustZoom)으로 처리 */
