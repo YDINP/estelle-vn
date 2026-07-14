@@ -17,7 +17,7 @@ import { showRewardedAd, showInterstitialAd } from "./ads";
 import { Choice, Line, Emotion, Step, PROLOGUE } from "../data/chapters";
 import {
   CHARACTERS, CharacterId, EMOTION_LABEL, vnFile, portraitFile, resolveEmotion,
-  isPlaceholderArt, bustZoomOf, chestZoomOf, vnZoomOf,
+  isPlaceholderArt, bustZoomOf, chestZoomOf, vnZoomOf, portraitZoomOf,
 } from "../data/characters";
 import { EPISODES, Episode } from "../data/season1";
 import { DAILY_SCENES, DAILY_AFFECTION } from "../data/daily";
@@ -46,13 +46,13 @@ function hasRouteProgress(): boolean {
   return Object.values(state.routes).some((route) => route.epCleared.length > 0 || route.nextEpFreeAt > 0);
 }
 
-// 홈 화면 포트레이트 = 현재 루트의 주인공. VN 대사창과 같은 반신 프레이밍으로 통일
-// (전신 아트는 vnZoom으로 머리~허리를 잡아 캐릭터 간 얼굴 크기를 맞춘다).
+// 홈 화면 포트레이트 = 현재 루트의 주인공. 폭맞춤+하단 그라데이션(.portrait) 위에
+// 캐릭터별 --pz(반신 확대율, 좌우 안 잘리는 상한)를 얹는다.
 function setEmotion(name: Emotion) {
   const id = activeCharId();
   const img = $("#charImg") as HTMLImageElement;
   img.src = vnFile(id, name);
-  img.style.setProperty("--bz", String(vnZoomOf(id)));
+  img.style.setProperty("--pz", String(portraitZoomOf(id)));
 }
 
 // 홈 발화 공통: 버블 표시 + '들은 대사' 도감 수집 기록

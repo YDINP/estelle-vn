@@ -231,15 +231,18 @@ body {
   background: radial-gradient(circle, rgba(243,223,164,0.2), transparent 65%);
   filter: blur(6px);
 }
+/* 캐릭터 화면 = 반신. 세로로 긴 전신 아트를 세로 프레임에서 확대하면 좌우가 잘리므로,
+   폭에 맞춰(어깨가 프레임 폭에 딱 차게) 상단(머리)부터 보여주고 — 좌우 절대 안 잘림 —
+   하반신은 아래로 흘러 하단 UI(말풍선/버튼) 영역으로 그라데이션 페이드시킨다. */
 .portrait {
-  height: 100%; width: auto; max-width: none; object-fit: contain;
-  /* 반신 프레이밍 — VN 대사창과 동일한 vnZoom(높이맞춤 기준). 전신 아트만 >1 */
-  transform: scale(var(--bz, 1)); transform-origin: 50% 0;
+  width: 100%; max-width: none; height: auto; display: block;
+  /* 폭맞춤(width:100%) 위에 캐릭터별 --pz 확대 — 상반신을 키우되 어깨가 프레임을
+     넘지 않게 캡되어 좌우가 잘리지 않는다. 머리를 상단에 고정(origin 50% 0). */
+  transform: scale(var(--pz, 1)); transform-origin: 50% 0;
   filter: drop-shadow(0 6px 20px rgba(0,0,0,.4));
-  /* 좌우 절단면만 어둠 속으로 부드럽게. 하단 페이드는 제거 —
-     캐릭터가 화면 바닥까지 닿아 서 있게 (말풍선/버튼이 위에 겹침) */
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0%, #000 9%, #000 91%, transparent 100%);
+  /* 하단만 페이드: 상단 불투명 → 하단(허리 아래)이 어둠으로 스며들어 UI로 이어짐. 좌우 마스크 없음. */
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 50%, rgba(0,0,0,.7) 68%, transparent 85%);
+  mask-image: linear-gradient(180deg, #000 0%, #000 50%, rgba(0,0,0,.7) 68%, transparent 85%);
 }
 .acc { position: absolute; top: 3%; font-size: 30px; z-index: 3;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,.4)); }

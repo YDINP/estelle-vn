@@ -38,6 +38,9 @@ export interface Character {
   bustZoom?: number;         // 도감 '반신'(머리~허리). 기본 1
   chestZoom?: number;        // 도감 '흉상'(머리~가슴). 기본 1
   vnZoom?: number;           // VN 대사창 반신 프레이밍. 기본 1(=반신형 아트는 원본 그대로)
+  // 캐릭터(홈) 화면 반신 확대율. 폭맞춤(width:100%) 위에 곱해 상반신을 키우되,
+  // 어깨가 프레임 폭을 넘지 않는 선 = min(2.2, 캔버스폭/상반신폭)으로 캡 → 좌우 안 잘림.
+  portraitZoom?: number;
   fallback: Partial<Record<Emotion, Emotion>>; // 미보유 표정 → 보유 표정 폴백
 }
 
@@ -46,18 +49,18 @@ export type CharacterId =
   | "belfor" | "belian" | "lucienne" | "livia" | "reimon" | "azael";
 
 export const CHARACTERS: Record<CharacterId, Character> = {
-  // 전신 아트(904x1740) — 흉상/반신은 CSS 크롭으로 파생.
+  // 전신 아트 — 흉상/반신은 CSS 크롭으로 파생. zoom = 인물 바운딩박스 계측값(scratchpad/allzoom.js).
   lilia: {
     id: "lilia", name: "릴리아", hasPortrait: true, color: "#ffdf9e", // 금발 — 웜골드
     body: GRID_EMOTIONS,
-    bustZoom: 1.36, chestZoom: 2.20, vnZoom: 1.96,
+    bustZoom: 1.36, chestZoom: 2.20, vnZoom: 1.96, portraitZoom: 2.20,
     fallback: {},
   },
-  // 가시 돋친 장미 영애 (적발·와인 드레스). 전신 아트(928x1695).
+  // 가시 돋친 장미 영애 (적발·와인 드레스). 전신 아트.
   marion: {
     id: "marion", name: "마리온", hasPortrait: true, color: "#ff96a6", // 적발 — 로즈레드
     body: GRID_EMOTIONS,
-    bustZoom: 1.46, chestZoom: 2.58, vnZoom: 2.00,
+    bustZoom: 1.46, chestZoom: 2.58, vnZoom: 2.00, portraitZoom: 1.56,
     fallback: {},
   },
   // 릴리아의 정략 약혼자 — 엑스트라(실루엣 초상, Desktop/1/extra 시트). 구 '세드릭' 삭제 후 서사 역할만 유지.
@@ -68,43 +71,42 @@ export const CHARACTERS: Record<CharacterId, Character> = {
   // ⚠️ 신규 남캐 2종 — 임시명. 플레이는 추후(잠금 루트), 현재는 카메오 등장만.
   // 구 '루시안(근위기사단장)' → '벨포르(근위대 부단장)'으로 재설정. 구 일러 전량 폐기,
   // 신규 시트 도착 시 body 채우고 hasPortrait:true.
-  // ⏳ 반신 아트(419x835 — 허리까지). 전신 아트 교체 시 zoom 값 재산출 필요.
+  // 전신 아트(2026-07-14 교체 완료).
   belfor: {
     id: "belfor", name: "벨포르", hasPortrait: true, color: "#cfe0f5", // 백금발 — 플래티넘
-    body: GRID_EMOTIONS, bustZoom: 0.67, chestZoom: 1.49, // vnZoom 없음 = 원본이 곧 반신
+    body: GRID_EMOTIONS, bustZoom: 1.28, chestZoom: 2.18, vnZoom: 2.05, portraitZoom: 2.13,
     fallback: {},
   },
-  // 전신 아트(904x1740).
+  // 전신 아트.
   belian: {
     id: "belian", name: "벨리안", hasPortrait: true, color: "#e8a06d", // 제국 제1황태자 (적발·와인 망토) — 임시명, 앰버
     body: GRID_EMOTIONS,
-    bustZoom: 1.36, chestZoom: 2.20, vnZoom: 1.96,
+    bustZoom: 1.36, chestZoom: 2.22, vnZoom: 1.96, portraitZoom: 1.73,
     fallback: {},
   },
-  // 설정 정본: STORY-BIBLE.md (2026-07-07 캐릭터 관계망 개편)
-  // ⏳ 반신 아트(419x825).
+  // 설정 정본: STORY-BIBLE.md (2026-07-07 캐릭터 관계망 개편). 전신 아트.
   lucienne: {
     id: "lucienne", name: "루시엔", hasPortrait: true, color: "#bfe3ea", // 백발 — 아이스 시안
-    body: GRID_EMOTIONS, bustZoom: 0.68, chestZoom: 1.51,
+    body: GRID_EMOTIONS, bustZoom: 1.38, chestZoom: 2.42, vnZoom: 2.03, portraitZoom: 1.80,
     fallback: {}, // 후작영애. 얼음처럼 완전한, 금 간 완벽주의
   },
-  // id 'livia'는 아트 폴더/세이브 호환용 — 표시명 '리비아'(공작가의 서녀). ⏳ 반신 아트(394x889).
+  // id 'livia'는 아트 폴더/세이브 호환용 — 표시명 '리비아'(공작가의 서녀). 전신 아트.
   livia: {
     id: "livia", name: "리비아", hasPortrait: true, color: "#f2cfa6", // 갈색머리 — 웜 베이지
-    body: GRID_EMOTIONS, bustZoom: 0.59, chestZoom: 1.31,
+    body: GRID_EMOTIONS, bustZoom: 1.19, chestZoom: 1.98, vnZoom: 2.00, portraitZoom: 1.53,
     fallback: {}, // 하이델 공작가의 서녀. 그늘에서 숨죽여 피는 들꽃
   },
-  // ⏳ 반신 아트(419x836).
+  // 전신 아트.
   reimon: {
     id: "reimon", name: "레이먼", hasPortrait: true, color: "#b9c9dd", // 스틸 블루그레이
-    body: GRID_EMOTIONS, bustZoom: 0.67, chestZoom: 1.49,
+    body: GRID_EMOTIONS, bustZoom: 1.34, chestZoom: 2.34, vnZoom: 2.01, portraitZoom: 1.35,
     fallback: {}, // 근위대 기사단장이자 북부대공. 검보다 차가운 침묵
   },
-  // 전신 아트(904x1740).
+  // 전신 아트.
   azael: {
     id: "azael", name: "아젤", hasPortrait: true, color: "#ece5cf", // 아이보리 실버
     body: GRID_EMOTIONS,
-    bustZoom: 1.39, chestZoom: 2.33, vnZoom: 2.00,
+    bustZoom: 1.39, chestZoom: 2.35, vnZoom: 2.01, portraitZoom: 1.69,
     fallback: {}, // 신성왕국의 성기사. 빛의 맹세를 검에 새긴 자
   },
   // ── 캐릭터 추가 템플릿 ──
@@ -152,6 +154,11 @@ export function chestZoomOf(id: CharacterId): number {
 /** VN 대사창 확대율 — 높이맞춤 기준. 전신 아트를 반신으로 잡아 캐릭터 간 얼굴 크기를 통일 */
 export function vnZoomOf(id: CharacterId): number {
   return CHARACTERS[id].vnZoom ?? 1;
+}
+
+/** 캐릭터(홈) 화면 반신 확대율 — 폭맞춤 위에 곱함. 좌우 안 잘리는 상한으로 캡됨 */
+export function portraitZoomOf(id: CharacterId): number {
+  return CHARACTERS[id].portraitZoom ?? 1;
 }
 
 /** 표시 아트가 임시 대체(placeholder)인지 — 요청 표정 미보유로 폴백 표정 표시 */
