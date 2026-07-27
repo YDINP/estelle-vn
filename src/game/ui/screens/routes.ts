@@ -69,17 +69,20 @@ export function refreshRouteCell(routeId: string): void {
   if (foot) foot.innerHTML = cardBody(routeId);
 }
 
-/** 루트 진입 → 대본 청크를 받아 해당 캐릭터 시점의 홈 화면으로 전환. */
-export async function enterRoute(routeId: string, autoPlayFirst = true): Promise<void> {
+/**
+ * 루트 진입 → 대본 청크를 받아 해당 캐릭터 시점의 홈 화면으로 전환.
+ * @returns 진입 성공 여부. 대본 로드 실패 시 false — 호출부가 메인 화면으로 되돌린다.
+ */
+export async function enterRoute(routeId: string, autoPlayFirst = true): Promise<boolean> {
   const route = getRoute(routeId);
-  if (!route || !route.available) return;
+  if (!route || !route.available) return false;
   // 대본은 지연 로드 — 캐시 히트면 인디케이터 없이 즉시 진입한다.
   let data = loadedRoute(routeId);
   if (!data) {
     showLoading();
     data = await loadRoute(routeId);
     hideLoading();
-    if (!data) { toast("이야기를 불러오지 못했어요. 잠시 후 다시 시도해 주세요"); return; }
+    if (!data) { toast("이야기를 불러오지 못했어요. 잠시 후 다시 시도해 주세요"); return false; }
   }
   ctx.state.currentRoute = routeId;
   setRouteData(data);
@@ -93,6 +96,7 @@ export async function enterRoute(routeId: string, autoPlayFirst = true): Promise
   // 최초 진입(해당 루트 진행 0)이면 1화 자동 재생 (구 프롤로그 자동재생 대체)
   const first = data.episodes[0];
   if (autoPlayFirst && first && !prog().epCleared.includes(first.id)) playEpisode(first);
+  return true;
 }
 
 export function wireMain(): void {

@@ -57,14 +57,18 @@ export function mountGame(el: HTMLElement): void {
   });
 
   // 진입점: 저장된 진행 중 루트가 있으면 그 홈으로, 없으면 메인(타이틀) 화면.
+  // 대본은 청크로 지연 로드되므로 실패할 수 있다 — 그 경우 빈 홈이 아니라 타이틀로 되돌린다.
+  const boot = (id: string, autoPlay: boolean) => {
+    void enterRoute(id, autoPlay).then((entered) => { if (!entered) showMain(); });
+  };
   if (!state.onboarded && !state.currentRoute && !hasRouteProgress()) {
     state.onboarded = true;
     save();
-    void enterRoute("lilia");
+    boot("lilia", true);
     return;
   }
   if (state.currentRoute && getRoute(state.currentRoute)?.available) {
-    void enterRoute(state.currentRoute, false);
+    boot(state.currentRoute, false);
   } else {
     showMain();
   }
