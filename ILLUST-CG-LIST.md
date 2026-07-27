@@ -46,6 +46,26 @@
 | cg_map4 | `red_teatime` | 4화 — 티타임, 마리온이 릴리아와 독설을 주고받으며 찻주전자를 든 손끝이 미세히 떨림 | 마리온 + 릴리아 | an elegant high-society tea party, the wine-red lady (Marion) pouring tea with a subtly trembling hand while trading barbed smiles with the blonde duchess (Lilia), opulent setting, hidden strain |
 | cg_map5 | `cracked_mask` | 5화[막①] — 연회 뒤 회랑에서 마리온이 헛구역질. 메피안이 나와 벗 리비아를 저울에 올림 | 마리온 + 메피안 | a chancellery reception corridor, the wine-red lady (Marion) doubling over against a pillar after applause, mask slipping; the chancellor (Mephian) emerging with a soft threatening smile, gilded cruelty, rose-and-shadow |
 
+### 2막 이후 (6~30화, 30화 체계) — `story/cg-manifest-marion.json` 병합(2026-07-27)
+
+> ⚠️ 아래 항목은 `cgs.ts`에 이미 등재됐으나 **`public/cg/marion/` 아트 파일은 아직 없음**(다음 단계 이미지 생성 대상).
+
+| id | file | 화·상황(무슨 일) | 등장 캐릭터 | 프롬프트 |
+|---|---|---|---|---|
+| cg_map12 | `faceless_portrait_ring` | 12화[3막] — 왕궁 화랑, 얼굴 없는 연인 초상 왼손 약지에 발루아 인장 반지. 소문을 팔던 자가 소문 한복판에 섬 | 마리온 + 릴리아 + 군중 | a grand palace picture gallery, a large scandalous oil portrait of a faceless lover, the faceless man's left ring finger bearing a rose-stemmed signet ring, the wine-red-haired lady (Marion) standing frozen before it with her lace fan half-lowered, the blonde-blue duchess (Lilia) beside her staring coldly, hundreds of turned faces behind them, gilded gallery, harsh chandelier light |
+| cg_map15 | `debt_notice_candle` | 15화[막③·배드게이트①] — 재상부 서재. 독촉장·증언인 백지가 촛불 앞에 나란히, 메피안이 벗의 이름을 값으로 제시 | 마리온 + 메피안 | a dim incense-heavy chancellery study at night, a red-sealed debt notice curling in flame beside a blank sworn-testimony sheet, the elderly chancellor (Mephian) pushing the blank sheet forward, the wine-red-haired lady (Marion) staring at a quill she cannot pick up, mask cracked into anguish |
+| cg_map18 | `forged_ledger` | 18화[4막] — 발루아 서고, 필체 세 장 대조로 숫자 칠의 위조 확인 | 마리온 + (당신 손) | a long-sealed dusty family library, three sheets of handwriting compared under a magnifying lens, a numeral's overlong horizontal stroke, the wine-red-haired lady (Marion) kneeling with fallen fan and unwiped tears, twenty-three unsent letters spilled beside her |
+| cg_map20 | `third_hand_drawer` | 20화[막④] — 각본실, 십이 년 전 서랍만 낯선 가로 열쇠 구멍. 메피안 "나도 못 여오" | 마리온 + 메피안 | a narrow archive room walled with dated drawers, one oldest drawer with a strange horizontally-set keyhole, the wine-red-haired lady (Marion) hand still on its pull, the chancellor (Mephian) in the doorway with his smile gone |
+| cg_map21 | `leash_rehearsal` | 21화[5막] — 위증 열한 줄 낭독 시연, 대가는 만인 앞 차용증 소각 | 마리온 + 메피안 + 서기 둘 | a small chancellery meeting room, the wine-red-haired lady (Marion) on a rehearsal dais holding eleven written lines, fingertips white at the eighth line, the chancellor (Mephian) seated in shadow timing her |
+| cg_map23 | `seven_threads` | 23화[5막] — D-30 최종 예행, 일곱 사람 동선이 한 홀로 수렴 | 마리온 + 레이먼 + 아젤 + 루시엔(원경) | an immense coronation ballroom rehearsal, the wine-red-haired lady (Marion) alone tracing a seating chart, the northern commander (Reimon) directing patrol lines above, the paladin-priest (Azael) and marchioness (Lucienne) at envoy seats, converging sightlines |
+| cg_map25 | `three_hours_before` | 25화[막⑤·배드게이트②] — 각본실, 위증 대본과 부치지 못한 편지 다발을 양손에 나눠 든 마지막 저울질 | 마리온 + 메피안 + 릴리아 | the archive room three hours before midnight, the wine-red-haired lady (Marion) with a false-testimony script in one hand and unsent letters in the other, the chancellor (Mephian) hurried, the duchess (Lilia) at the doorway |
+| cg_map26 | `midnight_accusation` | 26화[6비트①] — 자정 종 아홉 번째, 메피안이 하이델 공작영애를 반역으로 고발 | 메피안 + 릴리아 + 마리온 + 벨리안(난간) | a coronation ball at midnight, the chancellor (Mephian) stepping forward in formal accusation, the duchess (Lilia) standing alone as the crowd parts, the wine-red lady (Marion) rising from the witness bench, the crown prince (Belian) watching from the balustrade |
+| cg_map27 | `lost_script` | 27화[6비트②] — 증언대의 마리온, 예법의 빈틈에 선 당신을 보고 열한 줄을 발화하지 않음(이 루트의 주 카메라) | 마리온 + (당신 실루엣) + 아젤(원경) | the brightest point of a vast ballroom, the wine-red-haired lady (Marion) alone at the testimony stand with empty hands and stage-smile gone, a back silhouette standing in a forbidden protocol gap, the paladin-priest (Azael) rising with a no-longer-empty record box |
+| cg_map28 | `the_seizure` | 28화[6비트④⑤⑥] — 레이먼의 확보 명령을 벨포르가 집행. 표적은 약혼자·집사. 벨리안 재가 | 레이먼 + 벨포르 + 약혼자 + 마리온 + 벨리안 | a ballroom the instant a verdict inverts, the northern commander (Reimon) signaling from the gallery, the vice-captain (Belfor) seizing a shadowed faceless nobleman and a steward, the wine-red lady (Marion) watching without breathing, the crown prince (Belian) granting it with a glance |
+| cg_map_good | `ruined_rose_garden` | 30화 GOOD — 경매로 넘어간 발루아 온실 잔해에 마리온이 스물두 그루 장미를 손수 심음 | 마리온 + 리비아 + (당신 손·어깨) | a demolished glass conservatory ruin, the wine-red-haired lady (Marion) kneeling in the dirt without fan or gloves planting a rose cutting, the girl (Livia) working two rows over, twenty-two young roses set across the wreckage, warm honest daylight |
+| cg_map_bad | `border_carriage_watched` | 30화 BAD(15·25화 실패 분기 공용) — 프롤로그 반복, 이번엔 당신이 창밖에서 지켜봄 | 마리온(마차 안) + 당신(실루엣) | a crestless carriage at a night border checkpoint in deep winter seen from outside, the wine-red-haired lady (Marion) dimly visible tracing numbers on the frosted glass, a back silhouette standing in the snow unable to be seen by her |
+| cg_map_true | `erased_name` | 30화 TRUE — 흙 묻은 손으로 검인청 명부를 펼침. 이름 하나가 종이째 깎여 지워져 있음 | 마리온 + (당신 손) | a seal-office record room, a twelve-year-old register with one entry physically shaved from the paper, a numeral with the same overlong stroke in the margin, the wine-red-haired lady (Marion) leaning over with soil under her fingernails, a dried rose and a seal-sample ring on the page |
+
 ---
 
 ## 3. 벨리안 루트 (id: `belian`) — 식탐(가문 포식) · 프롤로그+1~5화
@@ -150,3 +170,118 @@
 2. `cgs.ts`에 `{ id:"cg_xxx", char:"{id}", title:"…", file:"{file}", unlockEp:"{신 에피소드 id}" }` 추가. ⚠️ id 프리픽스 고유(충돌 금지), `char`=신 id, `unlockEp`=신 에피소드 id(lip0·map1…).
 3. 프로즈 스텝에 절정 위치로 `CG("cg_xxx")` (필요 시 `CGX()` 로 포트레이트 복귀) 삽입.
 4. `npm run build` + 부팅 확인. 도감(수집)에서 해금·표시 확인.
+
+---
+
+## 11. 제작 대기 CG (아트 파일 없음) — 2026-07-27 점검
+
+> 위 표(1~9절)에 **id/file/장면이 이미 정해져 있으나 `public/cg/`에 실제 파일이 없는 항목**만 추린 목록.
+> **2026-07-27: 8루트 `cg-manifest-{lilia,marion,belian,reimon,livia,belfor,lucienne,azael}.json` 전량 도착 →
+> 전부 `cgs.ts`에 병합 완료.** 아래는 그 결과물의 파일-존재 스냅샷(생성 파이프라인이 실시간으로
+> 채우고 있어 이 문서 시점 이후 계속 줄어든다 — 최신 수치는 `cgs.ts` 자체 + 대조 스크립트로 확인).
+
+### ⚠️ 파일명 불일치 발견 — art 재검증 필요 (8개 팀 병렬 작업 중 발생)
+
+각 매니페스트 도착 전에, 8루트 전체에 대해 **§9(기존 스펙) 기준의 generic 엔딩 아트**
+(`{char}/end_good.webp` 등)가 먼저 일괄 생성돼 있었다. 매니페스트가 도착하면서 실제로
+같은 파일명(`end_good`/`end_bad`/`end_true`)을 그대로 지정한 경우와, **전혀 다른 파일명·장면**을
+새로 지정한 경우가 갈렸다 — 즉 이미 생성된 art가 최신 스토리와 안 맞을 수 있다:
+
+| 루트 | GOOD | BAD | TRUE | 비고 |
+|---|---|---|---|---|
+| 릴리아 | 신규 file 지정 | 신규 file 지정 | 신규 file 지정 | 기존 end_*.webp는 근접하나 배경 인물(마리온·리비아) 미확인 — 재검증 권장 |
+| 마리온 | 신규 file 지정 | 신규 file 지정 | 신규 file 지정 | 기존 end_good.webp=무대 위 개선(구스펙) vs 매니페스트=폐허 정원 가드닝(신규) — **확실히 다른 장면** |
+| 벨리안 | 신규 file 지정 | 신규 file 지정 | 신규 file 지정 | 기존 end_good.webp=황금 잔·환호 군중(구스펙) vs 매니페스트=이 나간 낡은 잔·주교 대관(신규) — **확실히 다른 장면** |
+| 벨포르 | 신규 file 지정 | 신규 file 지정 | 신규 file 지정 | 기존 end_*.webp 미검증, 매니페스트가 전량 새 file 지정 |
+| 레이먼 | 신규 file 지정 | 신규 file 지정 | 신규 file 지정 | 기존 end_*.webp 미검증, 매니페스트가 전량 새 file 지정 |
+| 루시엔 | **end_good 그대로** | **end_bad 그대로** | **end_true 그대로** | title까지 완전 일치 확인 — 기존 art 그대로 유효, 재생성 불필요 |
+| 리비아 | 신규 file 지정 | 신규 file 지정 | 신규 file 지정 | 기존 end_*.webp 미검증, 매니페스트가 전량 새 file 지정 |
+| 아젤 | **end_good 그대로**(title 일치) | **end_bad 그대로**(title 일치) | 신규 file 지정 | GOOD/BAD는 파일명 재사용됐으나 실제 art는 구스펙(대성당 문 앞) 장면 — 매니페스트 신규 장면(재심정 내부)과 다름, 재생성 검토 필요 |
+
+**결론**: 루시엔만 기존 엔딩 art가 그대로 유효. 나머지 7루트는 새 file명으로 등재했으므로
+`cgs.ts` 항목은 정상(미생성 상태), 벨리안·마리온·아젤(GOOD/BAD)은 **기존 end_*.webp가 이미
+있지만 최신 스토리와 안 맞는 것으로 확인된 파일**이니 별도 정리(삭제 또는 참고자료 보관) 판단이
+필요 — 이미지 생성팀에 인계할 사항.
+
+### 11.1 1막(프롤로그+1~5/10화) 미제작분 — 이 문서에 장면·프롬프트 이미 확정됨
+
+| 루트 | id | file | 화 | 상황 요약 |
+|---|---|---|---|---|
+| 릴리아 | cg_lip6 | `two_seals` | 6화 | 검인청 뒷골목, 릴리아·레이먼 위조편지 봉랍 대조 |
+| 릴리아 | cg_lip7 | `rose_lily_tea` | 7화 | 다과회, 마리온·루시엔 저울질 |
+| 릴리아 | cg_lip8 | `annex_child` | 8화 | 하이델 별채, 릴리아·리비아 첫 대면 |
+| 릴리아 | cg_lip9 | `printing_raid` | 9화 | 인쇄소 습격, 스캔들 조기 발발 |
+| 릴리아 | cg_lip10 | `faceless_portrait` | 10화[막②] | 초상화 속 약혼자 반지 발각 |
+| 마리온 | cg_map1 | `debt_candle` | 1화 | 메피안, 마리온 가문 차용증을 촛불에 시험 |
+| 마리온 | cg_map4 | `red_teatime` | 4화 | 티타임, 마리온 손끝 떨림 |
+| 마리온 | cg_map5 | `cracked_mask` | 5화[막①] | 회랑 헛구역질, 메피안 등장 |
+| 벨리안 | cg_blp1 | `corridor_sun` | 1화 | 화단에 독주 시험 습관 |
+| 벨리안 | cg_blp2 | `moonlit_chess` | 2화 | 달빛 체스판, 배경 레이먼 |
+| 벨리안 | cg_blp3 | `devouring_court` | 3화 | 알현실, 몰락 남작 포식 |
+| 벨리안 | cg_blp4 | `thrice_cup` | 4화 | 만찬, 독배 예행(잔 3회 교체) |
+| 벨리안 | cg_blp5 | `chancellor_counts` | 5화[막①] | 회랑, 메피안 셈+벨리안 냉시선 |
+| 벨포르 | cg_bfp1 | `dawn_duel` | 1화 | 새벽 훈련장, 목검 절제 |
+| 벨포르 | cg_bfp2 | `crime_scene` | 2화 | 털린 서재 현장 조사 |
+| 벨포르 | cg_bfp3 | `sunset_rampart` | 3화 | 노을 성벽, 약혼자 밀서 목격(+레이먼) |
+| 벨포르 | cg_bfp4 | `sealed_order` | 4화 | 밤 병영, 봉인 명령서 앞 망설임 |
+| 벨포르 | cg_bfp5 | `chancellor_blade` | 5화[막①] | 회랑, 메피안이 검을 가늠(+벨리안) |
+| 레이먼 | cg_rmp1 | `training_dawn` | 1화 | 서리 연무장, 목검 수련 |
+| 레이먼 | cg_rmp2 | `seal_check` | 2화 | 재봉인된 밀랍 발견 |
+| 레이먼 | cg_rmp3 | `two_crests` | 3화 | 태양·늑대 깃발 사이, 벨리안 접근 |
+| 레이먼 | cg_rmp4 | `inspection_raid` | 4화 | 급습 감찰, 필적 위조 발견 |
+| 레이먼 | cg_rmp5 | `chancellor_measures` | 5화[막①] | 회랑, 메피안 셈(+벨리안) |
+| 루시엔 | cg_lup1 | `frozen_salon` | 1화 | 얼음 살롱, 루틴 정지 |
+| 루시엔 | cg_lup2 | `rose_vs_lily` | 2화 | 살롱, 마리온·루시엔 독설 응수 |
+| 루시엔 | cg_lup3 | `two_cages` | 3화 | 회의 탁자, 레이먼과 대치(로맨스 아님) |
+| 루시엔 | cg_lup4 | `crooked_stitch` | 4화 | 삐뚤어진 자수, 손 멈춤 |
+| 루시엔 | cg_lup5 | `perfect_silence` | 5화[막①] | 회랑, 메피안 언급+잉크 안 마른 초대장 |
+| 리비아 | cg_lvp1 | `annex_spring` | 1화 | 별채, 처음 이름 불림 |
+| 리비아 | cg_lvp2 | `wildflowers` | 2화 | 별채, 들꽃 묶다 문 엶 |
+| 리비아 | cg_lvp3 | `wall_ghost` | 3화 | 밤 담장, 메피안 첫 인지 |
+| 리비아 | cg_lvp4 | `two_sisters` | 4화 | 대기실, 마리온 곁+메피안 저울질 |
+| 리비아 | cg_lvp5 | `nameless_flower` | 5화[막①] | 별채, '하이델 서녀' 문서 첫 기재 |
+| 아젤 | cg_azp1 | `envoy_arrival` | 1화 | 사절 홀 도착 |
+| 아젤 | cg_azp2 | `worship_bait` | 2화 | 메피안, 숭배를 미끼로 제시 |
+| 아젤 | cg_azp3 | `sealed_answer` | 3화 | 촛불 책상, 거절 후 손 머무름 |
+| 아젤 | cg_azp4 | `three_oaths` | 4화 | 이국 예배당, 세 맹세 |
+| 아젤 | cg_azp5 | `poisoned_seal` | 5화[막①] | 회랑, 메피안 미소+낯익은 향 |
+
+**소계: 36장** (릴리아 5 + 마리온 3 + 나머지 6루트 각 5장)
+
+### 11.2 엔딩 CG — 8루트 × GOOD/BAD/TRUE = 24장 전량 미제작
+
+`{id}/end_good.webp` · `{id}/end_bad.webp` · `{id}/end_true.webp` (id = lilia/marion/belian/belfor/reimon/lucienne/livia/azael).
+장면 지정은 위 9절 표 참고. **8루트 전종, 24장 모두 아직 파일 없음.**
+
+### 11.3 2막 이후 (11~30화 / 6~30화) — 8루트 전량 매니페스트 병합 완료
+
+8개 `cg-manifest-{루트id}.json`이 전부 도착해 `cgs.ts`에 병합됐다. 루트별 신규 등재 수
+(에피소드 CG + 엔딩 3종, 프롤로그·1막은 §1~9에 이미 있던 것 제외):
+
+| 루트 | 신규 등재 수(2막 이후) | 화 범위 |
+|---|---|---|
+| 릴리아 | 9화 + 엔딩 3 = 12 | 15~29화 |
+| 마리온 | 10화 + 엔딩 3 = 13 | 12~28화 |
+| 벨리안 | 9화 + 엔딩 3 = 12 | 12~28화 |
+| 벨포르 | 9화 + 엔딩 3 = 12 | 12~28화 |
+| 레이먼 | 10화 + 엔딩 3 = 13 | 12~28화 |
+| 루시엔 | 8화 + 엔딩 3 = 11 | 13~28화 |
+| 리비아 | 9화 + 엔딩 3 = 12 | 14~28화 |
+| 아젤 | 8화 + 엔딩 3 = 11 | 12~27화 |
+
+**합계 96장 신규 등재.** 대부분 art 미생성 상태로 시작했으나, 이 문서 작업 도중에도
+이미지 생성 파이프라인이 실시간으로 파일을 채우고 있어(예: 마리온 map12/20/25/28 등은
+이미 생성 완료 확인) 실제 미생성 수는 계속 감소 중이다. 최신 수치는 아래 명령으로 확인:
+
+```
+node -e "…(cgs.ts 파싱 + fs.existsSync 대조 스크립트, 본 점검에 사용한 것과 동일)…"
+```
+
+### 11.4 요약
+
+| 구분 | 수량 | 상태 |
+|---|---|---|
+| 1막(§1~9, 프롤로그~5/10화) 아트 미제작분 | 36 | file/장면 확정, art 대기 |
+| 2막 이후(§11.3, 8루트 매니페스트 병합) | 96 | id/file/unlockEp 등재 완료, art 대부분 대기(실시간 생성 중) |
+| `cgs.ts` 총 항목 수 | 111 | (기존 15 + 신규 96) |
+| 그중 실제 art 파일 존재 | 34 (2026-07-27 이 점검 시점) | 나머지는 다음 단계 이미지 생성 대상 |
