@@ -13,6 +13,7 @@ import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const EMIT = process.argv.includes("--emit");
+const ALL = process.argv.includes("--all");
 
 /** 엔딩 CG는 id 접미사로 판별한다 */
 const endingSuffix = (id) => (/_good$/.test(id) ? "end_good" : /_bad$/.test(id) ? "end_bad" : /_true$/.test(id) ? "end_true" : null);
@@ -34,7 +35,8 @@ for (const m of manifests) {
     const file = endingSuffix(it.id) ?? it.file;   // 엔딩은 규약 파일명으로 정규화
     const rel = path.join("public", "cg", it.char, `${file}.webp`);
     const rec = { route, id: it.id, char: it.char, file, rel, title: it.title, scene: it.scene, cast: it.cast, prompt: it.prompt, unlockEp: it.unlockEp };
-    (fs.existsSync(path.join(ROOT, rel)) ? have : todo).push(rec);
+    // --all: 이미 있는 컷도 작업지시에 포함(레퍼런스 반영 전량 재생성용)
+    (!ALL && fs.existsSync(path.join(ROOT, rel)) ? have : todo).push(rec);
   }
 }
 

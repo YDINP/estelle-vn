@@ -15,6 +15,7 @@ import { chromium } from "playwright";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const DRY = process.argv.includes("--dry");
+const FORCE = process.argv.includes("--force");
 const Q = 0.86;
 
 const todo = JSON.parse(fs.readFileSync(path.join(ROOT, ".tmp", "cg-todo.json"), "utf8"));
@@ -38,7 +39,8 @@ const SHARED_FILES = (() => {
 const pending = [];
 for (const t of todo) {
   const dst = path.join(ROOT, t.rel);
-  if (fs.existsSync(dst)) continue;                       // 이미 배치됨
+  // --force: 레퍼런스 반영 재생성분으로 기존 배치본을 덮어쓴다
+  if (!FORCE && fs.existsSync(dst)) continue;             // 이미 배치됨
   // 스테이징은 루트별 네임스페이스를 우선한다.
   // `.tmp/gen/<file>.png` 평면 이름은 루트 간 충돌한다 — seven_threads/the_seizure/
   // sealed_gate/lost_script/three_hours 처럼 여러 루트가 같은 file명을 쓰기 때문에,
