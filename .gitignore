@@ -24,3 +24,7 @@ WORKSPACE.md
 .logs/
 tmp/
 art-backup/
+
+# CG 생성 파이프라인 중간 산출물 — codex image_gen 원본 PNG(장당 ~2.5MB)와
+# 작업지시서. 배포본은 public/cg/**/*.webp 이므로 저장소에 넣지 않는다.
+.tmp/
