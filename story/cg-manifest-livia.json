@@ -1,0 +1,122 @@
+[
+  {
+    "id": "cg_lvp14",
+    "char": "livia",
+    "title": "빗물에 번진 이름",
+    "file": "rain_smeared_name",
+    "unlockEp": "lvp14",
+    "scene": "14화 — 방수포 틈으로 새어 든 빗물이, 일기장에 세 번 눌러 적힌 이름을 번지게 한다",
+    "cast": "리비아 + 당신(손끝만)",
+    "prompt": "a ruined annex room at night, its collapsed roof patched with a canvas tarp, rainwater leaking through a gap; a brown-haired girl in a threadbare dress kneeling on wet floorboards, clutching an open worn diary to her chest; on the visible page, three handwritten lines of the same name dissolving into grey ink blooms; a candle stub and buckets of rainwater around her; at the very edge of frame, a stranger's hand offering a dry sheet of paper, no face shown; cold blue night against one small warm flame, melancholic"
+  },
+  {
+    "id": "cg_lvp15",
+    "char": "livia",
+    "title": "유혹의 문",
+    "file": "door_of_temptation",
+    "unlockEp": "lvp15",
+    "scene": "15화 — 무너진 지붕 아래, 재상이 펼친 등재 계약서와 펜. 펜 끝이 종이 위 한 뼘에서 멈춘다",
+    "cast": "리비아 + 메피안 + 당신(뒷모습 실루엣)",
+    "prompt": "inside a decayed annex room with a broken roof, moonlight falling through the hole; an elderly grey-robed chancellor standing perfectly composed, a document case opened on a crate with a single contract sheet and a quill laid out; a young brown-haired girl holding the quill, its nib frozen a hand's width above the paper, her face lit from below; a back-lit silhouette of a companion in the doorway, face unseen; oppressive shadows, a gilded seal catching the light, unbearable tension"
+  },
+  {
+    "id": "cg_lvp17",
+    "char": "livia",
+    "title": "그늘과 볕",
+    "file": "shade_and_sun",
+    "unlockEp": "lvp17",
+    "scene": "17화 — 봉쇄된 본채의 계단참. 촛대를 든 릴리아와 앞치마 차림 리비아의 첫 대면",
+    "cast": "리비아 + 릴리아",
+    "prompt": "a grand manor staircase darkened during a blockade, chandeliers unlit to save candles; a pale blonde noblewoman in a plain house dress descending with a candelabrum, thin and sleepless; below her a brown-haired girl in a servant's apron, a flour sack at her feet, frozen mid-step; the single candle flame lighting both faces and revealing the same eye shape; dust motes drifting, a small warm pool of light surrounded by cold blue darkness"
+  },
+  {
+    "id": "cg_lvp19",
+    "char": "livia",
+    "title": "진짜 각본",
+    "file": "the_real_script",
+    "unlockEp": "lvp19",
+    "scene": "19화 — 재상부 문서고. 각본 마지막 장, 화살표 끝에 적힌 것은 사람 이름이 아니었다",
+    "cast": "리비아 + 당신(어깨 너머 시점)",
+    "prompt": "a cramped government archive at night lit by one shuttered lantern, tall shelves of bound dossiers; a brown-haired girl in a servant's apron holding open a large script folio; the visible page shows a diagram of names joined by inked arrows all converging on a crown symbol, plus one marginal line written in a different hand; over-the-shoulder framing with a companion's shoulder and sleeve at the edge, face out of frame; ink dust, conspiratorial hush"
+  },
+  {
+    "id": "cg_lvp20",
+    "char": "livia",
+    "title": "제3의 손",
+    "file": "the_third_hand",
+    "unlockEp": "lvp20",
+    "scene": "20화 — 마루 밑 상자에서 쏟아진, 열두 해치 익명 쪽지 더미. 전부 같은 필체였다",
+    "cast": "리비아 + 당신(손만)",
+    "prompt": "a bare annex floor with one plank lifted aside and an old wooden box pulled out; dozens upon dozens of small folded notes fanned across the boards, every one in the same anonymous handwriting; a brown-haired girl sitting among them, holding one note up to a lamp, her expression emptying out; a companion's hand steadying the lamp at frame edge, no face; behind her, the annex's single window facing the brightly lit main house; warm lamplight, creeping dread"
+  },
+  {
+    "id": "cg_lvp21",
+    "char": "livia",
+    "title": "두 사람 몫의 불",
+    "file": "two_lamps",
+    "unlockEp": "lvp21",
+    "scene": "21화 — 별채 창가에 두 번째 등불이 놓인다. 열두 해 만에 그 창이 처음으로 밝아진 밤",
+    "cast": "리비아 + 릴리아",
+    "prompt": "an annex window at dusk seen from inside, freshly repaired roof beams overhead; a blonde noblewoman setting a second oil lamp on the sill beside an older one, two flames side by side; a brown-haired girl watching with her hand half-raised and her eyes wet; through the glass, the great main house glowing far off; warm amber light spilling across both faces, quiet reconciliation, spring evening"
+  },
+  {
+    "id": "cg_lvp25",
+    "char": "livia",
+    "title": "자정 세 시간 전",
+    "file": "three_hours_to_midnight",
+    "unlockEp": "lvp25",
+    "scene": "25화 — 문장 없는 마차에서 내린 재상이, 백오십 일 전 접어 둔 계약서를 마지막으로 내민다",
+    "cast": "리비아 + 메피안 + 당신(실루엣)",
+    "prompt": "night on a gravel path behind a manor, an unmarked black carriage bearing no crest; an elderly grey-robed chancellor holding out a folded contract with a gentle, almost fatherly smile; a brown-haired girl standing in the doorway of a small annex, two lamps burning in the window behind her; a companion's silhouette just past her shoulder, face unseen; bare winter branches, breath fogging in the cold, a threat shaped like a blessing"
+  },
+  {
+    "id": "cg_lvp27",
+    "char": "livia",
+    "title": "걸어 나온 이름",
+    "file": "step_into_the_light",
+    "unlockEp": "lvp27",
+    "scene": "27화 — 접반석 커튼이 열리고, 앞치마 차림의 아이가 천 개의 샹들리에 아래로 걸어 나온다",
+    "cast": "리비아 + 홀 군중(원경 릴리아·메피안)",
+    "prompt": "a vast coronation ballroom beneath a thousand chandeliers; a heavy curtain beside the envoy seating pulled open; a brown-haired girl in a plain servant's apron carrying an empty tray, walking out into blinding light with her chin lifted; hundreds of jewelled guests turning to stare; far behind her, a blonde noblewoman standing alone in the light and a grey-robed old man whose smile has stopped; dramatic radiance, shafts of dust-lit gold, one small figure against overwhelming brightness"
+  },
+  {
+    "id": "cg_lvp28",
+    "char": "livia",
+    "title": "저 둘을 확보하라",
+    "file": "the_seizure",
+    "unlockEp": "lvp28",
+    "scene": "28화 — 기사단장의 명령과 부단장의 집행. 표적은 공작영애가 아니라 약혼자와 집사였다",
+    "cast": "레이먼 + 벨포르 + 약혼자·집사 (원경 리비아·릴리아)",
+    "prompt": "the same ballroom moments later; from an upper gallery a steel-grey knight commander lowering the hand that has just pointed; below, a platinum-blond vice-captain seizing the arm of a panicking young nobleman while guards close on a liveried steward; in the middle distance a blonde noblewoman and a brown-haired girl standing side by side, unmoved; chandeliers blazing, dropped fans and spilled glasses on the marble, decisive"
+  },
+  {
+    "id": "cg_lvp_good",
+    "char": "livia",
+    "title": "불리는 이름 (굿엔딩)",
+    "file": "ending_called_name",
+    "unlockEp": "lvp30",
+    "scene": "30화 GOOD — 볕 아래에서 릴리아가 그 이름을 소리 내어 세 번 부른다",
+    "cast": "리비아 + 릴리아 + 당신(정원 문 앞, 어깨·손만)",
+    "prompt": "a sunlit spring back garden behind a repaired annex, wildflowers everywhere; a blonde noblewoman standing in the brightest patch of light with her arms slightly open, mouth shaping a name for the third time; a few steps away a brown-haired girl with one hand pressed to her mouth and tears on her face, just beginning to step into the light; at the garden gate, only the back-lit shoulder and hand of a watching companion, face unseen; overwhelming warm golden light, drifting petals, tender and quiet"
+  },
+  {
+    "id": "cg_lvp_bad",
+    "char": "livia",
+    "title": "지워진 이름, 두 번째 (배드엔딩)",
+    "file": "ending_erased_again",
+    "unlockEp": "lvp30",
+    "scene": "30화 BAD / 15·25화 게이트 실패 — 텅 빈 별채. 이번엔 당신이 창밖에서 지켜본다",
+    "cast": "당신(뒷모습·손) + 빈 별채",
+    "prompt": "a winter night, an empty annex viewed from outside through a single frosted window; inside, one lamp guttering out on the sill and a chair pushed back from an untouched table; no one is there; in the snow below the window, small footprints leading away beside a second set of adult prints; in the foreground only the back and shoulder of a companion standing outside the glass, one palm flat against the frost, face unseen; deep blue and black, a single dying ember of light, absolute silence"
+  },
+  {
+    "id": "cg_lvp_true",
+    "char": "livia",
+    "title": "두 번째 봄 (트루엔딩)",
+    "file": "ending_second_spring",
+    "unlockEp": "lvp30",
+    "scene": "30화 TRUE — 돌아온 상자에 답장 한 줄을 적어 넣는다. 정원 끝으로 이름 없는 손이 멀어진다",
+    "cast": "리비아 + 릴리아 + 이름 없는 손(원경, 얼굴 비묘사)",
+    "prompt": "a spring back garden at dawn, one floor plank lifted aside by the annex step and an old wooden box set back into its hollow; a brown-haired girl kneeling to write a single line on the reverse of a note, a faint steady smile; beyond her a blonde noblewoman waiting in the sunlight with a hand outstretched; at the far edge of the garden an unnamed figure in a plain coat walking away into the mist, face never shown; two lights in one frame — dawn gold and lingering blue, mystery warmed by hope"
+  }
+]

@@ -1,0 +1,135 @@
+[
+  {
+    "id": "cg_rmp12",
+    "char": "reimon",
+    "title": "반쯤 뽑힌 검",
+    "file": "barracks_halfdrawn",
+    "unlockEp": "rmp12",
+    "scene": "12화 — 병기고 앞 정오. 반역 소문에 흔들린 병사가 단장에게 검을 반쯤 뽑고, 부단장이 맨몸으로 그 앞을 막아선다",
+    "cast": "레이먼 + 벨포르 + 병사(엑스트라)",
+    "prompt": "midday courtyard of an imperial guard barracks, a young soldier's sword half-drawn and catching a hard silver flash of noon light, the platinum-blonde vice-captain (Belfor) stepping unarmed between the soldier and his commander with arms lowered, the stern blue-grey-haired northern commander (Reimon) standing still with his hand frozen on his own hilt, ring of thirty watching soldiers, dust and tension, harsh vertical noon shadows"
+  },
+  {
+    "id": "cg_rmp14",
+    "char": "reimon",
+    "title": "두 맹세의 정면충돌",
+    "file": "two_oaths_collide",
+    "unlockEp": "rmp14",
+    "scene": "14화 — 봉쇄 명령서와 근위대 인장이 놓인 탁자. 창밖 두 깃발(태양·늑대)의 그림자가 그 위에 겹쳐 내린다",
+    "cast": "레이먼 + (당신 POV)",
+    "prompt": "a dim guard-captain's office, an imperial blockade decree with an empty signature line lying beside a heavy guard seal on a dark wooden table, two banner shadows overlapping across the parchment - a sun crest and a northern wolf crest cast through a tall window, the blue-grey-haired northern commander (Reimon) gripping and releasing the seal, jaw set, cold blue dusk light, oppressive silence"
+  },
+  {
+    "id": "cg_rmp15",
+    "char": "reimon",
+    "title": "닫히는 문",
+    "file": "gate_closing",
+    "unlockEp": "rmp15",
+    "scene": "15화[막③·배드게이트①] — 자정, 하이델 공작저 봉쇄 집행. 성벽 위 그림자 속에서 명령자의 손이 검자루 위에서 떨린다",
+    "cast": "레이먼(성벽 위) + 벨포르(문 앞, 원경)",
+    "prompt": "midnight before a great ducal mansion, its iron-and-oak gate being pushed shut by guardsmen below while every window inside still burns with light, high on the opposite rampart the blue-grey-haired northern commander (Reimon) stands in darkness, his trembling hand on a sword hilt that has risen an inch from the scabbard catching one thread of lantern light, the platinum-blonde vice-captain small and distant at the gate looking up, cold blue night, snowless bitter winter"
+  },
+  {
+    "id": "cg_rmp17",
+    "char": "reimon",
+    "title": "폐수도원의 왼손",
+    "file": "ruined_abbey",
+    "unlockEp": "rmp17",
+    "scene": "17화 — 죽은 줄 알았던 북부 노신하가 오른손을 잃은 채 살아 있다. 왼손으로 삼 년을 베낀 대조본 상자를 내민다",
+    "cast": "레이먼 + 노신하(늙은 북부 무인) + (당신 POV)",
+    "prompt": "interior of a half-collapsed border abbey at night, a one-armed old northern retainer seated behind a single oil lantern, his right sleeve empty, his left hand pushing forward a box of hand-copied ledgers, the blue-grey-haired northern commander (Reimon) standing rigid in the doorway rain-soaked and speechless, broken roof beams and moonlight, mournful reunion, deep amber and ash-grey palette"
+  },
+  {
+    "id": "cg_rmp19",
+    "char": "reimon",
+    "title": "창 너머의 각본",
+    "file": "the_script",
+    "unlockEp": "rmp19",
+    "scene": "19화 — 재상부 별관 창틈으로 스물두 장의 진행표(각본)를 목격. 마지막 줄 목적란은 '근위 지휘권 공석·대관식 경비 재편'",
+    "cast": "레이먼 + (당신 POV) + 첩자 서기관(실루엣)",
+    "prompt": "night, a narrow unlit alley behind a chancellery annex, seen through a gap in a lit window a thick handwritten schedule of dates and names spread across a desk, a clerk's silhouette turning pages, outside in the dark the blue-grey-haired northern commander (Reimon) pressed to the wall watching with cold widening realization, over-the-shoulder POV framing, candlelight spilling in a thin blade across his face, conspiracy noir"
+  },
+  {
+    "id": "cg_rmp20",
+    "char": "reimon",
+    "title": "문장이 없는 인장",
+    "file": "blank_seal",
+    "unlockEp": "rmp20",
+    "scene": "20화[막④] — 불탄 인장 공방의 잿더미에서 나온 쌍주형 조각. 한쪽은 재상부 예비 인장, 다른 한쪽은 아무 문장도 없는 매끈한 원",
+    "cast": "레이먼 + 벨포르 + (당신의 손)",
+    "prompt": "the burnt-out ruin of a seal-maker's workshop, ash and warped bronze everywhere, a gloved hand lifting a half-melted double casting-mould into grey daylight - one face bearing an ornate chancellery crest, the other face a perfectly smooth blank circle with no device at all, the blue-grey-haired northern commander (Reimon) staring at the blank side, the platinum-blonde vice-captain crouched in the cinders behind him, desaturated soot palette with one cold shaft of light"
+  },
+  {
+    "id": "cg_rmp23",
+    "char": "reimon",
+    "title": "일곱 개의 실",
+    "file": "seven_threads",
+    "unlockEp": "rmp23",
+    "scene": "23화 — 대연회장 경비 편성 회의. 홀 도면 위에 일곱 개의 나무 말이 놓이고, 일곱 사람의 밤이 한 상자로 수렴한다",
+    "cast": "레이먼 + 벨포르 + 아젤 + (당신 POV)",
+    "prompt": "daytime in an empty grand ballroom with a thousand unlit chandeliers overhead, a large hall floorplan unrolled on a trestle table with seven small carved wooden markers placed across it, the blue-grey-haired northern commander (Reimon) setting the last marker at the centre of the plan, the platinum-blonde vice-captain and the silver-ivory paladin-priest (Azael) leaning in from either side, cool pale daylight through tall windows, strategic hush, gold and dust"
+  },
+  {
+    "id": "cg_rmp25",
+    "char": "reimon",
+    "title": "자정 세 시간 전",
+    "file": "three_hours",
+    "unlockEp": "rmp25",
+    "scene": "25화[막⑤·배드게이트②] — 재상부 증인 대기실. 위증 서약서 앞의 벨포르, 그를 둘러싼 창 여덟 자루, 그리고 문간의 레이먼",
+    "cast": "벨포르 + 메피안 + 레이먼 + (당신 POV)",
+    "prompt": "a cramped chancellery witness antechamber lit by two lamps, the platinum-blonde vice-captain (Belfor) seated with a short sworn-testimony document on his knees and an opened envelope of torn paper on the table, the soft-smiling elderly chancellor (Mephian) standing over him never sitting, eight halberd shafts angled inward from the shadowed walls, in the doorway the blue-grey-haired northern commander (Reimon) in dress uniform with one hand at his ceremonial sword, distant ballroom light glowing at the end of the corridor behind him, claustrophobic amber and black"
+  },
+  {
+    "id": "cg_rmp26",
+    "char": "reimon",
+    "title": "은빛 경비",
+    "file": "upper_gallery",
+    "unlockEp": "rmp26",
+    "scene": "26화 — 왕관의 밤 상단 회랑. 목소리 없는 손짓 하나로 홀 전체의 경비를 지휘하고, 곁에는 재상부의 '의전 보조' 넷이 서 있다",
+    "cast": "레이먼 + 의전 보조 넷(실루엣) + 아래 홀 군중",
+    "prompt": "high upper gallery of a vast coronation ballroom at midnight, a thousand chandeliers blazing below over a crowd of nobles, the blue-grey-haired northern commander (Reimon) at the centre of the balustrade lowering one hand in a silent command, sixteen guardsmen far below shifting half a step in unison, four unmoving liveried men flanking him on the gallery with unreadable faces, vertiginous downward perspective, gold light from beneath casting his face half in shadow"
+  },
+  {
+    "id": "cg_rmp28",
+    "char": "reimon",
+    "title": "증거를 따르는 검",
+    "file": "evidence_command",
+    "unlockEp": "rmp28",
+    "scene": "28화 — 세 봉랍이 같은 주형에서 나왔다는 감정 결과. 회랑에서 내려진 확보 명령 '근위대는 증거를 따른다. 저 둘을 확보하라'",
+    "cast": "레이먼(회랑) + 벨포르(집행) + 약혼자·집사(확보 대상) + 벨리안(원경)",
+    "prompt": "the coronation ballroom at the turning point, three wax seals laid side by side on a comparison board glowing under candlelight, the whole crowd turning to look upward, on the high gallery the blue-grey-haired northern commander (Reimon) speaking for the first time that night with his hand off the hilt, below him the platinum-blonde vice-captain moving in with guardsmen to seize a shadowed faceless nobleman and an elderly steward at the testimony stand, the golden-haired crown prince (Belian) watching from the throne-side balustrade with an unbroken smile, dramatic upward light, decisive triumph"
+  },
+  {
+    "id": "cg_rmp_good",
+    "char": "reimon",
+    "title": "화해한 두 맹세",
+    "file": "end_good",
+    "unlockEp": "rmp30",
+    "scene": "30화 GOOD — 두 맹세의 화해. 검을 반납하지도, 한쪽을 버리지도 않은 채 북문을 나서는 길. 프롤로그 눈밭의 대구",
+    "cast": "레이먼 + 벨포르(배웅) + (당신 뒷모습 실루엣)",
+    "prompt": "early morning snowfall at the northern city gate, the blue-grey-haired northern commander (Reimon) mounted and reining in for no reason at all, still wearing his imperial guard uniform beneath a northern wolf-fur mantle, sword undrawn and still at his side, two banners - sun crest and wolf crest - streaming the same direction above the gate for the first time, the platinum-blonde vice-captain saluting at the gatepost, a small unnamed figure seen only from behind at the edge of the frame, quiet white light, snow falling on no one's grave, warm resolution without romance",
+    "note": "cgs.ts에 이미 등록됨(file=end_good). 아트 교체 시 이 프롬프트를 정본으로 사용."
+  },
+  {
+    "id": "cg_rmp_bad",
+    "char": "reimon",
+    "title": "눈밭의 고립 (재현)",
+    "file": "end_bad",
+    "unlockEp": "rmp30",
+    "scene": "30화 BAD — 오명은 벗었으나 감옥이 더 촘촘해진 세계선. 프롤로그의 눈밭이 반복되고, 이번엔 곁의 한 사람까지 붙들려 함께 얼어붙는다",
+    "cast": "레이먼 + (당신 손목/뒷모습 실루엣)",
+    "prompt": "a heavy blizzard over an empty training yard at night, the blue-grey-haired northern commander (Reimon) standing with his sword driven into the snowdrift, snow piled thick on his shoulders, his hand gripping the wrist of a faceless figure seen only from behind who is trying to step away, his expression a ruined mixture of fury and pleading, lantern light almost swallowed by the storm, twisted possessive tragedy, desaturated blue-white and black",
+    "note": "cgs.ts에 이미 등록됨(file=end_bad). 아트 교체 시 이 프롬프트를 정본으로 사용."
+  },
+  {
+    "id": "cg_rmp_true",
+    "char": "reimon",
+    "title": "북부 겨울 너머의 그림자",
+    "file": "end_true",
+    "unlockEp": "rmp30",
+    "scene": "30화 TRUE — 구원 + 제3의 손 회수. 문장 없는 인장으로 봉해진 글자 있는 편지, 그리고 두 깃발 뒤에 남는 세 번째 그림자",
+    "cast": "레이먼 + (당신 손) + 문장 없는 봉랍",
+    "prompt": "the northern gate road in falling snow, the blue-grey-haired northern commander (Reimon) turning in the saddle to look back at the city, in the foreground a bare hand holding an unsigned letter sealed with a perfectly blank featureless wax circle, two banners - sun and wolf - streaming the same way behind him while a third shadow with no crest stretches across the snow from an unseen source, cold silver-blue light with one warm lantern, hopeful ending shadowed by an unnamed enemy",
+    "note": "cgs.ts에 이미 등록됨(file=end_true). 아트 교체 시 이 프롬프트를 정본으로 사용."
+  }
+]

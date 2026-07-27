@@ -1,0 +1,122 @@
+[
+  {
+    "id": "cg_lip15",
+    "char": "lilia",
+    "title": "동시에 잠긴 세 개의 문",
+    "file": "sealed_gate",
+    "unlockEp": "lip15",
+    "scene": "15화[막③·배드게이트①] — 한 시간 앞당겨진 봉쇄 집행. 문서를 빼내려던 세 갈래 길(정문 마차·개구멍·뒷문)이 동틀 녘에 동시에 막힌다. 회귀 지식으로 처음 아무것도 바꾸지 못한 완전 실패의 컷",
+    "cast": "릴리아 + 마리온 + 리비아 + (원경) 근위대 · 당신 POV",
+    "prompt": "dawn at a great ducal estate's iron front gate slamming shut, royal guards in silver armour sealing it from outside, the blonde-blue duchess (Lilia) frozen mid-step in the courtyard with documents clutched to her chest, a wine-red-haired lady (Marion) halted in a stopped carriage behind her, a shy brown-haired girl (Livia) running back from a gap in the wall, three blocked paths in one frame, cold blue dawn against warm lamplight, despairing tension"
+  },
+  {
+    "id": "cg_lip18",
+    "char": "lilia",
+    "title": "빈 기록함",
+    "file": "empty_reliquary",
+    "unlockEp": "lip18",
+    "scene": "18화 — 국경 밖 사절단 숙영지. 성기사 아젤이 무릎의 증언 기록함을 열어 보인다. 함은 비어 있고, 그것이 채워지는 밤 그는 파문된다",
+    "cast": "아젤 + 릴리아 + 당신 POV",
+    "prompt": "a white-canvas envoy encampment outside a border checkpoint at night, the silver-ivory paladin-priest (Azael) seated with an opened empty wooden testimony casket on his knees, lantern light pooling inside the hollow box, the blonde-blue duchess (Lilia) standing across from him holding a wax-sealed indulgence certificate, solemn hush, cold silver and warm lamp contrast"
+  },
+  {
+    "id": "cg_lip20",
+    "char": "lilia",
+    "title": "말과 기수",
+    "file": "chancellor_confesses",
+    "unlockEp": "lip20",
+    "scene": "20화[막④] — 궁 회랑 끝 창가. 삼십 년 동안 이름 없는 서찰을 받아 온 재상 메피안이, 처음으로 겁을 드러내며 자신도 대본을 받는 사람임을 인정한다",
+    "cast": "메피안 + 릴리아 + 당신 POV",
+    "prompt": "the end of a long palace corridor, the soft-smiling elderly chancellor (Mephian) standing alone at a tall window, his practiced smile gone and genuine fear on his face for the first time, a blank unmarked wax seal in his hand, the blonde-blue duchess (Lilia) watching from the shadowed corridor, harsh daylight cutting across his face, unsettling reversal"
+  },
+  {
+    "id": "cg_lip23",
+    "char": "lilia",
+    "title": "일곱 개의 실",
+    "file": "seven_threads",
+    "unlockEp": "lip23",
+    "scene": "23화 — D-30. 하이델 서재 탁자에 궁 도면을 펴고 왕관의 밤 일곱 사람의 자리를 놓는다. 흩어진 봄이 하나의 밤으로 수렴하는 순간",
+    "cast": "릴리아 + 마리온 + 루시엔 + 리비아 · 도면 위 일곱 자리",
+    "prompt": "a candlelit ducal study at night, a large ballroom floor plan spread across the table with seven marked positions, the blonde-blue duchess (Lilia) placing a marker on the plan, the wine-red-haired lady (Marion) and the silver-white-haired marchioness (Lucienne) leaning in from opposite sides, a shy brown-haired girl (Livia) peering over the table edge, threads of light radiating from the plan toward one hall, strategic hush, warm amber"
+  },
+  {
+    "id": "cg_lip25",
+    "char": "lilia",
+    "title": "자정 세 시간 전",
+    "file": "three_messengers",
+    "unlockEp": "lip25",
+    "scene": "25화[막⑤·배드게이트②] — 궁문 앞. 세 전령이 동시에 마차 창에 매달린다. 리비아 구금·기록함 압수·차용증 낭독, 셋을 다 도는 길은 없다",
+    "cast": "릴리아 + 전령 셋(엑스트라) + 당신 POV",
+    "prompt": "a carriage halted before the palace gate on the night of the coronation ball, three breathless messengers clutching at the carriage window from three directions, the blonde-blue duchess (Lilia) leaning out with a stricken face, the great hall blazing with a thousand chandeliers behind them, a clock tower reading three hours to midnight, frantic converging composition, cold night blue against golden hall glow"
+  },
+  {
+    "id": "cg_lip26",
+    "char": "lilia",
+    "title": "황실의 이름으로",
+    "file": "crown_night_accusation",
+    "unlockEp": "lip26",
+    "scene": "26화 — 왕관의 밤(上). 자정 종과 함께 재상 메피안이 홀 한복판에서 하이델 공작영애를 반역 혐의로 고발한다(6비트 ①)",
+    "cast": "메피안 + 릴리아 + 홀 전체",
+    "prompt": "the grand coronation ballroom beneath a thousand chandeliers at the stroke of midnight, the soft-smiling elderly chancellor (Mephian) standing at the centre with one hand raised in accusation, the blonde-blue duchess (Lilia) facing him alone in the open floor without flinching, a thousand courtiers frozen and staring, the throne dais behind, theatrical spotlight composition, gold and cold white"
+  },
+  {
+    "id": "cg_lip27",
+    "char": "lilia",
+    "title": "잃어버린 대본",
+    "file": "lost_script",
+    "unlockEp": "lip27",
+    "scene": "27화 — 왕관의 밤(中). 붉은 장미가 증언대에서 대본을 펼친 채 \"대본을 잃어버렸네요\"라 말하며 위증을 거부한다(6비트 ②), 이어 성기사가 봉랍 견본을 든다(6비트 ③)",
+    "cast": "마리온 + 아젤 + 릴리아 + 루시엔",
+    "prompt": "a ballroom witness stand under chandelier light, the wine-red-haired lady (Marion) holding an open script page and letting her stage-smile fall into a calm true one, the silver-ivory paladin-priest (Azael) rising from the envoy seats with a wax-seal comparison sample raised, the silver-white-haired marchioness (Lucienne) standing to confirm attendance, the blonde-blue duchess (Lilia) watching with widening eyes, the scales of the night tipping, dramatic backlight"
+  },
+  {
+    "id": "cg_lip28",
+    "char": "lilia",
+    "title": "증거를 따른다",
+    "file": "evidence_verdict",
+    "unlockEp": "lip28",
+    "scene": "28화 — 왕관의 밤(下). 기사단장이 \"근위대는 증거를 따른다. 저 둘을 확보하라\" 하고 손끝으로 증인석의 약혼자·집사를 가리킨다(6비트 ④). 부단장이 집행하고, 황태자가 독배를 돌려세운다(⑤)",
+    "cast": "레이먼 + 벨포르 + 벨리안 + 약혼자·집사(엑스트라) + 릴리아",
+    "prompt": "the coronation hall at its turning point, the blue-grey-haired northern commander (Reimon) pointing toward the witness bench, the platinum-blonde vice-captain (Belfor) stepping forward with his hand off the sword hilt, two shadowed faceless noblemen being taken from the witness bench, on the dais the golden-haired crown prince (Belian) turning a poisoned chalice back toward a trembling chamberlain while still smiling, the blonde-blue duchess (Lilia) standing at the centre holding a chain of evidence papers, triumphant reversal, gold light"
+  },
+  {
+    "id": "cg_lip29",
+    "char": "lilia",
+    "title": "두 번은 없다",
+    "file": "chancellor_turns",
+    "unlockEp": "lip29",
+    "scene": "29화 — 연행되던 메피안이 홀 문턱에서 돌아보며 \"봄은 한 번 꺾인 적이 있지요… 두 번이 없으리라 보십니까?\"라 남긴다. 릴리아는 이유 모를 서늘함에 붙들린다(무귀속 기시감)",
+    "cast": "메피안 + 릴리아 + 근위대(엑스트라)",
+    "prompt": "the threshold of the great hall's doors, guards escorting the soft-smiling elderly chancellor (Mephian) out while he turns his head back over his shoulder with an unafraid knowing look, the blonde-blue duchess (Lilia) standing far behind in the blazing hall, a sudden inexplicable chill crossing her expression, deep shadow at the doorway against the golden hall, ominous parting shot"
+  },
+  {
+    "id": "cg_lip_good",
+    "char": "lilia",
+    "title": "되찾은 봄",
+    "file": "ending_regained_spring",
+    "unlockEp": "lip30",
+    "scene": "30화 GOOD — 하이델 정원 문 앞. 스스로 선 공작영애가 이름 없는 조력자를 배웅하며 \"은인이고, 공범이고, 벗이에요\", 그리고 자각 없는 에코 \"…이번엔, 웃으면서 인사할 수 있겠네요\"로 닫는다",
+    "cast": "릴리아 (+ 뒤편 마리온·리비아) · 당신은 뒷모습 실루엣까지만",
+    "prompt": "the open garden gate of a ducal estate in full spring, the blonde-blue duchess (Lilia) standing in the gateway smiling brightly with her hand half-raised in greeting rather than farewell, sunlight falling exactly on the threshold between her and the viewer, a wine-red-haired lady (Marion) and a shy brown-haired girl (Livia) laughing among untrimmed blossoms behind her, only the back-lit silhouette of a shoulder at the frame edge for the viewer, radiant hopeful warmth, petals in the air"
+  },
+  {
+    "id": "cg_lip_bad",
+    "char": "lilia",
+    "title": "창밖의 봄",
+    "file": "ending_tower_outside",
+    "unlockEp": "lip15",
+    "scene": "BAD 공통(15화 게이트 실패 / 25화 게이트 실패 / 30화 게이트 실패) — 프롤로그의 탑이 되풀이된다. 다만 이번에는 당신이 탑의 창 아래에서 그것을 지켜본다",
+    "cast": "릴리아 (탑 창 안) · 당신은 창 아래 실루엣",
+    "prompt": "a narrow cold tower window seen from the ground below, the wilting blonde-blue duchess (Lilia) barely visible inside counting the spring blossoms falling outside, an unnamed figure's back-lit silhouette standing in the courtyard beneath the tower unable to reach her, desaturated blue-grey with a single bruised warm sunset, falling petals, tragic irreversible stillness"
+  },
+  {
+    "id": "cg_lip_true",
+    "char": "lilia",
+    "title": "두 번째 봄을 여는 손",
+    "file": "ending_second_spring",
+    "unlockEp": "lip30",
+    "scene": "30화 TRUE(전 8루트 GOOD 관통) — 구원된 봄 위에서 릴리아가 '제3의 손'을 추적할 새 장부의 첫 줄에 일곱 이름을 적는다. 유리함 속 민무늬 봉랍의 재 — 봄의 진짜 적은 메피안 너머에 있다",
+    "cast": "릴리아 + (유리함 속) 민무늬 봉랍의 재 · 배경에 일곱 실루엣",
+    "prompt": "a sunlit ducal study opening onto a spring garden, the blonde-blue duchess (Lilia) writing seven names on the first line of a new ledger with a resolute calm face, a glass case beside her holding the ashes of an unmarked blank wax seal, seven faint figures reflected in the window glass behind her, and far beyond the garden a distant unlit window across a border where blank wax melts over a candle, hopeful yet unresolved, warm gold with one thread of cold blue"
+  }
+]

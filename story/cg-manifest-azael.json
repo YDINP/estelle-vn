@@ -1,0 +1,112 @@
+[
+  {
+    "id": "cg_azp12",
+    "char": "azael",
+    "title": "제 얼굴을 한 거짓",
+    "file": "twin_seals",
+    "unlockEp": "azp12",
+    "scene": "12화 — 등불 아래 나란히 놓인 두 개의 붉은 봉랍. 하나는 아젤의 인장, 하나는 위조 축성 증서의 것. 흠집 위치까지 똑같다",
+    "cast": "아젤 + 당신 POV(손·소매만)",
+    "prompt": "a dim envoy's parlour at night, a single oil lamp on a dark wooden table; a silver-haired holy knight in ivory-white plate armour leans over the table, brow furrowed, holding up a forged blessing certificate whose red wax seal catches the lamplight; directly beside it his own signet seal presses an identical red wax circle — two crimson discs, indistinguishable, the same tiny chipped notch on each rim; a second person's gloved hand and sleeve enter from the near edge of frame (face never shown, back-of-hand only); scattered certificates fan across the table; warm amber lamp glow against deep blue shadow, tight composition, quiet dread"
+  },
+  {
+    "id": "cg_azp15",
+    "char": "azael",
+    "title": "식어 가는 밀랍",
+    "file": "cooling_wax",
+    "unlockEp": "azp15",
+    "scene": "15화 [막③·배드게이트①] — 예배당 제단 위 빈 축성 서식, 붉게 고인 밀랍, 인장을 든 손이 그 위에서 멈춘 순간",
+    "cast": "아젤 (단독) + 당신 POV(화면 밖)",
+    "prompt": "a small foreign chapel at midnight, one guttering candle left of three; on the stone altar lies a blank blessing certificate, a pool of molten red wax cooling and skinning over at its centre; a silver-haired holy knight in white-and-silver armour holds a signet seal suspended a hand's width above the wax, arm trembling, eyes shut, head bowed as if in prayer he does not believe; his three oath-cords hang from the pauldron, one of them slipped loose; extreme shallow depth of field on the wax and the poised seal, candlelight raking, everything else swallowed in black; no second figure in frame"
+  },
+  {
+    "id": "cg_azp17",
+    "char": "azael",
+    "title": "격자 너머의 파문자",
+    "file": "lattice_excommunicate",
+    "unlockEp": "azp17",
+    "scene": "17화 — 폐수도원의 부러진 격자창. 등불 하나만 켜진 안쪽, 얼굴 없는 옛 사제가 마른 손으로 은패를 내민다",
+    "cast": "아젤 + 격자 너머의 오르넬(얼굴 비노출) + 당신 POV(어깨)",
+    "prompt": "a half-collapsed monastery cloister at midnight in winter, snow drifting through broken roof beams; one lantern burns behind a splintered wooden lattice window, throwing hard bars of light across the corridor; a silver-haired holy knight in ivory armour stands before the lattice, one hand raised in refusal; through the lattice only an old man's thin weathered hand reaches out, palm up, offering a small silver devotional token — his face never visible, lost in the lantern glare; a second person's shoulder and cloak edge frame the lower right corner (face out of shot); cold blue night versus a single warm lantern, heavy chiaroscuro, wary stillness"
+  },
+  {
+    "id": "cg_azp18",
+    "char": "azael",
+    "title": "국경을 넘는 봉랍",
+    "file": "seal_crossing_border",
+    "unlockEp": "azp18",
+    "scene": "18화 — 왕국 검인청 앞 인가 청구서를 봉인하는 순간, 문틈으로 향내가 스민다",
+    "cast": "아젤 + 당신 POV(화면 밖) + 문틈의 향 연기",
+    "prompt": "a candlelit writing desk in an envoy's chamber, deep night; a silver-haired holy knight in white armour presses a signet firmly into hot red wax on a folded letter — this time the hand is steady, jaw set, eyes clear; behind him the door stands slightly ajar and a thin ribbon of pale incense smoke curls in through the gap, unnoticed, coiling toward the desk; a small record-case open beside the letter; warm candle gold in the foreground, sickly grey-green smoke intruding from the background, composition split between the two; determination shadowed by a threat he cannot yet see"
+  },
+  {
+    "id": "cg_azp20",
+    "char": "azael",
+    "title": "향을 받쳐 든 손",
+    "file": "hand_above_chancellor",
+    "unlockEp": "azp20",
+    "scene": "20화 [막④ 대반전] — 향로실 문틈 너머. 무릎 꿇고 향로를 받쳐 든 재상과, 서서 향을 붓는 얼굴 없는 손",
+    "cast": "메피안 + 정체불명의 인물(얼굴 비노출) + 문 앞의 아젤과 당신(실루엣)",
+    "prompt": "view through a narrow door gap into an incense-preparation room; inside, the elderly chancellor in grey court robes kneels on the floor holding a bronze censer up with both hands, shoulders lowered in deference; standing over him, a second figure in very fine dark clothing pours powdered incense into the censer — the figure's face and head are entirely lost in thick rising smoke, only an exquisite embroidered sleeve and a pale hand visible; in the foreground, out of focus, the back of a silver-haired knight's head and pauldron pressed to the doorframe, one knee beginning to buckle, and a second person's silhouetted shoulder steadying beside him; smoke-choked amber interior, cold corridor blue outside, vertical smoke column as the compositional spine"
+  },
+  {
+    "id": "cg_azp22",
+    "char": "azael",
+    "title": "가장 밝은 자리",
+    "file": "envoy_seat_invitation",
+    "unlockEp": "azp22",
+    "scene": "22화 — 재상이 내미는 금박 사절석 초대장. 홀 정면, 옥좌와 증언대가 동시에 보이는 자리",
+    "cast": "메피안 + 아젤 + 당신 POV(화면 밖)",
+    "prompt": "a vast palace corridor lit by afternoon light through tall windows, chandeliers being raised for a coronation ball beyond; the elderly grey-robed chancellor holds out a gold-leafed invitation card with both hands, smiling with visible teeth for the first time; a silver-haired holy knight in ivory armour does not take it, hands at his sides, expression cold and reading; behind them, glimpsed through an archway, the empty ballroom with a single spotlit chair facing both the throne dais and the witness stand; opulent gold and marble, the invitation the brightest object in frame, generosity rendered as a trap"
+  },
+  {
+    "id": "cg_azp25",
+    "char": "azael",
+    "title": "세 개의 값",
+    "file": "three_prices",
+    "unlockEp": "azp25",
+    "scene": "25화 [막⑤·배드게이트②] — 향로 셋 아래 탁자에 나란히 놓인 인장 원판·빈 기록함·빈 축성 서식",
+    "cast": "메피안 + 아젤 + 당신 POV(어깨)",
+    "prompt": "a chancellery reception room three hours before midnight, three bronze censers burning at the room's corners, their smoke braiding together at the ceiling; on a low table three objects laid out in a precise row — a small iron signet matrix on black cloth, an empty record-case with its wax seal torn away, and a blank blessing certificate; the elderly chancellor gestures over them with an open, courteous palm; a silver-haired holy knight in ivory armour stands opposite, breath unsteady, one hand gripping the edge of the table; a second person's shoulder at the frame edge, unmoving; oppressive amber and smoke, the three objects hard-lit and equally weighted, a scale with no fulcrum"
+  },
+  {
+    "id": "cg_azp27",
+    "char": "azael",
+    "title": "봉랍 증언",
+    "file": "the_sealed_testimony",
+    "unlockEp": "azp27",
+    "scene": "27화 [왕관의 밤 6비트③] — 천 개의 샹들리에 아래, 백은의 증인이 검인청 대조 견본을 들어 올린다",
+    "cast": "아젤 (중심) + 루시엔(배석) + 홀 군중 + 당신 POV(화면 밖)",
+    "prompt": "the grand coronation ballroom at midnight under a thousand chandeliers, the brightest scene in the game; a silver-haired holy knight in ivory-white plate armour stands at the envoy's seat, risen, one arm raised high holding up an old comparison seal — twelve-year-old dark wax on a parchment bearing a triple state stamp — so the whole hall can see it; on the table before him three documents laid side by side; beside him a white-haired marchioness in flawless court dress stands as attesting witness, chin level; the crowd turned toward him in a frozen ring, the chancellor half a step back at the frame's edge; light blazes off his armour and off the raised seal, banner-like vertical composition, triumphant but grave"
+  },
+  {
+    "id": "cg_azp_good",
+    "char": "azael",
+    "title": "되찾은 세 맹세",
+    "file": "end_good",
+    "unlockEp": "azp30",
+    "scene": "30화 GOOD — 성 카나 대성당 재심정. 아젤이 제 손으로 갑주의 흰 천을 벗기고, 지워진 적 없는 문장이 아침빛에 드러난다",
+    "cast": "아젤 + 재심관들(배경) + 당신 POV(방청석, 뒷모습 실루엣)",
+    "prompt": "the retrial hall of a great cathedral at dawn, tall lancet windows pouring pale gold light across stone; a silver-haired holy knight kneels no longer — he stands and, with his own hand, pulls away the white cloth that had covered the crest on his ivory breastplate, the cloth caught mid-fall; the revealed crest blazes in the morning light, undamaged; three adjudicators on the high bench lowering their heads in acknowledgement; in the near foreground, seen from behind, the shoulder and back of a seated observer in the gallery (face never shown); his record-case at his feet is full, three oath-cords intact on the pauldron; radiant backlight, rising diagonal composition, quiet vindication rather than glory"
+  },
+  {
+    "id": "cg_azp_bad",
+    "char": "azael",
+    "title": "빛을 판 타락 (재현)",
+    "file": "end_bad",
+    "unlockEp": "azp30",
+    "scene": "엔딩 BAD (15·25·30화 fail 공용) — 국경 이정표 아래, 문장이 뜯긴 백은 갑주와 봉랍이 뜯긴 빈 기록함",
+    "cast": "아젤 (뒷모습) + 당신 POV(멀리서 지켜봄)",
+    "prompt": "a windswept border marker stone at grey winter dawn, snow blowing sideways across an empty road; a silver-haired knight walks away from the viewer in tarnished ivory armour whose chest crest has been gouged out, leaving a raw scar of bare metal; the three oath-cords are gone from his pauldron; he carries an open record-case whose wax seal has been ripped off, the case empty, tilted so a last blank page slips out into the wind; far behind, a lone distant figure watching, small and unlit (face never shown); desaturated blue-grey, no light source anywhere in frame, long horizontal emptiness"
+  },
+  {
+    "id": "cg_azp_true",
+    "char": "azael",
+    "title": "향로 너머의 손",
+    "file": "end_true",
+    "unlockEp": "azp30",
+    "scene": "30화 TRUE — 열두 해 전 명부 여백에서 같은 필적을 발견한 뒤, 문장이 온전한 갑주로 국경을 향해 서는 두 사람",
+    "cast": "아젤 + 당신(뒷모습 실루엣) + 열두 해 전 명부(전경)",
+    "prompt": "split emphasis composition: in the foreground, an old ledger page open on a cathedral archive desk, its bottom line reading only 'one foreign envoy' with no name, and in the margin a small upright twelve-year-old ink annotation; in the background through an open archway, first light on a mountain border road where a silver-haired holy knight in ivory armour with an intact crest stands looking outward, a full record-case under his arm, three oath-cords restored; beside him, seen from behind, a second traveller's silhouette (face never shown) with a hand extended and taken; pale dawn gold on the road, cool archive shadow on the ledger, the two halves linked by a single shaft of light; hopeful but unfinished"
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "id": "cg_blp12",
+    "char": "belian",
+    "title": "지우지 않은 손",
+    "file": "faceless_ring",
+    "unlockEp": "blp12",
+    "scene": "12화 — 자정 화방 이층. 천을 걷자 드러난 스캔들 초상화의 원본. 얼굴은 처음부터 그려지지 않았고, 대신 정교하게 그려진 손가락에 재상부 예비 인장 반지가 또렷하다",
+    "cast": "초상화 속 얼굴 없는 인물 + 당신 POV(천을 걷는 손만)",
+    "prompt": "a locked upper-floor painter's workshop at midnight, a dust-cloth being pulled off an easel by a gloveless hand seen from behind, revealing an unfinished portrait whose face is deliberately left blank primed canvas while the sitter's hand is rendered in exquisite detail, a chancellery signet ring gleaming on the index finger, oil and dried-glue clutter, single lantern raking light, investigative dread, cold amber and ash tones"
+  },
+  {
+    "id": "cg_blp14",
+    "char": "belian",
+    "title": "닫히는 방패의 문",
+    "file": "sealed_gate",
+    "unlockEp": "blp14",
+    "scene": "14화[막③ 전야] — 밤, 하이델 공작저 정문을 두 줄로 막아선 근위대. 검을 뽑은 자는 하나도 없다. 선두의 부단장 벨포르가 봉쇄 명령서를 접어 품에 넣는다",
+    "cast": "벨포르 + 근위대(엑스트라) + 먼발치 벨리안 실루엣",
+    "prompt": "a night blockade before the tall iron gates of a great ducal estate, two ranks of silver-armored royal guards standing with sheathed swords, at their head the platinum-blonde vice-captain (Belfor) folding a sealed decree back into his breastplate with a conflicted downcast face, torch smoke drifting, far behind on the avenue the golden-haired crown prince (Belian) watching from a carriage shadow, oppressive cold blue night against orange torchlight"
+  },
+  {
+    "id": "cg_blp15",
+    "char": "belian",
+    "title": "검자루에 닿은 손",
+    "file": "hand_to_sword",
+    "unlockEp": "blp15",
+    "scene": "15화[막③·배드게이트①] — 서재 탁자에 아홉 이름이 적힌 숙청 명단이 펼쳐져 있고, 굶주린 태양의 손이 대관식용 검의 자루로 미끄러진다. '먼저 삼키면 그만'이라 웃는 순간",
+    "cast": "벨리안 + 당신 POV",
+    "prompt": "a dim palace study lit by one guttering candle, the golden-haired crown prince (Belian) half-risen from a chair, a list of nine names spread on the table, his hand sliding onto the hilt of an unblooded ceremonial coronation sword propped beside him, a starved unstable smile that does not reach the eyes, hunger and self-loathing in one expression, deep shadow, sickly gold and black"
+  },
+  {
+    "id": "cg_blp18",
+    "char": "belian",
+    "title": "국경 위의 증인",
+    "file": "border_paladin",
+    "unlockEp": "blp18",
+    "scene": "18화 — 국경선 위에 걸쳐 지은 아르베 성당. 검인청 견본 창고 앞에서 백은의 성기사 아젤이 봉인을 들여다본다. '이 밤을 이미 한 번 걸어 본 것 같소'",
+    "cast": "아젤 + 당신 POV",
+    "prompt": "a stone chapel built astride a national border, its two doors opening onto different kingdoms, the silver-ivory paladin-priest (Azael) examining a wax-sealed archive door with a lantern raised, sword-belt over clerical vestments, an inexplicable faint unease crossing his face, dawn mist through high narrow windows, solemn silver-white and pale gold"
+  },
+  {
+    "id": "cg_blp20",
+    "char": "belian",
+    "title": "제3의 손",
+    "file": "third_hand",
+    "unlockEp": "blp20",
+    "scene": "20화[막④] — 서문 밖 필사방. 바닥 널 아래에서 꺼낸 스무 해 전의 '춘계 정리 계획' 문서와, 이번 봄의 각본이 나란히 놓인다. 두 여백에 똑같이 손톱으로 그은 세 줄의 선",
+    "cast": "벨리안 + 전임 재상 오르텐(노인, 얼굴 그늘) + 당신 POV",
+    "prompt": "a cramped shabby scrivener's room outside the city gate, floorboards pried up beside a damp document box, two identical conspiracy manuscripts twenty years apart laid side by side on the floor, three fingernail-scored lines gouged in both margins, the golden-haired crown prince (Belian) kneeling to compare them with dawning horror, an old crippled ex-chancellor standing back in shadow with his face unreadable, candle stubs, dust motes, conspiratorial chill"
+  },
+  {
+    "id": "cg_blp23",
+    "char": "belian",
+    "title": "일곱 개의 실",
+    "file": "seven_threads",
+    "unlockEp": "blp23",
+    "scene": "23화 — D-30 궁의 서재. 대관 홀 도면 위에 일곱 개의 실이 놓이고, 옥좌 곁 세 걸음과 자정의 한 점으로 모인다. 태양이 처음으로 '삼킬 수 있는지'가 아닌 방식으로 사람을 센다",
+    "cast": "벨리안 + 당신 POV(도면 위의 손만)",
+    "prompt": "a candlelit palace study at night, a large architectural floor plan of a coronation ballroom spread across the desk, seven coloured threads pinned across it all converging on one point beside the throne, the golden-haired crown prince (Belian) leaning over it with an unfamiliar quiet warmth instead of predatory calculation, a hand from behind the viewer laying down the last thread, warm amber lamplight, strategy-room intimacy"
+  },
+  {
+    "id": "cg_blp25",
+    "char": "belian",
+    "title": "축배로 뻗는 손",
+    "file": "reaching_chalice",
+    "unlockEp": "blp25",
+    "scene": "25화[막⑤·배드게이트②] — 왕관의 밤 자정 세 시간 전, 대관 예복실. 벨리안이 독 발린 잔을 스스로 채워 든다. '삼키면 살아 — 그러나 웃지 못하리라. 그거면 되지 않겠느냐?'",
+    "cast": "벨리안 + 당신 POV(잔을 막으려는 손 하나)",
+    "prompt": "a coronation robing chamber lit by a single candelabra, the golden-haired crown prince (Belian) in heavy coronation regalia standing at the window, deliberately filling a poisoned chalice himself and raising it with a gentle self-sacrificing smile, a hand reaching in from the viewer's side to stop him, the glaze inside the cup catching a faint wrong shimmer, tragic warm gold curdling toward grey"
+  },
+  {
+    "id": "cg_blp26",
+    "char": "belian",
+    "title": "왕관의 밤",
+    "file": "crown_night_hall",
+    "unlockEp": "blp26",
+    "scene": "26화 — 자정 직전의 금빛 홀. 천 개의 촛불 아래 제국의 모든 이름이 모였고, 옥좌 곁 세 걸음에 은쟁반과 아직 엎어진 잔이 놓여 있다. 태양은 웃는 낯을 무기로 삼고 서 있다",
+    "cast": "벨리안 + 홀의 군중(원경) + 당신 POV",
+    "prompt": "a vast golden coronation ballroom blazing with crystal chandeliers, the entire nobility of an empire assembled below, the golden-haired crown prince (Belian) standing beside the empty throne in coronation dress with a deliberate armored smile, on a side table three paces away a silver tray with an overturned goblet, ominous grandeur, gold and deep crimson, wide cinematic composition"
+  },
+  {
+    "id": "cg_blp28",
+    "char": "belian",
+    "title": "세 살 적부터 채워 온 잔",
+    "file": "swapped_chalice",
+    "unlockEp": "blp28",
+    "scene": "28화 — 왕관의 밤 절정. 홀의 모든 눈이 증언대를 보는 사이, 무릎 꿇은 늙은 시종장이 품에서 이 나간 낡은 잔을 꺼내 독 든 잔과 바꾼다. 앞막의 손 떨림이 회수되는 순간",
+    "cast": "벨리안 + 늙은 시종장(엑스트라) + 당신 POV",
+    "prompt": "close intimate view beside a throne during a crowded trial scene, an aged chamberlain kneeling with trembling hands exchanging a jeweled chalice for a battered old cup with a visible mended chip, the golden-haired crown prince (Belian) looking down at him with startled aching tenderness, the crowd blurred and facing away toward a witness stand in the background, chandelier bokeh, gold and tearful warmth"
+  },
+  {
+    "id": "cg_blp_good",
+    "char": "belian",
+    "title": "웃으며 쓰는 왕관",
+    "file": "ending_good",
+    "unlockEp": "blp30",
+    "scene": "30화 GOOD — 대관식. 주교의 손에서 왕관이 내려앉는 동안 벨리안은 눈을 감지 않고 곁에 남은 일곱을 센다. 이 나간 낡은 잔으로 축배를 들고, 이번엔 웃음이 지워지지 않는다",
+    "cast": "벨리안 + 주교(엑스트라) + 당신 POV(군중 속 뒷모습 실루엣)",
+    "prompt": "a coronation at the height of day, a crown being lowered by a bishop's hands onto the golden-haired young emperor (Belian) who keeps his eyes open and counts the faces below, in his hand a humble chipped old cup raised as a toast instead of a jeweled chalice, a genuine unguarded smile that stays, warm sunlight flooding through high windows, an unmarked figure watching from the back of the crowd seen only as a shoulder and silhouette, radiant hopeful gold"
+  },
+  {
+    "id": "cg_blp_bad",
+    "char": "belian",
+    "title": "삼키는 태양",
+    "file": "ending_bad",
+    "unlockEp": "blp30",
+    "scene": "30화 BAD — 대관식 직전, 왕관을 주교의 손에서 스스로 빼앗아 쓴다. 각본가의 빈 자리를 제가 삼키기로 한 순간. 이후 궁의 모든 문에 사람을 세우고, 당신을 새장에 붙든다",
+    "cast": "벨리안 + 당신 POV(닫히는 문 안쪽)",
+    "prompt": "a coronation hall gone cold, the golden-haired young emperor (Belian) taking the crown from the bishop's hands and setting it on his own head, a beautiful controlled smile far more frightening than despair, behind him every doorway of the hall quietly manned by guards, gilded cage motif in the window lattices, an unnamed figure standing inside the closing doors seen from behind, opulent suffocating gold and black, tragic possessive stillness"
+  },
+  {
+    "id": "cg_blp_true",
+    "char": "belian",
+    "title": "두 번은 없다",
+    "file": "ending_true",
+    "unlockEp": "blp30",
+    "scene": "30화 TRUE — 대관식 새벽, 문서고에서 의전 명부 여백에 손톱을 대던 손이 붙들린다. 스무 해마다 봄을 꺾어 온 그 손이 처음으로 실패한 밤. 이후 벨리안은 웃으며 왕관을 쓰고, 스무 해 뒤를 위한 기록을 남기기 시작한다",
+    "cast": "벨리안 + 붙들린 궁정 서기(얼굴 그늘) + 전임 재상 오르텐(원경) + 당신 POV",
+    "prompt": "predawn palace record hall, a court scribe seized mid-motion with his fingernail still against the margin of a ceremonial roster where three scored lines are half-finished, the golden-haired young emperor (Belian) holding the roster up to a lantern with cold clarity, an old crippled man watching from a doorway far behind, in the foreground the crown resting on a plain table rather than on a head, eight small candles burning in a row along the window ledge, revelatory blue-gold dawn, solemn and quietly triumphant"
+  }
+]

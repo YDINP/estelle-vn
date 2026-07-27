@@ -1,0 +1,115 @@
+[
+  {
+    "id": "cg_lup13",
+    "char": "lucienne",
+    "title": "어떻게 알았죠",
+    "file": "how_did_you_know",
+    "unlockEp": "lup13",
+    "scene": "13화 — 다과회의 '진짜 질문'을 당신이 이틀 전에 짚어 내자, 완벽한 사람이 태어나 처음으로 남을 의심한다. 예법이 허용하는 거리보다 반 뼘 가까이 몸을 기울인 순간",
+    "cast": "루시엔 + 당신 POV(뒷어깨 실루엣만)",
+    "prompt": "a bright ice-toned salon in late afternoon, the silver-white-haired marchioness (Lucienne) leaning forward across a tea table, gloved hands flat on the polished surface, staring straight at the viewer with a cold searching gaze, an embroidery hoop with a white lily pushed aside, the back of an unidentifiable figure's shoulder in the foreground, tense intimate distance, pale blue and cream palette"
+  },
+  {
+    "id": "cg_lup15",
+    "char": "lucienne",
+    "title": "끊긴 문장",
+    "file": "broken_sentence_hall",
+    "unlockEp": "lup15",
+    "scene": "15화[막③·배드게이트①] — 재상부 공개 다과회 단상. 이백 명 앞에서 흰 백합의 문장이 한가운데서 멈추고, 이백 개의 부채가 일제히 펼쳐진다. 1회차 매장의 재현이 다른 얼굴로",
+    "cast": "루시엔 + (원경) 메피안 + 이백 명의 하객",
+    "prompt": "a vast chandelier-lit reception hall, the silver-white-haired marchioness (Lucienne) alone on a low dais in a flawless white gown, lips parted mid-word, one gloved hand trembling at her side, two hundred fans snapping open in unison across the crowd like a wave, the soft-smiling elderly chancellor (Mephian) watching from the floor below, harsh spotlight from above, isolating composition, cold silver and gold"
+  },
+  {
+    "id": "cg_lup16",
+    "char": "lucienne",
+    "title": "떠나지 않은 사람",
+    "file": "unvacated_seat",
+    "unlockEp": "lup16",
+    "scene": "16화 — 소문 이후 첫 화요일. 예약된 손님 여섯 자리는 전부 비었고, 일곱 번째 찻잔에서만 김이 오른다. 끊긴 문장을 듣고도 자리를 뜨지 않은 사람이 하나 있다",
+    "cast": "루시엔 + 당신 POV(맞은편 손과 소매만)",
+    "prompt": "a quiet marquess salon in pale winter afternoon light, seven teacups arranged on a long table, six of them cold and untouched with empty chairs pulled back, steam rising from only the seventh, the silver-white-haired marchioness (Lucienne) looking up in quiet astonishment, an unidentifiable person's hand and cuff resting at the seventh place setting, six unopened apology letters stacked by date, muted melancholy warmth"
+  },
+  {
+    "id": "cg_lup18",
+    "char": "lucienne",
+    "title": "그림자에서 온 봉랍",
+    "file": "seal_from_exile",
+    "unlockEp": "lup18",
+    "scene": "18화 — 국경 밖 스승의 편지가 신성왕국 사절단의 외교 봉랍에 실려 도착한다. 열 해치 자료 요구서 사본과, '이 밤을 이미 한 번 걸어 본 것 같다'는 한 줄",
+    "cast": "루시엔 + 당신 POV(촛대를 든 손)",
+    "prompt": "a midnight study lit by a single candle, the silver-white-haired marchioness (Lucienne) holding an old letter with both hands, tears held back, on the desk a silver wax seal bearing three interlocking rings and an open book, a chancellery requisition copy spread beside it, an unidentifiable hand tilting the candlestick toward the page, deep shadow, cold blue-grey with a single warm flame"
+  },
+  {
+    "id": "cg_lup20",
+    "char": "lucienne",
+    "title": "제3의 손",
+    "file": "nameless_seal_archive",
+    "unlockEp": "lup20",
+    "scene": "20화[막④] — 재상부 별관 문서고 삼층. 왕관의 밤 배치도 원본, 그녀의 열 해치 관찰 장부, 그리고 스무 해 전 '첫 봄' 문건 — 아무 인장도 찍히지 않은 봉랍",
+    "cast": "루시엔 + 당신 POV(장을 넘기는 손)",
+    "prompt": "a towering archive vault at night, open steel drawers spilling documents, the silver-white-haired marchioness (Lucienne) kneeling with a thick unnamed ledger open on her lap, decade-old daily records of one person's life visible on the page, a yellowed folder marked with two characters lying beside a blank wax seal with no crest pressed into it, an unidentifiable hand turning a page for her, lantern light from below, dread and revelation"
+  },
+  {
+    "id": "cg_lup25",
+    "char": "lucienne",
+    "title": "자정 세 시간 전",
+    "file": "three_hours_to_midnight",
+    "unlockEp": "lup25",
+    "scene": "25화[막⑤·배드게이트②] — 왕관의 밤 접반 대기실. 한 시간 반째 그대로 앉아 있는 흰 드레스와, 문가에 선 재상의 마지막 물음",
+    "cast": "루시엔 + 메피안 + 당신 POV(문 안쪽 그림자)",
+    "prompt": "a narrow brightly-lit antechamber with a single tall mirror, the silver-white-haired marchioness (Lucienne) seated perfectly upright in a white court gown, fully gloved, hands folded, a folded slip of paper tucked in her cuff, the soft-smiling elderly chancellor (Mephian) standing at the open door without entering, distant ballroom light spilling in from the corridor behind him, oppressive stillness, gold and pale ice"
+  },
+  {
+    "id": "cg_lup26",
+    "char": "lucienne",
+    "title": "사절석의 백합",
+    "file": "envoy_seat_lily",
+    "unlockEp": "lup26",
+    "scene": "26화 — 왕관의 밤 (上). 사절석 왼편 두 걸음 반의 접반석에 앉은 흰 백합. 옆자리 기록관의 무릎에는 아직 빈 나무 함이 놓여 있다. 자정 종 직전",
+    "cast": "루시엔 + 아젤 + (원경) 메피안·마리온",
+    "prompt": "a coronation ballroom under a thousand chandeliers, the silver-white-haired marchioness (Lucienne) seated in the attendant's chair two and a half paces left of the envoy seat, the silver-ivory paladin-priest (Azael) beside her with an empty wooden record box on his knees, in the far background the wine-red-haired lady (Marion) on a staircase clutching a script and the soft-smiling elderly chancellor (Mephian) crossing the floor, midnight bell about to strike, opulent gold and crimson, wide ceremonial composition"
+  },
+  {
+    "id": "cg_lup28",
+    "char": "lucienne",
+    "title": "끊긴 배석",
+    "file": "broken_attendance",
+    "unlockEp": "lup28",
+    "scene": "28화 — 접반은 발언 중에 일어서지 않는다. 그녀가 일어서서 '완결하지 못하겠습니다'라고 선언하는 순간 — 끊긴 문장이 붕괴가 아니라 스스로 고른 미완성이 된다",
+    "cast": "루시엔 + 아젤 + (배경) 홀 전체",
+    "prompt": "the silver-white-haired marchioness (Lucienne) rising alone from the attendant's chair in the middle of a hushed coronation ballroom, chin level, eyes clear, one glove already removed and held in her hand, the silver-ivory paladin-priest (Azael) standing at the envoy seat with a wax seal and a thin comparison plate, the entire court frozen mid-turn toward her, chandeliers blazing overhead, triumphant and terrifying, white gown against deep crimson and gold"
+  },
+  {
+    "id": "cg_lup_good",
+    "char": "lucienne",
+    "title": "흐트러진 자유",
+    "file": "end_good",
+    "unlockEp": "lup30",
+    "ending": "good",
+    "scene": "30화 GOOD — 실패할 자유. 실뜯개를 서랍에 넣고, 어긋난 한 땀을 그대로 둔 채 완성으로 선언한다. 사십오 분 규칙 폐지·예약자 명부 없는 살롱·'이 문장은 완결하지 않고 두겠습니다'",
+    "cast": "루시엔 + 당신 POV(맞은편 찻잔과 손)",
+    "prompt": "a sunlit salon window in late afternoon, the silver-white-haired marchioness (Lucienne) smiling faintly with bare ungloved hands, an embroidery hoop on her lap showing a finished white lily with one visibly crooked stitch left untouched, a seam ripper shut away in a closed drawer behind her, two teacups set out with no appointment ledger in sight, a torn-up rigid timetable in the wastebasket, warm gold light, gentle liberated calm"
+  },
+  {
+    "id": "cg_lup_bad",
+    "char": "lucienne",
+    "title": "완벽의 붕괴 (재현)",
+    "file": "end_bad",
+    "unlockEp": "lup30",
+    "ending": "bad",
+    "scene": "30화 BAD — 완벽의 감옥. 어긋난 한 땀을 뜯어내고 백합을 처음부터 다시 놓는 나날. 당신마저 '결함 있는 변수'로 얼려 밀어낸 뒤, 안에서 걸쇠를 내린 살롱을 당신이 창밖에서 지켜본다",
+    "cast": "루시엔 (실내) + 당신 POV(창밖 유리에 닿은 손)",
+    "prompt": "seen from outside through a frosted salon window at dusk, the silver-white-haired marchioness (Lucienne) alone within, unpicking a white lily embroidery thread by thread with a blank expression, a heap of half-finished lilies and cut threads piled beside her, the door bolted from the inside, an unidentifiable person's hand pressed against the outer glass, snow gathering on the sill, desaturated blue-grey, beautiful and airless"
+  },
+  {
+    "id": "cg_lup_true",
+    "char": "lucienne",
+    "title": "완벽의 감옥, 설계자의 잔영",
+    "file": "end_true",
+    "unlockEp": "lup30",
+    "ending": "true",
+    "scene": "30화 TRUE — 구원 + 제3의 손 회수. 어긋난 한 땀을 남긴 채, 스승의 편지·인장 없는 밀랍 조각·타다 만 '첫 봄, 여섯'을 한 봉투에 담아 자수함 맨 아래에 둔다. 완벽의 진짜 감옥은 재상 너머의 손이 지은 것이었다",
+    "cast": "루시엔 + 당신 POV(봉투를 함께 누르는 손)",
+    "prompt": "a sunlit salon table at dawn, the silver-white-haired marchioness (Lucienne) with bare hands sealing a plain envelope, laid out before her an old letter, a crestless lump of pressed wax, and a charred paper fragment bearing four legible characters, an embroidery hoop with a finished white lily and one crooked stitch resting nearby, an unidentifiable hand steadying the envelope with hers, a faint unresolved shadow stretching from the far doorway, warm light with one cold corner, quiet resolve"
+  }
+]

@@ -1,0 +1,132 @@
+[
+  {
+    "id": "cg_map12",
+    "char": "marion",
+    "title": "얼굴 없는 초상",
+    "file": "faceless_portrait_ring",
+    "unlockEp": "map12",
+    "scene": "12화[3막] — 왕궁 앞 화랑에 걸린 셋째 초상. 얼굴 없는 연인의 왼손 약지에 발루아 문장 인장 반지가 그려져 있고, 소문을 팔던 사람이 처음으로 소문 한복판에 선다",
+    "cast": "마리온 + 릴리아 + 군중 (당신 POV)",
+    "prompt": "a grand palace picture gallery, a large scandalous oil portrait of a faceless lover seated across a noblewoman, the faceless man's left ring finger bearing a rose-stemmed signet ring rendered in cruel detail, the wine-red-haired lady (Marion) standing frozen before it with her lace fan half-lowered, the blonde-blue duchess (Lilia) beside her staring coldly at the painted hand, hundreds of opened fans and turned faces behind them, gilded gallery, harsh chandelier light, public exposure dread"
+  },
+  {
+    "id": "cg_map15",
+    "char": "marion",
+    "title": "짧은 초 한 자루",
+    "file": "debt_notice_candle",
+    "unlockEp": "map15",
+    "scene": "15화[막③·배드게이트①] — 재상부 서재. 촛불 앞에 발루아 독촉장과 '증언인' 백지가 나란히 놓이고, 메피안이 벗의 이름 하나를 값으로 제시한다",
+    "cast": "마리온 + 메피안",
+    "prompt": "a dim incense-heavy chancellery study at night, two documents laid side by side on a desk before a short guttering candle: a red-sealed debt notice already curling in the flame and a blank sworn-testimony sheet with a single line of writing at the top, the soft-smiling elderly chancellor (Mephian) pushing the blank sheet forward with one finger, the wine-red-haired lady (Marion) staring at a quill she cannot pick up, her mask cracked into open anguish, molten wax pooling, oppressive gold-and-shadow"
+  },
+  {
+    "id": "cg_map18",
+    "char": "marion",
+    "title": "위조된 죄",
+    "file": "forged_ledger",
+    "unlockEp": "map18",
+    "scene": "18화[4막] — 십이 년 만에 열린 발루아 서고. 아버지의 친필·집사의 견본·차용증 필사본 세 장을 대조해, 숫자 칠의 가로줄 하나로 위조를 확인한다",
+    "cast": "마리온 + (당신 손) + 부치지 못한 편지 다발",
+    "prompt": "a long-sealed dusty family library lit by one oil lamp, three sheets of handwriting laid in a row on a wide desk for comparison, a magnifying lens over a numeral whose horizontal stroke trails too far to the right, the wine-red-haired lady (Marion) kneeling at the desk with her fan fallen to the floor and tears she does not wipe, a bundle of twenty-three unsent letters spilled beside her, a second person's hand steadying the papers from off-frame, motes of dust in lamplight, devastating quiet revelation"
+  },
+  {
+    "id": "cg_map20",
+    "char": "marion",
+    "title": "제3의 손",
+    "file": "third_hand_drawer",
+    "unlockEp": "map20",
+    "scene": "20화[막④] — 재상부 각본실 잠입. 벽 세 면의 연도별 서랍 중 십이 년 전 서랍만 가로로 뉘인 낯선 열쇠 구멍이며, 등불을 든 메피안이 '나도 못 여오'라고 말한다",
+    "cast": "마리온 + 메피안 (당신 실루엣)",
+    "prompt": "a narrow windowless archive room walled on three sides with dated document drawers, one oldest drawer fitted with a strange horizontally-set keyhole of no imperial design, the wine-red-haired lady (Marion) with her hand still on its pull, the soft-smiling elderly chancellor (Mephian) standing in the doorway holding a lantern with his smile gone for the first time, a back-turned silhouette of a companion at the frame edge, long shadows swallowing every drawer, conspiratorial dread"
+  },
+  {
+    "id": "cg_map21",
+    "char": "marion",
+    "title": "목줄",
+    "file": "leash_rehearsal",
+    "unlockEp": "map21",
+    "scene": "21화[5막] — 재상부 소회의실의 낭독 시연. 위증 열한 줄을 든 마리온이 낮은 단 위에 서고, 대가는 만인 앞의 차용증 소각이다",
+    "cast": "마리온 + 메피안 + 서기 둘",
+    "prompt": "a small austere chancellery meeting room, the wine-red-haired lady (Marion) standing on a low rehearsal dais holding a single sheet of eleven written lines, her voice flawless but her fingertips gone white at the eighth line, the elderly chancellor (Mephian) seated in shadow with two scribes recording her timing, an unlit candelabrum waiting on the table, cold grey-gold light, the feel of a collar being fitted"
+  },
+  {
+    "id": "cg_map23",
+    "char": "marion",
+    "title": "일곱 개의 실",
+    "file": "seven_threads",
+    "unlockEp": "map23",
+    "scene": "23화[5막] — D-30 대연회장 최종 예행. 일곱 사람의 동선이 하나의 홀로 수렴하고, 마리온은 증인석 제일열이 사실은 다음 피고의 자리임을 배치도에서 읽는다",
+    "cast": "마리온 + 레이먼 + 아젤 + 루시엔 (원경)",
+    "prompt": "an immense empty coronation ballroom during a final rehearsal, a thousand unlit chandeliers overhead and a seating chart unrolled on the front witness bench, the wine-red-haired lady (Marion) seated alone tracing lines on the chart, high above on the gallery the blue-grey-haired northern commander (Reimon) directing patrol lines in silence, at the eastern envoy seats the silver-ivory paladin-priest (Azael) with an empty record box on his knees and the silver-white-haired marchioness (Lucienne) beside him, converging sightlines, vast cold architecture, gathering fate"
+  },
+  {
+    "id": "cg_map25",
+    "char": "marion",
+    "title": "자정 세 시간 전",
+    "file": "three_hours_before",
+    "unlockEp": "map25",
+    "scene": "25화[막⑤·배드게이트②] — 각본실. '리비아냐, 릴리아냐, 아니면 당신 자신이냐' — 마지막 저울 앞에서 마리온의 두 손에 위증 대본과 부치지 못한 편지 다발이 나뉘어 들린다",
+    "cast": "마리온 + 메피안 + 릴리아",
+    "prompt": "the archive room three hours before midnight, one lantern burning, the wine-red-haired lady (Marion) standing with both hands open — a folded false-testimony script in one, a bundle of unsent letters in the other — as if weighing them on invisible scales, the elderly chancellor (Mephian) hurried for the first time behind the desk, the blonde-blue duchess (Lilia) having walked in on her own feet at the doorway, the oldest drawer standing slightly ajar and empty, distant coronation light through the corridor, unbearable choice"
+  },
+  {
+    "id": "cg_map26",
+    "char": "marion",
+    "title": "왕관의 밤, 자정 종",
+    "file": "midnight_accusation",
+    "unlockEp": "map26",
+    "scene": "26화[6비트①] — 자정 종 아홉 번째에 메피안이 하이델 공작영애를 반역으로 고발한다. 천 개의 시선이 증인석에서 증언대까지 길을 낸다",
+    "cast": "메피안 + 릴리아 + 마리온 + 벨리안 (난간) + 홀 전체",
+    "prompt": "a coronation ball at midnight under a thousand lit chandeliers, the soft-smiling elderly chancellor (Mephian) stepping forward from the dais with one hand raised in formal accusation, the blonde-blue duchess (Lilia) standing straight-backed and alone as the crowd parts around her, the wine-red-haired lady (Marion) rising from the front witness bench with four guards behind her, the golden-haired crown prince (Belian) watching from the throne-side balustrade still smiling, a corridor of turned faces opening toward the testimony stand, blinding gold, silence made visible"
+  },
+  {
+    "id": "cg_map27",
+    "char": "marion",
+    "title": "대본을 잃어버렸네요",
+    "file": "lost_script",
+    "unlockEp": "map27",
+    "scene": "27화[6비트②] — 증언대의 마리온이 예법의 빈틈에 선 당신을 보고, 열한 줄을 끝내 발화하지 않는다. 이 루트의 주 카메라",
+    "cast": "마리온 (+ 당신 뒷모습 실루엣) + 아젤 (원경 기립)",
+    "prompt": "the brightest point of a vast ballroom, the wine-red-haired lady (Marion) alone at a raised testimony stand with empty hands, her stage-smile entirely gone and her eyes fixed on one spot below, in the near foreground the back silhouette of a companion standing in a half-pace gap of protocol where no one is permitted to stand, in the far background the silver-ivory paladin-priest (Azael) beginning to rise from the envoy seats with a no-longer-empty record box, a thousand faces blurred into a wall of light, the hush of a script abandoned"
+  },
+  {
+    "id": "cg_map28",
+    "char": "marion",
+    "title": "저 둘을 확보하라",
+    "file": "the_seizure",
+    "unlockEp": "map28",
+    "scene": "28화[6비트④⑤⑥] — 레이먼의 확보 명령을 벨포르가 집행한다. 표적은 약혼자와 집사. 벨리안이 재가하고, 메피안이 스스로 호위를 받아들인다",
+    "cast": "레이먼 + 벨포르 + 약혼자 + 마리온 + 벨리안",
+    "prompt": "a ballroom the instant a verdict inverts, the blue-grey-haired northern commander (Reimon) one step forward from the upper gallery with his hand leaving the sword-hilt, the platinum-blonde vice-captain (Belfor) below him taking hold of a shadowed faceless nobleman's arm while a grey-liveried steward is seized beside him, the wine-red-haired lady (Marion) watching that captured hand from the witness bench without breathing, the golden-haired crown prince (Belian) on the balustrade granting it with a single glance, chandeliers still fully lit, the quiet sound of scales turning over"
+  },
+  {
+    "id": "cg_map_good",
+    "char": "marion",
+    "title": "폐허의 장미 (굿 엔딩)",
+    "file": "ruined_rose_garden",
+    "unlockEp": "map30",
+    "scene": "30화 GOOD — 경매로 넘어간 발루아 저택, 헐린 온실 잔해 위에 마리온이 손수 스물두 그루의 장미를 심는다. 계산을 버린 값 없는 유대 (은인·공범·벗)",
+    "cast": "마리온 + 리비아 + (당신 손·어깨)",
+    "prompt": "the demolished ruin of a glass conservatory at a sold estate, broken panes and rubble under an early-summer sky, the wine-red-haired lady (Marion) kneeling directly in the dirt without fan or gloves, sleeves pushed up and soil under her fingernails, planting a rose cutting with a plain trowel, the shy brown-haired girl (Livia) working two rows over, a companion's hand and shoulder entering frame digging the next hole, twenty-two young rose plants set in a line across the wreckage, warm honest daylight, quiet unpriced hope"
+  },
+  {
+    "id": "cg_map_bad",
+    "char": "marion",
+    "title": "배웅 없는 겨울 (배드 엔딩)",
+    "file": "border_carriage_watched",
+    "unlockEp": "map30",
+    "scene": "30화 BAD (15화·25화 실패 분기 공용) — 프롤로그의 반복. 문장이 지워진 마차가 국경을 넘고, 이번엔 당신이 창밖에서 그것을 지켜본다",
+    "cast": "마리온 (마차 안) + 당신 뒷모습 실루엣 (마차 밖)",
+    "prompt": "a crestless carriage halted at a night border checkpoint in deep winter, seen from outside, the frosted window showing only the dim outline of the wine-red-haired lady (Marion) within and a single fingertip tracing numbers on the frost from the inside, in the foreground the back silhouette of a companion standing in the snow unable to be seen by her, lantern light failing against the dark, desolate blue-grey, the exact repetition of a farewell no one attended"
+  },
+  {
+    "id": "cg_map_true",
+    "char": "marion",
+    "title": "지워진 이름 (트루 엔딩)",
+    "file": "erased_name",
+    "unlockEp": "map30",
+    "scene": "30화 TRUE — 흙 묻은 손 그대로 검인청 명부를 펼친 마리온. 견본 고리의 등록 번호가 십이 년 전 발루아 검인일을 가리키고, 명부의 이름 하나가 잉크가 아니라 종이째 깎여 지워져 있다",
+    "cast": "마리온 + (당신 손) + 마른 장미와 금속 고리",
+    "prompt": "a seal-office record room, a heavy twelve-year-old register opened flat on a counter, one entry not inked out but physically shaved away from the paper leaving a pale scooped hollow, in the margin a numeral with the same overlong horizontal stroke, the wine-red-haired lady (Marion) leaning over it with soil still under her fingernails and a gardener's apron over her plain dress, a dried rose and a small horizontally-set seal-sample ring laid on the page as evidence, a companion's hand holding the lamp, cold analytical light against a warm doorway beyond, the thread pulled one turn further"
+  }
+]
