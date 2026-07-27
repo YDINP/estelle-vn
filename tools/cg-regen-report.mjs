@@ -120,7 +120,8 @@ for (const r of order) {
     const refs = cast.length
       ? cast.map((c) => (c.silhouette ? `${c.ko}(실루엣)` : `${c.ko}=\`char/${c.id}/soft.webp\``)).join("<br>")
       : "*(인물 없음)*";
-    const scene = (t.scene ?? t.title ?? "").replace(/\|/g, "/").slice(0, 70);
+    // 장면 설명은 자르지 않는다 — 이 문서가 재생성 작업지시서라 뒤쪽 연출 지시가 곧 정보다
+    const scene = (t.scene ?? t.title ?? "").replace(/\|/g, "/").replace(/\n/g, " ");
     const st = bad(t) ? "🔴 격리" : "🟡 유지";
     lines.push(`| \`${t.id}\` | ${st} | \`${t.char}/${t.file}.webp\` | ${refs} | ${scene} |`);
   }
