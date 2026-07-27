@@ -24,6 +24,10 @@ node .tmp/dupcheck.mjs                      # 루트 간 중복 배치 점검
 ```
 루트별 잔여: marion 7 · reimon 7 · belfor 4 · belian 4 · lilia 4 · azael 3 · livia 3 · lucienne 3
 
+**우선순위**: 엔딩 24종(`cg_*_good/_bad/_true`)을 먼저 돌려라 — 각 루트의 절정이고,
+외형 오차가 가장 크게 남은 캐릭터(벨포르·벨리안·리비아·레이먼)의 결말 컷이 여기 몰려 있다.
+한도가 또 걸릴 수 있으니 한 번에 다 돌리지 말고 엔딩 → 본편 순으로 나눠 실행할 것.
+
 ### 그 외
 - 게임 진행에는 지장 없음. 8루트 × 31화 전부 플레이 가능, 검증 전량 통과.
 - 다음 단계 후보: 앱인토스 패키징(granite/ait) 연동 · BGM/SFX 확충 · 코스메틱 시스템 재개(`COSMETICS_ENABLED=false`로 홀딩 중)
