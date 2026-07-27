@@ -2,7 +2,30 @@
 > 마지막 업데이트: 2026-07-27 (완성 스프린트)
 
 ## 현재 이슈
-- **없음.** 8루트 × 31화 전부 플레이 가능, CG 96/96 배선 완료, 검증 전량 통과.
+
+### 🔴 CG 35컷이 아직 구버전 캐릭터 외형 (재생성 대기)
+CG를 처음 만들 때 `ILLUST-SPEC.md`의 **구버전 텍스트 서술**을 앵커로 써서, 그림 속 인물이
+게임 속 캐릭터와 딴사람으로 나왔다(벨포르 갈발·감청군복 → 백금발·판금갑옷 / 벨리안 적발 → 금발 /
+리비아 성인 녹색드레스 → 10대 시골옷 / 레이먼 흑발 → 청회색 등).
+
+**해결책은 확정·검증됐다**: `tools/cg-generate.mjs`가 실제 캐릭터 아트
+(`public/char/<id>/soft.webp`)를 codex image_gen에 **레퍼런스 이미지로 전달**한다.
+이 방식으로 **96컷 중 61컷을 이미 교정 완료**했고 결과물은 원본 캐릭터와 정확히 일치한다.
+
+**남은 35컷은 Codex 사용량 한도(리셋 2026-08-02)에 막혀 중단됐다.** 목록은
+`story/CG-REGEN-TODO.json`. ⚠️ **24개 엔딩 CG가 전부 이 목록에 있다** — 가장 중요한 컷들이다.
+
+재개 방법 (한도 회복 후):
+```bash
+node tools/cg-worklist.mjs --emit --all     # 작업지시서 재생성
+node tools/cg-generate.mjs --route <id> --batch 2 --all
+node tools/cg-place.mjs --force             # 배치(기존본 덮어쓰기)
+node .tmp/dupcheck.mjs                      # 루트 간 중복 배치 점검
+```
+루트별 잔여: marion 7 · reimon 7 · belfor 4 · belian 4 · lilia 4 · azael 3 · livia 3 · lucienne 3
+
+### 그 외
+- 게임 진행에는 지장 없음. 8루트 × 31화 전부 플레이 가능, 검증 전량 통과.
 - 다음 단계 후보: 앱인토스 패키징(granite/ait) 연동 · BGM/SFX 확충 · 코스메틱 시스템 재개(`COSMETICS_ENABLED=false`로 홀딩 중)
 
 ## 완성 스프린트 결과 (2026-07-27)
