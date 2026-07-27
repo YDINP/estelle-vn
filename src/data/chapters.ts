@@ -17,6 +17,11 @@ export interface Line {
 export interface ChoiceOption {
   label: string;
   affection?: number; // 선택 시 호감도 증가
+  /** 결의(結意) 점수 — 엔딩 게이트 판정에 누적. 관례: 2=옳은 개입 / 1=무난.
+   *  선택 시 resolve += 이 값, resolveMax += 같은 선택지 옵션들의 최대값.
+   *  판정은 절대값이 아니라 비율(resolve/resolveMax)이라 배점 분포에 둔감하다.
+   *  정본: ENGINE-CONTRACT.md §1 */
+  resolve?: number;
   result: Line[];     // 선택 후 이어지는 대사 (수렴형)
 }
 

@@ -292,6 +292,9 @@ body {
 #interAd { background: rgba(15,8,4,.97); align-items: center; }
 /* 광고 팝업은 항상 최상단 (VN·목록·토스트 위) */
 #adModal, #interAd { z-index: 60; }
+/* 결정 모달(코인부족·확인)은 자신을 띄운 시트(#collect 45 / #storyList 20) 위에 떠야 한다.
+   같은 z-index면 DOM 순서상 뒤에 있는 시트가 덮어 클릭이 막힌다. */
+#coinShort, #confirmModal { z-index: 58; }
 #adModal { align-items: center; }
 
 /* ── 일러스트 도감 ── */
@@ -666,3 +669,49 @@ body {
   color: var(--gold-soft); background: rgba(216,164,74,.16);
   border: 1px solid var(--gold); padding: 2px 8px; border-radius: 999px;
   white-space: nowrap; }
+
+/* ── 엔딩 시스템 (분기·엔딩 엔진 / ENGINE-CONTRACT §2) ── */
+
+/* 루트 카드: 완주 표시 + 획득 엔딩 뱃지 */
+.rc-foot { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
+.rc-done { font-size: 10.5px; font-weight: 800; color: #1c0e07; background: var(--gold);
+  padding: 1px 7px; border-radius: 999px; vertical-align: middle; }
+.rc-endings { font-size: 10.5px; font-weight: 700; color: var(--gold-soft);
+  letter-spacing: .3px; opacity: .95; }
+.route-card.done { border-color: var(--gold); }
+
+/* 이야기 목록: 게이트 화 표식 + 상단 엔딩/재도전 바 */
+.ep-gate { margin-left: 6px; font-size: 12px; color: var(--rose); }
+.route-ending-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 10px 12px; margin-bottom: 12px; border-radius: 12px;
+  border: 1px solid var(--gold); background: rgba(216,164,74,.1);
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.35); }
+.reb-marks { flex: 1; min-width: 0; display: flex; flex-wrap: wrap; gap: 4px 10px; }
+.reb-mark { font-size: 11.5px; font-weight: 700; color: var(--gold-soft); }
+
+/* 엔딩 도감 — 루트별 3열(good/bad/true) */
+.ending-book { display: flex; flex-direction: column; gap: 18px; }
+.eb-hint { margin-top: 0 !important; text-align: left; font-size: 11.5px; line-height: 1.6; }
+.erow .isec-t { margin-bottom: 8px; }
+.egrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.ecell { padding: 10px 8px; border-radius: 12px; text-align: center;
+  border: 1px solid rgba(216,164,74,.3);
+  background: linear-gradient(180deg, rgba(64,36,20,.5), rgba(44,23,12,.6));
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.35); cursor: pointer; }
+.ecell.locked { cursor: default; opacity: .55; }
+.ecell.good { border-color: var(--gold); }
+.ecell.bad { border-color: rgba(240,179,203,.45); }
+.ecell.true { border-color: #f3dfa4; box-shadow: inset 0 0 0 1px rgba(0,0,0,.35),
+  0 0 12px rgba(243,223,164,.28); }
+.ecell .e-icon { font-size: 20px; line-height: 1.2; }
+.ecell.locked .e-icon { filter: grayscale(1); opacity: .7; }
+.ecell .e-type { font-size: 10px; font-weight: 800; color: var(--muted);
+  letter-spacing: .5px; margin-top: 2px; }
+.ecell .e-title { font-size: 12px; font-weight: 800; color: var(--gold-soft);
+  margin-top: 4px; line-height: 1.35; }
+.ecell .e-sum { font-size: 10.5px; color: var(--muted); line-height: 1.45; margin-top: 4px; }
+
+/* 루트 대본 청크 로딩 */
+.rl-card { margin: auto; text-align: center; padding: 26px 30px; border-radius: 18px;
+  background: #1c0e07; border: 1px solid rgba(216,164,74,.35); }
+.rl-text { font-size: 13px; color: var(--gold-soft); font-weight: 700; }

@@ -2,8 +2,22 @@
 // 실 SDK 연동 시 저장 계층만 앱인토스 스토리지로 교체하면 됨(load/save seam).
 
 import { DEFAULT_OWNED, DEFAULT_EQUIPPED, Slot } from "./cosmetics";
+import type { EndingType } from "../data/season1";
+import { ROUTES } from "../data/routes";
 
 const SAVE_KEY = "estelle.save.v1";
+
+/**
+ * 루트별 진행 상태. 정본: ENGINE-CONTRACT.md §3
+ * resolve/resolveMax는 루트 단위 누적축(에피소드별이 아님) — 게이트는 비율로 판정한다.
+ */
+export interface RouteProgress {
+  epCleared: string[];      // 클리어한 에피소드 id (순차 해금 판정)
+  nextEpFreeAt: number;     // 다음 화 무료 해금 시각(ms)
+  resolve: number;          // 누적 결의
+  resolveMax: number;       // 누적 결의 만점 (선택지별 최대 배점의 합)
+  endings: EndingType[];    // 이 루트에서 본 엔딩 (중복 없이 누적, 재도전해도 보존)
+}
 
 export interface GameState {
   coins: number;
@@ -26,7 +40,7 @@ export interface GameState {
   heardLines: Record<string, string[]>; // 캐릭터별 들은 대사 id (대사 도감 수집)
   specialsOwned: string[];    // 코인으로 해금한 스페셜 CG id (구 호감도 게이트 대체)
   // ── 루트(캐릭터 시점) 시스템 ──
-  routes: Record<string, { epCleared: string[]; nextEpFreeAt: number }>; // 루트별 진행
+  routes: Record<string, RouteProgress>; // 루트별 진행
   affectionBy: Record<string, number>; // 캐릭터별 호감도
   currentRoute: string;       // "" = 메인(타이틀) 화면 / 그 외 = 진행 중 루트 id
   onboarded: boolean;
@@ -83,6 +97,9 @@ export function epWaitMs(): number {
   }
   return EP_WAIT_MS;
 }
+
+/** 엔딩 3종 — 도감 그리드 열 순서의 정본. */
+export const ENDING_TYPES: EndingType[] = ["good", "bad", "true"];
 
 const TIER_BOUNDS = [0, 20, 50, 80];
 // 로맨스 불성립(STORY-BIBLE §0) — 최상위 티어는 '운명'이 아니라 관계 상한 어휘 '은인'
@@ -184,15 +201,37 @@ export function loadState(): GameState {
   if (OLD2NEW[s.currentRoute]) s.currentRoute = OLD2NEW[s.currentRoute];
   if (s.routes.lilia === undefined &&
       ((s.epCleared && s.epCleared.length > 0) || s.nextEpFreeAt > 0)) {
-    s.routes.lilia = {
+    s.routes.lilia = normalizeProgress({
       epCleared: [...(s.epCleared ?? [])],
       nextEpFreeAt: s.nextEpFreeAt ?? 0,
-    };
+    });
   }
   if (s.affectionBy.lilia === undefined && s.affection > 0) {
     s.affectionBy.lilia = s.affection;
   }
+  // ── RouteProgress 승격 마이그레이션 (2026-07-27, ENGINE-CONTRACT §3) ──
+  // 구 세이브는 {epCleared, nextEpFreeAt}만 갖거나, 더 오래된 것은 문자열 배열이다.
+  // 개명(remapKeys) 이후에 돌려야 구 키가 신 키로 옮겨간 값까지 함께 승격된다.
+  for (const id of Object.keys(s.routes)) s.routes[id] = normalizeProgress(s.routes[id]);
   return s;
+}
+
+/** 어떤 형태의 구 진행값이든 RouteProgress로 승격. 없는 필드는 0/[]로 채운다. */
+function normalizeProgress(v: unknown): RouteProgress {
+  const fresh: RouteProgress = { epCleared: [], nextEpFreeAt: 0, resolve: 0, resolveMax: 0, endings: [] };
+  if (!v) return fresh;
+  if (Array.isArray(v)) return { ...fresh, epCleared: v.filter((x) => typeof x === "string") };
+  if (typeof v !== "object") return fresh;
+  const o = v as Partial<RouteProgress>;
+  return {
+    epCleared: Array.isArray(o.epCleared) ? o.epCleared : [],
+    nextEpFreeAt: typeof o.nextEpFreeAt === "number" ? o.nextEpFreeAt : 0,
+    resolve: typeof o.resolve === "number" ? o.resolve : 0,
+    resolveMax: typeof o.resolveMax === "number" ? o.resolveMax : 0,
+    endings: Array.isArray(o.endings)
+      ? o.endings.filter((e): e is EndingType => ENDING_TYPES.includes(e))
+      : [],
+  };
 }
 
 export function saveState(s: GameState): void {
@@ -221,8 +260,59 @@ export function addAffection(s: GameState, amount: number): void {
 // ── 루트/캐릭터 스코프 헬퍼 ──
 
 /** 루트별 진행 상태를 반환(없으면 생성). */
-export function ensureRoute(s: GameState, routeId: string): { epCleared: string[]; nextEpFreeAt: number } {
-  return (s.routes[routeId] ??= { epCleared: [], nextEpFreeAt: 0 });
+export function ensureRoute(s: GameState, routeId: string): RouteProgress {
+  return (s.routes[routeId] ??= normalizeProgress(null));
+}
+
+// ── 결의(resolve) / 엔딩 ──
+
+/**
+ * 선택지 확정 시 결의 누적. 판정은 절대값이 아니라 resolve/resolveMax 비율이다.
+ * 다시보기(grantRewards=false)에서는 호출하지 않는다 — 호감도 규칙과 동일.
+ */
+export function addResolve(s: GameState, routeId: string, gained: number, max: number): void {
+  const p = ensureRoute(s, routeId);
+  p.resolve += gained;
+  p.resolveMax += max;
+}
+
+/** 게이트 판정 비율. 선택지를 한 번도 지나지 않았으면(분모 0) 통과로 본다. */
+export function resolveRatio(p: RouteProgress): number {
+  return p.resolveMax > 0 ? p.resolve / p.resolveMax : 1;
+}
+
+/** 엔딩 기록(중복 없이 누적). 새로 추가됐으면 true. */
+export function addEnding(s: GameState, routeId: string, ending: EndingType): boolean {
+  const p = ensureRoute(s, routeId);
+  if (p.endings.includes(ending)) return false;
+  p.endings.push(ending);
+  return true;
+}
+
+/** 엔딩을 하나라도 본 루트 = 완주 처리. */
+export function routeCompleted(s: GameState, routeId: string): boolean {
+  return (s.routes[routeId]?.endings.length ?? 0) > 0;
+}
+
+/**
+ * TRUE 엔딩 조건 — 전 루트 good 보유.
+ * 준비 중(available=false) 루트까지 요구하면 진엔딩이 영구 도달 불가가 되므로 공개된 루트만 본다.
+ */
+export function hasAllGoodEndings(s: GameState): boolean {
+  const live = ROUTES.filter((r) => r.available);
+  return live.length > 0 && live.every((r) => s.routes[r.id]?.endings.includes("good"));
+}
+
+/**
+ * 루트 재도전 — 진행도(에피소드·결의)만 초기화하고 엔딩 기록은 보존한다.
+ * 다른 엔딩을 보려면 선택을 다시 쌓아야 하므로 resolve/resolveMax도 함께 0으로 되돌린다.
+ */
+export function restartRoute(s: GameState, routeId: string): void {
+  const p = ensureRoute(s, routeId);
+  p.epCleared = [];
+  p.nextEpFreeAt = 0;
+  p.resolve = 0;
+  p.resolveMax = 0;
 }
 
 /** 캐릭터별 호감도(기본 0). */

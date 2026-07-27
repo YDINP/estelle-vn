@@ -9,14 +9,35 @@
 // 성별 무관 2인칭 '당신'(성별·외모·이름 비묘사), 전체이용가.
 import { Step, Line, ChoiceOption, Emotion } from "./chapters";
 
+export type EndingType = "good" | "bad" | "true";
+
+/** 엔딩 게이트 — 누적 결의(resolve) 비율로 갈리는 분기. 15·25·30화에만 존재한다.
+ *  steps 재생이 끝난 직후 평가된다. 정본: ENGINE-CONTRACT.md §2 */
+export interface Gate {
+  /** 통과 기준 비율 (resolve / resolveMax). 전 루트 0.7 고정 */
+  threshold: number;
+  /** 통과 분기 프로즈 */
+  pass: Step[];
+  /** 실패 분기 프로즈 (파멸/배드) */
+  fail: Step[];
+  /** 실패 시 확정되는 엔딩. 지정되면 루트는 여기서 종료된다 */
+  failEnding?: EndingType;
+  /** 통과 시 확정되는 엔딩. 30화에서만 "good" */
+  passEnding?: EndingType;
+  /** 전 8루트 good 보유 시 pass 대신 재생되는 진엔딩. 30화에서만 */
+  trueSteps?: Step[];
+}
+
 export interface Episode {
   id: string;
-  index: number;        // 1..12 (순차 해금)
+  index: number;        // 1..31 (프롤로그=1, 30화=31 / 순차 해금)
   title: string;        // "1화 — 스러진 봄"
   teaser: string;       // 목록에 표시되는 다음 화 예고/클리프행어 한 줄
   rewardCoins: number;  // 최초 클리어 보상
   card: { title: string; quote: string }; // 클리어 시 수집되는 명대사 카드
   steps: Step[];
+  /** 엔딩 게이트 (15·25·30화). 없으면 평소대로 종료 */
+  gate?: Gate;
 }
 
 // ── 빌더 (대본 가독성용) ──

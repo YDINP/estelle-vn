@@ -3,10 +3,11 @@
 // 열기: PC = Shift+Click / 모바일 = 같은 위치 트리플탭.
 // ⚠️ 배포(ait) 전: ?cheat 게이트 유지 여부 결정 필요(카카오 사례처럼 Live 도메인 차단 권장).
 
-import { GameState, MAX_AFFECTION, ensureRoute, todayKey } from "./state";
+import { GameState, MAX_AFFECTION, ensureRoute, restartRoute, todayKey } from "./state";
 import { CHARACTERS, CharacterId } from "../data/characters";
-import { ROUTES } from "../data/routes";
+import { ROUTES, loadRoute } from "../data/routes";
 import { CGS } from "../data/cgs";
+import { EndingType } from "../data/season1";
 
 export interface CheatCtx {
   state: GameState;
@@ -47,26 +48,59 @@ function register(ctx: CheatCtx): void {
   });
 
   cheat.addGroup("에피소드", {
-    "전 화 클리어": [() => {
+    // 대본은 지연 로드라 클리어 처리 전에 청크를 먼저 받아야 한다.
+    "전 화 클리어": [() => { void (async () => {
       const r = ROUTES.find((x) => x.id === routeId());
       if (!r) return;
+      const data = await loadRoute(r.id);
+      if (!data) { ctx.toast("대본을 불러오지 못했어요"); return; }
       const p = ensureRoute(st(), r.id);
-      p.epCleared = r.episodes.map((e) => e.id);
+      p.epCleared = data.episodes.map((e) => e.id);
       p.nextEpFreeAt = 0;
-      for (const e of r.episodes)
+      for (const e of data.episodes)
         if (!st().cards.includes(e.id)) st().cards.push(e.id);
       ctx.refresh();
       ctx.toast(`📖 ${r.title} 전 화 클리어 처리`);
-    }, "현재 루트 전 에피소드 클리어+카드 지급"],
+    })(); }, "현재 루트 전 에피소드 클리어+카드 지급"],
     "타이머 해제": [() => {
       ensureRoute(st(), routeId()).nextEpFreeAt = 0;
       ctx.refresh();
     }, "기다리면 무료 타이머 즉시 해제"],
     "진행 초기화": [() => {
-      st().routes[routeId()] = { epCleared: [], nextEpFreeAt: 0 };
+      restartRoute(st(), routeId()); // 엔딩 기록은 보존
       ctx.refresh();
-      ctx.toast("현재 루트 진행 초기화");
-    }, "현재 루트 에피소드 진행만 리셋"],
+      ctx.toast("현재 루트 진행 초기화(엔딩 기록 유지)");
+    }, "현재 루트 에피소드 진행+결의만 리셋"],
+  });
+
+  cheat.addGroup("결의·엔딩", {
+    "결의 만점": [() => {
+      const p = ensureRoute(st(), routeId());
+      p.resolveMax = Math.max(p.resolveMax, 10);
+      p.resolve = p.resolveMax;
+      ctx.refresh();
+      ctx.toast(`⚖ 결의 ${p.resolve}/${p.resolveMax} (통과)`);
+    }, "게이트 통과 비율로 맞춤"],
+    "결의 0": [() => {
+      const p = ensureRoute(st(), routeId());
+      p.resolveMax = Math.max(p.resolveMax, 10);
+      p.resolve = 0;
+      ctx.refresh();
+      ctx.toast(`⚖ 결의 0/${p.resolveMax} (실패)`);
+    }, "게이트 실패 비율로 맞춤"],
+    "전 루트 GOOD 부여": [() => {
+      for (const r of ROUTES) {
+        const p = ensureRoute(st(), r.id);
+        if (!p.endings.includes("good")) p.endings.push("good");
+      }
+      ctx.refresh();
+      ctx.toast("🏆 전 루트 굿엔딩 보유 — 진엔딩 조건 충족");
+    }, "TRUE 엔딩 조건(전 8루트 good) 즉시 충족"],
+    "엔딩 기록 삭제": [() => {
+      for (const id of Object.keys(st().routes)) st().routes[id].endings = [] as EndingType[];
+      ctx.refresh();
+      ctx.toast("엔딩 도감 초기화");
+    }, "엔딩 도감만 리셋"],
   });
 
   cheat.addGroup("일일·수집", {
@@ -77,7 +111,7 @@ function register(ctx: CheatCtx): void {
       ctx.refresh();
       ctx.toast("⭐ 스트릭 7일 + 별의 머리핀");
     }, "연속 방문 7일 달성 처리"],
-    "일러/CG 전부 해금": [() => {
+    "일러/CG 전부 해금": [() => { void (async () => {
       // 표정 일러: 캐릭터별 보유 표정 전부 수집 처리
       for (const id of Object.keys(CHARACTERS) as CharacterId[]) {
         const c = CHARACTERS[id];
@@ -87,15 +121,19 @@ function register(ctx: CheatCtx): void {
       // 스토리 연출 CG도 전부 수집 처리
       st().cgSeen = CGS.map((g) => g.id);
       // CG: 전 루트 에피소드 클리어 합집합으로 해금되므로 전부 클리어 처리
-      for (const r of ROUTES) {
+      // (대본 지연 로드 — 8루트 청크를 모두 받은 뒤에 처리한다)
+      const all = await Promise.all(ROUTES.map((r) => loadRoute(r.id)));
+      ROUTES.forEach((r, i) => {
+        const data = all[i];
+        if (!data) return;
         const p = ensureRoute(st(), r.id);
-        p.epCleared = r.episodes.map((e) => e.id);
-        for (const e of r.episodes)
+        p.epCleared = data.episodes.map((e) => e.id);
+        for (const e of data.episodes)
           if (!st().cards.includes(e.id)) st().cards.push(e.id);
-      }
+      });
       ctx.refresh();
       ctx.toast("🖼 일러·CG·카드 전부 해금");
-    }, "도감 전체 해금 (전 루트 클리어 처리 포함)"],
+    })(); }, "도감 전체 해금 (전 루트 클리어 처리 포함)"],
     "수집 초기화": [() => {
       st().illust = {}; st().cards = []; st().cgSeen = [];
       ctx.refresh();
