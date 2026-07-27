@@ -9,7 +9,10 @@
     "scene": "30화 GOOD — 성 카나 대성당 재심정. 아젤이 제 손으로 갑주의 흰 천을 벗기고, 지워진 적 없는 문장이 아침빛에 드러난다",
     "cast": "아젤 + 재심관들(배경) + 당신 POV(방청석, 뒷모습 실루엣)",
     "prompt": "the retrial hall of a great cathedral at dawn, tall lancet windows pouring pale gold light across stone; a silver-haired holy knight kneels no longer — he stands and, with his own hand, pulls away the white cloth that had covered the crest on his ivory breastplate, the cloth caught mid-fall; the revealed crest blazes in the morning light, undamaged; three adjudicators on the high bench lowering their heads in acknowledgement; in the near foreground, seen from behind, the shoulder and back of a seated observer in the gallery (face never shown); his record-case at his feet is full, three oath-cords intact on the pauldron; radiant backlight, rising diagonal composition, quiet vindication rather than glory",
-    "unlockEp": "azp30"
+    "unlockEp": "azp30",
+    "refs": [
+      "public/char/azael/soft.webp"
+    ]
   },
   {
     "route": "azael",
@@ -21,7 +24,10 @@
     "scene": "엔딩 BAD (15·25·30화 fail 공용) — 국경 이정표 아래, 문장이 뜯긴 백은 갑주와 봉랍이 뜯긴 빈 기록함",
     "cast": "아젤 (뒷모습) + 당신 POV(멀리서 지켜봄)",
     "prompt": "a windswept border marker stone at grey winter dawn, snow blowing sideways across an empty road; a silver-haired knight walks away from the viewer in tarnished ivory armour whose chest crest has been gouged out, leaving a raw scar of bare metal; the three oath-cords are gone from his pauldron; he carries an open record-case whose wax seal has been ripped off, the case empty, tilted so a last blank page slips out into the wind; far behind, a lone distant figure watching, small and unlit (face never shown); desaturated blue-grey, no light source anywhere in frame, long horizontal emptiness",
-    "unlockEp": "azp30"
+    "unlockEp": "azp30",
+    "refs": [
+      "public/char/azael/soft.webp"
+    ]
   },
   {
     "route": "azael",
@@ -33,7 +39,10 @@
     "scene": "30화 TRUE — 열두 해 전 명부 여백에서 같은 필적을 발견한 뒤, 문장이 온전한 갑주로 국경을 향해 서는 두 사람",
     "cast": "아젤 + 당신(뒷모습 실루엣) + 열두 해 전 명부(전경)",
     "prompt": "split emphasis composition: in the foreground, an old ledger page open on a cathedral archive desk, its bottom line reading only 'one foreign envoy' with no name, and in the margin a small upright twelve-year-old ink annotation; in the background through an open archway, first light on a mountain border road where a silver-haired holy knight in ivory armour with an intact crest stands looking outward, a full record-case under his arm, three oath-cords restored; beside him, seen from behind, a second traveller's silhouette (face never shown) with a hand extended and taken; pale dawn gold on the road, cool archive shadow on the ledger, the two halves linked by a single shaft of light; hopeful but unfinished",
-    "unlockEp": "azp30"
+    "unlockEp": "azp30",
+    "refs": [
+      "public/char/azael/soft.webp"
+    ]
   },
   {
     "route": "belfor",
@@ -45,7 +54,11 @@
     "scene": "28화 — 레이먼의 '저 둘을 확보하라'. 벨포르가 영애가 아니라 약혼자·집사를 확보한다",
     "cast": "벨포르 + 약혼자 + 집사(엑스트라) + (배경) 레이먼",
     "prompt": "the center of a coronation ballroom, the platinum-blonde vice-captain (Belfor) clamping irons onto the wrist of a shadowed faceless nobleman while an old steward kneels on the marble beside them, Belfor's own sword still sheathed at his hip, on the grand staircase behind him the blue-grey-haired northern commander (Reimon) lowering a pointing hand, the blonde duchess standing untouched and unguarded at the far side of the hall, gasping nobles, triumphant gold and white light, the blade that chose its direction",
-    "unlockEp": "bfp28"
+    "unlockEp": "bfp28",
+    "refs": [
+      "public/char/belfor/soft.webp",
+      "public/char/reimon/soft.webp"
+    ]
   },
   {
     "route": "belfor",
@@ -57,7 +70,10 @@
     "scene": "30화 GOOD — 새벽 연병장. 1회차에 부러진 검이 놓였던 바로 그 자리에 검을 거꾸로 세워 꽂고 새 맹세를 한다",
     "cast": "벨포르 + 근위대 넷 + 당신 POV(뒷모습 실루엣)",
     "prompt": "an empty guard drill yard at first light, dry bare earth, the platinum-blonde vice-captain (Belfor) kneeling on one knee with his sword driven point-down into the ground before him, both hands on the crossguard, head lifted toward the sunrise instead of bowed, four guards standing in a short honest line behind him, the first ray of morning running up the blade, a viewer's back silhouette watching from a cloister eave, warm clean gold, redemption without triumphalism",
-    "unlockEp": "bfp30"
+    "unlockEp": "bfp30",
+    "refs": [
+      "public/char/belfor/soft.webp"
+    ]
   },
   {
     "route": "belfor",
@@ -69,7 +85,10 @@
     "scene": "BAD 엔딩 공통 컷 — 15화 게이트①·25화 게이트②·30화 게이트③ 실패 분기에서 사용. 빗속 연병장에서 무릎에 검신을 대고 스스로 검을 부러뜨린다",
     "cast": "벨포르 + 당신 POV(처마 밑 실루엣)",
     "prompt": "a rain-hammered guard drill yard before dawn, the platinum-blonde vice-captain (Belfor) on his knees in the mud bending his own longsword across his thigh until the steel splits, a soaked military order and a war medal lying at his feet, his guard insignia already torn from his chest, rain streaming off ruined silver armor, a viewer's back silhouette watching from under a distant cloister eave, desaturated blue-grey and black, total ruin, the obedient knight destroyed by obedience",
-    "unlockEp": "bfp15"
+    "unlockEp": "bfp15",
+    "refs": [
+      "public/char/belfor/soft.webp"
+    ]
   },
   {
     "route": "belfor",
@@ -81,7 +100,11 @@
     "scene": "30화 TRUE — 구원 + 제3의 손 회수. 봉랍이 눌린 각도로 '왼손'을 짚어내고, 미제 사건 번호를 남긴 뒤 검을 꽂는다",
     "cast": "벨포르 + 아젤 + 당신 POV(손)",
     "prompt": "a records office at dawn, the silver-ivory paladin-priest (Azael) tilting a wax seal specimen under a lamp while the platinum-blonde vice-captain (Belfor) compares the pressed angle of an identical seal, a stack of twenty-three forged documents fanned across the table with a fresh unsolved-case tag on top, through the window behind them a sword standing point-down in the drill yard earth catching the sunrise, a viewer's hand steadying the specimen, cool dawn blue warming to gold, resolve carried forward into an unfinished question",
-    "unlockEp": "bfp30"
+    "unlockEp": "bfp30",
+    "refs": [
+      "public/char/belfor/soft.webp",
+      "public/char/azael/soft.webp"
+    ]
   },
   {
     "route": "belian",
@@ -93,7 +116,10 @@
     "scene": "28화 — 왕관의 밤 절정. 홀의 모든 눈이 증언대를 보는 사이, 무릎 꿇은 늙은 시종장이 품에서 이 나간 낡은 잔을 꺼내 독 든 잔과 바꾼다. 앞막의 손 떨림이 회수되는 순간",
     "cast": "벨리안 + 늙은 시종장(엑스트라) + 당신 POV",
     "prompt": "close intimate view beside a throne during a crowded trial scene, an aged chamberlain kneeling with trembling hands exchanging a jeweled chalice for a battered old cup with a visible mended chip, the golden-haired crown prince (Belian) looking down at him with startled aching tenderness, the crowd blurred and facing away toward a witness stand in the background, chandelier bokeh, gold and tearful warmth",
-    "unlockEp": "blp28"
+    "unlockEp": "blp28",
+    "refs": [
+      "public/char/belian/soft.webp"
+    ]
   },
   {
     "route": "belian",
@@ -105,7 +131,10 @@
     "scene": "30화 GOOD — 대관식. 주교의 손에서 왕관이 내려앉는 동안 벨리안은 눈을 감지 않고 곁에 남은 일곱을 센다. 이 나간 낡은 잔으로 축배를 들고, 이번엔 웃음이 지워지지 않는다",
     "cast": "벨리안 + 주교(엑스트라) + 당신 POV(군중 속 뒷모습 실루엣)",
     "prompt": "a coronation at the height of day, a crown being lowered by a bishop's hands onto the golden-haired young emperor (Belian) who keeps his eyes open and counts the faces below, in his hand a humble chipped old cup raised as a toast instead of a jeweled chalice, a genuine unguarded smile that stays, warm sunlight flooding through high windows, an unmarked figure watching from the back of the crowd seen only as a shoulder and silhouette, radiant hopeful gold",
-    "unlockEp": "blp30"
+    "unlockEp": "blp30",
+    "refs": [
+      "public/char/belian/soft.webp"
+    ]
   },
   {
     "route": "belian",
@@ -117,7 +146,10 @@
     "scene": "30화 BAD — 대관식 직전, 왕관을 주교의 손에서 스스로 빼앗아 쓴다. 각본가의 빈 자리를 제가 삼키기로 한 순간. 이후 궁의 모든 문에 사람을 세우고, 당신을 새장에 붙든다",
     "cast": "벨리안 + 당신 POV(닫히는 문 안쪽)",
     "prompt": "a coronation hall gone cold, the golden-haired young emperor (Belian) taking the crown from the bishop's hands and setting it on his own head, a beautiful controlled smile far more frightening than despair, behind him every doorway of the hall quietly manned by guards, gilded cage motif in the window lattices, an unnamed figure standing inside the closing doors seen from behind, opulent suffocating gold and black, tragic possessive stillness",
-    "unlockEp": "blp30"
+    "unlockEp": "blp30",
+    "refs": [
+      "public/char/belian/soft.webp"
+    ]
   },
   {
     "route": "belian",
@@ -129,7 +161,10 @@
     "scene": "30화 TRUE — 대관식 새벽, 문서고에서 의전 명부 여백에 손톱을 대던 손이 붙들린다. 스무 해마다 봄을 꺾어 온 그 손이 처음으로 실패한 밤. 이후 벨리안은 웃으며 왕관을 쓰고, 스무 해 뒤를 위한 기록을 남기기 시작한다",
     "cast": "벨리안 + 붙들린 궁정 서기(얼굴 그늘) + 전임 재상 오르텐(원경) + 당신 POV",
     "prompt": "predawn palace record hall, a court scribe seized mid-motion with his fingernail still against the margin of a ceremonial roster where three scored lines are half-finished, the golden-haired young emperor (Belian) holding the roster up to a lantern with cold clarity, an old crippled man watching from a doorway far behind, in the foreground the crown resting on a plain table rather than on a head, eight small candles burning in a row along the window ledge, revelatory blue-gold dawn, solemn and quietly triumphant",
-    "unlockEp": "blp30"
+    "unlockEp": "blp30",
+    "refs": [
+      "public/char/belian/soft.webp"
+    ]
   },
   {
     "route": "lilia",
@@ -141,7 +176,10 @@
     "scene": "29화 — 연행되던 메피안이 홀 문턱에서 돌아보며 \"봄은 한 번 꺾인 적이 있지요… 두 번이 없으리라 보십니까?\"라 남긴다. 릴리아는 이유 모를 서늘함에 붙들린다(무귀속 기시감)",
     "cast": "메피안 + 릴리아 + 근위대(엑스트라)",
     "prompt": "the threshold of the great hall's doors, guards escorting the soft-smiling elderly chancellor (Mephian) out while he turns his head back over his shoulder with an unafraid knowing look, the blonde-blue duchess (Lilia) standing far behind in the blazing hall, a sudden inexplicable chill crossing her expression, deep shadow at the doorway against the golden hall, ominous parting shot",
-    "unlockEp": "lip29"
+    "unlockEp": "lip29",
+    "refs": [
+      "public/char/lilia/soft.webp"
+    ]
   },
   {
     "route": "lilia",
@@ -153,7 +191,12 @@
     "scene": "30화 GOOD — 하이델 정원 문 앞. 스스로 선 공작영애가 이름 없는 조력자를 배웅하며 \"은인이고, 공범이고, 벗이에요\", 그리고 자각 없는 에코 \"…이번엔, 웃으면서 인사할 수 있겠네요\"로 닫는다",
     "cast": "릴리아 (+ 뒤편 마리온·리비아) · 당신은 뒷모습 실루엣까지만",
     "prompt": "the open garden gate of a ducal estate in full spring, the blonde-blue duchess (Lilia) standing in the gateway smiling brightly with her hand half-raised in greeting rather than farewell, sunlight falling exactly on the threshold between her and the viewer, a wine-red-haired lady (Marion) and a shy brown-haired girl (Livia) laughing among untrimmed blossoms behind her, only the back-lit silhouette of a shoulder at the frame edge for the viewer, radiant hopeful warmth, petals in the air",
-    "unlockEp": "lip30"
+    "unlockEp": "lip30",
+    "refs": [
+      "public/char/lilia/soft.webp",
+      "public/char/marion/soft.webp",
+      "public/char/livia/soft.webp"
+    ]
   },
   {
     "route": "lilia",
@@ -165,7 +208,10 @@
     "scene": "BAD 공통(15화 게이트 실패 / 25화 게이트 실패 / 30화 게이트 실패) — 프롤로그의 탑이 되풀이된다. 다만 이번에는 당신이 탑의 창 아래에서 그것을 지켜본다",
     "cast": "릴리아 (탑 창 안) · 당신은 창 아래 실루엣",
     "prompt": "a narrow cold tower window seen from the ground below, the wilting blonde-blue duchess (Lilia) barely visible inside counting the spring blossoms falling outside, an unnamed figure's back-lit silhouette standing in the courtyard beneath the tower unable to reach her, desaturated blue-grey with a single bruised warm sunset, falling petals, tragic irreversible stillness",
-    "unlockEp": "lip15"
+    "unlockEp": "lip15",
+    "refs": [
+      "public/char/lilia/soft.webp"
+    ]
   },
   {
     "route": "lilia",
@@ -177,7 +223,10 @@
     "scene": "30화 TRUE(전 8루트 GOOD 관통) — 구원된 봄 위에서 릴리아가 '제3의 손'을 추적할 새 장부의 첫 줄에 일곱 이름을 적는다. 유리함 속 민무늬 봉랍의 재 — 봄의 진짜 적은 메피안 너머에 있다",
     "cast": "릴리아 + (유리함 속) 민무늬 봉랍의 재 · 배경에 일곱 실루엣",
     "prompt": "a sunlit ducal study opening onto a spring garden, the blonde-blue duchess (Lilia) writing seven names on the first line of a new ledger with a resolute calm face, a glass case beside her holding the ashes of an unmarked blank wax seal, seven faint figures reflected in the window glass behind her, and far beyond the garden a distant unlit window across a border where blank wax melts over a candle, hopeful yet unresolved, warm gold with one thread of cold blue",
-    "unlockEp": "lip30"
+    "unlockEp": "lip30",
+    "refs": [
+      "public/char/lilia/soft.webp"
+    ]
   },
   {
     "route": "livia",
@@ -189,7 +238,11 @@
     "scene": "30화 GOOD — 볕 아래에서 릴리아가 그 이름을 소리 내어 세 번 부른다",
     "cast": "리비아 + 릴리아 + 당신(정원 문 앞, 어깨·손만)",
     "prompt": "a sunlit spring back garden behind a repaired annex, wildflowers everywhere; a blonde noblewoman standing in the brightest patch of light with her arms slightly open, mouth shaping a name for the third time; a few steps away a brown-haired girl with one hand pressed to her mouth and tears on her face, just beginning to step into the light; at the garden gate, only the back-lit shoulder and hand of a watching companion, face unseen; overwhelming warm golden light, drifting petals, tender and quiet",
-    "unlockEp": "lvp30"
+    "unlockEp": "lvp30",
+    "refs": [
+      "public/char/lilia/soft.webp",
+      "public/char/livia/soft.webp"
+    ]
   },
   {
     "route": "livia",
@@ -201,7 +254,8 @@
     "scene": "30화 BAD / 15·25화 게이트 실패 — 텅 빈 별채. 이번엔 당신이 창밖에서 지켜본다",
     "cast": "당신(뒷모습·손) + 빈 별채",
     "prompt": "a winter night, an empty annex viewed from outside through a single frosted window; inside, one lamp guttering out on the sill and a chair pushed back from an untouched table; no one is there; in the snow below the window, small footprints leading away beside a second set of adult prints; in the foreground only the back and shoulder of a companion standing outside the glass, one palm flat against the frost, face unseen; deep blue and black, a single dying ember of light, absolute silence",
-    "unlockEp": "lvp30"
+    "unlockEp": "lvp30",
+    "refs": []
   },
   {
     "route": "livia",
@@ -213,7 +267,11 @@
     "scene": "30화 TRUE — 돌아온 상자에 답장 한 줄을 적어 넣는다. 정원 끝으로 이름 없는 손이 멀어진다",
     "cast": "리비아 + 릴리아 + 이름 없는 손(원경, 얼굴 비묘사)",
     "prompt": "a spring back garden at dawn, one floor plank lifted aside by the annex step and an old wooden box set back into its hollow; a brown-haired girl kneeling to write a single line on the reverse of a note, a faint steady smile; beyond her a blonde noblewoman waiting in the sunlight with a hand outstretched; at the far edge of the garden an unnamed figure in a plain coat walking away into the mist, face never shown; two lights in one frame — dawn gold and lingering blue, mystery warmed by hope",
-    "unlockEp": "lvp30"
+    "unlockEp": "lvp30",
+    "refs": [
+      "public/char/lilia/soft.webp",
+      "public/char/livia/soft.webp"
+    ]
   },
   {
     "route": "lucienne",
@@ -225,7 +283,10 @@
     "scene": "30화 GOOD — 실패할 자유. 실뜯개를 서랍에 넣고, 어긋난 한 땀을 그대로 둔 채 완성으로 선언한다. 사십오 분 규칙 폐지·예약자 명부 없는 살롱·'이 문장은 완결하지 않고 두겠습니다'",
     "cast": "루시엔 + 당신 POV(맞은편 찻잔과 손)",
     "prompt": "a sunlit salon window in late afternoon, the silver-white-haired marchioness (Lucienne) smiling faintly with bare ungloved hands, an embroidery hoop on her lap showing a finished white lily with one visibly crooked stitch left untouched, a seam ripper shut away in a closed drawer behind her, two teacups set out with no appointment ledger in sight, a torn-up rigid timetable in the wastebasket, warm gold light, gentle liberated calm",
-    "unlockEp": "lup30"
+    "unlockEp": "lup30",
+    "refs": [
+      "public/char/lucienne/soft.webp"
+    ]
   },
   {
     "route": "lucienne",
@@ -237,7 +298,10 @@
     "scene": "30화 BAD — 완벽의 감옥. 어긋난 한 땀을 뜯어내고 백합을 처음부터 다시 놓는 나날. 당신마저 '결함 있는 변수'로 얼려 밀어낸 뒤, 안에서 걸쇠를 내린 살롱을 당신이 창밖에서 지켜본다",
     "cast": "루시엔 (실내) + 당신 POV(창밖 유리에 닿은 손)",
     "prompt": "seen from outside through a frosted salon window at dusk, the silver-white-haired marchioness (Lucienne) alone within, unpicking a white lily embroidery thread by thread with a blank expression, a heap of half-finished lilies and cut threads piled beside her, the door bolted from the inside, an unidentifiable person's hand pressed against the outer glass, snow gathering on the sill, desaturated blue-grey, beautiful and airless",
-    "unlockEp": "lup30"
+    "unlockEp": "lup30",
+    "refs": [
+      "public/char/lucienne/soft.webp"
+    ]
   },
   {
     "route": "lucienne",
@@ -249,7 +313,10 @@
     "scene": "30화 TRUE — 구원 + 제3의 손 회수. 어긋난 한 땀을 남긴 채, 스승의 편지·인장 없는 밀랍 조각·타다 만 '첫 봄, 여섯'을 한 봉투에 담아 자수함 맨 아래에 둔다. 완벽의 진짜 감옥은 재상 너머의 손이 지은 것이었다",
     "cast": "루시엔 + 당신 POV(봉투를 함께 누르는 손)",
     "prompt": "a sunlit salon table at dawn, the silver-white-haired marchioness (Lucienne) with bare hands sealing a plain envelope, laid out before her an old letter, a crestless lump of pressed wax, and a charred paper fragment bearing four legible characters, an embroidery hoop with a finished white lily and one crooked stitch resting nearby, an unidentifiable hand steadying the envelope with hers, a faint unresolved shadow stretching from the far doorway, warm light with one cold corner, quiet resolve",
-    "unlockEp": "lup30"
+    "unlockEp": "lup30",
+    "refs": [
+      "public/char/lucienne/soft.webp"
+    ]
   },
   {
     "route": "marion",
@@ -261,7 +328,12 @@
     "scene": "25화[막⑤·배드게이트②] — 각본실. '리비아냐, 릴리아냐, 아니면 당신 자신이냐' — 마지막 저울 앞에서 마리온의 두 손에 위증 대본과 부치지 못한 편지 다발이 나뉘어 들린다",
     "cast": "마리온 + 메피안 + 릴리아",
     "prompt": "the archive room three hours before midnight, one lantern burning, the wine-red-haired lady (Marion) standing with both hands open — a folded false-testimony script in one, a bundle of unsent letters in the other — as if weighing them on invisible scales, the elderly chancellor (Mephian) hurried for the first time behind the desk, the blonde-blue duchess (Lilia) having walked in on her own feet at the doorway, the oldest drawer standing slightly ajar and empty, distant coronation light through the corridor, unbearable choice",
-    "unlockEp": "map25"
+    "unlockEp": "map25",
+    "refs": [
+      "public/char/lilia/soft.webp",
+      "public/char/marion/soft.webp",
+      "public/char/livia/soft.webp"
+    ]
   },
   {
     "route": "marion",
@@ -273,7 +345,12 @@
     "scene": "26화[6비트①] — 자정 종 아홉 번째에 메피안이 하이델 공작영애를 반역으로 고발한다. 천 개의 시선이 증인석에서 증언대까지 길을 낸다",
     "cast": "메피안 + 릴리아 + 마리온 + 벨리안 (난간) + 홀 전체",
     "prompt": "a coronation ball at midnight under a thousand lit chandeliers, the soft-smiling elderly chancellor (Mephian) stepping forward from the dais with one hand raised in formal accusation, the blonde-blue duchess (Lilia) standing straight-backed and alone as the crowd parts around her, the wine-red-haired lady (Marion) rising from the front witness bench with four guards behind her, the golden-haired crown prince (Belian) watching from the throne-side balustrade still smiling, a corridor of turned faces opening toward the testimony stand, blinding gold, silence made visible",
-    "unlockEp": "map26"
+    "unlockEp": "map26",
+    "refs": [
+      "public/char/lilia/soft.webp",
+      "public/char/marion/soft.webp",
+      "public/char/belian/soft.webp"
+    ]
   },
   {
     "route": "marion",
@@ -285,7 +362,11 @@
     "scene": "27화[6비트②] — 증언대의 마리온이 예법의 빈틈에 선 당신을 보고, 열한 줄을 끝내 발화하지 않는다. 이 루트의 주 카메라",
     "cast": "마리온 (+ 당신 뒷모습 실루엣) + 아젤 (원경 기립)",
     "prompt": "the brightest point of a vast ballroom, the wine-red-haired lady (Marion) alone at a raised testimony stand with empty hands, her stage-smile entirely gone and her eyes fixed on one spot below, in the near foreground the back silhouette of a companion standing in a half-pace gap of protocol where no one is permitted to stand, in the far background the silver-ivory paladin-priest (Azael) beginning to rise from the envoy seats with a no-longer-empty record box, a thousand faces blurred into a wall of light, the hush of a script abandoned",
-    "unlockEp": "map27"
+    "unlockEp": "map27",
+    "refs": [
+      "public/char/marion/soft.webp",
+      "public/char/azael/soft.webp"
+    ]
   },
   {
     "route": "marion",
@@ -297,7 +378,13 @@
     "scene": "28화[6비트④⑤⑥] — 레이먼의 확보 명령을 벨포르가 집행한다. 표적은 약혼자와 집사. 벨리안이 재가하고, 메피안이 스스로 호위를 받아들인다",
     "cast": "레이먼 + 벨포르 + 약혼자 + 마리온 + 벨리안",
     "prompt": "a ballroom the instant a verdict inverts, the blue-grey-haired northern commander (Reimon) one step forward from the upper gallery with his hand leaving the sword-hilt, the platinum-blonde vice-captain (Belfor) below him taking hold of a shadowed faceless nobleman's arm while a grey-liveried steward is seized beside him, the wine-red-haired lady (Marion) watching that captured hand from the witness bench without breathing, the golden-haired crown prince (Belian) on the balustrade granting it with a single glance, chandeliers still fully lit, the quiet sound of scales turning over",
-    "unlockEp": "map28"
+    "unlockEp": "map28",
+    "refs": [
+      "public/char/marion/soft.webp",
+      "public/char/belfor/soft.webp",
+      "public/char/belian/soft.webp",
+      "public/char/reimon/soft.webp"
+    ]
   },
   {
     "route": "marion",
@@ -309,7 +396,11 @@
     "scene": "30화 GOOD — 경매로 넘어간 발루아 저택, 헐린 온실 잔해 위에 마리온이 손수 스물두 그루의 장미를 심는다. 계산을 버린 값 없는 유대 (은인·공범·벗)",
     "cast": "마리온 + 리비아 + (당신 손·어깨)",
     "prompt": "the demolished ruin of a glass conservatory at a sold estate, broken panes and rubble under an early-summer sky, the wine-red-haired lady (Marion) kneeling directly in the dirt without fan or gloves, sleeves pushed up and soil under her fingernails, planting a rose cutting with a plain trowel, the shy brown-haired girl (Livia) working two rows over, a companion's hand and shoulder entering frame digging the next hole, twenty-two young rose plants set in a line across the wreckage, warm honest daylight, quiet unpriced hope",
-    "unlockEp": "map30"
+    "unlockEp": "map30",
+    "refs": [
+      "public/char/marion/soft.webp",
+      "public/char/livia/soft.webp"
+    ]
   },
   {
     "route": "marion",
@@ -321,7 +412,10 @@
     "scene": "30화 BAD (15화·25화 실패 분기 공용) — 프롤로그의 반복. 문장이 지워진 마차가 국경을 넘고, 이번엔 당신이 창밖에서 그것을 지켜본다",
     "cast": "마리온 (마차 안) + 당신 뒷모습 실루엣 (마차 밖)",
     "prompt": "a crestless carriage halted at a night border checkpoint in deep winter, seen from outside, the frosted window showing only the dim outline of the wine-red-haired lady (Marion) within and a single fingertip tracing numbers on the frost from the inside, in the foreground the back silhouette of a companion standing in the snow unable to be seen by her, lantern light failing against the dark, desolate blue-grey, the exact repetition of a farewell no one attended",
-    "unlockEp": "map30"
+    "unlockEp": "map30",
+    "refs": [
+      "public/char/marion/soft.webp"
+    ]
   },
   {
     "route": "marion",
@@ -333,7 +427,10 @@
     "scene": "30화 TRUE — 흙 묻은 손 그대로 검인청 명부를 펼친 마리온. 견본 고리의 등록 번호가 십이 년 전 발루아 검인일을 가리키고, 명부의 이름 하나가 잉크가 아니라 종이째 깎여 지워져 있다",
     "cast": "마리온 + (당신 손) + 마른 장미와 금속 고리",
     "prompt": "a seal-office record room, a heavy twelve-year-old register opened flat on a counter, one entry not inked out but physically shaved away from the paper leaving a pale scooped hollow, in the margin a numeral with the same overlong horizontal stroke, the wine-red-haired lady (Marion) leaning over it with soil still under her fingernails and a gardener's apron over her plain dress, a dried rose and a small horizontally-set seal-sample ring laid on the page as evidence, a companion's hand holding the lamp, cold analytical light against a warm doorway beyond, the thread pulled one turn further",
-    "unlockEp": "map30"
+    "unlockEp": "map30",
+    "refs": [
+      "public/char/marion/soft.webp"
+    ]
   },
   {
     "route": "reimon",
@@ -345,7 +442,12 @@
     "scene": "23화 — 대연회장 경비 편성 회의. 홀 도면 위에 일곱 개의 나무 말이 놓이고, 일곱 사람의 밤이 한 상자로 수렴한다",
     "cast": "레이먼 + 벨포르 + 아젤 + (당신 POV)",
     "prompt": "daytime in an empty grand ballroom with a thousand unlit chandeliers overhead, a large hall floorplan unrolled on a trestle table with seven small carved wooden markers placed across it, the blue-grey-haired northern commander (Reimon) setting the last marker at the centre of the plan, the platinum-blonde vice-captain and the silver-ivory paladin-priest (Azael) leaning in from either side, cool pale daylight through tall windows, strategic hush, gold and dust",
-    "unlockEp": "rmp23"
+    "unlockEp": "rmp23",
+    "refs": [
+      "public/char/belfor/soft.webp",
+      "public/char/reimon/soft.webp",
+      "public/char/azael/soft.webp"
+    ]
   },
   {
     "route": "reimon",
@@ -357,7 +459,11 @@
     "scene": "25화[막⑤·배드게이트②] — 재상부 증인 대기실. 위증 서약서 앞의 벨포르, 그를 둘러싼 창 여덟 자루, 그리고 문간의 레이먼",
     "cast": "벨포르 + 메피안 + 레이먼 + (당신 POV)",
     "prompt": "a cramped chancellery witness antechamber lit by two lamps, the platinum-blonde vice-captain (Belfor) seated with a short sworn-testimony document on his knees and an opened envelope of torn paper on the table, the soft-smiling elderly chancellor (Mephian) standing over him never sitting, eight halberd shafts angled inward from the shadowed walls, in the doorway the blue-grey-haired northern commander (Reimon) in dress uniform with one hand at his ceremonial sword, distant ballroom light glowing at the end of the corridor behind him, claustrophobic amber and black",
-    "unlockEp": "rmp25"
+    "unlockEp": "rmp25",
+    "refs": [
+      "public/char/belfor/soft.webp",
+      "public/char/reimon/soft.webp"
+    ]
   },
   {
     "route": "reimon",
@@ -369,7 +475,10 @@
     "scene": "26화 — 왕관의 밤 상단 회랑. 목소리 없는 손짓 하나로 홀 전체의 경비를 지휘하고, 곁에는 재상부의 '의전 보조' 넷이 서 있다",
     "cast": "레이먼 + 의전 보조 넷(실루엣) + 아래 홀 군중",
     "prompt": "high upper gallery of a vast coronation ballroom at midnight, a thousand chandeliers blazing below over a crowd of nobles, the blue-grey-haired northern commander (Reimon) at the centre of the balustrade lowering one hand in a silent command, sixteen guardsmen far below shifting half a step in unison, four unmoving liveried men flanking him on the gallery with unreadable faces, vertiginous downward perspective, gold light from beneath casting his face half in shadow",
-    "unlockEp": "rmp26"
+    "unlockEp": "rmp26",
+    "refs": [
+      "public/char/reimon/soft.webp"
+    ]
   },
   {
     "route": "reimon",
@@ -381,7 +490,12 @@
     "scene": "28화 — 세 봉랍이 같은 주형에서 나왔다는 감정 결과. 회랑에서 내려진 확보 명령 '근위대는 증거를 따른다. 저 둘을 확보하라'",
     "cast": "레이먼(회랑) + 벨포르(집행) + 약혼자·집사(확보 대상) + 벨리안(원경)",
     "prompt": "the coronation ballroom at the turning point, three wax seals laid side by side on a comparison board glowing under candlelight, the whole crowd turning to look upward, on the high gallery the blue-grey-haired northern commander (Reimon) speaking for the first time that night with his hand off the hilt, below him the platinum-blonde vice-captain moving in with guardsmen to seize a shadowed faceless nobleman and an elderly steward at the testimony stand, the golden-haired crown prince (Belian) watching from the throne-side balustrade with an unbroken smile, dramatic upward light, decisive triumph",
-    "unlockEp": "rmp28"
+    "unlockEp": "rmp28",
+    "refs": [
+      "public/char/belfor/soft.webp",
+      "public/char/belian/soft.webp",
+      "public/char/reimon/soft.webp"
+    ]
   },
   {
     "route": "reimon",
@@ -393,7 +507,11 @@
     "scene": "30화 GOOD — 두 맹세의 화해. 검을 반납하지도, 한쪽을 버리지도 않은 채 북문을 나서는 길. 프롤로그 눈밭의 대구",
     "cast": "레이먼 + 벨포르(배웅) + (당신 뒷모습 실루엣)",
     "prompt": "early morning snowfall at the northern city gate, the blue-grey-haired northern commander (Reimon) mounted and reining in for no reason at all, still wearing his imperial guard uniform beneath a northern wolf-fur mantle, sword undrawn and still at his side, two banners - sun crest and wolf crest - streaming the same direction above the gate for the first time, the platinum-blonde vice-captain saluting at the gatepost, a small unnamed figure seen only from behind at the edge of the frame, quiet white light, snow falling on no one's grave, warm resolution without romance",
-    "unlockEp": "rmp30"
+    "unlockEp": "rmp30",
+    "refs": [
+      "public/char/belfor/soft.webp",
+      "public/char/reimon/soft.webp"
+    ]
   },
   {
     "route": "reimon",
@@ -405,7 +523,10 @@
     "scene": "30화 BAD — 오명은 벗었으나 감옥이 더 촘촘해진 세계선. 프롤로그의 눈밭이 반복되고, 이번엔 곁의 한 사람까지 붙들려 함께 얼어붙는다",
     "cast": "레이먼 + (당신 손목/뒷모습 실루엣)",
     "prompt": "a heavy blizzard over an empty training yard at night, the blue-grey-haired northern commander (Reimon) standing with his sword driven into the snowdrift, snow piled thick on his shoulders, his hand gripping the wrist of a faceless figure seen only from behind who is trying to step away, his expression a ruined mixture of fury and pleading, lantern light almost swallowed by the storm, twisted possessive tragedy, desaturated blue-white and black",
-    "unlockEp": "rmp30"
+    "unlockEp": "rmp30",
+    "refs": [
+      "public/char/reimon/soft.webp"
+    ]
   },
   {
     "route": "reimon",
@@ -417,6 +538,9 @@
     "scene": "30화 TRUE — 구원 + 제3의 손 회수. 문장 없는 인장으로 봉해진 글자 있는 편지, 그리고 두 깃발 뒤에 남는 세 번째 그림자",
     "cast": "레이먼 + (당신 손) + 문장 없는 봉랍",
     "prompt": "the northern gate road in falling snow, the blue-grey-haired northern commander (Reimon) turning in the saddle to look back at the city, in the foreground a bare hand holding an unsigned letter sealed with a perfectly blank featureless wax circle, two banners - sun and wolf - streaming the same way behind him while a third shadow with no crest stretches across the snow from an unseen source, cold silver-blue light with one warm lantern, hopeful ending shadowed by an unnamed enemy",
-    "unlockEp": "rmp30"
+    "unlockEp": "rmp30",
+    "refs": [
+      "public/char/reimon/soft.webp"
+    ]
   }
 ]
