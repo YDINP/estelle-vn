@@ -5,7 +5,7 @@ import { mountGame } from "./game/ui";
 // custom property로 주입 (vite는 css 내 절대 url()에 base를 붙여주지 않음)
 const base = import.meta.env.BASE_URL;
 document.documentElement.style.setProperty("--u-title-cg", `url(${base}cg/lilia/title_hero.webp)`);
-document.documentElement.style.setProperty("--u-panel", `url(${base}ui/panel.png)`);
+document.documentElement.style.setProperty("--u-panel", `url(${base}ui/panel.webp)`);
 
 const app = document.getElementById("app");
 if (app) mountGame(app);

@@ -39,9 +39,9 @@ export const CGS: Cg[] = [
   { id: "cg_lip27", char: "lilia", title: "잃어버린 대본",         file: "lost_script",             unlockEp: "lip27" },
   { id: "cg_lip28", char: "lilia", title: "증거를 따른다",         file: "evidence_verdict",        unlockEp: "lip28" },
   { id: "cg_lip29", char: "lilia", title: "두 번은 없다",         file: "chancellor_turns",        unlockEp: "lip29" },
-  { id: "cg_lip_good", char: "lilia", title: "되찾은 봄",         file: "ending_regained_spring", ending: "good" },
-  { id: "cg_lip_bad",  char: "lilia", title: "창밖의 봄",         file: "ending_tower_outside",   ending: "bad" },
-  { id: "cg_lip_true", char: "lilia", title: "두 번째 봄을 여는 손", file: "ending_second_spring",   ending: "true" },
+  { id: "cg_lip_good", char: "lilia", title: "되찾은 봄",         file: "end_good", ending: "good" },
+  { id: "cg_lip_bad",  char: "lilia", title: "창밖의 봄",         file: "end_bad",   ending: "bad" },
+  { id: "cg_lip_true", char: "lilia", title: "두 번째 봄을 여는 손", file: "end_true",   ending: "true" },
 
   // ── 마리온: 신 스토리 1막. 프롤로그는 신규 아트, 2·3화는 구 아트가 신 장면과 일치해 재활용.
   { id: "cg_map0", char: "marion", title: "커튼콜 없는 퇴장", file: "prologue_exile", unlockEp: "map0" },
@@ -61,9 +61,9 @@ export const CGS: Cg[] = [
   { id: "cg_map27", char: "marion", title: "대본을 잃어버렸네요",       file: "lost_script",            unlockEp: "map27" },
   { id: "cg_map28", char: "marion", title: "저 둘을 확보하라",         file: "the_seizure",            unlockEp: "map28" },
   // 엔딩 3종(30화) — unlockEp 대신 ending 필드로 분기 구분(map30 하나로 3종이 동시 해금되면 안 됨).
-  { id: "cg_map_good", char: "marion", title: "폐허의 장미 (굿 엔딩)",     file: "ruined_rose_garden",     ending: "good" },
-  { id: "cg_map_bad",  char: "marion", title: "배웅 없는 겨울 (배드 엔딩)", file: "border_carriage_watched", ending: "bad" },
-  { id: "cg_map_true", char: "marion", title: "지워진 이름 (트루 엔딩)",   file: "erased_name",            ending: "true" },
+  { id: "cg_map_good", char: "marion", title: "폐허의 장미 (굿 엔딩)",     file: "end_good",     ending: "good" },
+  { id: "cg_map_bad",  char: "marion", title: "배웅 없는 겨울 (배드 엔딩)", file: "end_bad", ending: "bad" },
+  { id: "cg_map_true", char: "marion", title: "지워진 이름 (트루 엔딩)",   file: "end_true",            ending: "true" },
 
   // ── 나머지 6루트 프롤로그(1회차 배드엔딩) — 아트 반입 완료분.
   { id: "cg_blp0", char: "belian",   title: "삼켜진 태양",           file: "prologue_swallowed",    unlockEp: "blp0" },
@@ -80,9 +80,9 @@ export const CGS: Cg[] = [
   { id: "cg_blp25", char: "belian", title: "축배로 뻗는 손",       file: "reaching_chalice",  unlockEp: "blp25" },
   { id: "cg_blp26", char: "belian", title: "왕관의 밤",           file: "crown_night_hall",  unlockEp: "blp26" },
   { id: "cg_blp28", char: "belian", title: "세 살 적부터 채워 온 잔", file: "swapped_chalice",   unlockEp: "blp28" },
-  { id: "cg_blp_good", char: "belian", title: "웃으며 쓰는 왕관",     file: "ending_good", ending: "good" },
-  { id: "cg_blp_bad",  char: "belian", title: "삼키는 태양",         file: "ending_bad",  ending: "bad" },
-  { id: "cg_blp_true", char: "belian", title: "두 번은 없다",        file: "ending_true", ending: "true" },
+  { id: "cg_blp_good", char: "belian", title: "웃으며 쓰는 왕관",     file: "end_good", ending: "good" },
+  { id: "cg_blp_bad",  char: "belian", title: "삼키는 태양",         file: "end_bad",  ending: "bad" },
+  { id: "cg_blp_true", char: "belian", title: "두 번은 없다",        file: "end_true", ending: "true" },
 
   { id: "cg_bfp0", char: "belfor",   title: "스스로 꺾은 검",         file: "prologue_broken_sword", unlockEp: "bfp0" },
 
@@ -97,9 +97,9 @@ export const CGS: Cg[] = [
   { id: "cg_bfp25", char: "belfor", title: "자정 세 시간 전",        file: "three_hours",       unlockEp: "bfp25" },
   { id: "cg_bfp26", char: "belfor", title: "한 걸음도 떼지 않는다",   file: "hilt_unmoved",      unlockEp: "bfp26" },
   { id: "cg_bfp28", char: "belfor", title: "검이 고른 방향",        file: "he_chose",          unlockEp: "bfp28" },
-  { id: "cg_bfp_good", char: "belfor", title: "꽂은 검, 새 맹세",    file: "oath_planted",     ending: "good" },
-  { id: "cg_bfp_bad",  char: "belfor", title: "다시, 스스로 꺾은 검", file: "broken_again",     ending: "bad" },
-  { id: "cg_bfp_true", char: "belfor", title: "두 번째 물음",        file: "second_question",  ending: "true" },
+  { id: "cg_bfp_good", char: "belfor", title: "꽂은 검, 새 맹세",    file: "end_good",     ending: "good" },
+  { id: "cg_bfp_bad",  char: "belfor", title: "다시, 스스로 꺾은 검", file: "end_bad",     ending: "bad" },
+  { id: "cg_bfp_true", char: "belfor", title: "두 번째 물음",        file: "end_true",  ending: "true" },
 
   { id: "cg_rmp0", char: "reimon",   title: "두 맹세에 버림받은 검",   file: "prologue_snow_oath",    unlockEp: "rmp0" },
 
@@ -115,9 +115,9 @@ export const CGS: Cg[] = [
   { id: "cg_rmp25", char: "reimon", title: "자정 세 시간 전",        file: "three_hours",         unlockEp: "rmp25" },
   { id: "cg_rmp26", char: "reimon", title: "은빛 경비",           file: "upper_gallery",       unlockEp: "rmp26" },
   { id: "cg_rmp28", char: "reimon", title: "증거를 따르는 검",       file: "evidence_command",    unlockEp: "rmp28" },
-  { id: "cg_rmp_good", char: "reimon", title: "북으로 난 길",        file: "ending_good_north_road",     ending: "good" },
-  { id: "cg_rmp_bad",  char: "reimon", title: "눈밭의 두 사람",       file: "ending_bad_two_in_snow",      ending: "bad" },
-  { id: "cg_rmp_true", char: "reimon", title: "봄을 세는 손",        file: "ending_true_counting_spring", ending: "true" },
+  { id: "cg_rmp_good", char: "reimon", title: "북으로 난 길",        file: "end_good",     ending: "good" },
+  { id: "cg_rmp_bad",  char: "reimon", title: "눈밭의 두 사람",       file: "end_bad",      ending: "bad" },
+  { id: "cg_rmp_true", char: "reimon", title: "봄을 세는 손",        file: "end_true", ending: "true" },
 
   { id: "cg_lup0", char: "lucienne", title: "완벽의 감옥",           file: "prologue_broken_vow",   unlockEp: "lup0" },
 
@@ -145,9 +145,9 @@ export const CGS: Cg[] = [
   { id: "cg_lvp25", char: "livia", title: "자정 세 시간 전",       file: "three_hours_to_midnight", unlockEp: "lvp25" },
   { id: "cg_lvp27", char: "livia", title: "걸어 나온 이름",        file: "step_into_the_light", unlockEp: "lvp27" },
   { id: "cg_lvp28", char: "livia", title: "저 둘을 확보하라",       file: "the_seizure",         unlockEp: "lvp28" },
-  { id: "cg_lvp_good", char: "livia", title: "불리는 이름 (굿엔딩)",       file: "ending_called_name",   ending: "good" },
-  { id: "cg_lvp_bad",  char: "livia", title: "지워진 이름, 두 번째 (배드엔딩)", file: "ending_erased_again",  ending: "bad" },
-  { id: "cg_lvp_true", char: "livia", title: "두 번째 봄 (트루엔딩)",       file: "ending_second_spring", ending: "true" },
+  { id: "cg_lvp_good", char: "livia", title: "불리는 이름 (굿엔딩)",       file: "end_good",   ending: "good" },
+  { id: "cg_lvp_bad",  char: "livia", title: "지워진 이름, 두 번째 (배드엔딩)", file: "end_bad",  ending: "bad" },
+  { id: "cg_lvp_true", char: "livia", title: "두 번째 봄 (트루엔딩)",       file: "end_true", ending: "true" },
 
   { id: "cg_azp0", char: "azael",    title: "빛을 판 새벽",           file: "prologue_sold_light",   unlockEp: "azp0" },
 
@@ -172,7 +172,7 @@ export const CGS: Cg[] = [
   { id: "cg_azp27", char: "azael", title: "봉랍 증언",            file: "the_sealed_testimony",   unlockEp: "azp27" },
   { id: "cg_azp_good", char: "azael", title: "되찾은 세 맹세",       file: "end_good", ending: "good" },
   { id: "cg_azp_bad",  char: "azael", title: "빛을 판 타락 (재현)",   file: "end_bad",  ending: "bad" },
-  { id: "cg_azp_true", char: "azael", title: "다음 봄의 증인",       file: "ending_next_spring", ending: "true" },
+  { id: "cg_azp_true", char: "azael", title: "다음 봄의 증인",       file: "end_true", ending: "true" },
 
   // ⚠️ 구 스토리(ep*/rep*/vep*/eep*/iep*/ad*/ryep*/mep*) CG 항목은 전량 제거했다.
   //    개편으로 에피소드 id가 lip*/map*/blp*… 로 바뀌어 unlockEp가 어디에도 매칭되지 않았고,
