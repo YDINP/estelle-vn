@@ -32,16 +32,41 @@ const DRY = has("dry");
 const ALL = has("all");
 const BASH = process.env.CLAUDE_CODE_GIT_BASH_PATH || "C:\\Program Files\\Git\\bin\\bash.exe";
 
-/** 캐릭터 레지스트리 — 한국어명/영문 태그로 등장 인물을 탐지하고 레퍼런스 파일을 붙인다 */
+/** 캐릭터 레지스트리 — 한국어명/영문 태그로 등장 인물을 탐지하고 레퍼런스 파일을 붙인다.
+ *  `act` = 성격이 자세·표정·거리감으로 드러나는 방식(연기 지시). 레퍼런스는 '누구인가'만
+ *  고정하므로, 포즈와 표정을 새로 그릴 때 이 지시가 인물을 그 사람답게 만든다.
+ *  근거: STORY-BIBLE §3 목소리 가이드 · dialogue.ts VOICES · PRD-story-overhaul 7대죄 매핑 */
 const CHARS = [
-  { id: "lilia",    ko: "릴리아", en: "Lilia" },
-  { id: "marion",   ko: "마리온", en: "Marion" },
-  { id: "belfor",   ko: "벨포르", en: "Belfor" },
-  { id: "belian",   ko: "벨리안", en: "Belian" },
-  { id: "lucienne", ko: "루시엔", en: "Lucienne" },
-  { id: "livia",    ko: "리비아", en: "Livia" },
-  { id: "reimon",   ko: "레이먼", en: "Reimon" },
-  { id: "azael",    ko: "아젤",   en: "Azael" },
+  { id: "lilia", ko: "릴리아", en: "Lilia",
+    act: "a duchess of restraint and quiet dignity: spine straight, gestures small and careful, " +
+         "grief swallowed rather than spilled — sorrow lives in the eyes while the posture stays composed. " +
+         "The more she feels, the stiller she becomes." },
+  { id: "marion", ko: "마리온", en: "Marion",
+    act: "the calculating 'red rose': studied, theatrical elegance; often half-hides her face behind a fan, " +
+         "teacup or turned shoulder; her smile never reaches her eyes. Only when the mask drops does the " +
+         "posture collapse into something raw and young." },
+  { id: "belfor", ko: "벨포르", en: "Belfor",
+    act: "a commoner-born guard officer bound by discipline: parade-stiff bearing, hand resting on the sword " +
+         "hilt but never drawing it; the conflict between orders and conscience shows only in the eyes and " +
+         "in a jaw held too tight." },
+  { id: "belian", ko: "벨리안", en: "Belian",
+    act: "an arrogant crown prince who devours factions: languid, sprawling confidence — leaning on a throne " +
+         "arm or balustrade, chin tilted to look down at others, a dangerous smile with a blade behind it." },
+  { id: "lucienne", ko: "루시엔", en: "Lucienne",
+    act: "the flawless 'white lily' ruled by perfectionism: immaculate vertical posture, every fingertip " +
+         "controlled, absolute symmetry. In moments of collapse exactly ONE thing is out of place — a single " +
+         "loose strand, a tilted shoulder — and that lone flaw carries the whole emotion." },
+  { id: "livia", ko: "리비아", en: "Livia",
+    act: "a shadow-raised natural daughter: half-shielded by a doorframe, pillar or her own shoulder, " +
+         "looking up at others from a lowered angle, hands gripping her skirt; her whole body angles " +
+         "cautiously toward the light she was never allowed to stand in." },
+  { id: "reimon", ko: "레이먼", en: "Reimon",
+    act: "a taciturn northern commander: near-motionless, commands a whole hall with one small gesture, " +
+         "minimal facial change. His feeling is expressed by stillness and the length of a silence, " +
+         "never by an outburst." },
+  { id: "azael", ko: "아젤", en: "Azael",
+    act: "a foreign paladin-priest of formal courtesy with a suppressed hunger: measured liturgical gestures, " +
+         "hand to chest, eyes lowered — but his gaze rests one beat too long on what tempts him." },
   // 메피안·약혼자는 게임에서 얼굴 없는 실루엣 엑스트라다(portrait이 통째로 검은 실루엣).
   // 레퍼런스로 넘기면 CG에 검은 형체만 찍히므로 제외하고, 대신 그림자 처리로 지시한다.
   { id: "mephian",  ko: "메피안", en: "Mephian", silhouette: true },
@@ -129,7 +154,10 @@ for (let i = 0; i < pend.length; i += BATCH) {
       ? `Identity references (face, hair, eye colour, costume design/colours only — pose and framing come from the scene): ` +
         refs.map((r) => `${r.file} = ${r.en}`).join(" ; ")
       : "No character reference for this image.";
-    return `Image ${n + 1} -> save to .tmp/gen/${t.route}__${t.file}.png\n  ${refLine}\n  Scene: ${clean(t.prompt)}${silhouetteNote(t)}`;
+    // 성격 지시 — 포즈·표정을 새로 그릴 때 인물이 '그 사람답게' 나오도록
+    const acts = refs.filter((r) => r.act).map((r) => `    · ${r.en}: ${r.act}`).join("\n");
+    const actLine = acts ? `\n  Acting direction (personality must show in posture, expression and distance):\n${acts}` : "";
+    return `Image ${n + 1} -> save to .tmp/gen/${t.route}__${t.file}.png\n  ${refLine}${actLine}\n  Scene: ${clean(t.prompt)}${silhouetteNote(t)}`;
   }).join("\n\n");
 
   // ⚠️ 레퍼런스를 "동일하게 유지"로만 지시하면 캐릭터 시트의 서 있는 포즈·정면 구도·
@@ -159,7 +187,14 @@ for (let i = 0; i < pend.length; i += BATCH) {
     `Do not ask questions. Generate all ${need.length} and save them to those exact paths, then stop.`;
 
   console.log(`\n▶ 배치 ${Math.floor(i / BATCH) + 1}: ${need.map((t) => `${t.id}[${refsOf(t).map((r) => r.id).join(",") || "-"}]`).join(" ")}`);
-  if (DRY) { console.log(prompt.slice(0, 1200) + "…"); continue; }
+  if (DRY) {
+    // 프롬프트가 길어 콘솔로는 확인이 안 된다 — 전문을 파일로 떨궈 검수한다
+    const p = path.join(ROOT, ".tmp", `_dryprompt_${Math.floor(i / BATCH)}.txt`);
+    fs.mkdirSync(path.dirname(p), { recursive: true });
+    fs.writeFileSync(p, prompt, "utf8");
+    console.log(`  (dry) 전문 → ${path.relative(ROOT, p)}`);
+    continue;
+  }
 
   try {
     // Windows에서 codex는 Git Bash PATH의 셸 래퍼다 — cmd/execFileSync 직접 호출은 ENOENT.
