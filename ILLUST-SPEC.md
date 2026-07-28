@@ -142,7 +142,15 @@
 - **표정 비고**: neutral/serious(격식) 기본. distressed(미혹의 흔들림), 타락 분기 전용: 어두운 smirk·흐트러진 예복.
 
 ### 1.9 메피안 (id: `mephian`) — 재상·배후 각본가 (실루엣)
-- **외형**: 60대 노신사, 회백 머리·수염 단정, 부드러운 미소(그러나 눈은 웃지 않음). 게임에선 **검은 실루엣**(CSS 필터)로 표시되나 원화는 디테일 있게 그림(추후 정체 공개 대비).
+- **외형**: 60대 노신사, 회백 머리 뒤로 넘김·회백 콧수염과 짧은 턱수염 단정. 회색+금 자수
+  재상 로브(층진 케이프, 어두운 속옷, 금 사슬 훈장, 목의 보석 브로치, 자수 소맷단, 반지).
+  한 손은 펼쳐 내밀고 다른 손은 허리께. **부드러운 미소, 그러나 눈은 웃지 않는다** — 재는 눈빛.
+- **⚠️ 실루엣 처리 구조 (2026-07-28 확인)**: 스펙 원안은 "원화 + CSS 필터로 검게"였으나
+  **필터는 구현된 적이 없다.** `.vn-portrait.is-extra`(style.css:528)는 크기만 조정한다.
+  즉 `public/char/mephian/soft.webp` 는 **검게 구워진 실루엣 파일 그 자체**다.
+  → 이 파일을 디테일본으로 교체하면 **흑막의 정체가 게임에 그대로 노출된다.** 교체 금지.
+- **원화 보관**: `art/originals/mephian.{webp,png}` — `public/` 밖이라 빌드·배포에 포함되지 않는다.
+  정체 공개 시점이 오면 이 파일을 `public/char/mephian/` 으로 옮기고 `extra: false` 로 바꾸면 된다.
 - **의상**: 회색+금장 재상 예복, 인장 반지, 홀(笏) 옵션. 손짓이 부드러운 협박.
 - **Base Prompt**:
   `{공통앵커}, a soft-spoken elderly imperial chancellor, neat grey hair and beard, gentle smile with cold unsmiling eyes, grey-and-gold chancellor robe, signet ring, one hand extended in a courteous gesture, silhouette-ready high-contrast lighting, transparent background, full body, standing`
