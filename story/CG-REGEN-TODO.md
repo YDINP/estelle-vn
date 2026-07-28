@@ -32,23 +32,11 @@ node .tmp/dupcheck.mjs        # 루트 간 중복 배치 점검
 | 메피안 (mephian) | *(레퍼런스 미사용 — 실루엣 지시)* | 얼굴 없는 검은 실루엣 노신사 (게임 정본 표현) |
 | 약혼자 (fiance) | *(레퍼런스 미사용 — 실루엣 지시)* | 얼굴 없는 그림자 귀족 남성 (게임 정본 표현) |
 
-## 잔여 35컷 — 격리 31 · 유지 4
+## 잔여 18컷 — 격리 15 · 유지 3
 
 - 🔴 **격리** — 어긋난 캐릭터가 등장해 `art-backup/mismatched-cg/` 로 옮겼다. 게임에선 플레이스홀더가 뜬다.
 - 🟡 **유지** — 배포본에 그대로 있다. 아젤은 구 앵커가 실제 아트와 일치했고(육안 확인),
   `cg_lvp_bad`는 인물이 등장하지 않는 컷(텅 빈 별채)이다. 화풍 통일을 위해 재생성 대상에는 남겨 둔다.
-
-### marion — 7컷 (엔딩 3)
-
-| id | 상태 | 파일 | 등장 캐릭터 → 레퍼런스 | 장면 |
-|---|---|---|---|---|
-| `cg_map25` | 🔴 격리 | `marion/three_hours_before.webp` | 릴리아=`char/lilia/soft.webp`<br>마리온=`char/marion/soft.webp`<br>리비아=`char/livia/soft.webp`<br>메피안(실루엣) | 25화[막⑤·배드게이트②] — 각본실. '리비아냐, 릴리아냐, 아니면 당신 자신이냐' — 마지막 저울 앞에서 마리온의 두 손에 위증 대본과 부치지 못한 편지 다발이 나뉘어 들린다 |
-| `cg_map26` | 🔴 격리 | `marion/midnight_accusation.webp` | 릴리아=`char/lilia/soft.webp`<br>마리온=`char/marion/soft.webp`<br>벨리안=`char/belian/soft.webp`<br>메피안(실루엣) | 26화[6비트①] — 자정 종 아홉 번째에 메피안이 하이델 공작영애를 반역으로 고발한다. 천 개의 시선이 증인석에서 증언대까지 길을 낸다 |
-| `cg_map27` | 🔴 격리 | `marion/lost_script.webp` | 마리온=`char/marion/soft.webp`<br>아젤=`char/azael/soft.webp` | 27화[6비트②] — 증언대의 마리온이 예법의 빈틈에 선 당신을 보고, 열한 줄을 끝내 발화하지 않는다. 이 루트의 주 카메라 |
-| `cg_map28` | 🔴 격리 | `marion/the_seizure.webp` | 마리온=`char/marion/soft.webp`<br>벨포르=`char/belfor/soft.webp`<br>벨리안=`char/belian/soft.webp`<br>레이먼=`char/reimon/soft.webp`<br>메피안(실루엣)<br>약혼자(실루엣) | 28화[6비트④⑤⑥] — 레이먼의 확보 명령을 벨포르가 집행한다. 표적은 약혼자와 집사. 벨리안이 재가하고, 메피안이 스스로 호위를 받아들인다 |
-| `cg_map_good` | 🔴 격리 | `marion/end_good.webp` | 마리온=`char/marion/soft.webp`<br>리비아=`char/livia/soft.webp` | 30화 GOOD — 경매로 넘어간 발루아 저택, 헐린 온실 잔해 위에 마리온이 손수 스물두 그루의 장미를 심는다. 계산을 버린 값 없는 유대 (은인·공범·벗) |
-| `cg_map_bad` | 🔴 격리 | `marion/end_bad.webp` | 마리온=`char/marion/soft.webp` | 30화 BAD (15화·25화 실패 분기 공용) — 프롤로그의 반복. 문장이 지워진 마차가 국경을 넘고, 이번엔 당신이 창밖에서 그것을 지켜본다 |
-| `cg_map_true` | 🔴 격리 | `marion/end_true.webp` | 마리온=`char/marion/soft.webp` | 30화 TRUE — 흙 묻은 손 그대로 검인청 명부를 펼친 마리온. 견본 고리의 등록 번호가 십이 년 전 발루아 검인일을 가리키고, 명부의 이름 하나가 잉크가 아니라 종이째 깎여 지워져 있다 |
 
 ### reimon — 7컷 (엔딩 3)
 
@@ -80,15 +68,6 @@ node .tmp/dupcheck.mjs        # 루트 간 중복 배치 점검
 | `cg_blp_bad` | 🔴 격리 | `belian/end_bad.webp` | 벨리안=`char/belian/soft.webp` | 30화 BAD — 대관식 직전, 왕관을 주교의 손에서 스스로 빼앗아 쓴다. 각본가의 빈 자리를 제가 삼키기로 한 순간. 이후 궁의 모든 문에 사람을 세우고, 당신을 새장에 붙든다 |
 | `cg_blp_true` | 🔴 격리 | `belian/end_true.webp` | 벨리안=`char/belian/soft.webp` | 30화 TRUE — 대관식 새벽, 문서고에서 의전 명부 여백에 손톱을 대던 손이 붙들린다. 스무 해마다 봄을 꺾어 온 그 손이 처음으로 실패한 밤. 이후 벨리안은 웃으며 왕관을 쓰고, 스무 해 뒤를 위한 기록을 남기기 시작한다 |
 
-### lilia — 4컷 (엔딩 3)
-
-| id | 상태 | 파일 | 등장 캐릭터 → 레퍼런스 | 장면 |
-|---|---|---|---|---|
-| `cg_lip29` | 🔴 격리 | `lilia/chancellor_turns.webp` | 릴리아=`char/lilia/soft.webp`<br>메피안(실루엣) | 29화 — 연행되던 메피안이 홀 문턱에서 돌아보며 "봄은 한 번 꺾인 적이 있지요… 두 번이 없으리라 보십니까?"라 남긴다. 릴리아는 이유 모를 서늘함에 붙들린다(무귀속 기시감) |
-| `cg_lip_good` | 🔴 격리 | `lilia/end_good.webp` | 릴리아=`char/lilia/soft.webp`<br>마리온=`char/marion/soft.webp`<br>리비아=`char/livia/soft.webp` | 30화 GOOD — 하이델 정원 문 앞. 스스로 선 공작영애가 이름 없는 조력자를 배웅하며 "은인이고, 공범이고, 벗이에요", 그리고 자각 없는 에코 "…이번엔, 웃으면서 인사할 수 있겠네요"로 닫는다 |
-| `cg_lip_bad` | 🔴 격리 | `lilia/end_bad.webp` | 릴리아=`char/lilia/soft.webp` | BAD 공통(15화 게이트 실패 / 25화 게이트 실패 / 30화 게이트 실패) — 프롤로그의 탑이 되풀이된다. 다만 이번에는 당신이 탑의 창 아래에서 그것을 지켜본다 |
-| `cg_lip_true` | 🔴 격리 | `lilia/end_true.webp` | 릴리아=`char/lilia/soft.webp`<br>메피안(실루엣) | 30화 TRUE(전 8루트 GOOD 관통) — 구원된 봄 위에서 릴리아가 '제3의 손'을 추적할 새 장부의 첫 줄에 일곱 이름을 적는다. 유리함 속 민무늬 봉랍의 재 — 봄의 진짜 적은 메피안 너머에 있다 |
-
 ### azael — 3컷 (엔딩 3)
 
 | id | 상태 | 파일 | 등장 캐릭터 → 레퍼런스 | 장면 |
@@ -96,19 +75,3 @@ node .tmp/dupcheck.mjs        # 루트 간 중복 배치 점검
 | `cg_azp_good` | 🟡 유지 | `azael/end_good.webp` | 아젤=`char/azael/soft.webp` | 30화 GOOD — 성 카나 대성당 재심정. 아젤이 제 손으로 갑주의 흰 천을 벗기고, 지워진 적 없는 문장이 아침빛에 드러난다 |
 | `cg_azp_bad` | 🟡 유지 | `azael/end_bad.webp` | 아젤=`char/azael/soft.webp` | 엔딩 BAD (15·25·30화 fail 공용) — 국경 이정표 아래, 문장이 뜯긴 백은 갑주와 봉랍이 뜯긴 빈 기록함 |
 | `cg_azp_true` | 🟡 유지 | `azael/end_true.webp` | 아젤=`char/azael/soft.webp` | 30화 TRUE — 열두 해 전 명부 여백에서 같은 필적을 발견한 뒤, 문장이 온전한 갑주로 국경을 향해 서는 두 사람 |
-
-### livia — 3컷 (엔딩 3)
-
-| id | 상태 | 파일 | 등장 캐릭터 → 레퍼런스 | 장면 |
-|---|---|---|---|---|
-| `cg_lvp_good` | 🔴 격리 | `livia/end_good.webp` | 릴리아=`char/lilia/soft.webp`<br>리비아=`char/livia/soft.webp` | 30화 GOOD — 볕 아래에서 릴리아가 그 이름을 소리 내어 세 번 부른다 |
-| `cg_lvp_bad` | 🟡 유지 | `livia/end_bad.webp` | *(인물 없음)* | 30화 BAD / 15·25화 게이트 실패 — 텅 빈 별채. 이번엔 당신이 창밖에서 지켜본다 |
-| `cg_lvp_true` | 🔴 격리 | `livia/end_true.webp` | 릴리아=`char/lilia/soft.webp`<br>리비아=`char/livia/soft.webp` | 30화 TRUE — 돌아온 상자에 답장 한 줄을 적어 넣는다. 정원 끝으로 이름 없는 손이 멀어진다 |
-
-### lucienne — 3컷 (엔딩 3)
-
-| id | 상태 | 파일 | 등장 캐릭터 → 레퍼런스 | 장면 |
-|---|---|---|---|---|
-| `cg_lup_good` | 🔴 격리 | `lucienne/end_good.webp` | 루시엔=`char/lucienne/soft.webp` | 30화 GOOD — 실패할 자유. 실뜯개를 서랍에 넣고, 어긋난 한 땀을 그대로 둔 채 완성으로 선언한다. 사십오 분 규칙 폐지·예약자 명부 없는 살롱·'이 문장은 완결하지 않고 두겠습니다' |
-| `cg_lup_bad` | 🔴 격리 | `lucienne/end_bad.webp` | 루시엔=`char/lucienne/soft.webp` | 30화 BAD — 완벽의 감옥. 어긋난 한 땀을 뜯어내고 백합을 처음부터 다시 놓는 나날. 당신마저 '결함 있는 변수'로 얼려 밀어낸 뒤, 안에서 걸쇠를 내린 살롱을 당신이 창밖에서 지켜본다 |
-| `cg_lup_true` | 🔴 격리 | `lucienne/end_true.webp` | 루시엔=`char/lucienne/soft.webp` | 30화 TRUE — 구원 + 제3의 손 회수. 어긋난 한 땀을 남긴 채, 스승의 편지·인장 없는 밀랍 조각·타다 만 '첫 봄, 여섯'을 한 봉투에 담아 자수함 맨 아래에 둔다. 완벽의 진짜 감옥은 재상 너머의 손이 지은 것이었다 |
