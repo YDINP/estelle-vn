@@ -145,12 +145,19 @@
 - **외형**: 60대 노신사, 회백 머리 뒤로 넘김·회백 콧수염과 짧은 턱수염 단정. 회색+금 자수
   재상 로브(층진 케이프, 어두운 속옷, 금 사슬 훈장, 목의 보석 브로치, 자수 소맷단, 반지).
   한 손은 펼쳐 내밀고 다른 손은 허리께. **부드러운 미소, 그러나 눈은 웃지 않는다** — 재는 눈빛.
-- **⚠️ 실루엣 처리 구조 (2026-07-28 확인)**: 스펙 원안은 "원화 + CSS 필터로 검게"였으나
-  **필터는 구현된 적이 없다.** `.vn-portrait.is-extra`(style.css:528)는 크기만 조정한다.
-  즉 `public/char/mephian/soft.webp` 는 **검게 구워진 실루엣 파일 그 자체**다.
-  → 이 파일을 디테일본으로 교체하면 **흑막의 정체가 게임에 그대로 노출된다.** 교체 금지.
-- **원화 보관**: `art/originals/mephian.{webp,png}` — `public/` 밖이라 빌드·배포에 포함되지 않는다.
-  정체 공개 시점이 오면 이 파일을 `public/char/mephian/` 으로 옮기고 `extra: false` 로 바꾸면 된다.
+- **실루엣 처리 구조 (2026-07-28 CSS 필터 방식으로 전환)**:
+  `public/char/mephian/soft.webp` 는 이제 **디테일 원화**(배경 투명, 흉상 크롭)이고,
+  검게 만드는 일은 `style.css` 의 `.vn-portrait.is-extra { filter: brightness(0) }` 가 한다.
+  - ⚠️ **그 filter 한 줄을 지우면 흑막의 얼굴이 그대로 드러난다.**
+  - ⚠️ 배경이 **투명해야** 한다. 불투명 배경이면 검은 사각형이 된다
+    (codex 산출물은 흰 배경이라 `tools/cutout-bg.mjs` 로 테두리 flood fill 제거를 거친다 —
+     흰 머리·수염이 지워지지 않도록 전역 흰색 키잉이 아니라 바깥 연결영역만 지운다).
+  - 노출 경로는 **VN 초상 하나뿐**이다. 도감은 `collect.ts` 가 `extra` 를 탭 목록에서 제외하고,
+    홈·루트카드는 루트 주인공만 그린다. 새 표시 지점을 만들 땐 `is-extra` 클래스를 반드시 붙일 것.
+- **보관본**: `art/originals/mephian.{webp,png}`(전신 원본) · `mephian_silhouette_baked.webp`(구 실루엣).
+  둘 다 `public/` 밖이라 배포에 포함되지 않는다.
+- **정체 공개 시**: `characters.ts` 의 `extra: true` 를 지우고 `body` 에 표정을 채우면 된다
+  (필터도 함께 풀린다). 표정 세트는 §0.4 규약대로 추가 제작 필요.
 - **의상**: 회색+금장 재상 예복, 인장 반지, 홀(笏) 옵션. 손짓이 부드러운 협박.
 - **Base Prompt**:
   `{공통앵커}, a soft-spoken elderly imperial chancellor, neat grey hair and beard, gentle smile with cold unsmiling eyes, grey-and-gold chancellor robe, signet ring, one hand extended in a courteous gesture, silhouette-ready high-contrast lighting, transparent background, full body, standing`
