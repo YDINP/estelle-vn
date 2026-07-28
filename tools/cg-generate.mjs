@@ -65,8 +65,14 @@ const SANITIZE = [
 const STYLE =
   "Korean romance-fantasy (romfan) otome visual-novel event CG, semi-realistic cel-shaded ANIME style, " +
   "soft painterly rendering, ornate rococo European fantasy, cinematic lighting, highly detailed background, 8k. " +
+  "The character and the environment are painted as ONE image in ONE style — same line weight, same finish, " +
+  "same level of detail, unified palette. " +
   "NEGATIVE: photorealistic, photograph, lowres, bad anatomy, deformed hands, extra fingers, watermark, " +
-  "text, signature, modern clothing, chibi.";
+  "text, signature, modern clothing, chibi, " +
+  // 레퍼런스를 그대로 붙여 넣은 듯한 결과를 막는 항목들
+  "cut-out character, pasted-in figure, sticker collage, character floating over background, " +
+  "flat studio lighting on the character, white studio backdrop, T-pose, A-pose, " +
+  "character drawn in a different style from the background, mismatched lighting.";
 
 const RULES =
   "CRITICAL: every image MUST be VERTICAL PORTRAIT orientation, aspect ratio 3:4 (like 1086x1448). " +
@@ -75,8 +81,19 @@ const RULES =
   "from behind, or a hand/shoulder entering the frame — completely gender-ambiguous. " +
   "All-ages: no sexualization. Documents and letters must be illegible decorative script, no readable text.";
 
+/** --chars a,b,c : 그 캐릭터가 등장하는 컷만 (루트 무관). 예: 여성 4인 일괄 재생성 */
+const CHARSEL = (arg("chars") || "").split(",").map((s) => s.trim()).filter(Boolean);
+
 const todo = JSON.parse(fs.readFileSync(path.join(ROOT, ".tmp", "cg-todo.json"), "utf8"));
-const pend = todo.filter((t) => (ALL || !fs.existsSync(path.join(ROOT, t.rel))) && (!ROUTE || t.route === ROUTE));
+const pend = todo.filter((t) =>
+  (ALL || !fs.existsSync(path.join(ROOT, t.rel))) &&
+  (!ROUTE || t.route === ROUTE) &&
+  (!CHARSEL.length || present(t).some((c) => CHARSEL.includes(c.id)))
+);
+
+/** --limit N : 앞에서 N컷만 (프롬프트 전략 바꾼 뒤 파일럿 검증용) */
+const LIMIT = parseInt(arg("limit", "0"), 10);
+if (LIMIT > 0) pend.length = Math.min(pend.length, LIMIT);
 
 if (!pend.length) { console.log(`생성할 항목 없음${ROUTE ? ` (route=${ROUTE})` : ""}`); process.exit(0); }
 console.log(`대상 ${pend.length}컷${ROUTE ? ` · route=${ROUTE}` : ""} · 배치 ${BATCH}${ALL ? " · 전량 재생성" : ""}`);
@@ -109,20 +126,36 @@ for (let i = 0; i < pend.length; i += BATCH) {
   const blocks = need.map((t, n) => {
     const refs = refsOf(t);
     const refLine = refs.length
-      ? `Reference images (open each and match that character's hair colour, eye colour, outfit design and colour scheme EXACTLY): ` +
+      ? `Identity references (face, hair, eye colour, costume design/colours only — pose and framing come from the scene): ` +
         refs.map((r) => `${r.file} = ${r.en}`).join(" ; ")
       : "No character reference for this image.";
     return `Image ${n + 1} -> save to .tmp/gen/${t.route}__${t.file}.png\n  ${refLine}\n  Scene: ${clean(t.prompt)}${silhouetteNote(t)}`;
   }).join("\n\n");
 
+  // ⚠️ 레퍼런스를 "동일하게 유지"로만 지시하면 캐릭터 시트의 서 있는 포즈·정면 구도·
+  //    평면 조명이 그대로 딸려 와, 인물이 배경 위에 붙여 넣은 스티커처럼 보인다.
+  //    레퍼런스는 '누구인가'만 고정하고, '어떻게 그려지는가'는 장면이 정하도록 분리한다.
+  const LIKENESS =
+    `CHARACTER LIKENESS — READ CAREFULLY.\n` +
+    `The reference files are neutral full-body character sheets standing on a plain backdrop.\n` +
+    `USE THEM ONLY to fix WHO the character is: facial features, hair colour and hairstyle, eye colour, ` +
+    `and the design and colour scheme of their outfit. On those points the reference always wins over the scene text.\n` +
+    `DO NOT copy from the reference: its standing pose, its frontal framing, its neutral expression, ` +
+    `or its plain backdrop. Never paste, trace or collage the reference figure into the scene.\n` +
+    `Instead RE-DRAW the character from scratch inside the scene:\n` +
+    `  - a new pose, gesture and facial expression that this specific moment calls for;\n` +
+    `  - a camera angle, crop and distance chosen to tell the scene (close-up, over-the-shoulder, ` +
+    `low or high angle, partial figure) — not a full-body studio shot;\n` +
+    `  - lit by the SAME light sources as the background: matching direction, colour temperature and ` +
+    `intensity, with contact shadows, light wrap and ambient occlusion where figure meets environment;\n` +
+    `  - matching the background's colour grading, atmosphere (haze, dust, rain, smoke) and depth of field.\n` +
+    `The result must read as one painting, not a character standing in front of a picture.`;
+
   const prompt =
     `Use your built-in image_gen tool to generate ${need.length} image(s) (one image_gen call per image) ` +
-    `and save each final PNG to the exact workspace path shown.\n\n` +
-    `IMPORTANT — CHARACTER LIKENESS: for each image, the listed reference image files are the single source of ` +
-    `truth for that character's appearance. Pass them to image_gen as reference/input images. If a character's ` +
-    `appearance in the scene text ever conflicts with the reference file, THE REFERENCE FILE WINS. ` +
-    `Keep hair colour, eye colour, hairstyle and costume design/colours identical to the reference.\n\n` +
-    `SHARED STYLE: ${STYLE}\n\n${RULES}\n\n${blocks}\n\n` +
+    `and save each final PNG to the exact workspace path shown. ` +
+    `Pass the listed reference files to image_gen as reference/input images.\n\n` +
+    `${LIKENESS}\n\nSHARED STYLE: ${STYLE}\n\n${RULES}\n\n${blocks}\n\n` +
     `Do not ask questions. Generate all ${need.length} and save them to those exact paths, then stop.`;
 
   console.log(`\n▶ 배치 ${Math.floor(i / BATCH) + 1}: ${need.map((t) => `${t.id}[${refsOf(t).map((r) => r.id).join(",") || "-"}]`).join(" ")}`);
