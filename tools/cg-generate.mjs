@@ -157,12 +157,18 @@ function refsOf(t) {
     .map((c) => ({ ...c, file: c.ref ?? `public/char/${c.id}/soft.webp` }))
     .filter((c) => fs.existsSync(path.join(ROOT, c.file)));
 }
-/** 실루엣 엑스트라 등장 시 붙일 지시 */
+/** 실루엣 엑스트라 등장 시 붙일 지시.
+ *  ⚠️ 장면 서술 끝에 이어 붙이면 안 된다 — cg_lvp28 에서 장면이 "a panicking young nobleman"
+ *  이라고 감정을 묘사하는 바람에 '얼굴 없음' 지시와 충돌해 모델이 얼굴을 그려 버렸다.
+ *  별도 줄로 분리하고, 장면 서술과 충돌하더라도 이쪽이 이긴다고 못박는다. */
 function silhouetteNote(t) {
   const s = present(t).filter((c) => c.silhouette);
   if (!s.length) return "";
-  return ` IMPORTANT: ${s.map((c) => c.en).join(" and ")} must be drawn as a SHADOWED FACELESS figure ` +
-    `(features lost in shadow, no readable face) — that is their canonical in-game depiction.`;
+  const who = s.map((c) => c.en).join(" and ");
+  return `\n  HARD CONSTRAINT — ${who}: must be drawn as a SHADOWED FACELESS figure ` +
+    `(features lost in shadow, no readable face, no expression). This is their canonical in-game depiction ` +
+    `and it OVERRIDES the scene text — if the scene describes their emotion or reaction, convey it through ` +
+    `body language and posture only, never through a visible face.`;
 }
 const clean = (p) => SANITIZE.reduce((s, [re, to]) => s.replace(re, to), p);
 
