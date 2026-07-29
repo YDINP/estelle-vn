@@ -67,10 +67,32 @@ const CHARS = [
   { id: "azael", ko: "아젤", en: "Azael",
     act: "a foreign paladin-priest of formal courtesy with a suppressed hunger: measured liturgical gestures, " +
          "hand to chest, eyes lowered — but his gaze rests one beat too long on what tempts him." },
-  // 메피안·약혼자는 게임에서 얼굴 없는 실루엣 엑스트라다(portrait이 통째로 검은 실루엣).
-  // 레퍼런스로 넘기면 CG에 검은 형체만 찍히므로 제외하고, 대신 그림자 처리로 지시한다.
+  // 메피안·약혼자는 얼굴 없는 실루엣 엑스트라다. 레퍼런스로 넘기면 검은 형체만 찍히므로
+  // 제외하고 그림자 처리로 지시한다. (메피안 원화는 art/originals/ 에 있으나 정체가 서사 장치)
   { id: "mephian",  ko: "메피안", en: "Mephian", silhouette: true },
   { id: "fiance",   ko: "약혼자", en: "fiance",  silhouette: true },
+
+  // ── 조연 (characters.ts에 없음 — 발화하지 않고 CG에만 등장) ────────────────────
+  // 레퍼런스 아트가 없어 컷마다 딴사람으로 그려지던 인물들. 시트를 art/refs/ 에 두고
+  // 여기서 정체성 레퍼런스로 넘긴다. public/ 밖이라 배포에는 포함되지 않는다.
+  { id: "butler", ko: "집사", en: "the Heidel butler", ref: "art/refs/butler.webp",
+    act: "flawless deference over appraisal: a small precise bow, gloved hands folded, the smile of perfect " +
+         "service while the eyes price the room" },
+  { id: "bishop", ko: "주교", en: "the bishop", ref: "art/refs/bishop.webp",
+    act: "ritual has replaced feeling: absolutely upright, unhurried, expression neutral to the point of blankness" },
+  { id: "chamberlain", ko: "시종장", en: "the palace chamberlain", ref: "art/refs/chamberlain.webp",
+    act: "loyalty and terror fighting in his hands — correct bearing, but the hand holding the salver trembles" },
+  { id: "ornel", ko: "오르넬", en: "Ornel", ref: "art/refs/ornel.webp",
+    act: "the dry irony of a man recorded as dead: gaunt and shabby, spine straight, gaze level and unafraid" },
+  { id: "old_retainer", ko: "노신하", en: "the northern retainer", ref: "art/refs/old_retainer.webp",
+    act: "he does not hide the missing right hand — he holds it where it can be seen; blunt northern directness" },
+  { id: "kyle", ko: "카일", en: "the clerk Kyle", ref: "art/refs/kyle.webp", re: /카일|서기관/,
+    act: "a small man playing a large game: shoulders drawn in, documents held too tightly, eyes sliding sideways" },
+  // '공작'은 공작영애(릴리아)·공작저·공작가와 겹치므로 부정 전방탐색이 필수다.
+  // 현재 CG 등장은 0컷이지만 프로즈에는 자주 나온다 — 향후 컷 추가 시 바로 쓰인다.
+  { id: "duke", ko: "하이델 공작", en: "Duke Heidel", ref: "art/refs/duke.webp", re: /공작(?!영애|저|가)/,
+    act: "a patriarch who puts the house before the daughter: announces decisions instead of explaining " +
+         "feelings, mouth set hard; the exhaustion is in the eyes, not the posture" },
 ];
 
 /** 구버전 외형 형용구 → 역할명만 남긴다. 레퍼런스 이미지가 외형의 유일한 근거가 되도록. */
@@ -126,12 +148,13 @@ console.log(`대상 ${pend.length}컷${ROUTE ? ` · route=${ROUTE}` : ""} · 배
 /** 그 컷에 등장하는 캐릭터(레퍼런스 파일이 실재하는 것만) */
 function present(t) {
   const hay = `${t.cast ?? ""} ${t.prompt ?? ""} ${t.scene ?? ""}`;
-  return CHARS.filter((c) => hay.includes(c.ko) || new RegExp(`\\b${c.en}\\b`, "i").test(hay));
+  // `re` 가 있으면 그쪽을 쓴다 — '공작'처럼 다른 낱말(공작영애/공작저)과 겹치는 경우가 있다
+  return CHARS.filter((c) => (c.re ? c.re.test(hay) : hay.includes(c.ko)) || new RegExp(`\\b${c.en}\\b`, "i").test(hay));
 }
 function refsOf(t) {
   return present(t)
     .filter((c) => !c.silhouette)
-    .map((c) => ({ ...c, file: `public/char/${c.id}/soft.webp` }))
+    .map((c) => ({ ...c, file: c.ref ?? `public/char/${c.id}/soft.webp` }))
     .filter((c) => fs.existsSync(path.join(ROOT, c.file)));
 }
 /** 실루엣 엑스트라 등장 시 붙일 지시 */
